@@ -22,6 +22,7 @@ import java_cup.runtime.*;
 /* regular expr here cannot have ^, / or $ */
 NUM = [0-9]+ ("." [0-9]+)?
 NL = \n | \r | \r\n
+ID = [:jletter:] [:jletterdigit:]*
 
 %%
 
