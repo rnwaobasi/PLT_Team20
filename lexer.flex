@@ -12,7 +12,7 @@ import java_cup.runtime.*;
 
 %{
     private parser yyparser;
-
+/* test comment */
     public Yylex(java.io.Reader r, parser yyparser) {
 	this(r);
 	this.yyparser = yyparser;
