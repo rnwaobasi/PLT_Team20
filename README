@@ -19,6 +19,7 @@ Notes:
 **Help on parser:
 - Dragon book (on Yacc, but similar) p.287
 - BYACC/J website
+- http://mason.gmu.edu/~white/Java/java_page.html
 Notes:
 - run first without semantic actions, to see if there are any shift/reduce conflicts (is our grammar ambiguous?)
 - if unambiguous, then proceed to add actions

@@ -27,8 +27,7 @@
 
 line	: expr '\n'
 	;
-expr	: expr '+' term		{ $$ = $1 + $3;
-				printf ("Recognized '+' expr.\n");
+expr	: expr '+' 		{ 
 				}
 	;
 
