@@ -1,7 +1,7 @@
 LEXER FILE: lexer.flex (written in JFlex)
 PARSER FILE: parser.y (written in BYACC/J)
 
-jflex lexer.flex WILL GIVE YOU sio2lexer.java
+jflex lexer.flex WILL GIVE YOU ChronosLexer.java (or whatever is after %class in lexer.flex)
 
 **Goals:
 Write a working lexer and parser for just ONE simple statement of our language. Work up from there. Have a working lexer and parser for our ENTIRE language ASAP.

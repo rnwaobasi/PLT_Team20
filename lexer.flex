@@ -3,7 +3,7 @@ import java_cup.runtime.*;
 
 %%
 
-%class sio2lexer
+%class ChronosLexer
 %unicode
 %byaccj
 %char
