@@ -9,6 +9,7 @@ Write a working lexer and parser for just ONE simple statement of our language. 
 **Help on lexer:
 - Dragon book (on Lex, but similar to JFlex in concept) p.140
 - JFlex manual (in Dropbox and on JFlex website)
+- http://mason.gmu.edu/~white/Java/java_page.html
 Notes:
 - JFlex has states
 - Matches first by longest matching prefix, then by order (first has precedence)
