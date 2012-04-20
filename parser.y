@@ -4,7 +4,7 @@ import java.io.*;
 
 /* declarations of grammar tokens */
 %token IF_T ELSE_T NEW_T FOREACH_T IN_T BREAK_T
-%token SCHEDULE_T COURSE_T COURSELIST_T INT_T DOUBLE_T TIME_T DAY_T STRING_T CONSTANT_T
+%token SCHEDULE_T COURSE_T COURSELIST_T INT_T DOUBLE_T TIME_T DAY_T STRING_T
 %token AND_T OR_T NOT_T
 %token REL_OP ASSIGN_OP
 %token ID NL NUM
@@ -64,11 +64,11 @@ statement_list		:   statement
 			|   statement_list statement
 			;
 			
-statement:             compound_statement
-			|	selection_statement
-            |	iteration_statement
-            |	expression_statement
-            |	jump_statement
+statement		:   compound_statement
+			|   selection_statement
+			|   iteration_statement
+			|   expression_statement
+			|   jump_statement
 			;
 			
 compound_statement	:   declarator_list statement_list
@@ -139,7 +139,7 @@ postfix_expression	    :	primary_expression
 			    |	postfix_expression'('')'
 			    ;
 
-primary_expression	:   CONSTANT_T
+primary_expression	:   constant
 			|   ID
 			|   STRING_T
  			|   '('expression')'
@@ -148,6 +148,9 @@ primary_expression	:   CONSTANT_T
 argument_expression_list    :	assignment_expression
 			    |	assignment_expression_list',' assignment_expression
 			    ;
+
+constant		:   NUM
+			;
 
 type_specifier		:   INT_T
 			|   DOUBLE_T
