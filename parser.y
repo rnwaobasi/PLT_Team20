@@ -3,8 +3,8 @@ import java.io.*;
 %}
 
 /* declarations of grammar tokens */
-%token IF_T ELSE_T NEW_T FOREACH_T IN_T
-%token SCHEDULE_T COURSE_T COURSELIST_T INT_T DOUBLE_T TIME_T DAY_T
+%token IF_T ELSE_T NEW_T FOREACH_T IN_T BREAK_T
+%token SCHEDULE_T COURSE_T COURSELIST_T INT_T DOUBLE_T TIME_T DAY_T STRING_T CONSTANT_T
 %token AND_T OR_T NOT_T
 %token REL_OP ASSIGN_OP
 %token ID NL NUM
@@ -32,13 +32,13 @@ import java.io.*;
 /* grammar productions and semantic actions */
 
 /* experimenting */
-line	: expr '\n'
+/*line	: expr '\n'
 	;
 expr	: expr '+'
-	;
+	;*/
 
 /* Actual Grammar */
-translation_unit    :	declaration compound_statement
+translation_unit    :	declarator_list compound_statement
 		    ;
 
 declarator_list	    :	declarator
@@ -46,7 +46,7 @@ declarator_list	    :	declarator
 		    ;
 
 declarator	    :	primitive_declarator';'
-		    |	derived type_declarator';'
+		    |	derived_type_declarator';'
 		    ;
 
 primitive_declarator	:   type_specifier ID
@@ -59,16 +59,24 @@ initializer	    :	assignment_expression
 derived_type_declarator	:   NEW_T derived_type_specifier ID
 			;
 
+			
+statement_list		:   statement
+			|   statement_list statement
+			;
+			
+statement:             compound_statement
+			|	selection_statement
+            |	iteration_statement
+            |	expression_statement
+            |	jump_statement
+			;
+			
 compound_statement	:   declarator_list statement_list
 			|   statement_list
 			;
 
-statement_list		:   statement
-			|   statement_list statement
-			;
-
-jump_statement		:   break /* do we support this? need a keyword? */
-			;
+jump_statement		:   BREAK_T /* do we support this? need a keyword? */
+			;									/* I think so. Changed to keyword. */
 
 selection_statement	:   IF_T '(' expression ')' statement
  			|   IF_T '(' expression ')' statement ELSE_T statement
@@ -131,9 +139,9 @@ postfix_expression	    :	primary_expression
 			    |	postfix_expression'('')'
 			    ;
 
-primary_expression	:   constant
+primary_expression	:   CONSTANT_T
 			|   ID
-			|   string
+			|   STRING_T
  			|   '('expression')'
 			;
 
