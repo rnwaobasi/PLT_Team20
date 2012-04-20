@@ -15,7 +15,7 @@ Notes:
 - Matches first by longest matching prefix, then by order (first has precedence)
 - In Lex, you can use a slash to say that an additional pattern follows but does not match the lexeme (p.145)
 - Sometimes you may have to preprocess the input to delete whitespace in order to make the matching work
-- p.144 - installID() is a function that is called top lace the lexeme found in the symbol table. Do we need this in JFlex/ what is the equivalent?
+- p.144 - installID() is a function that is called to place the lexeme found in the symbol table. Do we need this in JFlex/ what is the equivalent?
 
 **Help on parser:
 - Dragon book (on Yacc, but similar) p.287
