@@ -3,52 +3,33 @@ import java_cup.runtime.*;
 
 %%
 
-%class sio2lexer
+%class ChronosLexer
 %unicode
-%byaccj
-%char
+%byacc
 %line
 %column
 
 %{
-    private parser yyparser;
-/* test comment */
-    public Yylex(java.io.Reader r, parser yyparser) {
+    /* store a reference to the parser object */
+    private Parser yyparser;
+
+    /* constructor taking an additional parser */
+    public Yylex(java.io.Reader r, Parser yyparser) {
 	this(r);
 	this.yyparser = yyparser;
     }
+
+    /* return the current line number */
+    public int getLine() {
+        return yyline;
+    }
 %}
 
-?*pattern definitions */
 /* regular expr here cannot have ^, / or $ */
-<<<<<<< HEAD
-NUM 		= [0-9]+ ("." [0-9]+)?
-NL 		= \n | \r | \r\n
-IDENTIFIER 	= [:jletter:] [:jletterdigit:]*
-COMMENT		= "/*" [^*] ~"*/" | "/*" "*"+ "/"
-
-%%
-
-"+" | 
-"-" | 
-"*" | 
-"/" |
-"^" | 
-"(" | 
-")" |		    { return (int)yycharat(0); }
-
-if		{return Parser.IF_T;}
-else		{return Parser.ELSE_T;}
-new     	{return Parser.NEW_T;}
-end		{return Parser.END_T;}
-function	{return Parser.FUNCTION_T;}
-"for each" 	{return Parser.FOREACH_T;}
-break 		{return Parser.BREAK_T;}
-=======
 NUM = [0-9]+ ("." [0-9]+)?
 NL = \n | \r | \r\n
 
-%state STRING
+%xstate STRING
 %state COMMENT
 
 %%
@@ -67,27 +48,16 @@ new	{return Parser.NEW_T;}
 foreach	{return Parser.FOREACH_T;}
 in	{return Parser.IN_T;}
 break	{return Parser.BREAK_T;}
+//function	{return Parser.FUNCTION_T;}
 
->>>>>>> added states for strings and comments in lexer + update to grammar
 schedule	{return Parser.SCHEDULE_T;}
 course		{return Parser.COURSE_T;}
-course list	{return Parser.COURSELIST_T;}
-int 		{return Parser.INT_T;}
-double 		{return Parser.DOUBLE_T;}
-print 		{return Parser.PRINT_T;}
+courselist	{return Parser.COURSELIST_T;}
+int		{return Parser.INT_T;}
+double		{return Parser.DOUBLE_T;}
+time		{return Parser.TIME_T;}
 day		{return Parser.DAY_T;}
-<<<<<<< HEAD
-string		{return Parser.STRING_T;}
-constant 	{return Parser.CONSTANT_T;}
-"!"		{return Parser.NOT_T;}
-"&&"		{return Parser.AND_T;}
-"="		{return Parser.ASSIGN_OP; }
-"="  |
-"<=  |
-"<=" |
-"<"  |
-">"  |		{return Parser.REL_OP; }
-=======
+//print 		{return Parser.PRINT_T;}
 
 /* do we want to create tokens for these symbols or rely on charAt?
 need to know especially when there are multiple symbols per token */
@@ -100,25 +70,19 @@ need to know especially when there are multiple symbols per token */
 
 \+ | \- | \* | \/ |
 \; | \( | \)		{return (int)yycharat(0);}
->>>>>>> added states for strings and comments in lexer + update to grammar
 
-{IDENTIFIER}	{return Parser.ID; }
+[a-zA-Z][a-zA-Z0-9]*	{return Parser.ID;}
 
-{NL}	    	{ return Parser.NL; }
+{NL}	    {return Parser.NL;}
 
-<<<<<<< HEAD
-{NUM}	    	{ yyparser.yylval = new ParserVal(Double.parseDouble(yytext()));
-	      	return parser.NUM; }
-=======
 /* need another number type for integers */
 
 {NUM}	    { yyparser.yylval = new ParserVal(Double.parseDouble(yytext()));
 	      return Parser.NUM; }
->>>>>>> added states for strings and comments in lexer + update to grammar
 
-[ \t]+	    	{ }
+[ \t]+	    { }
 
-\b	    	{ System.err.println("Sorry, backspace doesn't work"); }
+\b	    { System.err.println("Sorry, backspace doesn't work"); }
 
-[^]	    	{ System.err.println("Error: unexpected character '" + yytext() + "'");
-	      	return -1; }
+[^]	    { System.err.println("Error: unexpected character '" + yytext() + "'");
+	      return -1; }
