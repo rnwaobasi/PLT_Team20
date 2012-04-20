@@ -3,71 +3,74 @@ import java_cup.runtime.*;
 
 %%
 
-%class ChronosLexer
+%class sio2lexer
 %unicode
 %byaccj
+%char
 %line
 %column
 
 %{
-    /* store a reference to the parser object */
-    private Parser yyparser;
-
-    /* constructor taking an additional parser */
-    public Yylex(java.io.Reader r, Parser yyparser) {
+    private parser yyparser;
+/* test comment */
+    public Yylex(java.io.Reader r, parser yyparser) {
 	this(r);
 	this.yyparser = yyparser;
     }
-
-    /* return the current line number */
-    public int getLine() {
-        return yyline;
-    }
 %}
 
+?*pattern definitions */
 /* regular expr here cannot have ^, / or $ */
-NUM = [0-9]+ ("." [0-9]+)?
-NL = \n | \r | \r\n
-
-%state STRING
+NUM 		= [0-9]+ ("." [0-9]+)?
+NL 		= \n | \r | \r\n
+IDENTIFIER 	= [:jletter:] [:jletterdigit:]*
+COMMENT		= "/*" [^*] ~"*/" | "/*" "*"+ "/"
 
 %%
 
-if	{return Parser.IF_T;}
-else	{return Parser.ELSE_T;}
-new	{return Parser.NEW_T;}
-foreach	{return Parser.FOREACH_T;}
-in	{return Parser.IN_T;}
+"+" | 
+"-" | 
+"*" | 
+"/" |
+"^" | 
+"(" | 
+")" |		    { return (int)yycharat(0); }
 
+if		{return Parser.IF_T;}
+else		{return Parser.ELSE_T;}
+new     	{return Parser.NEW_T;}
+end		{return Parser.END_T;}
+function	{return Parser.FUNCTION_T;}
+"for each" 	{return Parser.FOREACH_T;}
+break 		{return Parser.BREAK_T;}
 schedule	{return Parser.SCHEDULE_T;}
 course		{return Parser.COURSE_T;}
-courselist	{return Parser.COURSELIST_T;}
-int		{return Parser.INT_T;}
-double		{return Parser.DOUBLE_T;}
-time		{return Parser.TIME_T;}
+course list	{return Parser.COURSELIST_T;}
+int 		{return Parser.INT_T;}
+double 		{return Parser.DOUBLE_T;}
+print 		{return Parser.PRINT_T;}
 day		{return Parser.DAY_T;}
-
-"&&"		{return Parser.AND_T;}
-"||"		{return Parser.OR_T;}
+string		{return Parser.STRING_T;}
+constant 	{return Parser.CONSTANT_T;}
 "!"		{return Parser.NOT_T;}
-"<" | ">" |
-"<=" | ">=" 	{return Parser.REL_OP;}
-"="		{return Parser.ASSIGN_OP;}
-"!=" | "=="	{return Parser.EQUIV_OP;}
+"&&"		{return Parser.AND_T;}
+"="		{return Parser.ASSIGN_OP; }
+"="  |
+"<=  |
+"<=" |
+"<"  |
+">"  |		{return Parser.REL_OP; }
 
-\+ | \- | \* | \/ |
-\; | \( | \)		{return (int)yycharat(0);}
+{IDENTIFIER}	{return Parser.ID; }
 
-[a-zA-Z][a-zA-Z0-9]*	{return Parser.ID;}
+{NL}	    	{ return Parser.NL; }
 
-{NL}	    {return Parser.NL;}
+{NUM}	    	{ yyparser.yylval = new ParserVal(Double.parseDouble(yytext()));
+	      	return parser.NUM; }
 
-{NUM}	    { yyparser.yylval = new ParserVal(Double.parseDouble(yytext()));
-	      return Parser.NUM; }
+[ \t]+	    	{ }
 
-[ \t]+	    { }
+\b	    	{ System.err.println("Sorry, backspace doesn't work"); }
 
-\b	    { System.err.println("Sorry, backspace doesn't work"); }
-
-[^]	    { System.err.println("Error: unexpected character '" + yytext() + "'");
-	      return -1; }
+[^]	    	{ System.err.println("Error: unexpected character '" + yytext() + "'");
+	      	return -1; }
