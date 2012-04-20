@@ -34,10 +34,10 @@ import java.io.*;
 /* experimenting */
 line	: expr '\n'
 	;
-expr	: expr '+' 		{ }
+expr	: expr '+'
 	;
 
-	/* Actual Grammar */
+/* Actual Grammar */
 translation_unit    :	declaration compound_statement
 		    ;
 
@@ -49,14 +49,14 @@ declarator	    :	primitive_declarator';'
 		    |	derived type_declarator';'
 		    ;
 
-primitive_declarator	:   type_specifier identifier
-			|   type_specifier identifier '=' initializer
+primitive_declarator	:   type_specifier ID
+			|   type_specifier ID '=' initializer
 			;
 
 initializer	    :	assignment_expression
 		    ;
 
-derived_type_declarator	:   'new' derived_type_specifier identifier
+derived_type_declarator	:   NEW_T derived_type_specifier ID
 			;
 
 compound_statement	:   declarator_list statement_list
@@ -67,14 +67,14 @@ statement_list		:   statement
 			|   statement_list statement
 			;
 
-jump_statement		:   break
+jump_statement		:   break /* do we support this? need a keyword? */
 			;
 
-selection_statement	:   if ( expression ) statement
- 			|   if ( expression ) statement else statement
+selection_statement	:   IF_T '(' expression ')' statement
+ 			|   IF_T '(' expression ')' statement ELSE_T statement
 			;
 
-iteration_statement	:   foreach course identifier in courselist '{'compound_statement'}'
+iteration_statement	:   FOREACH_T COURSE_T ID IN_T COURSELIST_T '{'compound_statement'}'
 			;
 
 expression_statement	:   ';'
@@ -98,60 +98,61 @@ conditional_expression	:   logical_OR_expression
 			;
 
 logical_OR_expression	:   logical_AND_expression
-			|   logical_OR_expression || logical_AND_expression
+			|   logical_OR_expression OR_T logical_AND_expression
 			;
 
 logical_AND_expression	:   equality_expression
-			|   logical_AND_expression && equality_expression
+			|   logical_AND_expression AND_T equality_expression
 			;
 
 equality_expression	:   relational_expression
-			|   equality_expression == relational_expression
-			|   equality_expression != relational_expression
+			|   equality_expression '==' relational_expression
+			|   equality_expression '!=' relational_expression
 			;
 
-relational_expression	:   relational_expression < additive_expression
-			|   relational_expression > additive_expression
-			|   relational_expression <= additive_expression
-			|   relational_expression >= additive_expression
+relational_expression	:   relational_expression '<' additive_expression
+			|   relational_expression '>' additive_expression
+			|   relational_expression '<=' additive_expression
+			|   relational_expression '>=' additive_expression
 			;
 
 additive_expression	:   multiplicative_expression
-			|   additive_expression + multiplicative_expression
-			|   additive_expression - multiplicative_expression
+			|   additive_expression '+' multiplicative_expression
+			|   additive_expression '-' multiplicative_expression
 			;
 
-multiplicative_expression   :	multiplicative_expression * postfix_expression
-			    |	multiplicative_expression / postfix_expression
-			    |	multiplicative_expression % postfix_expression
+multiplicative_expression   :	multiplicative_expression '*' postfix_expression
+			    |	multiplicative_expression '/' postfix_expression
+			    |	multiplicative_expression '%' postfix_expression /* do we need mod? */
 			    ;
 
 postfix_expression	    :	primary_expression
-			    |	postfix_expression(argument_expression_list)
-			    |	postfix_expression()
+			    |	postfix_expression'('argument_expression_list')'
+			    |	postfix_expression'('')'
 			    ;
 
 primary_expression	:   constant
-			|   identifier
+			|   ID
 			|   string
- 			|   (expression)
+ 			|   '('expression')'
 			;
 
 argument_expression_list    :	assignment_expression
 			    |	assignment_expression_list',' assignment_expression
 			    ;
 
-type_specifier		:   int
-			|   double
-			|   time
-			|   day
-			|   derived-type-specifier
+type_specifier		:   INT_T
+			|   DOUBLE_T
+			|   TIME_T
+			|   DAY_T
+			|   derived_type_specifier
 			;
 
-derived_type_specifier	:   schedule
-			|   course
-			|   courselist
+derived_type_specifier	:   SCHEDULE_T
+			|   COURSE_T
+			|   COURSELIST_T
 			;
+			
 
 %%
 

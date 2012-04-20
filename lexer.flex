@@ -53,8 +53,7 @@ day		{return Parser.DAY_T;}
 "<" | ">" |
 "<=" | ">=" 	{return Parser.REL_OP;}
 "="		{return Parser.ASSIGN_OP;}
-"!="
-"=="
+"!=" | "=="	{return Parser.EQUIV_OP;}
 
 \+ | \- | \* | \/ |
 \; | \( | \)		{return (int)yycharat(0);}
