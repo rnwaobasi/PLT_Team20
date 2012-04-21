@@ -48,7 +48,7 @@ new	{return Parser.NEW_T;}
 foreach	{return Parser.FOREACH_T;}
 in	{return Parser.IN_T;}
 break	{return Parser.BREAK_T;}
-//function	{return Parser.FUNCTION_T;}
+function	{return Parser.FUNCTION_T;} /* where do we use this keyword? */
 
 schedule	{return Parser.SCHEDULE_T;}
 course		{return Parser.COURSE_T;}
@@ -57,7 +57,7 @@ int		{return Parser.INT_T;}
 double		{return Parser.DOUBLE_T;}
 time		{return Parser.TIME_T;}
 day		{return Parser.DAY_T;}
-//print 		{return Parser.PRINT_T;}
+print 		{return Parser.PRINT_T;}
 
 /* do we want to create tokens for these symbols or rely on charAt?
 need to know especially when there are multiple symbols per token */
