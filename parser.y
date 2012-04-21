@@ -9,17 +9,6 @@ import java.io.*;
 %token REL_OP ASSIGN_OP
 %token ID NL NUM
 
-
-/* experimenting with union so it can recognize different yylvals */
-/* %union
-{
-	int number;
-	char *string;
-}
-
-%token <number> STATE
-%token <string> WORD
-
 /* precedence of ops */
 %left REL_OP
 %left AND_T OR_T
@@ -31,13 +20,55 @@ import java.io.*;
 
 /* grammar productions and semantic actions */
 
-/* experimenting */
-/*line	: expr '\n'
-	;
-expr	: expr '+'
-	;*/
+/***************** PARTIAL GRAMMAR FOR TESTING ******************/
 
-/* Actual Grammar */
+declarator_list	    :	declarator
+		    |	declarator_list declarator
+		    ;
+
+declarator	    :	primitive_declarator';'
+		    |	derived_type_declarator';'
+		    ;
+
+primitive_declarator	:   type_specifier ID
+			|   type_specifier ID '=' initializer
+			;
+
+derived_type_declarator	:   NEW_T derived_type_specifier ID
+			;
+
+initializer	    :	assignment_expression
+		    ;
+
+assignment_expression	:   '=' postfix_expression
+			;
+
+postfix_expression	:   primary_expression
+			;
+
+primary_expression	:   constant
+			|   ID
+			|   STRING_T
+			;
+
+constant		:   NUM /* int and double? */
+			;
+
+type_specifier		:   INT_T
+			|   DOUBLE_T
+			|   TIME_T
+			|   DAY_T
+			|   derived_type_specifier
+			;
+
+derived_type_specifier	:   SCHEDULE_T
+			|   COURSE_T
+			|   COURSELIST_T
+			;
+
+
+/********************* ACTUAL GRAMMAR BELOW *********************/
+/* Actual Grammar
 translation_unit    :	declarator_list compound_statement
 		    ;
 
@@ -75,8 +106,8 @@ compound_statement	:   declarator_list statement_list
 			|   statement_list
 			;
 
-jump_statement		:   BREAK_T /* do we support this? need a keyword? */
-			;									/* I think so. Changed to keyword. */
+jump_statement		:   BREAK_T // do we need a semi-colon here?
+			;
 
 selection_statement	:   IF_T '(' expression ')' statement
  			|   IF_T '(' expression ')' statement ELSE_T statement
@@ -131,7 +162,7 @@ additive_expression	:   multiplicative_expression
 
 multiplicative_expression   :	multiplicative_expression '*' postfix_expression
 			    |	multiplicative_expression '/' postfix_expression
-			    |	multiplicative_expression '%' postfix_expression /* do we need mod? */
+			    |	multiplicative_expression '%' postfix_expression // do we need mod?
 			    ;
 
 postfix_expression	    :	primary_expression
@@ -149,7 +180,7 @@ argument_expression_list    :	assignment_expression
 			    |	assignment_expression_list',' assignment_expression
 			    ;
 
-constant		:   NUM
+constant		:   NUM // do we need both int and double?
 			;
 
 type_specifier		:   INT_T
@@ -163,7 +194,9 @@ derived_type_specifier	:   SCHEDULE_T
 			|   COURSE_T
 			|   COURSELIST_T
 			;
-			
+		*/	
+/********************* END OF ACTUAL GRAMMAR *********************/
+
 
 %%
 
