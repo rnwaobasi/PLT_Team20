@@ -41,9 +41,48 @@ initializer	    :	assignment_expression
 		    ;
 
 assignment_expression	:   '=' postfix_expression
+		/*	|   conditional_expression */
+			;
+/*
+conditional_expression	:   logical_OR_expression
 			;
 
+logical_OR_expression	:   logical_AND_expression
+			|   logical_OR_expression OR_T logical_AND_expression
+			;
+
+logical_AND_expression	:   equality_expression
+			|   logical_AND_expression AND_T equality_expression
+			;
+
+equality_expression	:   relational_expression
+			|   equality_expression '==' relational_expression
+			|   equality_expression '!=' relational_expression
+			;
+
+relational_expression	:   relational_expression '<' additive_expression
+			|   relational_expression '>' additive_expression
+			|   relational_expression '<=' additive_expression
+			|   relational_expression '>=' additive_expression
+			;
+
+additive_expression	:   multiplicative_expression
+			|   additive_expression '+' multiplicative_expression
+			|   additive_expression '-' multiplicative_expression
+			;
+
+multiplicative_expression   :	multiplicative_expression '*' postfix_expression
+			    |	multiplicative_expression '/' postfix_expression
+			    |	multiplicative_expression '%' postfix_expression // do we need mod?
+			    ;
+*/
+argument_expression_list    :	assignment_expression
+			    |	argument_expression_list',' assignment_expression
+			    ;
+
 postfix_expression	:   primary_expression
+			|   postfix_expression'('argument_expression_list')'
+			|   postfix_expression'('')'
 			;
 
 primary_expression	:   constant
@@ -68,7 +107,7 @@ derived_type_specifier	:   SCHEDULE_T
 
 
 /********************* ACTUAL GRAMMAR BELOW *********************/
-/* Actual Grammar
+    /*
 translation_unit    :	declarator_list compound_statement
 		    ;
 
