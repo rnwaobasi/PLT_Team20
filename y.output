@@ -1,9 +1,5 @@
 Useless nonterminals
 
-   logical_OR_expression
-   logical_AND_expression
-   equality_expression
-   relational_expression
    additive_expression
    multiplicative_expression
 
@@ -15,50 +11,24 @@ Terminals which are not used
    FOREACH_T
    IN_T
    BREAK_T
-   AND_T
-   OR_T
-   NOT_T
-   LEQ_REL_OP
-   GEQ_REL_OP
-   NEQ_REL_OP
-   EQ_REL_OP
    NL
    REL_OP
    '+'
    '-'
    '*'
    '/'
-   '<'
-   '>'
    '%'
 
 
 Useless rules
 
-   27 assignment_expression: logical_OR_expression
+   42 additive_expression: multiplicative_expression
+   43                    | additive_expression '+' multiplicative_expression
+   44                    | additive_expression '-' multiplicative_expression
 
-   28 logical_OR_expression: logical_AND_expression
-   29                      | logical_OR_expression OR_T logical_AND_expression
-
-   30 logical_AND_expression: equality_expression
-   31                       | logical_AND_expression AND_T equality_expression
-
-   32 equality_expression: relational_expression
-   33                    | equality_expression EQ_REL_OP equality_expression
-   34                    | equality_expression NEQ_REL_OP equality_expression
-
-   35 relational_expression: relational_expression '<' additive_expression
-   36                      | relational_expression '>' additive_expression
-   37                      | relational_expression LEQ_REL_OP additive_expression
-   38                      | relational_expression GEQ_REL_OP additive_expression
-
-   39 additive_expression: multiplicative_expression
-   40                    | additive_expression '+' multiplicative_expression
-   41                    | additive_expression '-' multiplicative_expression
-
-   42 multiplicative_expression: multiplicative_expression '*' postfix_expression
-   43                          | multiplicative_expression '/' postfix_expression
-   44                          | multiplicative_expression '%' postfix_expression
+   45 multiplicative_expression: multiplicative_expression '*' postfix_expression
+   46                          | multiplicative_expression '/' postfix_expression
+   47                          | multiplicative_expression '%' postfix_expression
 
 
 Grammar
@@ -79,46 +49,65 @@ Grammar
     8 initializer: assignment_expression
 
     9 assignment_expression: '=' postfix_expression
+   10                      | boolean_expression
 
-   10 argument_expression_list: assignment_expression
-   11                         | argument_expression_list ',' assignment_expression
+   11 boolean_expression: boolean_expression OR_T boolean_term
+   12                   | boolean_term
 
-   12 postfix_expression: primary_expression
-   13                   | postfix_expression '(' argument_expression_list ')'
-   14                   | postfix_expression '(' ')'
+   13 boolean_term: boolean_term AND_T boolean_factor
+   14             | boolean_factor
 
-   15 primary_expression: constant
-   16                   | ID
-   17                   | STRING_T
+   15 boolean_factor: ID
+   16               | NOT_T boolean_factor
+   17               | '(' boolean_expression ')'
+   18               | relational_expression
 
-   18 constant: NUM
+   19 relational_expression: ID EQ_REL_OP ID
+   20                      | ID NEQ_REL_OP ID
+   21                      | ID '<' ID
+   22                      | ID LEQ_REL_OP ID
+   23                      | ID '>' ID
+   24                      | ID GEQ_REL_OP ID
 
-   19 type_specifier: INT_T
-   20               | DOUBLE_T
-   21               | TIME_T
-   22               | DAY_T
-   23               | derived_type_specifier
+   25 argument_expression_list: assignment_expression
+   26                         | argument_expression_list ',' assignment_expression
 
-   24 derived_type_specifier: SCHEDULE_T
-   25                       | COURSE_T
-   26                       | COURSELIST_T
+   27 postfix_expression: primary_expression
+   28                   | postfix_expression '(' argument_expression_list ')'
+   29                   | postfix_expression '(' ')'
+
+   30 primary_expression: constant
+   31                   | ID
+   32                   | STRING_T
+
+   33 constant: NUM
+
+   34 type_specifier: INT_T
+   35               | DOUBLE_T
+   36               | TIME_T
+   37               | DAY_T
+   38               | derived_type_specifier
+
+   39 derived_type_specifier: SCHEDULE_T
+   40                       | COURSE_T
+   41                       | COURSELIST_T
 
 
 Terminals, with rules where they appear
 
 $end (0) 0
 '%' (37)
-'(' (40) 13 14
-')' (41) 13 14
+'(' (40) 17 28 29
+')' (41) 17 28 29
 '*' (42)
 '+' (43)
-',' (44) 11
+',' (44) 26
 '-' (45)
 '/' (47)
 ';' (59) 3 4
-'<' (60)
+'<' (60) 21
 '=' (61) 6 9
-'>' (62)
+'>' (62) 23
 error (256)
 IF_T (258)
 ELSE_T (259)
@@ -126,24 +115,24 @@ NEW_T (260) 7
 FOREACH_T (261)
 IN_T (262)
 BREAK_T (263)
-SCHEDULE_T (264) 24
-COURSE_T (265) 25
-COURSELIST_T (266) 26
-INT_T (267) 19
-DOUBLE_T (268) 20
-TIME_T (269) 21
-DAY_T (270) 22
-STRING_T (271) 17
-AND_T (272)
-OR_T (273)
-NOT_T (274)
-LEQ_REL_OP (275)
-GEQ_REL_OP (276)
-NEQ_REL_OP (277)
-EQ_REL_OP (278)
-ID (279) 5 6 7 16
+SCHEDULE_T (264) 39
+COURSE_T (265) 40
+COURSELIST_T (266) 41
+INT_T (267) 34
+DOUBLE_T (268) 35
+TIME_T (269) 36
+DAY_T (270) 37
+STRING_T (271) 32
+AND_T (272) 13
+OR_T (273) 11
+NOT_T (274) 16
+LEQ_REL_OP (275) 22
+GEQ_REL_OP (276) 24
+NEQ_REL_OP (277) 20
+EQ_REL_OP (278) 19
+ID (279) 5 6 7 15 19 20 21 22 23 24 31
 NL (280)
-NUM (281) 18
+NUM (281) 33
 REL_OP (282)
 
 
@@ -162,19 +151,27 @@ derived_type_declarator (44)
 initializer (45)
     on left: 8, on right: 6
 assignment_expression (46)
-    on left: 9, on right: 8 10 11
-argument_expression_list (47)
-    on left: 10 11, on right: 11 13
-postfix_expression (48)
-    on left: 12 13 14, on right: 9 13 14
-primary_expression (49)
-    on left: 15 16 17, on right: 12
-constant (50)
-    on left: 18, on right: 15
-type_specifier (51)
-    on left: 19 20 21 22 23, on right: 5 6
-derived_type_specifier (52)
-    on left: 24 25 26, on right: 7 23
+    on left: 9 10, on right: 8 25 26
+boolean_expression (47)
+    on left: 11 12, on right: 10 11 17
+boolean_term (48)
+    on left: 13 14, on right: 11 12 13
+boolean_factor (49)
+    on left: 15 16 17 18, on right: 13 14 16
+relational_expression (50)
+    on left: 19 20 21 22 23 24, on right: 18
+argument_expression_list (51)
+    on left: 25 26, on right: 26 28
+postfix_expression (52)
+    on left: 27 28 29, on right: 9 28 29
+primary_expression (53)
+    on left: 30 31 32, on right: 27
+constant (54)
+    on left: 33, on right: 30
+type_specifier (55)
+    on left: 34 35 36 37 38, on right: 5 6
+derived_type_specifier (56)
+    on left: 39 40 41, on right: 7 38
 
 
 state 0
@@ -211,51 +208,51 @@ state 1
 
 state 2
 
-   24 derived_type_specifier: SCHEDULE_T .
+   39 derived_type_specifier: SCHEDULE_T .
 
-    $default  reduce using rule 24 (derived_type_specifier)
+    $default  reduce using rule 39 (derived_type_specifier)
 
 
 state 3
 
-   25 derived_type_specifier: COURSE_T .
+   40 derived_type_specifier: COURSE_T .
 
-    $default  reduce using rule 25 (derived_type_specifier)
+    $default  reduce using rule 40 (derived_type_specifier)
 
 
 state 4
 
-   26 derived_type_specifier: COURSELIST_T .
+   41 derived_type_specifier: COURSELIST_T .
 
-    $default  reduce using rule 26 (derived_type_specifier)
+    $default  reduce using rule 41 (derived_type_specifier)
 
 
 state 5
 
-   19 type_specifier: INT_T .
+   34 type_specifier: INT_T .
 
-    $default  reduce using rule 19 (type_specifier)
+    $default  reduce using rule 34 (type_specifier)
 
 
 state 6
 
-   20 type_specifier: DOUBLE_T .
+   35 type_specifier: DOUBLE_T .
 
-    $default  reduce using rule 20 (type_specifier)
+    $default  reduce using rule 35 (type_specifier)
 
 
 state 7
 
-   21 type_specifier: TIME_T .
+   36 type_specifier: TIME_T .
 
-    $default  reduce using rule 21 (type_specifier)
+    $default  reduce using rule 36 (type_specifier)
 
 
 state 8
 
-   22 type_specifier: DAY_T .
+   37 type_specifier: DAY_T .
 
-    $default  reduce using rule 22 (type_specifier)
+    $default  reduce using rule 37 (type_specifier)
 
 
 state 9
@@ -311,9 +308,9 @@ state 13
 
 state 14
 
-   23 type_specifier: derived_type_specifier .
+   38 type_specifier: derived_type_specifier .
 
-    $default  reduce using rule 23 (type_specifier)
+    $default  reduce using rule 38 (type_specifier)
 
 
 state 15
@@ -372,138 +369,388 @@ state 22
 
     6 primitive_declarator: type_specifier ID '=' . initializer
 
-    '='  shift, and go to state 23
+    NOT_T  shift, and go to state 23
+    ID     shift, and go to state 24
+    '='    shift, and go to state 25
+    '('    shift, and go to state 26
 
-    initializer            go to state 24
-    assignment_expression  go to state 25
+    initializer            go to state 27
+    assignment_expression  go to state 28
+    boolean_expression     go to state 29
+    boolean_term           go to state 30
+    boolean_factor         go to state 31
+    relational_expression  go to state 32
 
 
 state 23
 
-    9 assignment_expression: '=' . postfix_expression
+   16 boolean_factor: NOT_T . boolean_factor
 
-    STRING_T  shift, and go to state 26
-    ID        shift, and go to state 27
-    NUM       shift, and go to state 28
+    NOT_T  shift, and go to state 23
+    ID     shift, and go to state 24
+    '('    shift, and go to state 26
 
-    postfix_expression  go to state 29
-    primary_expression  go to state 30
-    constant            go to state 31
+    boolean_factor         go to state 33
+    relational_expression  go to state 32
 
 
 state 24
+
+   15 boolean_factor: ID .
+   19 relational_expression: ID . EQ_REL_OP ID
+   20                      | ID . NEQ_REL_OP ID
+   21                      | ID . '<' ID
+   22                      | ID . LEQ_REL_OP ID
+   23                      | ID . '>' ID
+   24                      | ID . GEQ_REL_OP ID
+
+    LEQ_REL_OP  shift, and go to state 34
+    GEQ_REL_OP  shift, and go to state 35
+    NEQ_REL_OP  shift, and go to state 36
+    EQ_REL_OP   shift, and go to state 37
+    '<'         shift, and go to state 38
+    '>'         shift, and go to state 39
+
+    $default  reduce using rule 15 (boolean_factor)
+
+
+state 25
+
+    9 assignment_expression: '=' . postfix_expression
+
+    STRING_T  shift, and go to state 40
+    ID        shift, and go to state 41
+    NUM       shift, and go to state 42
+
+    postfix_expression  go to state 43
+    primary_expression  go to state 44
+    constant            go to state 45
+
+
+state 26
+
+   17 boolean_factor: '(' . boolean_expression ')'
+
+    NOT_T  shift, and go to state 23
+    ID     shift, and go to state 24
+    '('    shift, and go to state 26
+
+    boolean_expression     go to state 46
+    boolean_term           go to state 30
+    boolean_factor         go to state 31
+    relational_expression  go to state 32
+
+
+state 27
 
     6 primitive_declarator: type_specifier ID '=' initializer .
 
     $default  reduce using rule 6 (primitive_declarator)
 
 
-state 25
+state 28
 
     8 initializer: assignment_expression .
 
     $default  reduce using rule 8 (initializer)
 
 
-state 26
-
-   17 primary_expression: STRING_T .
-
-    $default  reduce using rule 17 (primary_expression)
-
-
-state 27
-
-   16 primary_expression: ID .
-
-    $default  reduce using rule 16 (primary_expression)
-
-
-state 28
-
-   18 constant: NUM .
-
-    $default  reduce using rule 18 (constant)
-
-
 state 29
 
-    9 assignment_expression: '=' postfix_expression .
-   13 postfix_expression: postfix_expression . '(' argument_expression_list ')'
-   14                   | postfix_expression . '(' ')'
+   10 assignment_expression: boolean_expression .
+   11 boolean_expression: boolean_expression . OR_T boolean_term
 
-    '('  shift, and go to state 32
+    OR_T  shift, and go to state 47
 
-    $default  reduce using rule 9 (assignment_expression)
+    $default  reduce using rule 10 (assignment_expression)
 
 
 state 30
 
-   12 postfix_expression: primary_expression .
+   12 boolean_expression: boolean_term .
+   13 boolean_term: boolean_term . AND_T boolean_factor
 
-    $default  reduce using rule 12 (postfix_expression)
+    AND_T  shift, and go to state 48
+
+    $default  reduce using rule 12 (boolean_expression)
 
 
 state 31
 
-   15 primary_expression: constant .
+   14 boolean_term: boolean_factor .
 
-    $default  reduce using rule 15 (primary_expression)
+    $default  reduce using rule 14 (boolean_term)
 
 
 state 32
 
-   13 postfix_expression: postfix_expression '(' . argument_expression_list ')'
-   14                   | postfix_expression '(' . ')'
+   18 boolean_factor: relational_expression .
 
-    '='  shift, and go to state 23
-    ')'  shift, and go to state 33
-
-    assignment_expression     go to state 34
-    argument_expression_list  go to state 35
+    $default  reduce using rule 18 (boolean_factor)
 
 
 state 33
 
-   14 postfix_expression: postfix_expression '(' ')' .
+   16 boolean_factor: NOT_T boolean_factor .
 
-    $default  reduce using rule 14 (postfix_expression)
+    $default  reduce using rule 16 (boolean_factor)
 
 
 state 34
 
-   10 argument_expression_list: assignment_expression .
+   22 relational_expression: ID LEQ_REL_OP . ID
 
-    $default  reduce using rule 10 (argument_expression_list)
+    ID  shift, and go to state 49
 
 
 state 35
 
-   11 argument_expression_list: argument_expression_list . ',' assignment_expression
-   13 postfix_expression: postfix_expression '(' argument_expression_list . ')'
+   24 relational_expression: ID GEQ_REL_OP . ID
 
-    ','  shift, and go to state 36
-    ')'  shift, and go to state 37
+    ID  shift, and go to state 50
 
 
 state 36
 
-   11 argument_expression_list: argument_expression_list ',' . assignment_expression
+   20 relational_expression: ID NEQ_REL_OP . ID
 
-    '='  shift, and go to state 23
-
-    assignment_expression  go to state 38
+    ID  shift, and go to state 51
 
 
 state 37
 
-   13 postfix_expression: postfix_expression '(' argument_expression_list ')' .
+   19 relational_expression: ID EQ_REL_OP . ID
 
-    $default  reduce using rule 13 (postfix_expression)
+    ID  shift, and go to state 52
 
 
 state 38
 
-   11 argument_expression_list: argument_expression_list ',' assignment_expression .
+   21 relational_expression: ID '<' . ID
 
-    $default  reduce using rule 11 (argument_expression_list)
+    ID  shift, and go to state 53
+
+
+state 39
+
+   23 relational_expression: ID '>' . ID
+
+    ID  shift, and go to state 54
+
+
+state 40
+
+   32 primary_expression: STRING_T .
+
+    $default  reduce using rule 32 (primary_expression)
+
+
+state 41
+
+   31 primary_expression: ID .
+
+    $default  reduce using rule 31 (primary_expression)
+
+
+state 42
+
+   33 constant: NUM .
+
+    $default  reduce using rule 33 (constant)
+
+
+state 43
+
+    9 assignment_expression: '=' postfix_expression .
+   28 postfix_expression: postfix_expression . '(' argument_expression_list ')'
+   29                   | postfix_expression . '(' ')'
+
+    '('  shift, and go to state 55
+
+    $default  reduce using rule 9 (assignment_expression)
+
+
+state 44
+
+   27 postfix_expression: primary_expression .
+
+    $default  reduce using rule 27 (postfix_expression)
+
+
+state 45
+
+   30 primary_expression: constant .
+
+    $default  reduce using rule 30 (primary_expression)
+
+
+state 46
+
+   11 boolean_expression: boolean_expression . OR_T boolean_term
+   17 boolean_factor: '(' boolean_expression . ')'
+
+    OR_T  shift, and go to state 47
+    ')'   shift, and go to state 56
+
+
+state 47
+
+   11 boolean_expression: boolean_expression OR_T . boolean_term
+
+    NOT_T  shift, and go to state 23
+    ID     shift, and go to state 24
+    '('    shift, and go to state 26
+
+    boolean_term           go to state 57
+    boolean_factor         go to state 31
+    relational_expression  go to state 32
+
+
+state 48
+
+   13 boolean_term: boolean_term AND_T . boolean_factor
+
+    NOT_T  shift, and go to state 23
+    ID     shift, and go to state 24
+    '('    shift, and go to state 26
+
+    boolean_factor         go to state 58
+    relational_expression  go to state 32
+
+
+state 49
+
+   22 relational_expression: ID LEQ_REL_OP ID .
+
+    $default  reduce using rule 22 (relational_expression)
+
+
+state 50
+
+   24 relational_expression: ID GEQ_REL_OP ID .
+
+    $default  reduce using rule 24 (relational_expression)
+
+
+state 51
+
+   20 relational_expression: ID NEQ_REL_OP ID .
+
+    $default  reduce using rule 20 (relational_expression)
+
+
+state 52
+
+   19 relational_expression: ID EQ_REL_OP ID .
+
+    $default  reduce using rule 19 (relational_expression)
+
+
+state 53
+
+   21 relational_expression: ID '<' ID .
+
+    $default  reduce using rule 21 (relational_expression)
+
+
+state 54
+
+   23 relational_expression: ID '>' ID .
+
+    $default  reduce using rule 23 (relational_expression)
+
+
+state 55
+
+   28 postfix_expression: postfix_expression '(' . argument_expression_list ')'
+   29                   | postfix_expression '(' . ')'
+
+    NOT_T  shift, and go to state 23
+    ID     shift, and go to state 24
+    '='    shift, and go to state 25
+    '('    shift, and go to state 26
+    ')'    shift, and go to state 59
+
+    assignment_expression     go to state 60
+    boolean_expression        go to state 29
+    boolean_term              go to state 30
+    boolean_factor            go to state 31
+    relational_expression     go to state 32
+    argument_expression_list  go to state 61
+
+
+state 56
+
+   17 boolean_factor: '(' boolean_expression ')' .
+
+    $default  reduce using rule 17 (boolean_factor)
+
+
+state 57
+
+   11 boolean_expression: boolean_expression OR_T boolean_term .
+   13 boolean_term: boolean_term . AND_T boolean_factor
+
+    AND_T  shift, and go to state 48
+
+    $default  reduce using rule 11 (boolean_expression)
+
+
+state 58
+
+   13 boolean_term: boolean_term AND_T boolean_factor .
+
+    $default  reduce using rule 13 (boolean_term)
+
+
+state 59
+
+   29 postfix_expression: postfix_expression '(' ')' .
+
+    $default  reduce using rule 29 (postfix_expression)
+
+
+state 60
+
+   25 argument_expression_list: assignment_expression .
+
+    $default  reduce using rule 25 (argument_expression_list)
+
+
+state 61
+
+   26 argument_expression_list: argument_expression_list . ',' assignment_expression
+   28 postfix_expression: postfix_expression '(' argument_expression_list . ')'
+
+    ')'  shift, and go to state 62
+    ','  shift, and go to state 63
+
+
+state 62
+
+   28 postfix_expression: postfix_expression '(' argument_expression_list ')' .
+
+    $default  reduce using rule 28 (postfix_expression)
+
+
+state 63
+
+   26 argument_expression_list: argument_expression_list ',' . assignment_expression
+
+    NOT_T  shift, and go to state 23
+    ID     shift, and go to state 24
+    '='    shift, and go to state 25
+    '('    shift, and go to state 26
+
+    assignment_expression  go to state 64
+    boolean_expression     go to state 29
+    boolean_term           go to state 30
+    boolean_factor         go to state 31
+    relational_expression  go to state 32
+
+
+state 64
+
+   26 argument_expression_list: argument_expression_list ',' assignment_expression .
+
+    $default  reduce using rule 26 (argument_expression_list)

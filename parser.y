@@ -41,9 +41,31 @@ initializer	    :	assignment_expression
 		    ;
 
 assignment_expression	:   '=' postfix_expression
-			|   logical_OR_expression
+			|   boolean_expression
 			;
 
+boolean_expression	:   boolean_expression OR_T boolean_term
+			|   boolean_term
+			;
+
+boolean_term		:   boolean_term AND_T boolean_factor
+			|   boolean_factor
+			;
+
+boolean_factor		:   ID
+			|   NOT_T boolean_factor
+			|   '(' boolean_expression ')'
+			|   relational_expression
+			;
+
+relational_expression	:   ID EQ_REL_OP ID
+			|   ID NEQ_REL_OP ID
+			|   ID '<' ID
+			|   ID LEQ_REL_OP ID
+			|   ID '>' ID
+			|   ID GEQ_REL_OP ID
+			;
+/*
 logical_OR_expression	:   logical_AND_expression
 			|   logical_OR_expression OR_T logical_AND_expression
 			;
@@ -62,7 +84,7 @@ relational_expression	:   relational_expression '<' additive_expression
 			|   relational_expression LEQ_REL_OP additive_expression
 			|   relational_expression GEQ_REL_OP additive_expression
 			;
-
+*/
 additive_expression	:   multiplicative_expression
 			|   additive_expression '+' multiplicative_expression
 			|   additive_expression '-' multiplicative_expression
