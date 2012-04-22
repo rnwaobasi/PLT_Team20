@@ -8,7 +8,7 @@ import java.io.*;
 %token IF_T ELSE_T NEW_T FOREACH_T IN_T BREAK_T
 %token SCHEDULE_T COURSE_T COURSELIST_T INT_T DOUBLE_T TIME_T DAY_T STRING_T
 %token AND_T OR_T NOT_T
-%token LEQ_REL_OP GEQ_REL_OP NEQ_REL_OP EQ_REL_OP
+%token LEQ_REL_OP GEQ_REL_OP NEQ_REL_OP EQ_REL_OP EQ_T
 %token ID NL NUM
 
 /* precedence of ops */
@@ -28,8 +28,8 @@ declarator_list	    :	declarator
 		    |	declarator_list declarator
 		    ;
 
-declarator	    :	primitive_declarator';'
-		    |	derived_type_declarator';'
+declarator	    :	primitive_declarator';'NL
+		    |	derived_type_declarator';'NL
 		    ;
 
 primitive_declarator	:   type_specifier ID
@@ -42,10 +42,16 @@ derived_type_declarator	:   NEW_T derived_type_specifier ID
 //initializer	    :	assignment_expression
 //		    ;
 
+assignment_expression	: boolean_expression
+			|   arithmetic_expression
+			;
+			
+/* 
 assignment_expression	: postfix_expression
 			|   boolean_expression
 			|   arithmetic_expression
 			;
+*/
 
 boolean_expression	:   boolean_expression OR_T boolean_term
 			|   boolean_term

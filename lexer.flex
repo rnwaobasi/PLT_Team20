@@ -66,13 +66,15 @@ day		{return Parser.DAY_T;}
 ">="		{return Parser.GEQ_REL_OP;}
 "!="		{return Parser.NEQ_REL_OP;}
 "=="		{return Parser.EQ_REL_OP;}
+//"="			{return Parser.EQ_T}
 
 \+ | \- | \* | \/ |
-\; | \( | \)		{return (int)yycharat(0);}
+\; | \( | \) | "="		{return (int)yycharat(0);}
 
 [a-zA-Z][a-zA-Z0-9]*	{return Parser.ID;}
 
-{NL}	    {return Parser.NL;}
+/*{NL}	    {return Parser.NL;}*/
+{NL}		{}
 
 /* need another number type for integers */
 
@@ -83,5 +85,5 @@ day		{return Parser.DAY_T;}
 
 \b	    { System.err.println("Sorry, backspace doesn't work"); }
 
-[^]	    { System.err.println("Error: unexpected character '" + yytext() + "'");
+[^]	    { System.err.println("Error: unexpected abc character '" + yytext() + "'");
 	      return -1; }
