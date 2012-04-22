@@ -59,8 +59,6 @@ time		{return Parser.TIME_T;}
 day		{return Parser.DAY_T;}
 print 		{return Parser.PRINT_T;}
 
-/* do we want to create tokens for these symbols or rely on charAt?
-need to know especially when there are multiple symbols per token */
 "&&"		{return Parser.AND_T;}
 "||"		{return Parser.OR_T;}
 "!"		{return Parser.NOT_T;}

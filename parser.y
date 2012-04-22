@@ -42,6 +42,7 @@ initializer	    :	assignment_expression
 
 assignment_expression	:   '=' postfix_expression
 			|   boolean_expression
+			|   arithmetic_expression
 			;
 
 boolean_expression	:   boolean_expression OR_T boolean_term
@@ -85,8 +86,11 @@ relational_expression	:   relational_expression '<' additive_expression
 			|   relational_expression GEQ_REL_OP additive_expression
 			;
 */
-additive_expression	:   multiplicative_expression
-			|   additive_expression '+' multiplicative_expression
+arithmetic_expression	:   additive_expression
+			|   multiplicative_expression
+			;
+
+additive_expression	:   additive_expression '+' multiplicative_expression
 			|   additive_expression '-' multiplicative_expression
 			;
 

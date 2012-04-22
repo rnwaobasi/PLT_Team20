@@ -1,5 +1,6 @@
 Useless nonterminals
 
+   arithmetic_expression
    additive_expression
    multiplicative_expression
 
@@ -22,13 +23,17 @@ Terminals which are not used
 
 Useless rules
 
-   42 additive_expression: multiplicative_expression
-   43                    | additive_expression '+' multiplicative_expression
-   44                    | additive_expression '-' multiplicative_expression
+   42 assignment_expression: arithmetic_expression
 
-   45 multiplicative_expression: multiplicative_expression '*' postfix_expression
-   46                          | multiplicative_expression '/' postfix_expression
-   47                          | multiplicative_expression '%' postfix_expression
+   43 arithmetic_expression: additive_expression
+   44                      | multiplicative_expression
+
+   45 additive_expression: additive_expression '+' multiplicative_expression
+   46                    | additive_expression '-' multiplicative_expression
+
+   47 multiplicative_expression: multiplicative_expression '*' postfix_expression
+   48                          | multiplicative_expression '/' postfix_expression
+   49                          | multiplicative_expression '%' postfix_expression
 
 
 Grammar
