@@ -5,7 +5,7 @@ import java_cup.runtime.*;
 
 %class ChronosLexer
 %unicode
-%byacc
+%byaccj
 %line
 %column
 
@@ -64,9 +64,10 @@ need to know especially when there are multiple symbols per token */
 "&&"		{return Parser.AND_T;}
 "||"		{return Parser.OR_T;}
 "!"		{return Parser.NOT_T;}
-"<" | ">" | "<=" | ">=" {return Parser.REL_OP;}
-"="		{return Parser.ASSIGN_OP;} /* do we want to use this or charAt? */
-"!=" | "=="	{return Parser.EQUIV_OP;}
+"<="		{return Parser.LEQ_REL_OP;}
+">="		{return Parser.GEQ_REL_OP;}
+"!="		{return Parser.NEQ_REL_OP;}
+"=="		{return Parser.EQ_REL_OP;}
 
 \+ | \- | \* | \/ |
 \; | \( | \)		{return (int)yycharat(0);}

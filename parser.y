@@ -6,7 +6,7 @@ import java.io.*;
 %token IF_T ELSE_T NEW_T FOREACH_T IN_T BREAK_T
 %token SCHEDULE_T COURSE_T COURSELIST_T INT_T DOUBLE_T TIME_T DAY_T STRING_T
 %token AND_T OR_T NOT_T
-%token REL_OP ASSIGN_OP
+%token LEQ_REL_OP GEQ_REL_OP NEQ_REL_OP EQ_REL_OP
 %token ID NL NUM
 
 /* precedence of ops */
@@ -41,10 +41,7 @@ initializer	    :	assignment_expression
 		    ;
 
 assignment_expression	:   '=' postfix_expression
-		/*	|   conditional_expression */
-			;
-/*
-conditional_expression	:   logical_OR_expression
+			|   logical_OR_expression
 			;
 
 logical_OR_expression	:   logical_AND_expression
@@ -56,14 +53,14 @@ logical_AND_expression	:   equality_expression
 			;
 
 equality_expression	:   relational_expression
-			|   equality_expression '==' relational_expression
-			|   equality_expression '!=' relational_expression
+			|   equality_expression EQ_REL_OP equality_expression
+			|   equality_expression NEQ_REL_OP equality_expression
 			;
 
 relational_expression	:   relational_expression '<' additive_expression
 			|   relational_expression '>' additive_expression
-			|   relational_expression '<=' additive_expression
-			|   relational_expression '>=' additive_expression
+			|   relational_expression LEQ_REL_OP additive_expression
+			|   relational_expression GEQ_REL_OP additive_expression
 			;
 
 additive_expression	:   multiplicative_expression
@@ -75,7 +72,7 @@ multiplicative_expression   :	multiplicative_expression '*' postfix_expression
 			    |	multiplicative_expression '/' postfix_expression
 			    |	multiplicative_expression '%' postfix_expression // do we need mod?
 			    ;
-*/
+
 argument_expression_list    :	assignment_expression
 			    |	argument_expression_list',' assignment_expression
 			    ;
