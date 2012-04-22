@@ -1,5 +1,7 @@
 %{
+//import ChronosLexer.java;
 import java.io.*;
+//import java.util.*;
 %}
 
 /* declarations of grammar tokens */
@@ -31,16 +33,16 @@ declarator	    :	primitive_declarator';'
 		    ;
 
 primitive_declarator	:   type_specifier ID
-			|   type_specifier ID '=' initializer
+			|   type_specifier ID '=' assignment_expression
 			;
 
 derived_type_declarator	:   NEW_T derived_type_specifier ID
 			;
 
-initializer	    :	assignment_expression
-		    ;
+//initializer	    :	assignment_expression
+//		    ;
 
-assignment_expression	:   '=' postfix_expression
+assignment_expression	: postfix_expression
 			|   boolean_expression
 			|   arithmetic_expression
 			;
@@ -263,7 +265,9 @@ derived_type_specifier	:   SCHEDULE_T
 %%
 
 /* reference to lexer object */
-private scanner lexer;
+//private Scanner lexer;
+ChronosLexer lexer;
+BufferedReader inputStream;
 
 /* interface to lexer */
 private int yylex() {
@@ -284,7 +288,9 @@ public void yyerror(String error) {
 
 /* constructor taking in file input */
 public Parser(Reader r) {
-	lexer = new scanner (r, this);
+	//lexer = new Scanner (r, this);
+	inputStream = new BufferedReader (r);
+	lexer = new ChronosLexer(inputStream);
 }
 
 public static void main(String[] args) throws IOException {

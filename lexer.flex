@@ -1,5 +1,5 @@
 /* JFlex example */
-import java_cup.runtime.*;
+//import java_cup.runtime.*;
 
 %%
 
@@ -14,7 +14,7 @@ import java_cup.runtime.*;
     private Parser yyparser;
 
     /* constructor taking an additional parser */
-    public Yylex(java.io.Reader r, Parser yyparser) {
+    public ChronosLexer(java.io.Reader r, Parser yyparser) {
 	this(r);
 	this.yyparser = yyparser;
     }
@@ -48,7 +48,7 @@ new	{return Parser.NEW_T;}
 foreach	{return Parser.FOREACH_T;}
 in	{return Parser.IN_T;}
 break	{return Parser.BREAK_T;}
-function	{return Parser.FUNCTION_T;} /* where do we use this keyword? */
+//function	{return Parser.FUNCTION_T;} /* where do we use this keyword? */
 
 schedule	{return Parser.SCHEDULE_T;}
 course		{return Parser.COURSE_T;}
@@ -57,7 +57,7 @@ int		{return Parser.INT_T;}
 double		{return Parser.DOUBLE_T;}
 time		{return Parser.TIME_T;}
 day		{return Parser.DAY_T;}
-print 		{return Parser.PRINT_T;}
+//print 		{return Parser.PRINT_T;}
 
 "&&"		{return Parser.AND_T;}
 "||"		{return Parser.OR_T;}
