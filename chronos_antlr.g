@@ -18,11 +18,11 @@ derived_type_declarator
 stmt:	expr_stmt
 	|	selection_stmt
 	|	iteration_stmt
-	|	jump_stmt
+	|	jump_stmt';'
 	;
 expr_stmt
 	:	';'
-	|	assignment_expr
+	|	assignment_expr';'
 	;
 selection_stmt
 	:	IF_T '('assignment_expr')' '{'stmt'}' (ELSE_T '{'stmt'}')?
@@ -31,30 +31,37 @@ iteration_stmt
 	:	FOREACH_T COURSE_T ID IN_T COURSELIST_T '{'(stmt)*'}'
 	;
 jump_stmt
-	:	BREAK_T';'
+	:	BREAK_T
 	;
 assignment_expr
-	:	bool_expr
-	//|	math_expr
-	|	postfix_expr
+	:	cond_term (OR cond_term)*
 	;
-bool_expr
-	:	(bool_term) (OR bool_term)*
+cond_term
+	:	equiv_expr (AND equiv_expr)*
 	;
-bool_term
-	:	(bool_factor) (AND bool_factor)*
+equiv_expr
+	:	rel_expr ( (EQ | NEQ) rel_expr )*
 	;
-bool_factor
-	:	primary_expr
-	|	NOT bool_factor
+rel_expr
+	:	math_expr ( ('<' | '>' | GEQ | LEQ) math_expr )*
+	;
+math_expr
+	:	math_term ( ('+' | '-') math_term )*
+	;
+math_term
+	:	unary_expr ( ('*' | '/') unary_expr )*
+	;
+unary_expr
+	:	(NOT)* postfix_expr
 	;
 postfix_expr
-	:	(primary_expr) ('('argument_expr_list')' | '('')')*
+	:	primary_expr ( '(' (argument_expr_list)? ')')*
 	;
 primary_expr
 	:	constant
 	|	ID
 	|	STRING
+	|	'('assignment_expr')'
 	;
 argument_expr_list
 	:	(assignment_expr) (',' assignment_expr)*
