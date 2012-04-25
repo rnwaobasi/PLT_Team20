@@ -295,8 +295,8 @@ public void yyerror(String error) {
 /* constructor taking in file input */
 public Parser(Reader r) {
 	//lexer = new Scanner (r, this);
-	inputStream = new BufferedReader (r);
-	lexer = new ChronosLexer(inputStream);
+	//inputStream = new BufferedReader (r);
+	lexer = new ChronosLexer(r, this);
 }
 
 public static void main(String[] args) throws IOException {

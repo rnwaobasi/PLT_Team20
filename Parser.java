@@ -16,7 +16,7 @@
 
 
 
-//#line 2 "Parser.y"
+//#line 2 "/Users/shannonlee/PLT_Team20/parser.y"
 /*import ChronosLexer.java;*/
 import java.io.*;
 /*import java.util.*;*/
@@ -375,7 +375,7 @@ final static String yyrule[] = {
 "derived_type_specifier : COURSELIST_T",
 };
 
-//#line 272 "Parser.y"
+//#line 272 "/Users/shannonlee/PLT_Team20/parser.y"
 
 /* reference to lexer object */
 //private Scanner lexer;
@@ -402,8 +402,8 @@ public void yyerror(String error) {
 /* constructor taking in file input */
 public Parser(Reader r) {
 	//lexer = new Scanner (r, this);
-	inputStream = new BufferedReader (r);
-	lexer = new ChronosLexer(inputStream);
+	//inputStream = new BufferedReader (r);
+	lexer = new ChronosLexer(r, this);
 }
 
 public static void main(String[] args) throws IOException {

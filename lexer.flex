@@ -1,5 +1,6 @@
 /* JFlex example */
 //import java_cup.runtime.*;
+import java.lang.*;
 
 %%
 
@@ -8,6 +9,7 @@
 %byaccj
 %line
 %column
+%debug
 
 %{
     /* store a reference to the parser object */
@@ -66,10 +68,10 @@ day		{return Parser.DAY_T;}
 ">="		{return Parser.GEQ_REL_OP;}
 "!="		{return Parser.NEQ_REL_OP;}
 "=="		{return Parser.EQ_REL_OP;}
-//"="			{return Parser.EQ_T}
+"="			{return yycharat(0);}
 
 \+ | \- | \* | \/ |
-\; | \( | \) | "="		{return (int)yycharat(0);}
+\; | \( | \)		{return (int)yycharat(0);}
 
 [a-zA-Z][a-zA-Z0-9]*	{return Parser.ID;}
 
@@ -78,7 +80,9 @@ day		{return Parser.DAY_T;}
 
 /* need another number type for integers */
 
-{NUM}	    { yyparser.yylval = new ParserVal(Double.parseDouble(yytext()));
+{NUM}	    { double ddd = Double.parseDouble(yytext());
+		ParserVal sam = new ParserVal(ddd);
+		yyparser.yylval = new ParserVal(ddd);
 	      return Parser.NUM; }
 
 [ \t]+	    { }
