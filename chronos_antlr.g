@@ -1,5 +1,73 @@
 grammar chronos_antlr;
 
+/* GRAMMAR */
+translation_unit
+	:	declarator_list compound_stmt
+	;
+declarator_list
+	:	(declarator) (declarator)*
+	;
+declarator
+	:	primitive_declarator';'
+	|	derived_type_declarator';'
+	;
+primitive_declarator
+	:	type_specifier ID
+	|	type_specifier ID '=' assignment_expr
+	;
+derived_type_declarator
+	:	NEW_T derived_type_specifier ID
+	;
+compound_stmt
+	:	declarator_list stmt_list
+	|	stmt_list
+	;
+stmt_list
+	:	(stmt) (stmt)*
+	;
+stmt:	expr_stmt
+	|	jump_stmt
+	;
+expr_stmt
+	:	';'
+	|	assignment_expr
+	;
+jump_stmt
+	:	BREAK_T';'
+	;
+assignment_expr
+	:	conditional_expr
+	|	postfix_expr
+	;
+conditional_expr
+	:	postfix_expr OR postfix_expr
+	;
+postfix_expr
+	:	(primary_expr) ('('argument_expr_list')' | '('')')*
+	;
+primary_expr
+	:	constant
+	|	ID
+	|	STRING
+	;
+argument_expr_list
+	:	(assignment_expr) (',' assignment_expr)*
+	;
+constant
+	:	INT
+	|	FLOAT
+	;
+type_specifier
+	:	INT_T
+	|	DOUBLE_T
+	|	STRING_T
+	;
+derived_type_specifier
+	:	SCHEDULE_T
+	|	COURSE_T
+	|	COURSELIST_T
+	;
+	
 /* LEXER */
 // keywords
 IF_T 	:	'if'
@@ -32,7 +100,8 @@ STRING_T:	'string'
 		;
 PRINT_T :	'print'
 		;
-		
+
+// boolean and relational ops		
 AND	:	'&&'
 	;
 OR	:	'||'
