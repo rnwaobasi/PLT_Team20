@@ -1,5 +1,9 @@
 grammar chronos_antlr;
 
+/*options {
+	output = AST;
+}
+
 /* GRAMMAR */
 translation_unit
 	:	(declarator';')* (stmt)*
@@ -14,6 +18,7 @@ primitive_declarator
 	;
 derived_type_declarator
 	:	NEW_T derived_type_specifier ID
+	|	NEW_T derived_type_specifier ID '=' assignment_expr
 	;
 stmt:	assignment_expr';'
 	|	selection_stmt
@@ -22,10 +27,10 @@ stmt:	assignment_expr';'
 	|	';'
 	;
 selection_stmt
-	:	IF_T '('assignment_expr')' '{'stmt'}' (ELSE_T '{'stmt'}')?
+	:	IF_T assignment_expr '{'stmt'}' (ELSE_T '{'stmt'}')?
 	;
 iteration_stmt
-	:	FOREACH_T COURSE_T ID IN_T COURSELIST_T '{'(stmt)*'}'
+	:	FOREACH_T COURSE_T ID IN_T ID '{'(stmt)*'}'
 	;
 jump_stmt
 	:	BREAK_T
@@ -52,7 +57,7 @@ unary_expr
 	:	(NOT)* postfix_expr
 	;
 postfix_expr
-	:	primary_expr ( '(' (argument_expr_list)? ')')*
+	:	(ID '.')? primary_expr ('(' (argument_expr_list)? ')')?
 	;
 primary_expr
 	:	constant
