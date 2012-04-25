@@ -2,7 +2,7 @@
 
    1  translation_unit : declarator_list compound_stmt
 
-   2  declarator_list : declarator declarator_list
+   2  declarator_list : declarator_list declarator
    3                  | declarator
 
    4  declarator : primitive_declarator ';'
@@ -108,6 +108,7 @@ state 5
 
 state 6
 	translation_unit : declarator_list . compound_stmt  (1)
+	declarator_list : declarator_list . declarator  (2)
 
 	NEW_T  shift 1
 	BREAK_T  shift 15
@@ -123,45 +124,25 @@ state 6
 
 	declarator_list  goto 21
 	compound_stmt  goto 22
-	declarator  goto 7
+	declarator  goto 23
 	primitive_declarator  goto 8
 	derived_type_declarator  goto 9
 	type_specifier  goto 10
-	assignment_expr  goto 23
-	stmt_list  goto 24
-	stmt  goto 25
-	expr_stmt  goto 26
-	jump_stmt  goto 27
-	conditional_expr  goto 28
-	postfix_expr  goto 29
-	primary_expr  goto 30
-	constant  goto 31
+	assignment_expr  goto 24
+	stmt_list  goto 25
+	stmt  goto 26
+	expr_stmt  goto 27
+	jump_stmt  goto 28
+	conditional_expr  goto 29
+	postfix_expr  goto 30
+	primary_expr  goto 31
+	constant  goto 32
 
 
-7: shift/reduce conflict (shift 1, reduce 3) on NEW_T
-7: shift/reduce conflict (shift 2, reduce 3) on INT_T
-7: shift/reduce conflict (shift 3, reduce 3) on DOUBLE_T
-7: shift/reduce conflict (shift 4, reduce 3) on STRING_T
 state 7
-	declarator_list : declarator . declarator_list  (2)
 	declarator_list : declarator .  (3)
 
-	NEW_T  shift 1
-	INT_T  shift 2
-	DOUBLE_T  shift 3
-	STRING_T  shift 4
-	BREAK_T  reduce 3
-	ID  reduce 3
-	INT_NUM  reduce 3
-	DOUBLE_NUM  reduce 3
-	STRING  reduce 3
-	';'  reduce 3
-
-	declarator_list  goto 32
-	declarator  goto 7
-	primitive_declarator  goto 8
-	derived_type_declarator  goto 9
-	type_specifier  goto 10
+	.  reduce 3
 
 
 state 8
@@ -249,9 +230,14 @@ state 20
 
 
 state 21
+	declarator_list : declarator_list . declarator  (2)
 	compound_stmt : declarator_list . stmt_list  (9)
 
+	NEW_T  shift 1
 	BREAK_T  shift 15
+	INT_T  shift 2
+	DOUBLE_T  shift 3
+	STRING_T  shift 4
 	ID  shift 16
 	INT_NUM  shift 17
 	DOUBLE_NUM  shift 18
@@ -259,15 +245,19 @@ state 21
 	';'  shift 20
 	.  error
 
-	assignment_expr  goto 23
-	stmt_list  goto 38
-	stmt  goto 25
-	expr_stmt  goto 26
-	jump_stmt  goto 27
-	conditional_expr  goto 28
-	postfix_expr  goto 29
-	primary_expr  goto 30
-	constant  goto 31
+	declarator  goto 38
+	primitive_declarator  goto 8
+	derived_type_declarator  goto 9
+	type_specifier  goto 10
+	assignment_expr  goto 24
+	stmt_list  goto 39
+	stmt  goto 26
+	expr_stmt  goto 27
+	jump_stmt  goto 28
+	conditional_expr  goto 29
+	postfix_expr  goto 30
+	primary_expr  goto 31
+	constant  goto 32
 
 
 state 22
@@ -276,14 +266,31 @@ state 22
 	.  reduce 1
 
 
+23: reduce/reduce conflict (reduce 2, reduce 3) on NEW_T
+23: reduce/reduce conflict (reduce 2, reduce 3) on BREAK_T
+23: reduce/reduce conflict (reduce 2, reduce 3) on INT_T
+23: reduce/reduce conflict (reduce 2, reduce 3) on DOUBLE_T
+23: reduce/reduce conflict (reduce 2, reduce 3) on STRING_T
+23: reduce/reduce conflict (reduce 2, reduce 3) on ID
+23: reduce/reduce conflict (reduce 2, reduce 3) on INT_NUM
+23: reduce/reduce conflict (reduce 2, reduce 3) on DOUBLE_NUM
+23: reduce/reduce conflict (reduce 2, reduce 3) on STRING
+23: reduce/reduce conflict (reduce 2, reduce 3) on ';'
 state 23
-	expr_stmt : assignment_expr . ';'  (16)
+	declarator_list : declarator_list declarator .  (2)
+	declarator_list : declarator .  (3)
 
-	';'  shift 39
-	.  error
+	.  reduce 2
 
 
 state 24
+	expr_stmt : assignment_expr . ';'  (16)
+
+	';'  shift 40
+	.  error
+
+
+state 25
 	compound_stmt : stmt_list .  (10)
 	stmt_list : stmt_list . stmt  (11)
 
@@ -295,69 +302,63 @@ state 24
 	';'  shift 20
 	$end  reduce 10
 
-	assignment_expr  goto 23
-	stmt  goto 40
-	expr_stmt  goto 26
-	jump_stmt  goto 27
-	conditional_expr  goto 28
-	postfix_expr  goto 29
-	primary_expr  goto 30
-	constant  goto 31
+	assignment_expr  goto 24
+	stmt  goto 41
+	expr_stmt  goto 27
+	jump_stmt  goto 28
+	conditional_expr  goto 29
+	postfix_expr  goto 30
+	primary_expr  goto 31
+	constant  goto 32
 
 
-state 25
+state 26
 	stmt_list : stmt .  (12)
 
 	.  reduce 12
 
 
-state 26
+state 27
 	stmt : expr_stmt .  (13)
 
 	.  reduce 13
 
 
-state 27
+state 28
 	stmt : jump_stmt .  (14)
 
 	.  reduce 14
 
 
-state 28
+state 29
 	assignment_expr : conditional_expr .  (18)
 
 	.  reduce 18
 
 
-state 29
+state 30
 	assignment_expr : postfix_expr .  (19)
 	conditional_expr : postfix_expr . OR_T postfix_expr  (20)
 	postfix_expr : postfix_expr . '(' argument_expr_list ')'  (22)
 	postfix_expr : postfix_expr . '(' ')'  (23)
 
-	OR_T  shift 41
-	'('  shift 42
+	OR_T  shift 42
+	'('  shift 43
 	';'  reduce 19
 	')'  reduce 19
 	','  reduce 19
 
 
-state 30
+state 31
 	postfix_expr : primary_expr .  (21)
 
 	.  reduce 21
 
 
-state 31
+state 32
 	primary_expr : constant .  (24)
 
 	.  reduce 24
-
-
-state 32
-	declarator_list : declarator declarator_list .  (2)
-
-	.  reduce 2
 
 
 state 33
@@ -376,7 +377,7 @@ state 35
 	primitive_declarator : type_specifier ID .  (6)
 	primitive_declarator : type_specifier ID . '=' assignment_expr  (7)
 
-	'='  shift 43
+	'='  shift 44
 	';'  reduce 6
 
 
@@ -393,6 +394,12 @@ state 37
 
 
 state 38
+	declarator_list : declarator_list declarator .  (2)
+
+	.  reduce 2
+
+
+state 39
 	compound_stmt : declarator_list stmt_list .  (9)
 	stmt_list : stmt_list . stmt  (11)
 
@@ -404,29 +411,29 @@ state 38
 	';'  shift 20
 	$end  reduce 9
 
-	assignment_expr  goto 23
-	stmt  goto 40
-	expr_stmt  goto 26
-	jump_stmt  goto 27
-	conditional_expr  goto 28
-	postfix_expr  goto 29
-	primary_expr  goto 30
-	constant  goto 31
+	assignment_expr  goto 24
+	stmt  goto 41
+	expr_stmt  goto 27
+	jump_stmt  goto 28
+	conditional_expr  goto 29
+	postfix_expr  goto 30
+	primary_expr  goto 31
+	constant  goto 32
 
 
-state 39
+state 40
 	expr_stmt : assignment_expr ';' .  (16)
 
 	.  reduce 16
 
 
-state 40
+state 41
 	stmt_list : stmt_list stmt .  (11)
 
 	.  reduce 11
 
 
-state 41
+state 42
 	conditional_expr : postfix_expr OR_T . postfix_expr  (20)
 
 	ID  shift 16
@@ -435,12 +442,12 @@ state 41
 	STRING  shift 19
 	.  error
 
-	postfix_expr  goto 44
-	primary_expr  goto 30
-	constant  goto 31
+	postfix_expr  goto 45
+	primary_expr  goto 31
+	constant  goto 32
 
 
-state 42
+state 43
 	postfix_expr : postfix_expr '(' . argument_expr_list ')'  (22)
 	postfix_expr : postfix_expr '(' . ')'  (23)
 
@@ -448,18 +455,18 @@ state 42
 	INT_NUM  shift 17
 	DOUBLE_NUM  shift 18
 	STRING  shift 19
-	')'  shift 45
+	')'  shift 46
 	.  error
 
-	assignment_expr  goto 46
-	conditional_expr  goto 28
-	postfix_expr  goto 29
-	primary_expr  goto 30
-	argument_expr_list  goto 47
-	constant  goto 31
+	assignment_expr  goto 47
+	conditional_expr  goto 29
+	postfix_expr  goto 30
+	primary_expr  goto 31
+	argument_expr_list  goto 48
+	constant  goto 32
 
 
-state 43
+state 44
 	primitive_declarator : type_specifier ID '=' . assignment_expr  (7)
 
 	ID  shift 16
@@ -468,58 +475,58 @@ state 43
 	STRING  shift 19
 	.  error
 
-	assignment_expr  goto 48
-	conditional_expr  goto 28
-	postfix_expr  goto 29
-	primary_expr  goto 30
-	constant  goto 31
+	assignment_expr  goto 49
+	conditional_expr  goto 29
+	postfix_expr  goto 30
+	primary_expr  goto 31
+	constant  goto 32
 
 
-state 44
+state 45
 	conditional_expr : postfix_expr OR_T postfix_expr .  (20)
 	postfix_expr : postfix_expr . '(' argument_expr_list ')'  (22)
 	postfix_expr : postfix_expr . '(' ')'  (23)
 
-	'('  shift 42
+	'('  shift 43
 	';'  reduce 20
 	')'  reduce 20
 	','  reduce 20
 
 
-state 45
+state 46
 	postfix_expr : postfix_expr '(' ')' .  (23)
 
 	.  reduce 23
 
 
-state 46
+state 47
 	argument_expr_list : assignment_expr .  (27)
 
 	.  reduce 27
 
 
-state 47
+state 48
 	postfix_expr : postfix_expr '(' argument_expr_list . ')'  (22)
 	argument_expr_list : argument_expr_list . ',' assignment_expr  (28)
 
-	')'  shift 49
-	','  shift 50
+	')'  shift 50
+	','  shift 51
 	.  error
 
 
-state 48
+state 49
 	primitive_declarator : type_specifier ID '=' assignment_expr .  (7)
 
 	.  reduce 7
 
 
-state 49
+state 50
 	postfix_expr : postfix_expr '(' argument_expr_list ')' .  (22)
 
 	.  reduce 22
 
 
-state 50
+state 51
 	argument_expr_list : argument_expr_list ',' . assignment_expr  (28)
 
 	ID  shift 16
@@ -528,21 +535,21 @@ state 50
 	STRING  shift 19
 	.  error
 
-	assignment_expr  goto 51
-	conditional_expr  goto 28
-	postfix_expr  goto 29
-	primary_expr  goto 30
-	constant  goto 31
+	assignment_expr  goto 52
+	conditional_expr  goto 29
+	postfix_expr  goto 30
+	primary_expr  goto 31
+	constant  goto 32
 
 
-state 51
+state 52
 	argument_expr_list : argument_expr_list ',' assignment_expr .  (28)
 
 	.  reduce 28
 
 
-State 7 contains 4 shift/reduce conflicts.
+State 23 contains 10 reduce/reduce conflicts.
 
 
 39 terminals, 19 nonterminals
-37 grammar rules, 52 states
+37 grammar rules, 53 states

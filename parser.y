@@ -11,7 +11,7 @@ import java.io.*;
 %token LEQ_REL_OP GEQ_REL_OP NEQ_REL_OP EQ_REL_OP EQ_T
 %token ID NL INT_NUM DOUBLE_NUM STRING
 
-/* precedence of ops */
+/* precedence of ops, lowest first */
 %left REL_OP
 %left AND_T OR_T
 %left NOT_T
@@ -26,7 +26,7 @@ import java.io.*;
 translation_unit	:   declarator_list compound_stmt
 			;
 
-declarator_list		:   declarator declarator_list
+declarator_list		:   declarator_list declarator
 			|   declarator
 			;
 
