@@ -2,14 +2,11 @@ grammar chronos_antlr;
 
 /* GRAMMAR */
 translation_unit
-	:	declarator_list compound_stmt
-	;
-declarator_list
-	:	(declarator) (declarator)*
+	:	(declarator)* (stmt)*
 	;
 declarator
-	:	primitive_declarator';'
-	|	derived_type_declarator';'
+	:	primitive_declarator
+	|	derived_type_declarator
 	;
 primitive_declarator
 	:	type_specifier ID
@@ -18,29 +15,38 @@ primitive_declarator
 derived_type_declarator
 	:	NEW_T derived_type_specifier ID
 	;
-compound_stmt
-	:	declarator_list stmt_list
-	|	stmt_list
-	;
-stmt_list
-	:	(stmt) (stmt)*
-	;
 stmt:	expr_stmt
+	|	selection_stmt
+	|	iteration_stmt
 	|	jump_stmt
 	;
 expr_stmt
 	:	';'
 	|	assignment_expr
 	;
+selection_stmt
+	:	IF_T '('assignment_expr')' '{'stmt'}' (ELSE_T '{'stmt'}')?
+	;
+iteration_stmt
+	:	FOREACH_T COURSE_T ID IN_T COURSELIST_T '{'(stmt)*'}'
+	;
 jump_stmt
 	:	BREAK_T';'
 	;
 assignment_expr
-	:	conditional_expr
+	:	bool_expr
+	//|	math_expr
 	|	postfix_expr
 	;
-conditional_expr
-	:	postfix_expr OR postfix_expr
+bool_expr
+	:	(bool_term) (OR bool_term)*
+	;
+bool_term
+	:	(bool_factor) (AND bool_factor)*
+	;
+bool_factor
+	:	primary_expr
+	|	NOT bool_factor
 	;
 postfix_expr
 	:	(primary_expr) ('('argument_expr_list')' | '('')')*
