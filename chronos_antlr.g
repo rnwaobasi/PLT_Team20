@@ -2,7 +2,7 @@ grammar chronos_antlr;
 
 /* GRAMMAR */
 translation_unit
-	:	(declarator)* (stmt)*
+	:	(declarator';')* (stmt)*
 	;
 declarator
 	:	primitive_declarator
@@ -15,14 +15,11 @@ primitive_declarator
 derived_type_declarator
 	:	NEW_T derived_type_specifier ID
 	;
-stmt:	expr_stmt
+stmt:	assignment_expr';'
 	|	selection_stmt
 	|	iteration_stmt
 	|	jump_stmt';'
-	;
-expr_stmt
-	:	';'
-	|	assignment_expr';'
+	|	';'
 	;
 selection_stmt
 	:	IF_T '('assignment_expr')' '{'stmt'}' (ELSE_T '{'stmt'}')?
