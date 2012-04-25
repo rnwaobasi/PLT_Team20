@@ -1,808 +1,123 @@
    0  $accept : declarator_list $end
 
-   1  declarator_list : declarator
-   2                  | declarator_list declarator
+   1  declarator_list : declarator_list primitive_declarator
+   2                  | primitive_declarator
 
-   3  declarator : primitive_declarator ';'
-   4             | derived_type_declarator ';'
+   3  primitive_declarator : type_specifier ID ';'
+   4                       | type_specifier ID '=' constant ';'
 
-   5  primitive_declarator : type_specifier ID
-   6                       | type_specifier ID '=' assignment_expression
+   5  constant : INT_NUM
+   6           | DOUBLE_NUM
 
-   7  derived_type_declarator : NEW_T derived_type_specifier ID
-
-   8  assignment_expression : postfix_expression
-   9                        | boolean_expression
-  10                        | arithmetic_expression
-
-  11  boolean_expression : boolean_expression OR_T boolean_term
-  12                     | boolean_term
-
-  13  boolean_term : boolean_term AND_T boolean_factor
-  14               | boolean_factor
-
-  15  boolean_factor : ID
-  16                 | NOT_T boolean_factor
-  17                 | '(' boolean_expression ')'
-  18                 | relational_expression
-
-  19  relational_expression : ID EQ_REL_OP ID
-  20                        | ID NEQ_REL_OP ID
-  21                        | ID '<' ID
-  22                        | ID LEQ_REL_OP ID
-  23                        | ID '>' ID
-  24                        | ID GEQ_REL_OP ID
-
-  25  arithmetic_expression : additive_expression
-  26                        | multiplicative_expression
-
-  27  additive_expression : additive_expression '+' multiplicative_expression
-  28                      | additive_expression '-' multiplicative_expression
-
-  29  multiplicative_expression : multiplicative_expression '*' postfix_expression
-  30                            | multiplicative_expression '/' postfix_expression
-  31                            | multiplicative_expression '%' postfix_expression
-
-  32  argument_expression_list : assignment_expression
-  33                           | argument_expression_list ',' assignment_expression
-
-  34  postfix_expression : primary_expression
-  35                     | postfix_expression '(' argument_expression_list ')'
-  36                     | postfix_expression '(' ')'
-
-  37  primary_expression : constant
-  38                     | ID
-  39                     | STRING_T
-
-  40  constant : NUM
-
-  41  type_specifier : INT_T
-  42                 | DOUBLE_T
-  43                 | TIME_T
-  44                 | DAY_T
-  45                 | derived_type_specifier
-
-  46  derived_type_specifier : SCHEDULE_T
-  47                         | COURSE_T
-  48                         | COURSELIST_T
+   7  type_specifier : INT_T
+   8                 | DOUBLE_T
 
 state 0
 	$accept : . declarator_list $end  (0)
 
-	NEW_T  shift 1
-	SCHEDULE_T  shift 2
-	COURSE_T  shift 3
-	COURSELIST_T  shift 4
-	INT_T  shift 5
-	DOUBLE_T  shift 6
-	TIME_T  shift 7
-	DAY_T  shift 8
+	INT_T  shift 1
+	DOUBLE_T  shift 2
 	.  error
 
-	declarator_list  goto 9
-	declarator  goto 10
-	primitive_declarator  goto 11
-	derived_type_declarator  goto 12
-	type_specifier  goto 13
-	derived_type_specifier  goto 14
+	declarator_list  goto 3
+	primitive_declarator  goto 4
+	type_specifier  goto 5
 
 
 state 1
-	derived_type_declarator : NEW_T . derived_type_specifier ID  (7)
-
-	SCHEDULE_T  shift 2
-	COURSE_T  shift 3
-	COURSELIST_T  shift 4
-	.  error
-
-	derived_type_specifier  goto 15
-
-
-state 2
-	derived_type_specifier : SCHEDULE_T .  (46)
-
-	.  reduce 46
-
-
-state 3
-	derived_type_specifier : COURSE_T .  (47)
-
-	.  reduce 47
-
-
-state 4
-	derived_type_specifier : COURSELIST_T .  (48)
-
-	.  reduce 48
-
-
-state 5
-	type_specifier : INT_T .  (41)
-
-	.  reduce 41
-
-
-state 6
-	type_specifier : DOUBLE_T .  (42)
-
-	.  reduce 42
-
-
-state 7
-	type_specifier : TIME_T .  (43)
-
-	.  reduce 43
-
-
-state 8
-	type_specifier : DAY_T .  (44)
-
-	.  reduce 44
-
-
-state 9
-	$accept : declarator_list . $end  (0)
-	declarator_list : declarator_list . declarator  (2)
-
-	$end  accept
-	NEW_T  shift 1
-	SCHEDULE_T  shift 2
-	COURSE_T  shift 3
-	COURSELIST_T  shift 4
-	INT_T  shift 5
-	DOUBLE_T  shift 6
-	TIME_T  shift 7
-	DAY_T  shift 8
-	.  error
-
-	declarator  goto 16
-	primitive_declarator  goto 11
-	derived_type_declarator  goto 12
-	type_specifier  goto 13
-	derived_type_specifier  goto 14
-
-
-state 10
-	declarator_list : declarator .  (1)
-
-	.  reduce 1
-
-
-state 11
-	declarator : primitive_declarator . ';'  (3)
-
-	';'  shift 17
-	.  error
-
-
-state 12
-	declarator : derived_type_declarator . ';'  (4)
-
-	';'  shift 18
-	.  error
-
-
-state 13
-	primitive_declarator : type_specifier . ID  (5)
-	primitive_declarator : type_specifier . ID '=' assignment_expression  (6)
-
-	ID  shift 19
-	.  error
-
-
-state 14
-	type_specifier : derived_type_specifier .  (45)
-
-	.  reduce 45
-
-
-state 15
-	derived_type_declarator : NEW_T derived_type_specifier . ID  (7)
-
-	ID  shift 20
-	.  error
-
-
-state 16
-	declarator_list : declarator_list declarator .  (2)
-
-	.  reduce 2
-
-
-state 17
-	declarator : primitive_declarator ';' .  (3)
-
-	.  reduce 3
-
-
-state 18
-	declarator : derived_type_declarator ';' .  (4)
-
-	.  reduce 4
-
-
-state 19
-	primitive_declarator : type_specifier ID .  (5)
-	primitive_declarator : type_specifier ID . '=' assignment_expression  (6)
-
-	'='  shift 21
-	';'  reduce 5
-
-
-state 20
-	derived_type_declarator : NEW_T derived_type_specifier ID .  (7)
+	type_specifier : INT_T .  (7)
 
 	.  reduce 7
 
 
-state 21
-	primitive_declarator : type_specifier ID '=' . assignment_expression  (6)
+state 2
+	type_specifier : DOUBLE_T .  (8)
 
-	STRING_T  shift 22
-	NOT_T  shift 23
-	ID  shift 24
-	NUM  shift 25
-	'('  shift 26
+	.  reduce 8
+
+
+state 3
+	$accept : declarator_list . $end  (0)
+	declarator_list : declarator_list . primitive_declarator  (1)
+
+	$end  accept
+	INT_T  shift 1
+	DOUBLE_T  shift 2
 	.  error
 
-	assignment_expression  goto 27
-	postfix_expression  goto 28
-	boolean_expression  goto 29
-	arithmetic_expression  goto 30
-	boolean_term  goto 31
-	boolean_factor  goto 32
-	relational_expression  goto 33
-	additive_expression  goto 34
-	multiplicative_expression  goto 35
-	primary_expression  goto 36
-	constant  goto 37
+	primitive_declarator  goto 6
+	type_specifier  goto 5
 
 
-state 22
-	primary_expression : STRING_T .  (39)
+state 4
+	declarator_list : primitive_declarator .  (2)
 
-	.  reduce 39
+	.  reduce 2
 
 
-state 23
-	boolean_factor : NOT_T . boolean_factor  (16)
+state 5
+	primitive_declarator : type_specifier . ID ';'  (3)
+	primitive_declarator : type_specifier . ID '=' constant ';'  (4)
 
-	NOT_T  shift 23
-	ID  shift 38
-	'('  shift 26
+	ID  shift 7
 	.  error
 
-	boolean_factor  goto 39
-	relational_expression  goto 33
+
+state 6
+	declarator_list : declarator_list primitive_declarator .  (1)
+
+	.  reduce 1
 
 
-24: reduce/reduce conflict (reduce 15, reduce 38) on ';'
-24: reduce/reduce conflict (reduce 15, reduce 38) on ')'
-24: reduce/reduce conflict (reduce 15, reduce 38) on ','
-state 24
-	boolean_factor : ID .  (15)
-	relational_expression : ID . EQ_REL_OP ID  (19)
-	relational_expression : ID . NEQ_REL_OP ID  (20)
-	relational_expression : ID . '<' ID  (21)
-	relational_expression : ID . LEQ_REL_OP ID  (22)
-	relational_expression : ID . '>' ID  (23)
-	relational_expression : ID . GEQ_REL_OP ID  (24)
-	primary_expression : ID .  (38)
+state 7
+	primitive_declarator : type_specifier ID . ';'  (3)
+	primitive_declarator : type_specifier ID . '=' constant ';'  (4)
 
-	LEQ_REL_OP  shift 40
-	GEQ_REL_OP  shift 41
-	NEQ_REL_OP  shift 42
-	EQ_REL_OP  shift 43
-	'<'  shift 44
-	'>'  shift 45
-	AND_T  reduce 15
-	OR_T  reduce 15
-	';'  reduce 15
-	'('  reduce 38
-	')'  reduce 15
-	','  reduce 15
-
-
-state 25
-	constant : NUM .  (40)
-
-	.  reduce 40
-
-
-state 26
-	boolean_factor : '(' . boolean_expression ')'  (17)
-
-	NOT_T  shift 23
-	ID  shift 38
-	'('  shift 26
+	';'  shift 8
+	'='  shift 9
 	.  error
 
-	boolean_expression  goto 46
-	boolean_term  goto 31
-	boolean_factor  goto 32
-	relational_expression  goto 33
+
+state 8
+	primitive_declarator : type_specifier ID ';' .  (3)
+
+	.  reduce 3
 
 
-state 27
-	primitive_declarator : type_specifier ID '=' assignment_expression .  (6)
+state 9
+	primitive_declarator : type_specifier ID '=' . constant ';'  (4)
+
+	INT_NUM  shift 10
+	DOUBLE_NUM  shift 11
+	.  error
+
+	constant  goto 12
+
+
+state 10
+	constant : INT_NUM .  (5)
+
+	.  reduce 5
+
+
+state 11
+	constant : DOUBLE_NUM .  (6)
 
 	.  reduce 6
 
 
-state 28
-	assignment_expression : postfix_expression .  (8)
-	postfix_expression : postfix_expression . '(' argument_expression_list ')'  (35)
-	postfix_expression : postfix_expression . '(' ')'  (36)
+state 12
+	primitive_declarator : type_specifier ID '=' constant . ';'  (4)
 
-	'('  shift 47
-	';'  reduce 8
-	')'  reduce 8
-	','  reduce 8
-
-
-state 29
-	assignment_expression : boolean_expression .  (9)
-	boolean_expression : boolean_expression . OR_T boolean_term  (11)
-
-	OR_T  shift 48
-	';'  reduce 9
-	')'  reduce 9
-	','  reduce 9
-
-
-state 30
-	assignment_expression : arithmetic_expression .  (10)
-
-	.  reduce 10
-
-
-state 31
-	boolean_expression : boolean_term .  (12)
-	boolean_term : boolean_term . AND_T boolean_factor  (13)
-
-	AND_T  shift 49
-	OR_T  reduce 12
-	';'  reduce 12
-	')'  reduce 12
-	','  reduce 12
-
-
-state 32
-	boolean_term : boolean_factor .  (14)
-
-	.  reduce 14
-
-
-state 33
-	boolean_factor : relational_expression .  (18)
-
-	.  reduce 18
-
-
-state 34
-	arithmetic_expression : additive_expression .  (25)
-	additive_expression : additive_expression . '+' multiplicative_expression  (27)
-	additive_expression : additive_expression . '-' multiplicative_expression  (28)
-
-	'+'  shift 50
-	'-'  shift 51
-	';'  reduce 25
-	')'  reduce 25
-	','  reduce 25
-
-
-state 35
-	arithmetic_expression : multiplicative_expression .  (26)
-	multiplicative_expression : multiplicative_expression . '*' postfix_expression  (29)
-	multiplicative_expression : multiplicative_expression . '/' postfix_expression  (30)
-	multiplicative_expression : multiplicative_expression . '%' postfix_expression  (31)
-
-	'*'  shift 52
-	'/'  shift 53
-	'%'  shift 54
-	';'  reduce 26
-	')'  reduce 26
-	','  reduce 26
-
-
-state 36
-	postfix_expression : primary_expression .  (34)
-
-	.  reduce 34
-
-
-state 37
-	primary_expression : constant .  (37)
-
-	.  reduce 37
-
-
-state 38
-	boolean_factor : ID .  (15)
-	relational_expression : ID . EQ_REL_OP ID  (19)
-	relational_expression : ID . NEQ_REL_OP ID  (20)
-	relational_expression : ID . '<' ID  (21)
-	relational_expression : ID . LEQ_REL_OP ID  (22)
-	relational_expression : ID . '>' ID  (23)
-	relational_expression : ID . GEQ_REL_OP ID  (24)
-
-	LEQ_REL_OP  shift 40
-	GEQ_REL_OP  shift 41
-	NEQ_REL_OP  shift 42
-	EQ_REL_OP  shift 43
-	'<'  shift 44
-	'>'  shift 45
-	AND_T  reduce 15
-	OR_T  reduce 15
-	';'  reduce 15
-	')'  reduce 15
-	','  reduce 15
-
-
-state 39
-	boolean_factor : NOT_T boolean_factor .  (16)
-
-	.  reduce 16
-
-
-state 40
-	relational_expression : ID LEQ_REL_OP . ID  (22)
-
-	ID  shift 55
+	';'  shift 13
 	.  error
 
 
-state 41
-	relational_expression : ID GEQ_REL_OP . ID  (24)
+state 13
+	primitive_declarator : type_specifier ID '=' constant ';' .  (4)
 
-	ID  shift 56
-	.  error
+	.  reduce 4
 
 
-state 42
-	relational_expression : ID NEQ_REL_OP . ID  (20)
-
-	ID  shift 57
-	.  error
-
-
-state 43
-	relational_expression : ID EQ_REL_OP . ID  (19)
-
-	ID  shift 58
-	.  error
-
-
-state 44
-	relational_expression : ID '<' . ID  (21)
-
-	ID  shift 59
-	.  error
-
-
-state 45
-	relational_expression : ID '>' . ID  (23)
-
-	ID  shift 60
-	.  error
-
-
-state 46
-	boolean_expression : boolean_expression . OR_T boolean_term  (11)
-	boolean_factor : '(' boolean_expression . ')'  (17)
-
-	OR_T  shift 48
-	')'  shift 61
-	.  error
-
-
-state 47
-	postfix_expression : postfix_expression '(' . argument_expression_list ')'  (35)
-	postfix_expression : postfix_expression '(' . ')'  (36)
-
-	STRING_T  shift 22
-	NOT_T  shift 23
-	ID  shift 24
-	NUM  shift 25
-	'('  shift 26
-	')'  shift 62
-	.  error
-
-	assignment_expression  goto 63
-	postfix_expression  goto 28
-	boolean_expression  goto 29
-	arithmetic_expression  goto 30
-	boolean_term  goto 31
-	boolean_factor  goto 32
-	relational_expression  goto 33
-	additive_expression  goto 34
-	multiplicative_expression  goto 35
-	argument_expression_list  goto 64
-	primary_expression  goto 36
-	constant  goto 37
-
-
-state 48
-	boolean_expression : boolean_expression OR_T . boolean_term  (11)
-
-	NOT_T  shift 23
-	ID  shift 38
-	'('  shift 26
-	.  error
-
-	boolean_term  goto 65
-	boolean_factor  goto 32
-	relational_expression  goto 33
-
-
-state 49
-	boolean_term : boolean_term AND_T . boolean_factor  (13)
-
-	NOT_T  shift 23
-	ID  shift 38
-	'('  shift 26
-	.  error
-
-	boolean_factor  goto 66
-	relational_expression  goto 33
-
-
-state 50
-	additive_expression : additive_expression '+' . multiplicative_expression  (27)
-
-
-	multiplicative_expression  goto 67
-
-
-state 51
-	additive_expression : additive_expression '-' . multiplicative_expression  (28)
-
-
-	multiplicative_expression  goto 68
-
-
-state 52
-	multiplicative_expression : multiplicative_expression '*' . postfix_expression  (29)
-
-	STRING_T  shift 22
-	ID  shift 69
-	NUM  shift 25
-	.  error
-
-	postfix_expression  goto 70
-	primary_expression  goto 36
-	constant  goto 37
-
-
-state 53
-	multiplicative_expression : multiplicative_expression '/' . postfix_expression  (30)
-
-	STRING_T  shift 22
-	ID  shift 69
-	NUM  shift 25
-	.  error
-
-	postfix_expression  goto 71
-	primary_expression  goto 36
-	constant  goto 37
-
-
-state 54
-	multiplicative_expression : multiplicative_expression '%' . postfix_expression  (31)
-
-	STRING_T  shift 22
-	ID  shift 69
-	NUM  shift 25
-	.  error
-
-	postfix_expression  goto 72
-	primary_expression  goto 36
-	constant  goto 37
-
-
-state 55
-	relational_expression : ID LEQ_REL_OP ID .  (22)
-
-	.  reduce 22
-
-
-state 56
-	relational_expression : ID GEQ_REL_OP ID .  (24)
-
-	.  reduce 24
-
-
-state 57
-	relational_expression : ID NEQ_REL_OP ID .  (20)
-
-	.  reduce 20
-
-
-state 58
-	relational_expression : ID EQ_REL_OP ID .  (19)
-
-	.  reduce 19
-
-
-state 59
-	relational_expression : ID '<' ID .  (21)
-
-	.  reduce 21
-
-
-state 60
-	relational_expression : ID '>' ID .  (23)
-
-	.  reduce 23
-
-
-state 61
-	boolean_factor : '(' boolean_expression ')' .  (17)
-
-	.  reduce 17
-
-
-state 62
-	postfix_expression : postfix_expression '(' ')' .  (36)
-
-	.  reduce 36
-
-
-state 63
-	argument_expression_list : assignment_expression .  (32)
-
-	.  reduce 32
-
-
-state 64
-	argument_expression_list : argument_expression_list . ',' assignment_expression  (33)
-	postfix_expression : postfix_expression '(' argument_expression_list . ')'  (35)
-
-	')'  shift 73
-	','  shift 74
-	.  error
-
-
-state 65
-	boolean_expression : boolean_expression OR_T boolean_term .  (11)
-	boolean_term : boolean_term . AND_T boolean_factor  (13)
-
-	AND_T  shift 49
-	OR_T  reduce 11
-	';'  reduce 11
-	')'  reduce 11
-	','  reduce 11
-
-
-state 66
-	boolean_term : boolean_term AND_T boolean_factor .  (13)
-
-	.  reduce 13
-
-
-state 67
-	additive_expression : additive_expression '+' multiplicative_expression .  (27)
-	multiplicative_expression : multiplicative_expression . '*' postfix_expression  (29)
-	multiplicative_expression : multiplicative_expression . '/' postfix_expression  (30)
-	multiplicative_expression : multiplicative_expression . '%' postfix_expression  (31)
-
-	'*'  shift 52
-	'/'  shift 53
-	'%'  shift 54
-	'+'  reduce 27
-	'-'  reduce 27
-	';'  reduce 27
-	')'  reduce 27
-	','  reduce 27
-
-
-state 68
-	additive_expression : additive_expression '-' multiplicative_expression .  (28)
-	multiplicative_expression : multiplicative_expression . '*' postfix_expression  (29)
-	multiplicative_expression : multiplicative_expression . '/' postfix_expression  (30)
-	multiplicative_expression : multiplicative_expression . '%' postfix_expression  (31)
-
-	'*'  shift 52
-	'/'  shift 53
-	'%'  shift 54
-	'+'  reduce 28
-	'-'  reduce 28
-	';'  reduce 28
-	')'  reduce 28
-	','  reduce 28
-
-
-state 69
-	primary_expression : ID .  (38)
-
-	.  reduce 38
-
-
-state 70
-	multiplicative_expression : multiplicative_expression '*' postfix_expression .  (29)
-	postfix_expression : postfix_expression . '(' argument_expression_list ')'  (35)
-	postfix_expression : postfix_expression . '(' ')'  (36)
-
-	'('  shift 47
-	'+'  reduce 29
-	'-'  reduce 29
-	'*'  reduce 29
-	'/'  reduce 29
-	';'  reduce 29
-	')'  reduce 29
-	'%'  reduce 29
-	','  reduce 29
-
-
-state 71
-	multiplicative_expression : multiplicative_expression '/' postfix_expression .  (30)
-	postfix_expression : postfix_expression . '(' argument_expression_list ')'  (35)
-	postfix_expression : postfix_expression . '(' ')'  (36)
-
-	'('  shift 47
-	'+'  reduce 30
-	'-'  reduce 30
-	'*'  reduce 30
-	'/'  reduce 30
-	';'  reduce 30
-	')'  reduce 30
-	'%'  reduce 30
-	','  reduce 30
-
-
-state 72
-	multiplicative_expression : multiplicative_expression '%' postfix_expression .  (31)
-	postfix_expression : postfix_expression . '(' argument_expression_list ')'  (35)
-	postfix_expression : postfix_expression . '(' ')'  (36)
-
-	'('  shift 47
-	'+'  reduce 31
-	'-'  reduce 31
-	'*'  reduce 31
-	'/'  reduce 31
-	';'  reduce 31
-	')'  reduce 31
-	'%'  reduce 31
-	','  reduce 31
-
-
-state 73
-	postfix_expression : postfix_expression '(' argument_expression_list ')' .  (35)
-
-	.  reduce 35
-
-
-state 74
-	argument_expression_list : argument_expression_list ',' . assignment_expression  (33)
-
-	STRING_T  shift 22
-	NOT_T  shift 23
-	ID  shift 24
-	NUM  shift 25
-	'('  shift 26
-	.  error
-
-	assignment_expression  goto 75
-	postfix_expression  goto 28
-	boolean_expression  goto 29
-	arithmetic_expression  goto 30
-	boolean_term  goto 31
-	boolean_factor  goto 32
-	relational_expression  goto 33
-	additive_expression  goto 34
-	multiplicative_expression  goto 35
-	primary_expression  goto 36
-	constant  goto 37
-
-
-state 75
-	argument_expression_list : argument_expression_list ',' assignment_expression .  (33)
-
-	.  reduce 33
-
-
-State 24 contains 3 reduce/reduce conflicts.
-
-
-40 terminals, 19 nonterminals
-49 grammar rules, 76 states
+35 terminals, 5 nonterminals
+9 grammar rules, 14 states

@@ -9,7 +9,7 @@ import java.io.*;
 %token SCHEDULE_T COURSE_T COURSELIST_T INT_T DOUBLE_T TIME_T DAY_T STRING_T
 %token AND_T OR_T NOT_T
 %token LEQ_REL_OP GEQ_REL_OP NEQ_REL_OP EQ_REL_OP EQ_T
-%token ID NL NUM
+%token ID NL INT_NUM DOUBLE_NUM
 
 /* precedence of ops */
 %left REL_OP
@@ -24,112 +24,25 @@ import java.io.*;
 
 /***************** PARTIAL GRAMMAR FOR TESTING ******************/
 
-declarator_list	    :	declarator
-		    |	declarator_list declarator
-		    ;
-
-declarator	    :	primitive_declarator';'
-		    |	derived_type_declarator';'
-		    ;
-
-primitive_declarator	:   type_specifier ID
-			|   type_specifier ID '=' assignment_expression
+declarator_list		:   declarator_list primitive_declarator
+			|   primitive_declarator
 			;
 
-derived_type_declarator	:   NEW_T derived_type_specifier ID
+primitive_declarator	:   type_specifier ID';'
+			|   type_specifier ID '=' constant';'
 			;
 
-//initializer	    :	assignment_expression
-//		    ;		
- 
-assignment_expression	:   postfix_expression
-			|   boolean_expression
-			|   arithmetic_expression
-			;
-
-boolean_expression	:   boolean_expression OR_T boolean_term
-			|   boolean_term
-			;
-
-boolean_term		:   boolean_term AND_T boolean_factor
-			|   boolean_factor
-			;
-
-boolean_factor		:   ID
-			|   NOT_T boolean_factor
-			|   '(' boolean_expression ')'
-			|   relational_expression
-			;
-
-relational_expression	:   ID EQ_REL_OP ID
-			|   ID NEQ_REL_OP ID
-			|   ID '<' ID
-			|   ID LEQ_REL_OP ID
-			|   ID '>' ID
-			|   ID GEQ_REL_OP ID
-			;
-/*
-logical_OR_expression	:   logical_AND_expression
-			|   logical_OR_expression OR_T logical_AND_expression
-			;
-
-logical_AND_expression	:   equality_expression
-			|   logical_AND_expression AND_T equality_expression
-			;
-
-equality_expression	:   relational_expression
-			|   equality_expression EQ_REL_OP equality_expression
-			|   equality_expression NEQ_REL_OP equality_expression
-			;
-
-relational_expression	:   relational_expression '<' additive_expression
-			|   relational_expression '>' additive_expression
-			|   relational_expression LEQ_REL_OP additive_expression
-			|   relational_expression GEQ_REL_OP additive_expression
+/*primary_expression	:   constant
+			|   ID
 			;
 */
-arithmetic_expression	:   additive_expression
-			|   multiplicative_expression
-			;
-
-additive_expression	:   additive_expression '+' multiplicative_expression
-			|   additive_expression '-' multiplicative_expression
-			;
-
-multiplicative_expression   :	multiplicative_expression '*' postfix_expression
-			    |	multiplicative_expression '/' postfix_expression
-			    |	multiplicative_expression '%' postfix_expression // do we need mod?
-			    ;
-
-argument_expression_list    :	assignment_expression
-			    |	argument_expression_list',' assignment_expression
-			    ;
-
-postfix_expression	:   primary_expression
-			|   postfix_expression'('argument_expression_list')'
-			|   postfix_expression'('')'
-			;
-
-primary_expression	:   constant
-			|   ID
-			|   STRING_T
-			;
-
-constant		:   NUM /* int and double? */
+constant		:   INT_NUM
+			|   DOUBLE_NUM
 			;
 
 type_specifier		:   INT_T
 			|   DOUBLE_T
-			|   TIME_T
-			|   DAY_T
-			|   derived_type_specifier
 			;
-
-derived_type_specifier	:   SCHEDULE_T
-			|   COURSE_T
-			|   COURSELIST_T
-			;
-
 
 /********************* ACTUAL GRAMMAR BELOW *********************/
     /*
@@ -282,7 +195,8 @@ private int yylex() {
 
 /* error reporting */
 public void yyerror(String error) {
-	System.err.println("Error at line " + lexer.getLine() + ": " + error);
+	System.err.println("Error at line " + lexer.getLine() +
+		" column " + lexer.getCol() + ": " + error);
 	System.err.println("String rejected");
 }
 

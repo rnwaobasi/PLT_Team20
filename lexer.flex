@@ -25,10 +25,15 @@ import java.lang.*;
     public int getLine() {
         return yyline;
     }
+
+    public int getCol() {
+	return yycolumn;
+    }
 %}
 
 /* regular expr here cannot have ^, / or $ */
-NUM = [0-9]+ ("." [0-9]+)?
+DOUBLE_NUM = [0-9]+ ("." [0-9]+)
+INT_NUM = [0-9]+
 NL = \n | \r | \r\n
 
 %xstate STRING
@@ -75,12 +80,14 @@ day		{return Parser.DAY_T;}
 
 [a-zA-Z][a-zA-Z0-9]*	{return Parser.ID;}
 
-{NL}		{}
+{NL}		{ }
 
 /* need another number type for integers */
 
-{NUM}	    { yyparser.yylval = new ParserVal(Double.parseDouble(yytext()));
-	      return Parser.NUM; }
+{DOUBLE_NUM}	{ yyparser.yylval = new ParserVal(Double.parseDouble(yytext()));
+		  return Parser.DOUBLE_NUM; }
+{INT_NUM}	{ yyparser.yylval = new ParserVal(Integer.parseInt(yytext()));
+		  return Parser.INT_NUM; }
 
 [ \t]+	    { }
 
