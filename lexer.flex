@@ -82,7 +82,7 @@ day		{return Parser.DAY_T;}
 
 {NL}		{ }
 
-/* need another number type for integers */
+/* need mechanism for reading and returning strings */
 
 {DOUBLE_NUM}	{ yyparser.yylval = new ParserVal(Double.parseDouble(yytext()));
 		  return Parser.DOUBLE_NUM; }

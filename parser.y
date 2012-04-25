@@ -9,7 +9,7 @@ import java.io.*;
 %token SCHEDULE_T COURSE_T COURSELIST_T INT_T DOUBLE_T TIME_T DAY_T STRING_T
 %token AND_T OR_T NOT_T
 %token LEQ_REL_OP GEQ_REL_OP NEQ_REL_OP EQ_REL_OP EQ_T
-%token ID NL INT_NUM DOUBLE_NUM
+%token ID NL INT_NUM DOUBLE_NUM STRING
 
 /* precedence of ops */
 %left REL_OP
@@ -23,25 +23,80 @@ import java.io.*;
 /* grammar productions and semantic actions */
 
 /***************** PARTIAL GRAMMAR FOR TESTING ******************/
-
-declarator_list		:   declarator_list primitive_declarator
-			|   primitive_declarator
+translation_unit	:   declarator_list compound_stmt
 			;
 
-primitive_declarator	:   type_specifier ID';'
-			|   type_specifier ID '=' constant';'
+declarator_list		:   declarator declarator_list
+			|   declarator
 			;
 
-/*primary_expression	:   constant
+declarator		:   primitive_declarator';'
+			|   derived_type_declarator';'
+			;
+
+primitive_declarator	:   type_specifier ID
+			|   type_specifier ID '=' assignment_expr
+			;
+
+derived_type_declarator	:   NEW_T derived_type_specifier ID
+			;
+
+compound_stmt		:   declarator_list stmt_list
+			|   stmt_list
+			;
+
+stmt_list		:   stmt_list stmt
+			|   stmt
+			;
+
+stmt			:   /*compound_stmt
+			|   selection_stmt
+			|   iteration_stmt
+			|*/   expr_stmt
+			|   jump_stmt
+			;
+
+expr_stmt		:   ';'
+			|   assignment_expr';'
+			;
+
+jump_stmt		:   BREAK_T';'
+			;
+
+assignment_expr		:   conditional_expr
+			|   postfix_expr
+			;
+
+conditional_expr	:   postfix_expr OR_T postfix_expr
+			;
+
+postfix_expr		:   primary_expr
+			|   postfix_expr'('argument_expr_list')'
+			|   postfix_expr'('')'
+			;
+
+primary_expr		:   constant
 			|   ID
+			|   STRING
+			/*|   '('expr')'*/
 			;
-*/
+
+argument_expr_list	:   assignment_expr
+			|   argument_expr_list',' assignment_expr
+			;
+
 constant		:   INT_NUM
 			|   DOUBLE_NUM
 			;
 
 type_specifier		:   INT_T
 			|   DOUBLE_T
+			|   STRING_T
+			;
+
+derived_type_specifier	:   SCHEDULE_T
+			|   COURSE_T
+			|   COURSELIST_T
 			;
 
 /********************* ACTUAL GRAMMAR BELOW *********************/
