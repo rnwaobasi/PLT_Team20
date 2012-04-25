@@ -1,1 +1,5 @@
-int x = 0;
+new schedule sched;
+new schedule sched2;
+int g;
+int y = 1;
+new schedule sched3;

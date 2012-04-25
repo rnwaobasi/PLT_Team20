@@ -75,14 +75,11 @@ day		{return Parser.DAY_T;}
 
 [a-zA-Z][a-zA-Z0-9]*	{return Parser.ID;}
 
-/*{NL}	    {return Parser.NL;}*/
 {NL}		{}
 
 /* need another number type for integers */
 
-{NUM}	    { double ddd = Double.parseDouble(yytext());
-		ParserVal sam = new ParserVal(ddd);
-		yyparser.yylval = new ParserVal(ddd);
+{NUM}	    { yyparser.yylval = new ParserVal(Double.parseDouble(yytext()));
 	      return Parser.NUM; }
 
 [ \t]+	    { }

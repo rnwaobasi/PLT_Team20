@@ -28,8 +28,8 @@ declarator_list	    :	declarator
 		    |	declarator_list declarator
 		    ;
 
-declarator	    :	primitive_declarator';'NL
-		    |	derived_type_declarator';'NL
+declarator	    :	primitive_declarator';'
+		    |	derived_type_declarator';'
 		    ;
 
 primitive_declarator	:   type_specifier ID
@@ -40,18 +40,12 @@ derived_type_declarator	:   NEW_T derived_type_specifier ID
 			;
 
 //initializer	    :	assignment_expression
-//		    ;
-
-assignment_expression	: boolean_expression
-			|   arithmetic_expression
-			;
-			
-/* 
-assignment_expression	: postfix_expression
+//		    ;		
+ 
+assignment_expression	:   postfix_expression
 			|   boolean_expression
 			|   arithmetic_expression
 			;
-*/
 
 boolean_expression	:   boolean_expression OR_T boolean_term
 			|   boolean_term
@@ -303,48 +297,3 @@ public static void main(String[] args) throws IOException {
 	Parser yyparser = new Parser(new FileReader(args[0]));
 	yyparser.yyparse();
 }
-
-/*
-String ins;
-StringTokenizer st;
-
-void yyerror(String s){
-	System.out.println("par:"+s);
-}
-
-boolean newline;
-int yylex(){
-	String s;
-	int tok;
-	Double d;
-	System.out.print("yylex ");
-	if (!st.hasMoreTokens())
-		if (!newline){
-			newline = true;
-			return '\n';
-		} else return 0;
-	s = st.nextToken();
-	System.out.println("tok:"+s);
-	try {
-		d = Double.valueOf(s);
-		yylval = new ParserVal(d.doubleValue());
-		tok = NUM;
-	}
-	catch (Exception e) {
-		tok = s.charAt(0);
-	}
-	return tok;
-}
-
-
-
-/* using Lex to produce yylex() */
-/*
-int main (void) {
-	return yyparse();
-}
-
-int yyerror (char *msg) {
-	return fprintf(stderr, "YACC: %s\n", msg);
-}
-*/
