@@ -57,7 +57,7 @@ unary_expr
 	:	(NOT)* postfix_expr
 	;
 postfix_expr
-	:	(ID '.')? primary_expr ('(' (argument_expr_list)? ')')?
+	:	(ID '.')? primary_expr ( '(' (argument_expr_list)? ')' )?
 	;
 primary_expr
 	:	constant
@@ -112,8 +112,6 @@ TIME_T	:	'time'
 DAY_T	:	'day'
 		;
 STRING_T:	'string'
-		;
-PRINT_T :	'print'
 		;
 
 // boolean and relational ops		

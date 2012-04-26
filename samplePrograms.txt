@@ -1,0 +1,128 @@
+/******** SAMPLE PROGRAM 1 ********/
+/* Create a new schedule */
+new schedule sched;
+
+/* Read the file with all the course information,
+  and put that into a courselist called CL */
+new courselist CL = generateCourses(infile);
+
+/* Add classes to the schedule according to some algorithm */
+foreach course c in CL {
+    if (sched.length() < 5 && !(sched.conflict( c ))) {
+ 	   sched.addCourse( c );
+    }
+    else {
+ 	   print("you got a conflict there");
+    }
+}
+
+/* Print the schedule in some readable format */
+sched.print();
+
+
+/******** SAMPLE PROGRAM 2 ********/
+
+new schedule sched;
+
+new courselist CL = generateCourses(infile);
+
+/* Create a list of required classes */
+new courselist required;
+required.addCourse( CL.getCourse("Math") );
+required.addCourse( CL.getCourse("Stat") );
+
+/* Create a list of elective classes */
+new courselist electives;
+electives.addCourse( CL.getCourse("PE") );
+electives.addCourse( CL.getCourse("ArtHum") );
+
+/* Add courses from the list of required courses
+  only as long as the schedule has 3 or fewer courses
+  and the courses do not conflict */
+for each course c in required {
+    if (sched.length() <= 3 && !(sched.conflict( c ))) {
+ 	   sched.addCourse( c );
+    }
+}
+
+/* Same as above, but for elective courses
+  and only adding until the schedule has 5 courses */
+for each course c in electives {
+    if (sched.length() <= 5 && !(sched.conflict( c ))) {
+ 	   sched.addCourse( c );
+    }
+}
+
+/******** SAMPLE PROGRAM 3 ********/
+
+new schedule sched;
+new courseList CL = generateCourses(infile);
+
+/* Creating some int variables */
+int courseMax = 6; // maximum number of courses
+int courseMin = 4; // minimum
+int creditMax = 20; // maximum number of credit points
+int courseMaxR = 2 // maximum number of courses on Thursday
+
+/* Add classes only if conditions are met */
+for each course c in CL
+{
+    if (sched.numCourses() <= courseMax 
+   && sched.numCredits() + c.numCredits() <= 20)
+    {
+if (c.day() == R && sched.numCourses(R) >= courseMaxR)
+    break;
+else
+    sched.addCourse(c);
+    }
+} 
+
+/* Print some string output */
+if (sched.numCourses() < courseMin)
+    print("Four non-conflicting classes could not be found. Add more potential courses!");
+
+    
+/******** SAMPLE PROGRAM 4 ********/
+/* 
+** PLT has two sections:
+** MW 1:10-2:25 (this one would be taught by Aho)
+** TR 2:40-3:55 (this one would be taught by Bob)
+**
+** CS Theory as two sections:
+** TR 4:10-5:25 (taught by Aho)
+** MW 6:10-7:25 (taught by Cat)
+*/
+
+new schedule sched;
+new courseList CL = generateCourses(infile);
+
+/* Create a list for Aho’s classes */
+new courselist Aho;
+
+/* Add his sections of PLT and CSTheory, respectively */
+if ( CL.getCourse("PLT").hasDatetime() == MW 1:10-2:25 ) {
+    Aho.addCourse( CL.getCourse("PLT") );
+    Aho.getCourse("PLT").setSelectedSection( MW 1:10-2:25 );
+}
+
+if ( CL.getCourse("CSTheory").hasDatetime() == TR 4:10-5:25 ) {
+    Aho.addCourse( CL.getCourse("CSTheory") );
+    Aho.getCourse("CSTheory").setSelectedSection( TR 4:10-5:25 );
+}
+
+
+/******** SAMPLE PROGRAM 5 ********/
+
+new schedule sched;
+new courselist CL = generateCourses(infile);
+
+// make a list of courses called music
+new courselist music;
+
+// if course name begins with MUSI, then add it to the music list
+for each course c in CL {
+    string cname = c.name();
+    if ( cname.substring(0,4) == "MUSI" ) {
+ 	   music.addCourse( c );
+    }
+}
