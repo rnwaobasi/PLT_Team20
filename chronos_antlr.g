@@ -30,8 +30,8 @@ selection_stmt
 	:	IF_T assignment_expr '{'stmt'}' (ELSE_T '{'stmt'}')?
 	;
 iteration_stmt
-	:	FOREACH_T COURSE_T ID IN_T ID '{'(stmt)*'}'
-	;
+	:	FOREACH_T COURSE_T ID IN_T ID '{' (declarator';')* (stmt)* '}'
+	; // iterations only exist for courses
 jump_stmt
 	:	BREAK_T
 	;
@@ -58,13 +58,13 @@ unary_expr
 	;
 postfix_expr
 	:	(ID '.')? primary_expr ( '(' (argument_expr_list)? ')' )?
-	;
+	; // doesn't accept postfix_expr.postfix_expr, only id.postfix_expr
 primary_expr
 	:	constant
 	|	ID
 	|	STRING
 	|	'('assignment_expr')'
-	;
+	; // does parser need to also recognize dates and times? i.e. MW 1:10-2:25
 argument_expr_list
 	:	(assignment_expr) (',' assignment_expr)*
 	;
@@ -75,6 +75,8 @@ constant
 type_specifier
 	:	INT_T
 	|	DOUBLE_T
+	|	TIME_T
+	|	DAY_T
 	|	STRING_T
 	;
 derived_type_specifier

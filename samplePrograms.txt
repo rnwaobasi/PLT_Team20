@@ -56,7 +56,7 @@ for each course c in electives {
 /******** SAMPLE PROGRAM 3 ********/
 
 new schedule sched;
-new courseList CL = generateCourses(infile);
+new courselist CL = generateCourses(infile);
 
 /* Creating some int variables */
 int courseMax = 6; // maximum number of courses
@@ -65,7 +65,7 @@ int creditMax = 20; // maximum number of credit points
 int courseMaxR = 2 // maximum number of courses on Thursday
 
 /* Add classes only if conditions are met */
-for each course c in CL
+foreach course c in CL
 {
     if (sched.numCourses() <= courseMax 
    && sched.numCredits() + c.numCredits() <= 20)
@@ -94,7 +94,7 @@ if (sched.numCourses() < courseMin)
 */
 
 new schedule sched;
-new courseList CL = generateCourses(infile);
+new courselist CL = generateCourses(infile);
 
 /* Create a list for Aho’s classes */
 new courselist Aho;
@@ -120,7 +120,7 @@ new courselist CL = generateCourses(infile);
 new courselist music;
 
 // if course name begins with MUSI, then add it to the music list
-for each course c in CL {
+foreach course c in CL {
     string cname = c.name();
     if ( cname.substring(0,4) == "MUSI" ) {
  	   music.addCourse( c );

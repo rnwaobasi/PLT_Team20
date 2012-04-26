@@ -1,25 +1,6 @@
-new schedule sched;
-
-new courselist CL = generateCourses(infile);
-
-/* Create a list of required classes */
-new courselist required;
-required.addCourse( CL.getCourse("Math") );
-required.addCourse( CL.getCourse("Stat") );
-
-/* Create a list of elective classes */
-new courselist electives;
-electives.addCourse( CL.getCourse("PE") );
-electives.addCourse( CL.getCourse("ArtHum") );
-
-for each course c in required {
-    if (sched.length() <= 3 && !(sched.conflict( c ))) {
- 	   sched.addCourse( c );
-    }
-}
-
-for each course c in electives {
-    if (sched.length() <= 5 && !(sched.conflict( c ))) {
- 	   sched.addCourse( c );
+foreach course c in CL {
+    string cname = c.name();
+    if ( cname.substring(0,4) == "MUSI" ) {
+ 	   music.addCourse( c );
     }
 }
