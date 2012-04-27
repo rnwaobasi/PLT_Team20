@@ -14,16 +14,13 @@ declarator
 	;
 primitive_declarator
 	:	type_specifier ID
-	//|	type_specifier ID '=' assignment_expr
 	|	type_specifier ID '=' expr
 	;
 derived_type_declarator
 	:	NEW_T derived_type_specifier ID
-	//|	NEW_T derived_type_specifier ID '=' assignment_expr
 	|	NEW_T derived_type_specifier ID '=' expr
 	;
 stmt:	expr';'
-//assignment_expr ('=' assignment_expr)? ';'
 	|	selection_stmt
 	|	iteration_stmt
 	|	jump_stmt';'
@@ -57,15 +54,12 @@ math_expr
 	;
 math_term
 	:	unary_expr ( ('*' | '/') unary_expr )*
-	//|	timeblock
 	;
 unary_expr
 	:	(NOT)* postfix_expr
-	//|	dayblock
 	;
 postfix_expr
-	:	/*datetime
-	|	*/(ID '.')? primary_expr ( '(' (argument_expr_list)? ')' )?
+	:	(ID '.')? primary_expr ( '(' (argument_expr_list)? ')' )?
 	; // doesn't accept postfix_expr.postfix_expr, only id.postfix_expr
 datetime
 	:	dayblock',' timeblock
