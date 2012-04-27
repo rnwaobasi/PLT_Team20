@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /Users/shannonlee/PLT_Team20/chronos_antlr.g 2012-04-27 17:21:12
+// $ANTLR 3.4 /Users/shannonlee/PLT_Team20/chronos_antlr.g 2012-04-27 19:07:01
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -13,7 +13,7 @@ import org.antlr.runtime.tree.*;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class chronos_antlrParser extends DebugParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "AND", "BREAK_T", "CHAR", "COMMENT", "COURSELIST_T", "COURSE_T", "DAY", "DOUBLE_T", "ELSE_T", "EQ", "ESC_SEQ", "EXPONENT", "FLOAT", "FOREACH_T", "GEQ", "HEX_DIGIT", "ID", "IF_T", "INT", "INT_T", "IN_T", "LEQ", "NEQ", "NEW_T", "NOT", "OCTAL_ESC", "OR", "SCHEDULE_T", "STRING", "STRING_T", "TIME", "TIME_T", "UNICODE_ESC", "WHITESPACE", "'('", "')'", "'*'", "'+'", "','", "'-'", "'.'", "'/'", "';'", "'<'", "'='", "'>'", "'['", "']'", "'{'", "'}'", "'~'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "AND", "BREAK_T", "CHAR", "COMMENT", "COURSELIST_T", "COURSE_T", "DAY", "DOUBLE_T", "ELSE_T", "EQ", "ESC_SEQ", "EXPONENT", "FLOAT", "FOREACH_T", "GEQ", "HEX_DIGIT", "ID", "IF_T", "INT", "INT_T", "IN_T", "LEQ", "NEQ", "NEW_T", "NOT", "OCTAL_ESC", "OR", "SCHEDULE_T", "STRING", "STRING_T", "TIME", "TIME_T", "UNICODE_ESC", "WHITESPACE", "'('", "')'", "'*'", "'+'", "','", "'-'", "'.'", "'/'", "';'", "'<'", "'='", "'>'", "'F'", "'M'", "'R'", "'T'", "'W'", "'['", "']'", "'{'", "'}'", "'~'"
     };
 
     public static final int EOF=-1;
@@ -34,6 +34,11 @@ public class chronos_antlrParser extends DebugParser {
     public static final int T__52=52;
     public static final int T__53=53;
     public static final int T__54=54;
+    public static final int T__55=55;
+    public static final int T__56=56;
+    public static final int T__57=57;
+    public static final int T__58=58;
+    public static final int T__59=59;
     public static final int AND=4;
     public static final int BREAK_T=5;
     public static final int CHAR=6;
@@ -78,19 +83,19 @@ public class chronos_antlrParser extends DebugParser {
 
 
 public static final String[] ruleNames = new String[] {
-    "invalidRule", "iteration_stmt", "constant", "dayblock", "math_term", 
-    "selection_stmt", "cond_term", "primitive_declarator", "timeblock", 
-    "stmt", "postfix_expr", "type_specifier", "derived_type_declarator", 
-    "expr", "jump_stmt", "math_expr", "primary_expr", "declarator", "equiv_expr", 
-    "argument_expr_list", "translation_unit", "rel_expr", "datetime", "derived_type_specifier", 
-    "unary_expr"
+    "invalidRule", "primitive_declarator", "stmt", "math_term", "expr", 
+    "derived_type_specifier", "constant", "rel_expr", "iteration_stmt", 
+    "jump_stmt", "datetime", "derived_type_declarator", "postfix_expr", 
+    "equiv_expr", "primary_expr", "timeblock", "cond_term", "math_expr", 
+    "argument_expr_list", "type_specifier", "translation_unit", "selection_stmt", 
+    "dayblock", "unary_expr", "declarator"
 };
 
 public static final boolean[] decisionCanBacktrack = new boolean[] {
     false, // invalid decision
     false, false, false, false, false, false, false, false, false, false, 
         false, false, false, false, false, false, false, false, false, false, 
-        false, false, false, false, false, false
+        false, false, false, false, false, false, false, false, false
 };
 
  
@@ -242,7 +247,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                 int LA2_0 = input.LA(1);
 
-                if ( (LA2_0==BREAK_T||(LA2_0 >= FLOAT && LA2_0 <= FOREACH_T)||(LA2_0 >= ID && LA2_0 <= INT)||LA2_0==NOT||LA2_0==STRING||LA2_0==TIME||LA2_0==38||LA2_0==46||LA2_0==50) ) {
+                if ( (LA2_0==BREAK_T||(LA2_0 >= FLOAT && LA2_0 <= FOREACH_T)||(LA2_0 >= ID && LA2_0 <= INT)||LA2_0==NOT||LA2_0==STRING||LA2_0==TIME||LA2_0==38||LA2_0==46||LA2_0==55) ) {
                     alt2=1;
                 }
 
@@ -535,34 +540,34 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     dbg.enterAlt(2);
 
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:18:4: type_specifier ID '=' expr
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:17:4: type_specifier ID '=' expr
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    dbg.location(18,4);
-                    pushFollow(FOLLOW_type_specifier_in_primitive_declarator69);
+                    dbg.location(17,4);
+                    pushFollow(FOLLOW_type_specifier_in_primitive_declarator67);
                     type_specifier8=type_specifier();
 
                     state._fsp--;
 
                     adaptor.addChild(root_0, type_specifier8.getTree());
-                    dbg.location(18,19);
-                    ID9=(Token)match(input,ID,FOLLOW_ID_in_primitive_declarator71); 
+                    dbg.location(17,19);
+                    ID9=(Token)match(input,ID,FOLLOW_ID_in_primitive_declarator69); 
                     ID9_tree = 
                     (Object)adaptor.create(ID9)
                     ;
                     adaptor.addChild(root_0, ID9_tree);
 
-                    dbg.location(18,22);
-                    char_literal10=(Token)match(input,48,FOLLOW_48_in_primitive_declarator73); 
+                    dbg.location(17,22);
+                    char_literal10=(Token)match(input,48,FOLLOW_48_in_primitive_declarator71); 
                     char_literal10_tree = 
                     (Object)adaptor.create(char_literal10)
                     ;
                     adaptor.addChild(root_0, char_literal10_tree);
 
-                    dbg.location(18,26);
-                    pushFollow(FOLLOW_expr_in_primitive_declarator75);
+                    dbg.location(17,26);
+                    pushFollow(FOLLOW_expr_in_primitive_declarator73);
                     expr11=expr();
 
                     state._fsp--;
@@ -590,7 +595,7 @@ public TreeAdaptor getTreeAdaptor() {
         finally {
         	// do for sure before leaving
         }
-        dbg.location(19, 1);
+        dbg.location(18, 1);
 
         }
         finally {
@@ -611,7 +616,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "derived_type_declarator"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:20:1: derived_type_declarator : ( NEW_T derived_type_specifier ID | NEW_T derived_type_specifier ID '=' expr );
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:19:1: derived_type_declarator : ( NEW_T derived_type_specifier ID | NEW_T derived_type_specifier ID '=' expr );
     public final chronos_antlrParser.derived_type_declarator_return derived_type_declarator() throws RecognitionException {
         chronos_antlrParser.derived_type_declarator_return retval = new chronos_antlrParser.derived_type_declarator_return();
         retval.start = input.LT(1);
@@ -640,10 +645,10 @@ public TreeAdaptor getTreeAdaptor() {
         try { dbg.enterRule(getGrammarFileName(), "derived_type_declarator");
         if ( getRuleLevel()==0 ) {dbg.commence();}
         incRuleLevel();
-        dbg.location(20, 0);
+        dbg.location(19, 0);
 
         try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:21:2: ( NEW_T derived_type_specifier ID | NEW_T derived_type_specifier ID '=' expr )
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:20:2: ( NEW_T derived_type_specifier ID | NEW_T derived_type_specifier ID '=' expr )
             int alt5=2;
             try { dbg.enterDecision(5, decisionCanBacktrack[5]);
 
@@ -705,27 +710,27 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     dbg.enterAlt(1);
 
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:21:4: NEW_T derived_type_specifier ID
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:20:4: NEW_T derived_type_specifier ID
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    dbg.location(21,4);
-                    NEW_T12=(Token)match(input,NEW_T,FOLLOW_NEW_T_in_derived_type_declarator85); 
+                    dbg.location(20,4);
+                    NEW_T12=(Token)match(input,NEW_T,FOLLOW_NEW_T_in_derived_type_declarator83); 
                     NEW_T12_tree = 
                     (Object)adaptor.create(NEW_T12)
                     ;
                     adaptor.addChild(root_0, NEW_T12_tree);
 
-                    dbg.location(21,10);
-                    pushFollow(FOLLOW_derived_type_specifier_in_derived_type_declarator87);
+                    dbg.location(20,10);
+                    pushFollow(FOLLOW_derived_type_specifier_in_derived_type_declarator85);
                     derived_type_specifier13=derived_type_specifier();
 
                     state._fsp--;
 
                     adaptor.addChild(root_0, derived_type_specifier13.getTree());
-                    dbg.location(21,33);
-                    ID14=(Token)match(input,ID,FOLLOW_ID_in_derived_type_declarator89); 
+                    dbg.location(20,33);
+                    ID14=(Token)match(input,ID,FOLLOW_ID_in_derived_type_declarator87); 
                     ID14_tree = 
                     (Object)adaptor.create(ID14)
                     ;
@@ -737,41 +742,41 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     dbg.enterAlt(2);
 
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:23:4: NEW_T derived_type_specifier ID '=' expr
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:21:4: NEW_T derived_type_specifier ID '=' expr
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    dbg.location(23,4);
-                    NEW_T15=(Token)match(input,NEW_T,FOLLOW_NEW_T_in_derived_type_declarator96); 
+                    dbg.location(21,4);
+                    NEW_T15=(Token)match(input,NEW_T,FOLLOW_NEW_T_in_derived_type_declarator92); 
                     NEW_T15_tree = 
                     (Object)adaptor.create(NEW_T15)
                     ;
                     adaptor.addChild(root_0, NEW_T15_tree);
 
-                    dbg.location(23,10);
-                    pushFollow(FOLLOW_derived_type_specifier_in_derived_type_declarator98);
+                    dbg.location(21,10);
+                    pushFollow(FOLLOW_derived_type_specifier_in_derived_type_declarator94);
                     derived_type_specifier16=derived_type_specifier();
 
                     state._fsp--;
 
                     adaptor.addChild(root_0, derived_type_specifier16.getTree());
-                    dbg.location(23,33);
-                    ID17=(Token)match(input,ID,FOLLOW_ID_in_derived_type_declarator100); 
+                    dbg.location(21,33);
+                    ID17=(Token)match(input,ID,FOLLOW_ID_in_derived_type_declarator96); 
                     ID17_tree = 
                     (Object)adaptor.create(ID17)
                     ;
                     adaptor.addChild(root_0, ID17_tree);
 
-                    dbg.location(23,36);
-                    char_literal18=(Token)match(input,48,FOLLOW_48_in_derived_type_declarator102); 
+                    dbg.location(21,36);
+                    char_literal18=(Token)match(input,48,FOLLOW_48_in_derived_type_declarator98); 
                     char_literal18_tree = 
                     (Object)adaptor.create(char_literal18)
                     ;
                     adaptor.addChild(root_0, char_literal18_tree);
 
-                    dbg.location(23,40);
-                    pushFollow(FOLLOW_expr_in_derived_type_declarator104);
+                    dbg.location(21,40);
+                    pushFollow(FOLLOW_expr_in_derived_type_declarator100);
                     expr19=expr();
 
                     state._fsp--;
@@ -799,7 +804,7 @@ public TreeAdaptor getTreeAdaptor() {
         finally {
         	// do for sure before leaving
         }
-        dbg.location(24, 1);
+        dbg.location(22, 1);
 
         }
         finally {
@@ -820,7 +825,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stmt"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:25:1: stmt : ( expr ';' | selection_stmt | iteration_stmt | jump_stmt ';' | ';' );
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:23:1: stmt : ( expr ';' | selection_stmt | iteration_stmt | jump_stmt ';' | ';' );
     public final chronos_antlrParser.stmt_return stmt() throws RecognitionException {
         chronos_antlrParser.stmt_return retval = new chronos_antlrParser.stmt_return();
         retval.start = input.LT(1);
@@ -847,10 +852,10 @@ public TreeAdaptor getTreeAdaptor() {
         try { dbg.enterRule(getGrammarFileName(), "stmt");
         if ( getRuleLevel()==0 ) {dbg.commence();}
         incRuleLevel();
-        dbg.location(25, 0);
+        dbg.location(23, 0);
 
         try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:25:5: ( expr ';' | selection_stmt | iteration_stmt | jump_stmt ';' | ';' )
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:23:5: ( expr ';' | selection_stmt | iteration_stmt | jump_stmt ';' | ';' )
             int alt6=5;
             try { dbg.enterDecision(6, decisionCanBacktrack[6]);
 
@@ -862,7 +867,7 @@ public TreeAdaptor getTreeAdaptor() {
             case STRING:
             case TIME:
             case 38:
-            case 50:
+            case 55:
                 {
                 alt6=1;
                 }
@@ -902,20 +907,20 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     dbg.enterAlt(1);
 
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:25:7: expr ';'
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:23:7: expr ';'
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    dbg.location(25,7);
-                    pushFollow(FOLLOW_expr_in_stmt112);
+                    dbg.location(23,7);
+                    pushFollow(FOLLOW_expr_in_stmt108);
                     expr20=expr();
 
                     state._fsp--;
 
                     adaptor.addChild(root_0, expr20.getTree());
-                    dbg.location(25,11);
-                    char_literal21=(Token)match(input,46,FOLLOW_46_in_stmt113); 
+                    dbg.location(23,11);
+                    char_literal21=(Token)match(input,46,FOLLOW_46_in_stmt109); 
                     char_literal21_tree = 
                     (Object)adaptor.create(char_literal21)
                     ;
@@ -927,13 +932,13 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     dbg.enterAlt(2);
 
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:27:4: selection_stmt
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:24:4: selection_stmt
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    dbg.location(27,4);
-                    pushFollow(FOLLOW_selection_stmt_in_stmt119);
+                    dbg.location(24,4);
+                    pushFollow(FOLLOW_selection_stmt_in_stmt114);
                     selection_stmt22=selection_stmt();
 
                     state._fsp--;
@@ -945,13 +950,13 @@ public TreeAdaptor getTreeAdaptor() {
                 case 3 :
                     dbg.enterAlt(3);
 
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:28:4: iteration_stmt
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:25:4: iteration_stmt
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    dbg.location(28,4);
-                    pushFollow(FOLLOW_iteration_stmt_in_stmt124);
+                    dbg.location(25,4);
+                    pushFollow(FOLLOW_iteration_stmt_in_stmt119);
                     iteration_stmt23=iteration_stmt();
 
                     state._fsp--;
@@ -963,20 +968,20 @@ public TreeAdaptor getTreeAdaptor() {
                 case 4 :
                     dbg.enterAlt(4);
 
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:29:4: jump_stmt ';'
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:26:4: jump_stmt ';'
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    dbg.location(29,4);
-                    pushFollow(FOLLOW_jump_stmt_in_stmt129);
+                    dbg.location(26,4);
+                    pushFollow(FOLLOW_jump_stmt_in_stmt124);
                     jump_stmt24=jump_stmt();
 
                     state._fsp--;
 
                     adaptor.addChild(root_0, jump_stmt24.getTree());
-                    dbg.location(29,13);
-                    char_literal25=(Token)match(input,46,FOLLOW_46_in_stmt130); 
+                    dbg.location(26,13);
+                    char_literal25=(Token)match(input,46,FOLLOW_46_in_stmt125); 
                     char_literal25_tree = 
                     (Object)adaptor.create(char_literal25)
                     ;
@@ -988,13 +993,13 @@ public TreeAdaptor getTreeAdaptor() {
                 case 5 :
                     dbg.enterAlt(5);
 
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:30:4: ';'
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:27:4: ';'
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    dbg.location(30,4);
-                    char_literal26=(Token)match(input,46,FOLLOW_46_in_stmt135); 
+                    dbg.location(27,4);
+                    char_literal26=(Token)match(input,46,FOLLOW_46_in_stmt130); 
                     char_literal26_tree = 
                     (Object)adaptor.create(char_literal26)
                     ;
@@ -1022,7 +1027,7 @@ public TreeAdaptor getTreeAdaptor() {
         finally {
         	// do for sure before leaving
         }
-        dbg.location(31, 1);
+        dbg.location(28, 1);
 
         }
         finally {
@@ -1043,7 +1048,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "selection_stmt"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:32:1: selection_stmt : IF_T expr '{' ( stmt )* '}' ( ELSE_T '{' ( stmt )* '}' )? ;
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:29:1: selection_stmt : IF_T ^ expr '{' ( stmt )* '}' ( ELSE_T '{' ( stmt )* '}' )? ;
     public final chronos_antlrParser.selection_stmt_return selection_stmt() throws RecognitionException {
         chronos_antlrParser.selection_stmt_return retval = new chronos_antlrParser.selection_stmt_return();
         retval.start = input.LT(1);
@@ -1074,40 +1079,40 @@ public TreeAdaptor getTreeAdaptor() {
         try { dbg.enterRule(getGrammarFileName(), "selection_stmt");
         if ( getRuleLevel()==0 ) {dbg.commence();}
         incRuleLevel();
-        dbg.location(32, 0);
+        dbg.location(29, 0);
 
         try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:33:2: ( IF_T expr '{' ( stmt )* '}' ( ELSE_T '{' ( stmt )* '}' )? )
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:30:2: ( IF_T ^ expr '{' ( stmt )* '}' ( ELSE_T '{' ( stmt )* '}' )? )
             dbg.enterAlt(1);
 
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:33:4: IF_T expr '{' ( stmt )* '}' ( ELSE_T '{' ( stmt )* '}' )?
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:30:4: IF_T ^ expr '{' ( stmt )* '}' ( ELSE_T '{' ( stmt )* '}' )?
             {
             root_0 = (Object)adaptor.nil();
 
 
-            dbg.location(33,4);
-            IF_T27=(Token)match(input,IF_T,FOLLOW_IF_T_in_selection_stmt145); 
+            dbg.location(30,8);
+            IF_T27=(Token)match(input,IF_T,FOLLOW_IF_T_in_selection_stmt140); 
             IF_T27_tree = 
             (Object)adaptor.create(IF_T27)
             ;
-            adaptor.addChild(root_0, IF_T27_tree);
+            root_0 = (Object)adaptor.becomeRoot(IF_T27_tree, root_0);
 
-            dbg.location(33,9);
-            pushFollow(FOLLOW_expr_in_selection_stmt147);
+            dbg.location(30,10);
+            pushFollow(FOLLOW_expr_in_selection_stmt143);
             expr28=expr();
 
             state._fsp--;
 
             adaptor.addChild(root_0, expr28.getTree());
-            dbg.location(33,14);
-            char_literal29=(Token)match(input,52,FOLLOW_52_in_selection_stmt149); 
+            dbg.location(30,15);
+            char_literal29=(Token)match(input,57,FOLLOW_57_in_selection_stmt145); 
             char_literal29_tree = 
             (Object)adaptor.create(char_literal29)
             ;
             adaptor.addChild(root_0, char_literal29_tree);
 
-            dbg.location(33,17);
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:33:17: ( stmt )*
+            dbg.location(30,18);
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:30:18: ( stmt )*
             try { dbg.enterSubRule(7);
 
             loop7:
@@ -1117,7 +1122,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                 int LA7_0 = input.LA(1);
 
-                if ( (LA7_0==BREAK_T||(LA7_0 >= FLOAT && LA7_0 <= FOREACH_T)||(LA7_0 >= ID && LA7_0 <= INT)||LA7_0==NOT||LA7_0==STRING||LA7_0==TIME||LA7_0==38||LA7_0==46||LA7_0==50) ) {
+                if ( (LA7_0==BREAK_T||(LA7_0 >= FLOAT && LA7_0 <= FOREACH_T)||(LA7_0 >= ID && LA7_0 <= INT)||LA7_0==NOT||LA7_0==STRING||LA7_0==TIME||LA7_0==38||LA7_0==46||LA7_0==55) ) {
                     alt7=1;
                 }
 
@@ -1128,10 +1133,10 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    dbg.enterAlt(1);
 
-            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:33:17: stmt
+            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:30:18: stmt
             	    {
-            	    dbg.location(33,17);
-            	    pushFollow(FOLLOW_stmt_in_selection_stmt150);
+            	    dbg.location(30,18);
+            	    pushFollow(FOLLOW_stmt_in_selection_stmt146);
             	    stmt30=stmt();
 
             	    state._fsp--;
@@ -1147,15 +1152,15 @@ public TreeAdaptor getTreeAdaptor() {
             } while (true);
             } finally {dbg.exitSubRule(7);}
 
-            dbg.location(33,22);
-            char_literal31=(Token)match(input,53,FOLLOW_53_in_selection_stmt152); 
+            dbg.location(30,23);
+            char_literal31=(Token)match(input,58,FOLLOW_58_in_selection_stmt148); 
             char_literal31_tree = 
             (Object)adaptor.create(char_literal31)
             ;
             adaptor.addChild(root_0, char_literal31_tree);
 
-            dbg.location(33,26);
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:33:26: ( ELSE_T '{' ( stmt )* '}' )?
+            dbg.location(30,27);
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:30:27: ( ELSE_T '{' ( stmt )* '}' )?
             int alt9=2;
             try { dbg.enterSubRule(9);
             try { dbg.enterDecision(9, decisionCanBacktrack[9]);
@@ -1171,24 +1176,24 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     dbg.enterAlt(1);
 
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:33:27: ELSE_T '{' ( stmt )* '}'
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:30:28: ELSE_T '{' ( stmt )* '}'
                     {
-                    dbg.location(33,27);
-                    ELSE_T32=(Token)match(input,ELSE_T,FOLLOW_ELSE_T_in_selection_stmt155); 
+                    dbg.location(30,28);
+                    ELSE_T32=(Token)match(input,ELSE_T,FOLLOW_ELSE_T_in_selection_stmt151); 
                     ELSE_T32_tree = 
                     (Object)adaptor.create(ELSE_T32)
                     ;
                     adaptor.addChild(root_0, ELSE_T32_tree);
 
-                    dbg.location(33,34);
-                    char_literal33=(Token)match(input,52,FOLLOW_52_in_selection_stmt157); 
+                    dbg.location(30,35);
+                    char_literal33=(Token)match(input,57,FOLLOW_57_in_selection_stmt153); 
                     char_literal33_tree = 
                     (Object)adaptor.create(char_literal33)
                     ;
                     adaptor.addChild(root_0, char_literal33_tree);
 
-                    dbg.location(33,37);
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:33:37: ( stmt )*
+                    dbg.location(30,38);
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:30:38: ( stmt )*
                     try { dbg.enterSubRule(8);
 
                     loop8:
@@ -1198,7 +1203,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                         int LA8_0 = input.LA(1);
 
-                        if ( (LA8_0==BREAK_T||(LA8_0 >= FLOAT && LA8_0 <= FOREACH_T)||(LA8_0 >= ID && LA8_0 <= INT)||LA8_0==NOT||LA8_0==STRING||LA8_0==TIME||LA8_0==38||LA8_0==46||LA8_0==50) ) {
+                        if ( (LA8_0==BREAK_T||(LA8_0 >= FLOAT && LA8_0 <= FOREACH_T)||(LA8_0 >= ID && LA8_0 <= INT)||LA8_0==NOT||LA8_0==STRING||LA8_0==TIME||LA8_0==38||LA8_0==46||LA8_0==55) ) {
                             alt8=1;
                         }
 
@@ -1209,10 +1214,10 @@ public TreeAdaptor getTreeAdaptor() {
                     	case 1 :
                     	    dbg.enterAlt(1);
 
-                    	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:33:37: stmt
+                    	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:30:38: stmt
                     	    {
-                    	    dbg.location(33,37);
-                    	    pushFollow(FOLLOW_stmt_in_selection_stmt158);
+                    	    dbg.location(30,38);
+                    	    pushFollow(FOLLOW_stmt_in_selection_stmt154);
                     	    stmt34=stmt();
 
                     	    state._fsp--;
@@ -1228,8 +1233,8 @@ public TreeAdaptor getTreeAdaptor() {
                     } while (true);
                     } finally {dbg.exitSubRule(8);}
 
-                    dbg.location(33,42);
-                    char_literal35=(Token)match(input,53,FOLLOW_53_in_selection_stmt160); 
+                    dbg.location(30,43);
+                    char_literal35=(Token)match(input,58,FOLLOW_58_in_selection_stmt156); 
                     char_literal35_tree = 
                     (Object)adaptor.create(char_literal35)
                     ;
@@ -1262,7 +1267,7 @@ public TreeAdaptor getTreeAdaptor() {
         finally {
         	// do for sure before leaving
         }
-        dbg.location(34, 1);
+        dbg.location(31, 1);
 
         }
         finally {
@@ -1283,7 +1288,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "iteration_stmt"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:35:1: iteration_stmt : FOREACH_T COURSE_T ID IN_T ID '{' ( declarator ';' )* ( stmt )* '}' ;
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:32:1: iteration_stmt : FOREACH_T COURSE_T ID IN_T ID '{' ( declarator ';' )* ( stmt )* '}' ;
     public final chronos_antlrParser.iteration_stmt_return iteration_stmt() throws RecognitionException {
         chronos_antlrParser.iteration_stmt_return retval = new chronos_antlrParser.iteration_stmt_return();
         retval.start = input.LT(1);
@@ -1316,61 +1321,61 @@ public TreeAdaptor getTreeAdaptor() {
         try { dbg.enterRule(getGrammarFileName(), "iteration_stmt");
         if ( getRuleLevel()==0 ) {dbg.commence();}
         incRuleLevel();
-        dbg.location(35, 0);
+        dbg.location(32, 0);
 
         try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:36:2: ( FOREACH_T COURSE_T ID IN_T ID '{' ( declarator ';' )* ( stmt )* '}' )
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:33:2: ( FOREACH_T COURSE_T ID IN_T ID '{' ( declarator ';' )* ( stmt )* '}' )
             dbg.enterAlt(1);
 
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:36:4: FOREACH_T COURSE_T ID IN_T ID '{' ( declarator ';' )* ( stmt )* '}'
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:33:4: FOREACH_T COURSE_T ID IN_T ID '{' ( declarator ';' )* ( stmt )* '}'
             {
             root_0 = (Object)adaptor.nil();
 
 
-            dbg.location(36,4);
-            FOREACH_T36=(Token)match(input,FOREACH_T,FOLLOW_FOREACH_T_in_iteration_stmt172); 
+            dbg.location(33,4);
+            FOREACH_T36=(Token)match(input,FOREACH_T,FOLLOW_FOREACH_T_in_iteration_stmt168); 
             FOREACH_T36_tree = 
             (Object)adaptor.create(FOREACH_T36)
             ;
             adaptor.addChild(root_0, FOREACH_T36_tree);
 
-            dbg.location(36,14);
-            COURSE_T37=(Token)match(input,COURSE_T,FOLLOW_COURSE_T_in_iteration_stmt174); 
+            dbg.location(33,14);
+            COURSE_T37=(Token)match(input,COURSE_T,FOLLOW_COURSE_T_in_iteration_stmt170); 
             COURSE_T37_tree = 
             (Object)adaptor.create(COURSE_T37)
             ;
             adaptor.addChild(root_0, COURSE_T37_tree);
 
-            dbg.location(36,23);
-            ID38=(Token)match(input,ID,FOLLOW_ID_in_iteration_stmt176); 
+            dbg.location(33,23);
+            ID38=(Token)match(input,ID,FOLLOW_ID_in_iteration_stmt172); 
             ID38_tree = 
             (Object)adaptor.create(ID38)
             ;
             adaptor.addChild(root_0, ID38_tree);
 
-            dbg.location(36,26);
-            IN_T39=(Token)match(input,IN_T,FOLLOW_IN_T_in_iteration_stmt178); 
+            dbg.location(33,26);
+            IN_T39=(Token)match(input,IN_T,FOLLOW_IN_T_in_iteration_stmt174); 
             IN_T39_tree = 
             (Object)adaptor.create(IN_T39)
             ;
             adaptor.addChild(root_0, IN_T39_tree);
 
-            dbg.location(36,31);
-            ID40=(Token)match(input,ID,FOLLOW_ID_in_iteration_stmt180); 
+            dbg.location(33,31);
+            ID40=(Token)match(input,ID,FOLLOW_ID_in_iteration_stmt176); 
             ID40_tree = 
             (Object)adaptor.create(ID40)
             ;
             adaptor.addChild(root_0, ID40_tree);
 
-            dbg.location(36,34);
-            char_literal41=(Token)match(input,52,FOLLOW_52_in_iteration_stmt182); 
+            dbg.location(33,34);
+            char_literal41=(Token)match(input,57,FOLLOW_57_in_iteration_stmt178); 
             char_literal41_tree = 
             (Object)adaptor.create(char_literal41)
             ;
             adaptor.addChild(root_0, char_literal41_tree);
 
-            dbg.location(36,38);
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:36:38: ( declarator ';' )*
+            dbg.location(33,38);
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:33:38: ( declarator ';' )*
             try { dbg.enterSubRule(10);
 
             loop10:
@@ -1391,17 +1396,17 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    dbg.enterAlt(1);
 
-            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:36:39: declarator ';'
+            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:33:39: declarator ';'
             	    {
-            	    dbg.location(36,39);
-            	    pushFollow(FOLLOW_declarator_in_iteration_stmt185);
+            	    dbg.location(33,39);
+            	    pushFollow(FOLLOW_declarator_in_iteration_stmt181);
             	    declarator42=declarator();
 
             	    state._fsp--;
 
             	    adaptor.addChild(root_0, declarator42.getTree());
-            	    dbg.location(36,49);
-            	    char_literal43=(Token)match(input,46,FOLLOW_46_in_iteration_stmt186); 
+            	    dbg.location(33,49);
+            	    char_literal43=(Token)match(input,46,FOLLOW_46_in_iteration_stmt182); 
             	    char_literal43_tree = 
             	    (Object)adaptor.create(char_literal43)
             	    ;
@@ -1417,8 +1422,8 @@ public TreeAdaptor getTreeAdaptor() {
             } while (true);
             } finally {dbg.exitSubRule(10);}
 
-            dbg.location(36,55);
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:36:55: ( stmt )*
+            dbg.location(33,55);
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:33:55: ( stmt )*
             try { dbg.enterSubRule(11);
 
             loop11:
@@ -1428,7 +1433,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                 int LA11_0 = input.LA(1);
 
-                if ( (LA11_0==BREAK_T||(LA11_0 >= FLOAT && LA11_0 <= FOREACH_T)||(LA11_0 >= ID && LA11_0 <= INT)||LA11_0==NOT||LA11_0==STRING||LA11_0==TIME||LA11_0==38||LA11_0==46||LA11_0==50) ) {
+                if ( (LA11_0==BREAK_T||(LA11_0 >= FLOAT && LA11_0 <= FOREACH_T)||(LA11_0 >= ID && LA11_0 <= INT)||LA11_0==NOT||LA11_0==STRING||LA11_0==TIME||LA11_0==38||LA11_0==46||LA11_0==55) ) {
                     alt11=1;
                 }
 
@@ -1439,10 +1444,10 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    dbg.enterAlt(1);
 
-            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:36:56: stmt
+            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:33:56: stmt
             	    {
-            	    dbg.location(36,56);
-            	    pushFollow(FOLLOW_stmt_in_iteration_stmt191);
+            	    dbg.location(33,56);
+            	    pushFollow(FOLLOW_stmt_in_iteration_stmt187);
             	    stmt44=stmt();
 
             	    state._fsp--;
@@ -1458,8 +1463,8 @@ public TreeAdaptor getTreeAdaptor() {
             } while (true);
             } finally {dbg.exitSubRule(11);}
 
-            dbg.location(36,63);
-            char_literal45=(Token)match(input,53,FOLLOW_53_in_iteration_stmt195); 
+            dbg.location(33,63);
+            char_literal45=(Token)match(input,58,FOLLOW_58_in_iteration_stmt191); 
             char_literal45_tree = 
             (Object)adaptor.create(char_literal45)
             ;
@@ -1485,7 +1490,7 @@ public TreeAdaptor getTreeAdaptor() {
         finally {
         	// do for sure before leaving
         }
-        dbg.location(37, 1);
+        dbg.location(34, 1);
 
         }
         finally {
@@ -1506,7 +1511,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "jump_stmt"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:38:1: jump_stmt : BREAK_T ;
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:35:1: jump_stmt : BREAK_T ;
     public final chronos_antlrParser.jump_stmt_return jump_stmt() throws RecognitionException {
         chronos_antlrParser.jump_stmt_return retval = new chronos_antlrParser.jump_stmt_return();
         retval.start = input.LT(1);
@@ -1521,19 +1526,19 @@ public TreeAdaptor getTreeAdaptor() {
         try { dbg.enterRule(getGrammarFileName(), "jump_stmt");
         if ( getRuleLevel()==0 ) {dbg.commence();}
         incRuleLevel();
-        dbg.location(38, 0);
+        dbg.location(35, 0);
 
         try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:39:2: ( BREAK_T )
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:36:2: ( BREAK_T )
             dbg.enterAlt(1);
 
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:39:4: BREAK_T
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:36:4: BREAK_T
             {
             root_0 = (Object)adaptor.nil();
 
 
-            dbg.location(39,4);
-            BREAK_T46=(Token)match(input,BREAK_T,FOLLOW_BREAK_T_in_jump_stmt206); 
+            dbg.location(36,4);
+            BREAK_T46=(Token)match(input,BREAK_T,FOLLOW_BREAK_T_in_jump_stmt202); 
             BREAK_T46_tree = 
             (Object)adaptor.create(BREAK_T46)
             ;
@@ -1559,7 +1564,7 @@ public TreeAdaptor getTreeAdaptor() {
         finally {
         	// do for sure before leaving
         }
-        dbg.location(40, 1);
+        dbg.location(37, 1);
 
         }
         finally {
@@ -1580,7 +1585,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "expr"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:41:1: expr : ( cond_term ( OR cond_term )* | ID '=' ^ expr );
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:38:1: expr : ( cond_term ( OR cond_term )* | ID '=' ^ expr );
     public final chronos_antlrParser.expr_return expr() throws RecognitionException {
         chronos_antlrParser.expr_return retval = new chronos_antlrParser.expr_return();
         retval.start = input.LT(1);
@@ -1605,22 +1610,22 @@ public TreeAdaptor getTreeAdaptor() {
         try { dbg.enterRule(getGrammarFileName(), "expr");
         if ( getRuleLevel()==0 ) {dbg.commence();}
         incRuleLevel();
-        dbg.location(41, 0);
+        dbg.location(38, 0);
 
         try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:42:2: ( cond_term ( OR cond_term )* | ID '=' ^ expr )
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:39:2: ( cond_term ( OR cond_term )* | ID '=' ^ expr )
             int alt13=2;
             try { dbg.enterDecision(13, decisionCanBacktrack[13]);
 
             int LA13_0 = input.LA(1);
 
-            if ( (LA13_0==FLOAT||LA13_0==INT||LA13_0==NOT||LA13_0==STRING||LA13_0==TIME||LA13_0==38||LA13_0==50) ) {
+            if ( (LA13_0==FLOAT||LA13_0==INT||LA13_0==NOT||LA13_0==STRING||LA13_0==TIME||LA13_0==38||LA13_0==55) ) {
                 alt13=1;
             }
             else if ( (LA13_0==ID) ) {
                 int LA13_2 = input.LA(2);
 
-                if ( (LA13_2==AND||LA13_2==EQ||LA13_2==GEQ||(LA13_2 >= LEQ && LA13_2 <= NEQ)||LA13_2==OR||(LA13_2 >= 38 && LA13_2 <= 47)||LA13_2==49||LA13_2==52) ) {
+                if ( (LA13_2==AND||LA13_2==EQ||LA13_2==GEQ||(LA13_2 >= LEQ && LA13_2 <= NEQ)||LA13_2==OR||(LA13_2 >= 38 && LA13_2 <= 47)||LA13_2==49||LA13_2==57) ) {
                     alt13=1;
                 }
                 else if ( (LA13_2==48) ) {
@@ -1649,20 +1654,20 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     dbg.enterAlt(1);
 
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:42:4: cond_term ( OR cond_term )*
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:39:4: cond_term ( OR cond_term )*
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    dbg.location(42,4);
-                    pushFollow(FOLLOW_cond_term_in_expr216);
+                    dbg.location(39,4);
+                    pushFollow(FOLLOW_cond_term_in_expr212);
                     cond_term47=cond_term();
 
                     state._fsp--;
 
                     adaptor.addChild(root_0, cond_term47.getTree());
-                    dbg.location(42,14);
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:42:14: ( OR cond_term )*
+                    dbg.location(39,14);
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:39:14: ( OR cond_term )*
                     try { dbg.enterSubRule(12);
 
                     loop12:
@@ -1683,17 +1688,17 @@ public TreeAdaptor getTreeAdaptor() {
                     	case 1 :
                     	    dbg.enterAlt(1);
 
-                    	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:42:15: OR cond_term
+                    	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:39:15: OR cond_term
                     	    {
-                    	    dbg.location(42,15);
-                    	    OR48=(Token)match(input,OR,FOLLOW_OR_in_expr219); 
+                    	    dbg.location(39,15);
+                    	    OR48=(Token)match(input,OR,FOLLOW_OR_in_expr215); 
                     	    OR48_tree = 
                     	    (Object)adaptor.create(OR48)
                     	    ;
                     	    adaptor.addChild(root_0, OR48_tree);
 
-                    	    dbg.location(42,18);
-                    	    pushFollow(FOLLOW_cond_term_in_expr221);
+                    	    dbg.location(39,18);
+                    	    pushFollow(FOLLOW_cond_term_in_expr217);
                     	    cond_term49=cond_term();
 
                     	    state._fsp--;
@@ -1715,27 +1720,27 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     dbg.enterAlt(2);
 
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:43:4: ID '=' ^ expr
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:40:4: ID '=' ^ expr
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    dbg.location(43,4);
-                    ID50=(Token)match(input,ID,FOLLOW_ID_in_expr228); 
+                    dbg.location(40,4);
+                    ID50=(Token)match(input,ID,FOLLOW_ID_in_expr224); 
                     ID50_tree = 
                     (Object)adaptor.create(ID50)
                     ;
                     adaptor.addChild(root_0, ID50_tree);
 
-                    dbg.location(43,10);
-                    char_literal51=(Token)match(input,48,FOLLOW_48_in_expr230); 
+                    dbg.location(40,10);
+                    char_literal51=(Token)match(input,48,FOLLOW_48_in_expr226); 
                     char_literal51_tree = 
                     (Object)adaptor.create(char_literal51)
                     ;
                     root_0 = (Object)adaptor.becomeRoot(char_literal51_tree, root_0);
 
-                    dbg.location(43,12);
-                    pushFollow(FOLLOW_expr_in_expr233);
+                    dbg.location(40,12);
+                    pushFollow(FOLLOW_expr_in_expr229);
                     expr52=expr();
 
                     state._fsp--;
@@ -1763,7 +1768,7 @@ public TreeAdaptor getTreeAdaptor() {
         finally {
         	// do for sure before leaving
         }
-        dbg.location(44, 1);
+        dbg.location(41, 1);
 
         }
         finally {
@@ -1784,7 +1789,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "cond_term"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:45:1: cond_term : equiv_expr ( AND equiv_expr )* ;
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:42:1: cond_term : equiv_expr ( AND ^ equiv_expr )* ;
     public final chronos_antlrParser.cond_term_return cond_term() throws RecognitionException {
         chronos_antlrParser.cond_term_return retval = new chronos_antlrParser.cond_term_return();
         retval.start = input.LT(1);
@@ -1803,26 +1808,26 @@ public TreeAdaptor getTreeAdaptor() {
         try { dbg.enterRule(getGrammarFileName(), "cond_term");
         if ( getRuleLevel()==0 ) {dbg.commence();}
         incRuleLevel();
-        dbg.location(45, 0);
+        dbg.location(42, 0);
 
         try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:46:2: ( equiv_expr ( AND equiv_expr )* )
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:43:2: ( equiv_expr ( AND ^ equiv_expr )* )
             dbg.enterAlt(1);
 
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:46:4: equiv_expr ( AND equiv_expr )*
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:43:4: equiv_expr ( AND ^ equiv_expr )*
             {
             root_0 = (Object)adaptor.nil();
 
 
-            dbg.location(46,4);
-            pushFollow(FOLLOW_equiv_expr_in_cond_term243);
+            dbg.location(43,4);
+            pushFollow(FOLLOW_equiv_expr_in_cond_term239);
             equiv_expr53=equiv_expr();
 
             state._fsp--;
 
             adaptor.addChild(root_0, equiv_expr53.getTree());
-            dbg.location(46,15);
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:46:15: ( AND equiv_expr )*
+            dbg.location(43,15);
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:43:15: ( AND ^ equiv_expr )*
             try { dbg.enterSubRule(14);
 
             loop14:
@@ -1843,17 +1848,17 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    dbg.enterAlt(1);
 
-            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:46:16: AND equiv_expr
+            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:43:16: AND ^ equiv_expr
             	    {
-            	    dbg.location(46,16);
-            	    AND54=(Token)match(input,AND,FOLLOW_AND_in_cond_term246); 
+            	    dbg.location(43,19);
+            	    AND54=(Token)match(input,AND,FOLLOW_AND_in_cond_term242); 
             	    AND54_tree = 
             	    (Object)adaptor.create(AND54)
             	    ;
-            	    adaptor.addChild(root_0, AND54_tree);
+            	    root_0 = (Object)adaptor.becomeRoot(AND54_tree, root_0);
 
-            	    dbg.location(46,20);
-            	    pushFollow(FOLLOW_equiv_expr_in_cond_term248);
+            	    dbg.location(43,21);
+            	    pushFollow(FOLLOW_equiv_expr_in_cond_term245);
             	    equiv_expr55=equiv_expr();
 
             	    state._fsp--;
@@ -1889,7 +1894,7 @@ public TreeAdaptor getTreeAdaptor() {
         finally {
         	// do for sure before leaving
         }
-        dbg.location(47, 1);
+        dbg.location(44, 1);
 
         }
         finally {
@@ -1910,7 +1915,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "equiv_expr"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:48:1: equiv_expr : rel_expr ( ( EQ | NEQ ) rel_expr )* ;
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:45:1: equiv_expr : rel_expr ( ( EQ ^| NEQ ^) rel_expr )* ;
     public final chronos_antlrParser.equiv_expr_return equiv_expr() throws RecognitionException {
         chronos_antlrParser.equiv_expr_return retval = new chronos_antlrParser.equiv_expr_return();
         retval.start = input.LT(1);
@@ -1918,91 +1923,136 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token set57=null;
+        Token EQ57=null;
+        Token NEQ58=null;
         chronos_antlrParser.rel_expr_return rel_expr56 =null;
 
-        chronos_antlrParser.rel_expr_return rel_expr58 =null;
+        chronos_antlrParser.rel_expr_return rel_expr59 =null;
 
 
-        Object set57_tree=null;
+        Object EQ57_tree=null;
+        Object NEQ58_tree=null;
 
         try { dbg.enterRule(getGrammarFileName(), "equiv_expr");
         if ( getRuleLevel()==0 ) {dbg.commence();}
         incRuleLevel();
-        dbg.location(48, 0);
+        dbg.location(45, 0);
 
         try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:49:2: ( rel_expr ( ( EQ | NEQ ) rel_expr )* )
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:46:2: ( rel_expr ( ( EQ ^| NEQ ^) rel_expr )* )
             dbg.enterAlt(1);
 
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:49:4: rel_expr ( ( EQ | NEQ ) rel_expr )*
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:46:4: rel_expr ( ( EQ ^| NEQ ^) rel_expr )*
             {
             root_0 = (Object)adaptor.nil();
 
 
-            dbg.location(49,4);
-            pushFollow(FOLLOW_rel_expr_in_equiv_expr260);
+            dbg.location(46,4);
+            pushFollow(FOLLOW_rel_expr_in_equiv_expr257);
             rel_expr56=rel_expr();
 
             state._fsp--;
 
             adaptor.addChild(root_0, rel_expr56.getTree());
-            dbg.location(49,13);
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:49:13: ( ( EQ | NEQ ) rel_expr )*
-            try { dbg.enterSubRule(15);
+            dbg.location(46,13);
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:46:13: ( ( EQ ^| NEQ ^) rel_expr )*
+            try { dbg.enterSubRule(16);
 
-            loop15:
+            loop16:
             do {
-                int alt15=2;
-                try { dbg.enterDecision(15, decisionCanBacktrack[15]);
+                int alt16=2;
+                try { dbg.enterDecision(16, decisionCanBacktrack[16]);
 
-                int LA15_0 = input.LA(1);
+                int LA16_0 = input.LA(1);
 
-                if ( (LA15_0==EQ||LA15_0==NEQ) ) {
-                    alt15=1;
+                if ( (LA16_0==EQ||LA16_0==NEQ) ) {
+                    alt16=1;
                 }
 
 
-                } finally {dbg.exitDecision(15);}
+                } finally {dbg.exitDecision(16);}
 
-                switch (alt15) {
+                switch (alt16) {
             	case 1 :
             	    dbg.enterAlt(1);
 
-            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:49:15: ( EQ | NEQ ) rel_expr
+            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:46:15: ( EQ ^| NEQ ^) rel_expr
             	    {
-            	    dbg.location(49,15);
-            	    set57=(Token)input.LT(1);
+            	    dbg.location(46,15);
+            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:46:15: ( EQ ^| NEQ ^)
+            	    int alt15=2;
+            	    try { dbg.enterSubRule(15);
+            	    try { dbg.enterDecision(15, decisionCanBacktrack[15]);
 
-            	    if ( input.LA(1)==EQ||input.LA(1)==NEQ ) {
-            	        input.consume();
-            	        adaptor.addChild(root_0, 
-            	        (Object)adaptor.create(set57)
-            	        );
-            	        state.errorRecovery=false;
+            	    int LA15_0 = input.LA(1);
+
+            	    if ( (LA15_0==EQ) ) {
+            	        alt15=1;
+            	    }
+            	    else if ( (LA15_0==NEQ) ) {
+            	        alt15=2;
             	    }
             	    else {
-            	        MismatchedSetException mse = new MismatchedSetException(null,input);
-            	        dbg.recognitionException(mse);
-            	        throw mse;
-            	    }
+            	        NoViableAltException nvae =
+            	            new NoViableAltException("", 15, 0, input);
 
-            	    dbg.location(49,26);
-            	    pushFollow(FOLLOW_rel_expr_in_equiv_expr272);
-            	    rel_expr58=rel_expr();
+            	        dbg.recognitionException(nvae);
+            	        throw nvae;
+
+            	    }
+            	    } finally {dbg.exitDecision(15);}
+
+            	    switch (alt15) {
+            	        case 1 :
+            	            dbg.enterAlt(1);
+
+            	            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:46:16: EQ ^
+            	            {
+            	            dbg.location(46,18);
+            	            EQ57=(Token)match(input,EQ,FOLLOW_EQ_in_equiv_expr262); 
+            	            EQ57_tree = 
+            	            (Object)adaptor.create(EQ57)
+            	            ;
+            	            root_0 = (Object)adaptor.becomeRoot(EQ57_tree, root_0);
+
+
+            	            }
+            	            break;
+            	        case 2 :
+            	            dbg.enterAlt(2);
+
+            	            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:46:22: NEQ ^
+            	            {
+            	            dbg.location(46,25);
+            	            NEQ58=(Token)match(input,NEQ,FOLLOW_NEQ_in_equiv_expr267); 
+            	            NEQ58_tree = 
+            	            (Object)adaptor.create(NEQ58)
+            	            ;
+            	            root_0 = (Object)adaptor.becomeRoot(NEQ58_tree, root_0);
+
+
+            	            }
+            	            break;
+
+            	    }
+            	    } finally {dbg.exitSubRule(15);}
+
+            	    dbg.location(46,28);
+            	    pushFollow(FOLLOW_rel_expr_in_equiv_expr271);
+            	    rel_expr59=rel_expr();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, rel_expr58.getTree());
+            	    adaptor.addChild(root_0, rel_expr59.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop15;
+            	    break loop16;
                 }
             } while (true);
-            } finally {dbg.exitSubRule(15);}
+            } finally {dbg.exitSubRule(16);}
 
 
             }
@@ -2024,7 +2074,7 @@ public TreeAdaptor getTreeAdaptor() {
         finally {
         	// do for sure before leaving
         }
-        dbg.location(50, 1);
+        dbg.location(47, 1);
 
         }
         finally {
@@ -2045,7 +2095,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "rel_expr"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:51:1: rel_expr : ( math_expr ( ( '<' | '>' | GEQ | LEQ ) math_expr )* | datetime );
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:48:1: rel_expr : ( math_expr ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )* | datetime );
     public final chronos_antlrParser.rel_expr_return rel_expr() throws RecognitionException {
         chronos_antlrParser.rel_expr_return retval = new chronos_antlrParser.rel_expr_return();
         retval.start = input.LT(1);
@@ -2053,116 +2103,209 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token set60=null;
-        chronos_antlrParser.math_expr_return math_expr59 =null;
+        Token char_literal61=null;
+        Token char_literal62=null;
+        Token GEQ63=null;
+        Token LEQ64=null;
+        chronos_antlrParser.math_expr_return math_expr60 =null;
 
-        chronos_antlrParser.math_expr_return math_expr61 =null;
+        chronos_antlrParser.math_expr_return math_expr65 =null;
 
-        chronos_antlrParser.datetime_return datetime62 =null;
+        chronos_antlrParser.datetime_return datetime66 =null;
 
 
-        Object set60_tree=null;
+        Object char_literal61_tree=null;
+        Object char_literal62_tree=null;
+        Object GEQ63_tree=null;
+        Object LEQ64_tree=null;
 
         try { dbg.enterRule(getGrammarFileName(), "rel_expr");
         if ( getRuleLevel()==0 ) {dbg.commence();}
         incRuleLevel();
-        dbg.location(51, 0);
+        dbg.location(48, 0);
 
         try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:52:2: ( math_expr ( ( '<' | '>' | GEQ | LEQ ) math_expr )* | datetime )
-            int alt17=2;
-            try { dbg.enterDecision(17, decisionCanBacktrack[17]);
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:49:2: ( math_expr ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )* | datetime )
+            int alt19=2;
+            try { dbg.enterDecision(19, decisionCanBacktrack[19]);
 
-            int LA17_0 = input.LA(1);
+            int LA19_0 = input.LA(1);
 
-            if ( (LA17_0==FLOAT||LA17_0==ID||LA17_0==INT||LA17_0==NOT||LA17_0==STRING||LA17_0==TIME||LA17_0==38) ) {
-                alt17=1;
+            if ( (LA19_0==FLOAT||LA19_0==ID||LA19_0==INT||LA19_0==NOT||LA19_0==STRING||LA19_0==TIME||LA19_0==38) ) {
+                alt19=1;
             }
-            else if ( (LA17_0==50) ) {
-                alt17=2;
+            else if ( (LA19_0==55) ) {
+                alt19=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 17, 0, input);
+                    new NoViableAltException("", 19, 0, input);
 
                 dbg.recognitionException(nvae);
                 throw nvae;
 
             }
-            } finally {dbg.exitDecision(17);}
+            } finally {dbg.exitDecision(19);}
 
-            switch (alt17) {
+            switch (alt19) {
                 case 1 :
                     dbg.enterAlt(1);
 
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:52:4: math_expr ( ( '<' | '>' | GEQ | LEQ ) math_expr )*
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:49:4: math_expr ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )*
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    dbg.location(52,4);
-                    pushFollow(FOLLOW_math_expr_in_rel_expr285);
-                    math_expr59=math_expr();
+                    dbg.location(49,4);
+                    pushFollow(FOLLOW_math_expr_in_rel_expr284);
+                    math_expr60=math_expr();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, math_expr59.getTree());
-                    dbg.location(52,14);
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:52:14: ( ( '<' | '>' | GEQ | LEQ ) math_expr )*
-                    try { dbg.enterSubRule(16);
+                    adaptor.addChild(root_0, math_expr60.getTree());
+                    dbg.location(49,14);
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:49:14: ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )*
+                    try { dbg.enterSubRule(18);
 
-                    loop16:
+                    loop18:
                     do {
-                        int alt16=2;
-                        try { dbg.enterDecision(16, decisionCanBacktrack[16]);
+                        int alt18=2;
+                        try { dbg.enterDecision(18, decisionCanBacktrack[18]);
 
-                        int LA16_0 = input.LA(1);
+                        int LA18_0 = input.LA(1);
 
-                        if ( (LA16_0==GEQ||LA16_0==LEQ||LA16_0==47||LA16_0==49) ) {
-                            alt16=1;
+                        if ( (LA18_0==GEQ||LA18_0==LEQ||LA18_0==47||LA18_0==49) ) {
+                            alt18=1;
                         }
 
 
-                        } finally {dbg.exitDecision(16);}
+                        } finally {dbg.exitDecision(18);}
 
-                        switch (alt16) {
+                        switch (alt18) {
                     	case 1 :
                     	    dbg.enterAlt(1);
 
-                    	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:52:16: ( '<' | '>' | GEQ | LEQ ) math_expr
+                    	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:49:16: ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr
                     	    {
-                    	    dbg.location(52,16);
-                    	    set60=(Token)input.LT(1);
+                    	    dbg.location(49,16);
+                    	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:49:16: ( '<' ^| '>' ^| GEQ ^| LEQ ^)
+                    	    int alt17=4;
+                    	    try { dbg.enterSubRule(17);
+                    	    try { dbg.enterDecision(17, decisionCanBacktrack[17]);
 
-                    	    if ( input.LA(1)==GEQ||input.LA(1)==LEQ||input.LA(1)==47||input.LA(1)==49 ) {
-                    	        input.consume();
-                    	        adaptor.addChild(root_0, 
-                    	        (Object)adaptor.create(set60)
-                    	        );
-                    	        state.errorRecovery=false;
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        dbg.recognitionException(mse);
-                    	        throw mse;
+                    	    switch ( input.LA(1) ) {
+                    	    case 47:
+                    	        {
+                    	        alt17=1;
+                    	        }
+                    	        break;
+                    	    case 49:
+                    	        {
+                    	        alt17=2;
+                    	        }
+                    	        break;
+                    	    case GEQ:
+                    	        {
+                    	        alt17=3;
+                    	        }
+                    	        break;
+                    	    case LEQ:
+                    	        {
+                    	        alt17=4;
+                    	        }
+                    	        break;
+                    	    default:
+                    	        NoViableAltException nvae =
+                    	            new NoViableAltException("", 17, 0, input);
+
+                    	        dbg.recognitionException(nvae);
+                    	        throw nvae;
+
                     	    }
 
-                    	    dbg.location(52,40);
-                    	    pushFollow(FOLLOW_math_expr_in_rel_expr305);
-                    	    math_expr61=math_expr();
+                    	    } finally {dbg.exitDecision(17);}
+
+                    	    switch (alt17) {
+                    	        case 1 :
+                    	            dbg.enterAlt(1);
+
+                    	            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:49:17: '<' ^
+                    	            {
+                    	            dbg.location(49,20);
+                    	            char_literal61=(Token)match(input,47,FOLLOW_47_in_rel_expr289); 
+                    	            char_literal61_tree = 
+                    	            (Object)adaptor.create(char_literal61)
+                    	            ;
+                    	            root_0 = (Object)adaptor.becomeRoot(char_literal61_tree, root_0);
+
+
+                    	            }
+                    	            break;
+                    	        case 2 :
+                    	            dbg.enterAlt(2);
+
+                    	            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:49:24: '>' ^
+                    	            {
+                    	            dbg.location(49,27);
+                    	            char_literal62=(Token)match(input,49,FOLLOW_49_in_rel_expr294); 
+                    	            char_literal62_tree = 
+                    	            (Object)adaptor.create(char_literal62)
+                    	            ;
+                    	            root_0 = (Object)adaptor.becomeRoot(char_literal62_tree, root_0);
+
+
+                    	            }
+                    	            break;
+                    	        case 3 :
+                    	            dbg.enterAlt(3);
+
+                    	            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:49:31: GEQ ^
+                    	            {
+                    	            dbg.location(49,34);
+                    	            GEQ63=(Token)match(input,GEQ,FOLLOW_GEQ_in_rel_expr299); 
+                    	            GEQ63_tree = 
+                    	            (Object)adaptor.create(GEQ63)
+                    	            ;
+                    	            root_0 = (Object)adaptor.becomeRoot(GEQ63_tree, root_0);
+
+
+                    	            }
+                    	            break;
+                    	        case 4 :
+                    	            dbg.enterAlt(4);
+
+                    	            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:49:38: LEQ ^
+                    	            {
+                    	            dbg.location(49,41);
+                    	            LEQ64=(Token)match(input,LEQ,FOLLOW_LEQ_in_rel_expr304); 
+                    	            LEQ64_tree = 
+                    	            (Object)adaptor.create(LEQ64)
+                    	            ;
+                    	            root_0 = (Object)adaptor.becomeRoot(LEQ64_tree, root_0);
+
+
+                    	            }
+                    	            break;
+
+                    	    }
+                    	    } finally {dbg.exitSubRule(17);}
+
+                    	    dbg.location(49,44);
+                    	    pushFollow(FOLLOW_math_expr_in_rel_expr308);
+                    	    math_expr65=math_expr();
 
                     	    state._fsp--;
 
-                    	    adaptor.addChild(root_0, math_expr61.getTree());
+                    	    adaptor.addChild(root_0, math_expr65.getTree());
 
                     	    }
                     	    break;
 
                     	default :
-                    	    break loop16;
+                    	    break loop18;
                         }
                     } while (true);
-                    } finally {dbg.exitSubRule(16);}
+                    } finally {dbg.exitSubRule(18);}
 
 
                     }
@@ -2170,23 +2313,158 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     dbg.enterAlt(2);
 
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:53:4: datetime
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:50:4: datetime
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    dbg.location(53,4);
-                    pushFollow(FOLLOW_datetime_in_rel_expr313);
-                    datetime62=datetime();
+                    dbg.location(50,4);
+                    pushFollow(FOLLOW_datetime_in_rel_expr316);
+                    datetime66=datetime();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, datetime62.getTree());
+                    adaptor.addChild(root_0, datetime66.getTree());
 
                     }
                     break;
 
             }
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        dbg.location(51, 1);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "rel_expr");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
+        return retval;
+    }
+    // $ANTLR end "rel_expr"
+
+
+    public static class math_expr_return extends ParserRuleReturnScope {
+        Object tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "math_expr"
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:52:1: math_expr : math_term ( ( '+' | '-' ) math_term )* ;
+    public final chronos_antlrParser.math_expr_return math_expr() throws RecognitionException {
+        chronos_antlrParser.math_expr_return retval = new chronos_antlrParser.math_expr_return();
+        retval.start = input.LT(1);
+
+
+        Object root_0 = null;
+
+        Token set68=null;
+        chronos_antlrParser.math_term_return math_term67 =null;
+
+        chronos_antlrParser.math_term_return math_term69 =null;
+
+
+        Object set68_tree=null;
+
+        try { dbg.enterRule(getGrammarFileName(), "math_expr");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(52, 0);
+
+        try {
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:53:2: ( math_term ( ( '+' | '-' ) math_term )* )
+            dbg.enterAlt(1);
+
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:53:4: math_term ( ( '+' | '-' ) math_term )*
+            {
+            root_0 = (Object)adaptor.nil();
+
+
+            dbg.location(53,4);
+            pushFollow(FOLLOW_math_term_in_math_expr326);
+            math_term67=math_term();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, math_term67.getTree());
+            dbg.location(53,14);
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:53:14: ( ( '+' | '-' ) math_term )*
+            try { dbg.enterSubRule(20);
+
+            loop20:
+            do {
+                int alt20=2;
+                try { dbg.enterDecision(20, decisionCanBacktrack[20]);
+
+                int LA20_0 = input.LA(1);
+
+                if ( (LA20_0==41||LA20_0==43) ) {
+                    alt20=1;
+                }
+
+
+                } finally {dbg.exitDecision(20);}
+
+                switch (alt20) {
+            	case 1 :
+            	    dbg.enterAlt(1);
+
+            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:53:16: ( '+' | '-' ) math_term
+            	    {
+            	    dbg.location(53,16);
+            	    set68=(Token)input.LT(1);
+
+            	    if ( input.LA(1)==41||input.LA(1)==43 ) {
+            	        input.consume();
+            	        adaptor.addChild(root_0, 
+            	        (Object)adaptor.create(set68)
+            	        );
+            	        state.errorRecovery=false;
+            	    }
+            	    else {
+            	        MismatchedSetException mse = new MismatchedSetException(null,input);
+            	        dbg.recognitionException(mse);
+            	        throw mse;
+            	    }
+
+            	    dbg.location(53,28);
+            	    pushFollow(FOLLOW_math_term_in_math_expr338);
+            	    math_term69=math_term();
+
+            	    state._fsp--;
+
+            	    adaptor.addChild(root_0, math_term69.getTree());
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop20;
+                }
+            } while (true);
+            } finally {dbg.exitSubRule(20);}
+
+
+            }
+
             retval.stop = input.LT(-1);
 
 
@@ -2208,91 +2486,91 @@ public TreeAdaptor getTreeAdaptor() {
 
         }
         finally {
-            dbg.exitRule(getGrammarFileName(), "rel_expr");
+            dbg.exitRule(getGrammarFileName(), "math_expr");
             decRuleLevel();
             if ( getRuleLevel()==0 ) {dbg.terminate();}
         }
 
         return retval;
     }
-    // $ANTLR end "rel_expr"
+    // $ANTLR end "math_expr"
 
 
-    public static class math_expr_return extends ParserRuleReturnScope {
+    public static class math_term_return extends ParserRuleReturnScope {
         Object tree;
         public Object getTree() { return tree; }
     };
 
 
-    // $ANTLR start "math_expr"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:55:1: math_expr : math_term ( ( '+' | '-' ) math_term )* ;
-    public final chronos_antlrParser.math_expr_return math_expr() throws RecognitionException {
-        chronos_antlrParser.math_expr_return retval = new chronos_antlrParser.math_expr_return();
+    // $ANTLR start "math_term"
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:55:1: math_term : unary_expr ( ( '*' | '/' ) unary_expr )* ;
+    public final chronos_antlrParser.math_term_return math_term() throws RecognitionException {
+        chronos_antlrParser.math_term_return retval = new chronos_antlrParser.math_term_return();
         retval.start = input.LT(1);
 
 
         Object root_0 = null;
 
-        Token set64=null;
-        chronos_antlrParser.math_term_return math_term63 =null;
+        Token set71=null;
+        chronos_antlrParser.unary_expr_return unary_expr70 =null;
 
-        chronos_antlrParser.math_term_return math_term65 =null;
+        chronos_antlrParser.unary_expr_return unary_expr72 =null;
 
 
-        Object set64_tree=null;
+        Object set71_tree=null;
 
-        try { dbg.enterRule(getGrammarFileName(), "math_expr");
+        try { dbg.enterRule(getGrammarFileName(), "math_term");
         if ( getRuleLevel()==0 ) {dbg.commence();}
         incRuleLevel();
         dbg.location(55, 0);
 
         try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:56:2: ( math_term ( ( '+' | '-' ) math_term )* )
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:56:2: ( unary_expr ( ( '*' | '/' ) unary_expr )* )
             dbg.enterAlt(1);
 
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:56:4: math_term ( ( '+' | '-' ) math_term )*
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:56:4: unary_expr ( ( '*' | '/' ) unary_expr )*
             {
             root_0 = (Object)adaptor.nil();
 
 
             dbg.location(56,4);
-            pushFollow(FOLLOW_math_term_in_math_expr323);
-            math_term63=math_term();
+            pushFollow(FOLLOW_unary_expr_in_math_term351);
+            unary_expr70=unary_expr();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, math_term63.getTree());
-            dbg.location(56,14);
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:56:14: ( ( '+' | '-' ) math_term )*
-            try { dbg.enterSubRule(18);
+            adaptor.addChild(root_0, unary_expr70.getTree());
+            dbg.location(56,15);
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:56:15: ( ( '*' | '/' ) unary_expr )*
+            try { dbg.enterSubRule(21);
 
-            loop18:
+            loop21:
             do {
-                int alt18=2;
-                try { dbg.enterDecision(18, decisionCanBacktrack[18]);
+                int alt21=2;
+                try { dbg.enterDecision(21, decisionCanBacktrack[21]);
 
-                int LA18_0 = input.LA(1);
+                int LA21_0 = input.LA(1);
 
-                if ( (LA18_0==41||LA18_0==43) ) {
-                    alt18=1;
+                if ( (LA21_0==40||LA21_0==45) ) {
+                    alt21=1;
                 }
 
 
-                } finally {dbg.exitDecision(18);}
+                } finally {dbg.exitDecision(21);}
 
-                switch (alt18) {
+                switch (alt21) {
             	case 1 :
             	    dbg.enterAlt(1);
 
-            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:56:16: ( '+' | '-' ) math_term
+            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:56:17: ( '*' | '/' ) unary_expr
             	    {
-            	    dbg.location(56,16);
-            	    set64=(Token)input.LT(1);
+            	    dbg.location(56,17);
+            	    set71=(Token)input.LT(1);
 
-            	    if ( input.LA(1)==41||input.LA(1)==43 ) {
+            	    if ( input.LA(1)==40||input.LA(1)==45 ) {
             	        input.consume();
             	        adaptor.addChild(root_0, 
-            	        (Object)adaptor.create(set64)
+            	        (Object)adaptor.create(set71)
             	        );
             	        state.errorRecovery=false;
             	    }
@@ -2302,22 +2580,22 @@ public TreeAdaptor getTreeAdaptor() {
             	        throw mse;
             	    }
 
-            	    dbg.location(56,28);
-            	    pushFollow(FOLLOW_math_term_in_math_expr335);
-            	    math_term65=math_term();
+            	    dbg.location(56,29);
+            	    pushFollow(FOLLOW_unary_expr_in_math_term363);
+            	    unary_expr72=unary_expr();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, math_term65.getTree());
+            	    adaptor.addChild(root_0, unary_expr72.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop18;
+            	    break loop21;
                 }
             } while (true);
-            } finally {dbg.exitSubRule(18);}
+            } finally {dbg.exitSubRule(21);}
 
 
             }
@@ -2339,121 +2617,103 @@ public TreeAdaptor getTreeAdaptor() {
         finally {
         	// do for sure before leaving
         }
-        dbg.location(57, 1);
+        dbg.location(58, 1);
 
         }
         finally {
-            dbg.exitRule(getGrammarFileName(), "math_expr");
+            dbg.exitRule(getGrammarFileName(), "math_term");
             decRuleLevel();
             if ( getRuleLevel()==0 ) {dbg.terminate();}
         }
 
         return retval;
     }
-    // $ANTLR end "math_expr"
+    // $ANTLR end "math_term"
 
 
-    public static class math_term_return extends ParserRuleReturnScope {
+    public static class unary_expr_return extends ParserRuleReturnScope {
         Object tree;
         public Object getTree() { return tree; }
     };
 
 
-    // $ANTLR start "math_term"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:58:1: math_term : unary_expr ( ( '*' | '/' ) unary_expr )* ;
-    public final chronos_antlrParser.math_term_return math_term() throws RecognitionException {
-        chronos_antlrParser.math_term_return retval = new chronos_antlrParser.math_term_return();
+    // $ANTLR start "unary_expr"
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:59:1: unary_expr : ( NOT )* postfix_expr ;
+    public final chronos_antlrParser.unary_expr_return unary_expr() throws RecognitionException {
+        chronos_antlrParser.unary_expr_return retval = new chronos_antlrParser.unary_expr_return();
         retval.start = input.LT(1);
 
 
         Object root_0 = null;
 
-        Token set67=null;
-        chronos_antlrParser.unary_expr_return unary_expr66 =null;
-
-        chronos_antlrParser.unary_expr_return unary_expr68 =null;
+        Token NOT73=null;
+        chronos_antlrParser.postfix_expr_return postfix_expr74 =null;
 
 
-        Object set67_tree=null;
+        Object NOT73_tree=null;
 
-        try { dbg.enterRule(getGrammarFileName(), "math_term");
+        try { dbg.enterRule(getGrammarFileName(), "unary_expr");
         if ( getRuleLevel()==0 ) {dbg.commence();}
         incRuleLevel();
-        dbg.location(58, 0);
+        dbg.location(59, 0);
 
         try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:59:2: ( unary_expr ( ( '*' | '/' ) unary_expr )* )
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:60:2: ( ( NOT )* postfix_expr )
             dbg.enterAlt(1);
 
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:59:4: unary_expr ( ( '*' | '/' ) unary_expr )*
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:60:4: ( NOT )* postfix_expr
             {
             root_0 = (Object)adaptor.nil();
 
 
-            dbg.location(59,4);
-            pushFollow(FOLLOW_unary_expr_in_math_term348);
-            unary_expr66=unary_expr();
+            dbg.location(60,4);
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:60:4: ( NOT )*
+            try { dbg.enterSubRule(22);
 
-            state._fsp--;
-
-            adaptor.addChild(root_0, unary_expr66.getTree());
-            dbg.location(59,15);
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:59:15: ( ( '*' | '/' ) unary_expr )*
-            try { dbg.enterSubRule(19);
-
-            loop19:
+            loop22:
             do {
-                int alt19=2;
-                try { dbg.enterDecision(19, decisionCanBacktrack[19]);
+                int alt22=2;
+                try { dbg.enterDecision(22, decisionCanBacktrack[22]);
 
-                int LA19_0 = input.LA(1);
+                int LA22_0 = input.LA(1);
 
-                if ( (LA19_0==40||LA19_0==45) ) {
-                    alt19=1;
+                if ( (LA22_0==NOT) ) {
+                    alt22=1;
                 }
 
 
-                } finally {dbg.exitDecision(19);}
+                } finally {dbg.exitDecision(22);}
 
-                switch (alt19) {
+                switch (alt22) {
             	case 1 :
             	    dbg.enterAlt(1);
 
-            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:59:17: ( '*' | '/' ) unary_expr
+            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:60:5: NOT
             	    {
-            	    dbg.location(59,17);
-            	    set67=(Token)input.LT(1);
+            	    dbg.location(60,5);
+            	    NOT73=(Token)match(input,NOT,FOLLOW_NOT_in_unary_expr379); 
+            	    NOT73_tree = 
+            	    (Object)adaptor.create(NOT73)
+            	    ;
+            	    adaptor.addChild(root_0, NOT73_tree);
 
-            	    if ( input.LA(1)==40||input.LA(1)==45 ) {
-            	        input.consume();
-            	        adaptor.addChild(root_0, 
-            	        (Object)adaptor.create(set67)
-            	        );
-            	        state.errorRecovery=false;
-            	    }
-            	    else {
-            	        MismatchedSetException mse = new MismatchedSetException(null,input);
-            	        dbg.recognitionException(mse);
-            	        throw mse;
-            	    }
-
-            	    dbg.location(59,29);
-            	    pushFollow(FOLLOW_unary_expr_in_math_term360);
-            	    unary_expr68=unary_expr();
-
-            	    state._fsp--;
-
-            	    adaptor.addChild(root_0, unary_expr68.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop19;
+            	    break loop22;
                 }
             } while (true);
-            } finally {dbg.exitSubRule(19);}
+            } finally {dbg.exitSubRule(22);}
 
+            dbg.location(60,11);
+            pushFollow(FOLLOW_postfix_expr_in_unary_expr383);
+            postfix_expr74=postfix_expr();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, postfix_expr74.getTree());
 
             }
 
@@ -2478,123 +2738,6 @@ public TreeAdaptor getTreeAdaptor() {
 
         }
         finally {
-            dbg.exitRule(getGrammarFileName(), "math_term");
-            decRuleLevel();
-            if ( getRuleLevel()==0 ) {dbg.terminate();}
-        }
-
-        return retval;
-    }
-    // $ANTLR end "math_term"
-
-
-    public static class unary_expr_return extends ParserRuleReturnScope {
-        Object tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "unary_expr"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:62:1: unary_expr : ( NOT )* postfix_expr ;
-    public final chronos_antlrParser.unary_expr_return unary_expr() throws RecognitionException {
-        chronos_antlrParser.unary_expr_return retval = new chronos_antlrParser.unary_expr_return();
-        retval.start = input.LT(1);
-
-
-        Object root_0 = null;
-
-        Token NOT69=null;
-        chronos_antlrParser.postfix_expr_return postfix_expr70 =null;
-
-
-        Object NOT69_tree=null;
-
-        try { dbg.enterRule(getGrammarFileName(), "unary_expr");
-        if ( getRuleLevel()==0 ) {dbg.commence();}
-        incRuleLevel();
-        dbg.location(62, 0);
-
-        try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:63:2: ( ( NOT )* postfix_expr )
-            dbg.enterAlt(1);
-
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:63:4: ( NOT )* postfix_expr
-            {
-            root_0 = (Object)adaptor.nil();
-
-
-            dbg.location(63,4);
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:63:4: ( NOT )*
-            try { dbg.enterSubRule(20);
-
-            loop20:
-            do {
-                int alt20=2;
-                try { dbg.enterDecision(20, decisionCanBacktrack[20]);
-
-                int LA20_0 = input.LA(1);
-
-                if ( (LA20_0==NOT) ) {
-                    alt20=1;
-                }
-
-
-                } finally {dbg.exitDecision(20);}
-
-                switch (alt20) {
-            	case 1 :
-            	    dbg.enterAlt(1);
-
-            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:63:5: NOT
-            	    {
-            	    dbg.location(63,5);
-            	    NOT69=(Token)match(input,NOT,FOLLOW_NOT_in_unary_expr376); 
-            	    NOT69_tree = 
-            	    (Object)adaptor.create(NOT69)
-            	    ;
-            	    adaptor.addChild(root_0, NOT69_tree);
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop20;
-                }
-            } while (true);
-            } finally {dbg.exitSubRule(20);}
-
-            dbg.location(63,11);
-            pushFollow(FOLLOW_postfix_expr_in_unary_expr380);
-            postfix_expr70=postfix_expr();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, postfix_expr70.getTree());
-
-            }
-
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        dbg.location(65, 1);
-
-        }
-        finally {
             dbg.exitRule(getGrammarFileName(), "unary_expr");
             decRuleLevel();
             if ( getRuleLevel()==0 ) {dbg.terminate();}
@@ -2612,7 +2755,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "postfix_expr"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:66:1: postfix_expr : ( ID '.' )? primary_expr ( '(' ( argument_expr_list )? ')' )? ;
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:62:1: postfix_expr : ( ID '.' !)? primary_expr ( '(' ( argument_expr_list )? ')' )? ;
     public final chronos_antlrParser.postfix_expr_return postfix_expr() throws RecognitionException {
         chronos_antlrParser.postfix_expr_return retval = new chronos_antlrParser.postfix_expr_return();
         retval.start = input.LT(1);
@@ -2620,95 +2763,48 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token ID71=null;
-        Token char_literal72=null;
-        Token char_literal74=null;
+        Token ID75=null;
         Token char_literal76=null;
-        chronos_antlrParser.primary_expr_return primary_expr73 =null;
+        Token char_literal78=null;
+        Token char_literal80=null;
+        chronos_antlrParser.primary_expr_return primary_expr77 =null;
 
-        chronos_antlrParser.argument_expr_list_return argument_expr_list75 =null;
+        chronos_antlrParser.argument_expr_list_return argument_expr_list79 =null;
 
 
-        Object ID71_tree=null;
-        Object char_literal72_tree=null;
-        Object char_literal74_tree=null;
+        Object ID75_tree=null;
         Object char_literal76_tree=null;
+        Object char_literal78_tree=null;
+        Object char_literal80_tree=null;
 
         try { dbg.enterRule(getGrammarFileName(), "postfix_expr");
         if ( getRuleLevel()==0 ) {dbg.commence();}
         incRuleLevel();
-        dbg.location(66, 0);
+        dbg.location(62, 0);
 
         try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:67:2: ( ( ID '.' )? primary_expr ( '(' ( argument_expr_list )? ')' )? )
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:63:2: ( ( ID '.' !)? primary_expr ( '(' ( argument_expr_list )? ')' )? )
             dbg.enterAlt(1);
 
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:68:6: ( ID '.' )? primary_expr ( '(' ( argument_expr_list )? ')' )?
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:63:4: ( ID '.' !)? primary_expr ( '(' ( argument_expr_list )? ')' )?
             {
             root_0 = (Object)adaptor.nil();
 
 
-            dbg.location(68,6);
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:68:6: ( ID '.' )?
-            int alt21=2;
-            try { dbg.enterSubRule(21);
-            try { dbg.enterDecision(21, decisionCanBacktrack[21]);
-
-            int LA21_0 = input.LA(1);
-
-            if ( (LA21_0==ID) ) {
-                int LA21_1 = input.LA(2);
-
-                if ( (LA21_1==44) ) {
-                    alt21=1;
-                }
-            }
-            } finally {dbg.exitDecision(21);}
-
-            switch (alt21) {
-                case 1 :
-                    dbg.enterAlt(1);
-
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:68:7: ID '.'
-                    {
-                    dbg.location(68,7);
-                    ID71=(Token)match(input,ID,FOLLOW_ID_in_postfix_expr394); 
-                    ID71_tree = 
-                    (Object)adaptor.create(ID71)
-                    ;
-                    adaptor.addChild(root_0, ID71_tree);
-
-                    dbg.location(68,10);
-                    char_literal72=(Token)match(input,44,FOLLOW_44_in_postfix_expr396); 
-                    char_literal72_tree = 
-                    (Object)adaptor.create(char_literal72)
-                    ;
-                    adaptor.addChild(root_0, char_literal72_tree);
-
-
-                    }
-                    break;
-
-            }
-            } finally {dbg.exitSubRule(21);}
-
-            dbg.location(68,16);
-            pushFollow(FOLLOW_primary_expr_in_postfix_expr400);
-            primary_expr73=primary_expr();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, primary_expr73.getTree());
-            dbg.location(68,29);
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:68:29: ( '(' ( argument_expr_list )? ')' )?
+            dbg.location(63,4);
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:63:4: ( ID '.' !)?
             int alt23=2;
             try { dbg.enterSubRule(23);
             try { dbg.enterDecision(23, decisionCanBacktrack[23]);
 
             int LA23_0 = input.LA(1);
 
-            if ( (LA23_0==38) ) {
-                alt23=1;
+            if ( (LA23_0==ID) ) {
+                int LA23_1 = input.LA(2);
+
+                if ( (LA23_1==44) ) {
+                    alt23=1;
+                }
             }
             } finally {dbg.exitDecision(23);}
 
@@ -2716,61 +2812,103 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     dbg.enterAlt(1);
 
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:68:31: '(' ( argument_expr_list )? ')'
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:63:5: ID '.' !
                     {
-                    dbg.location(68,31);
-                    char_literal74=(Token)match(input,38,FOLLOW_38_in_postfix_expr404); 
-                    char_literal74_tree = 
-                    (Object)adaptor.create(char_literal74)
+                    dbg.location(63,5);
+                    ID75=(Token)match(input,ID,FOLLOW_ID_in_postfix_expr394); 
+                    ID75_tree = 
+                    (Object)adaptor.create(ID75)
                     ;
-                    adaptor.addChild(root_0, char_literal74_tree);
+                    adaptor.addChild(root_0, ID75_tree);
 
-                    dbg.location(68,35);
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:68:35: ( argument_expr_list )?
-                    int alt22=2;
-                    try { dbg.enterSubRule(22);
-                    try { dbg.enterDecision(22, decisionCanBacktrack[22]);
-
-                    int LA22_0 = input.LA(1);
-
-                    if ( (LA22_0==FLOAT||LA22_0==ID||LA22_0==INT||LA22_0==NOT||LA22_0==STRING||LA22_0==TIME||LA22_0==38||LA22_0==50) ) {
-                        alt22=1;
-                    }
-                    } finally {dbg.exitDecision(22);}
-
-                    switch (alt22) {
-                        case 1 :
-                            dbg.enterAlt(1);
-
-                            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:68:36: argument_expr_list
-                            {
-                            dbg.location(68,36);
-                            pushFollow(FOLLOW_argument_expr_list_in_postfix_expr407);
-                            argument_expr_list75=argument_expr_list();
-
-                            state._fsp--;
-
-                            adaptor.addChild(root_0, argument_expr_list75.getTree());
-
-                            }
-                            break;
-
-                    }
-                    } finally {dbg.exitSubRule(22);}
-
-                    dbg.location(68,57);
-                    char_literal76=(Token)match(input,39,FOLLOW_39_in_postfix_expr411); 
-                    char_literal76_tree = 
-                    (Object)adaptor.create(char_literal76)
-                    ;
-                    adaptor.addChild(root_0, char_literal76_tree);
-
+                    dbg.location(63,11);
+                    char_literal76=(Token)match(input,44,FOLLOW_44_in_postfix_expr396); 
 
                     }
                     break;
 
             }
             } finally {dbg.exitSubRule(23);}
+
+            dbg.location(63,15);
+            pushFollow(FOLLOW_primary_expr_in_postfix_expr401);
+            primary_expr77=primary_expr();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, primary_expr77.getTree());
+            dbg.location(63,28);
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:63:28: ( '(' ( argument_expr_list )? ')' )?
+            int alt25=2;
+            try { dbg.enterSubRule(25);
+            try { dbg.enterDecision(25, decisionCanBacktrack[25]);
+
+            int LA25_0 = input.LA(1);
+
+            if ( (LA25_0==38) ) {
+                alt25=1;
+            }
+            } finally {dbg.exitDecision(25);}
+
+            switch (alt25) {
+                case 1 :
+                    dbg.enterAlt(1);
+
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:63:30: '(' ( argument_expr_list )? ')'
+                    {
+                    dbg.location(63,30);
+                    char_literal78=(Token)match(input,38,FOLLOW_38_in_postfix_expr405); 
+                    char_literal78_tree = 
+                    (Object)adaptor.create(char_literal78)
+                    ;
+                    adaptor.addChild(root_0, char_literal78_tree);
+
+                    dbg.location(63,34);
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:63:34: ( argument_expr_list )?
+                    int alt24=2;
+                    try { dbg.enterSubRule(24);
+                    try { dbg.enterDecision(24, decisionCanBacktrack[24]);
+
+                    int LA24_0 = input.LA(1);
+
+                    if ( (LA24_0==FLOAT||LA24_0==ID||LA24_0==INT||LA24_0==NOT||LA24_0==STRING||LA24_0==TIME||LA24_0==38||LA24_0==55) ) {
+                        alt24=1;
+                    }
+                    } finally {dbg.exitDecision(24);}
+
+                    switch (alt24) {
+                        case 1 :
+                            dbg.enterAlt(1);
+
+                            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:63:35: argument_expr_list
+                            {
+                            dbg.location(63,35);
+                            pushFollow(FOLLOW_argument_expr_list_in_postfix_expr408);
+                            argument_expr_list79=argument_expr_list();
+
+                            state._fsp--;
+
+                            adaptor.addChild(root_0, argument_expr_list79.getTree());
+
+                            }
+                            break;
+
+                    }
+                    } finally {dbg.exitSubRule(24);}
+
+                    dbg.location(63,56);
+                    char_literal80=(Token)match(input,39,FOLLOW_39_in_postfix_expr412); 
+                    char_literal80_tree = 
+                    (Object)adaptor.create(char_literal80)
+                    ;
+                    adaptor.addChild(root_0, char_literal80_tree);
+
+
+                    }
+                    break;
+
+            }
+            } finally {dbg.exitSubRule(25);}
 
 
             }
@@ -2792,7 +2930,7 @@ public TreeAdaptor getTreeAdaptor() {
         finally {
         	// do for sure before leaving
         }
-        dbg.location(69, 1);
+        dbg.location(64, 1);
 
         }
         finally {
@@ -2813,7 +2951,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "datetime"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:70:1: datetime : dayblock ',' timeblock ;
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:65:1: datetime : dayblock ( timeblock )? ;
     public final chronos_antlrParser.datetime_return datetime() throws RecognitionException {
         chronos_antlrParser.datetime_return retval = new chronos_antlrParser.datetime_return();
         retval.start = input.LT(1);
@@ -2821,635 +2959,64 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token char_literal78=null;
-        chronos_antlrParser.dayblock_return dayblock77 =null;
+        chronos_antlrParser.dayblock_return dayblock81 =null;
 
-        chronos_antlrParser.timeblock_return timeblock79 =null;
+        chronos_antlrParser.timeblock_return timeblock82 =null;
 
 
-        Object char_literal78_tree=null;
 
         try { dbg.enterRule(getGrammarFileName(), "datetime");
         if ( getRuleLevel()==0 ) {dbg.commence();}
         incRuleLevel();
-        dbg.location(70, 0);
+        dbg.location(65, 0);
 
         try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:71:2: ( dayblock ',' timeblock )
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:66:2: ( dayblock ( timeblock )? )
             dbg.enterAlt(1);
 
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:71:4: dayblock ',' timeblock
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:66:4: dayblock ( timeblock )?
             {
             root_0 = (Object)adaptor.nil();
 
 
-            dbg.location(71,4);
-            pushFollow(FOLLOW_dayblock_in_datetime425);
-            dayblock77=dayblock();
+            dbg.location(66,4);
+            pushFollow(FOLLOW_dayblock_in_datetime426);
+            dayblock81=dayblock();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, dayblock77.getTree());
-            dbg.location(71,12);
-            char_literal78=(Token)match(input,42,FOLLOW_42_in_datetime426); 
-            char_literal78_tree = 
-            (Object)adaptor.create(char_literal78)
-            ;
-            adaptor.addChild(root_0, char_literal78_tree);
+            adaptor.addChild(root_0, dayblock81.getTree());
+            dbg.location(66,13);
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:66:13: ( timeblock )?
+            int alt26=2;
+            try { dbg.enterSubRule(26);
+            try { dbg.enterDecision(26, decisionCanBacktrack[26]);
 
-            dbg.location(71,16);
-            pushFollow(FOLLOW_timeblock_in_datetime428);
-            timeblock79=timeblock();
+            int LA26_0 = input.LA(1);
 
-            state._fsp--;
-
-            adaptor.addChild(root_0, timeblock79.getTree());
-
+            if ( (LA26_0==TIME) ) {
+                alt26=1;
             }
+            } finally {dbg.exitDecision(26);}
 
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        dbg.location(72, 1);
-
-        }
-        finally {
-            dbg.exitRule(getGrammarFileName(), "datetime");
-            decRuleLevel();
-            if ( getRuleLevel()==0 ) {dbg.terminate();}
-        }
-
-        return retval;
-    }
-    // $ANTLR end "datetime"
-
-
-    public static class timeblock_return extends ParserRuleReturnScope {
-        Object tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "timeblock"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:73:1: timeblock : TIME '~' TIME ;
-    public final chronos_antlrParser.timeblock_return timeblock() throws RecognitionException {
-        chronos_antlrParser.timeblock_return retval = new chronos_antlrParser.timeblock_return();
-        retval.start = input.LT(1);
-
-
-        Object root_0 = null;
-
-        Token TIME80=null;
-        Token char_literal81=null;
-        Token TIME82=null;
-
-        Object TIME80_tree=null;
-        Object char_literal81_tree=null;
-        Object TIME82_tree=null;
-
-        try { dbg.enterRule(getGrammarFileName(), "timeblock");
-        if ( getRuleLevel()==0 ) {dbg.commence();}
-        incRuleLevel();
-        dbg.location(73, 0);
-
-        try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:74:2: ( TIME '~' TIME )
-            dbg.enterAlt(1);
-
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:74:4: TIME '~' TIME
-            {
-            root_0 = (Object)adaptor.nil();
-
-
-            dbg.location(74,4);
-            TIME80=(Token)match(input,TIME,FOLLOW_TIME_in_timeblock438); 
-            TIME80_tree = 
-            (Object)adaptor.create(TIME80)
-            ;
-            adaptor.addChild(root_0, TIME80_tree);
-
-            dbg.location(74,9);
-            char_literal81=(Token)match(input,54,FOLLOW_54_in_timeblock440); 
-            char_literal81_tree = 
-            (Object)adaptor.create(char_literal81)
-            ;
-            adaptor.addChild(root_0, char_literal81_tree);
-
-            dbg.location(74,13);
-            TIME82=(Token)match(input,TIME,FOLLOW_TIME_in_timeblock442); 
-            TIME82_tree = 
-            (Object)adaptor.create(TIME82)
-            ;
-            adaptor.addChild(root_0, TIME82_tree);
-
-
-            }
-
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        dbg.location(75, 1);
-
-        }
-        finally {
-            dbg.exitRule(getGrammarFileName(), "timeblock");
-            decRuleLevel();
-            if ( getRuleLevel()==0 ) {dbg.terminate();}
-        }
-
-        return retval;
-    }
-    // $ANTLR end "timeblock"
-
-
-    public static class dayblock_return extends ParserRuleReturnScope {
-        Object tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "dayblock"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:76:1: dayblock : '[' INT ( ',' INT )* ']' ;
-    public final chronos_antlrParser.dayblock_return dayblock() throws RecognitionException {
-        chronos_antlrParser.dayblock_return retval = new chronos_antlrParser.dayblock_return();
-        retval.start = input.LT(1);
-
-
-        Object root_0 = null;
-
-        Token char_literal83=null;
-        Token INT84=null;
-        Token char_literal85=null;
-        Token INT86=null;
-        Token char_literal87=null;
-
-        Object char_literal83_tree=null;
-        Object INT84_tree=null;
-        Object char_literal85_tree=null;
-        Object INT86_tree=null;
-        Object char_literal87_tree=null;
-
-        try { dbg.enterRule(getGrammarFileName(), "dayblock");
-        if ( getRuleLevel()==0 ) {dbg.commence();}
-        incRuleLevel();
-        dbg.location(76, 0);
-
-        try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:77:2: ( '[' INT ( ',' INT )* ']' )
-            dbg.enterAlt(1);
-
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:77:4: '[' INT ( ',' INT )* ']'
-            {
-            root_0 = (Object)adaptor.nil();
-
-
-            dbg.location(77,4);
-            char_literal83=(Token)match(input,50,FOLLOW_50_in_dayblock452); 
-            char_literal83_tree = 
-            (Object)adaptor.create(char_literal83)
-            ;
-            adaptor.addChild(root_0, char_literal83_tree);
-
-            dbg.location(77,8);
-            INT84=(Token)match(input,INT,FOLLOW_INT_in_dayblock454); 
-            INT84_tree = 
-            (Object)adaptor.create(INT84)
-            ;
-            adaptor.addChild(root_0, INT84_tree);
-
-            dbg.location(77,12);
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:77:12: ( ',' INT )*
-            try { dbg.enterSubRule(24);
-
-            loop24:
-            do {
-                int alt24=2;
-                try { dbg.enterDecision(24, decisionCanBacktrack[24]);
-
-                int LA24_0 = input.LA(1);
-
-                if ( (LA24_0==42) ) {
-                    alt24=1;
-                }
-
-
-                } finally {dbg.exitDecision(24);}
-
-                switch (alt24) {
-            	case 1 :
-            	    dbg.enterAlt(1);
-
-            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:77:13: ',' INT
-            	    {
-            	    dbg.location(77,13);
-            	    char_literal85=(Token)match(input,42,FOLLOW_42_in_dayblock457); 
-            	    char_literal85_tree = 
-            	    (Object)adaptor.create(char_literal85)
-            	    ;
-            	    adaptor.addChild(root_0, char_literal85_tree);
-
-            	    dbg.location(77,17);
-            	    INT86=(Token)match(input,INT,FOLLOW_INT_in_dayblock459); 
-            	    INT86_tree = 
-            	    (Object)adaptor.create(INT86)
-            	    ;
-            	    adaptor.addChild(root_0, INT86_tree);
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop24;
-                }
-            } while (true);
-            } finally {dbg.exitSubRule(24);}
-
-            dbg.location(77,23);
-            char_literal87=(Token)match(input,51,FOLLOW_51_in_dayblock463); 
-            char_literal87_tree = 
-            (Object)adaptor.create(char_literal87)
-            ;
-            adaptor.addChild(root_0, char_literal87_tree);
-
-
-            }
-
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        dbg.location(78, 1);
-
-        }
-        finally {
-            dbg.exitRule(getGrammarFileName(), "dayblock");
-            decRuleLevel();
-            if ( getRuleLevel()==0 ) {dbg.terminate();}
-        }
-
-        return retval;
-    }
-    // $ANTLR end "dayblock"
-
-
-    public static class primary_expr_return extends ParserRuleReturnScope {
-        Object tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "primary_expr"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:79:1: primary_expr : ( constant | ID | STRING | TIME | '(' expr ')' );
-    public final chronos_antlrParser.primary_expr_return primary_expr() throws RecognitionException {
-        chronos_antlrParser.primary_expr_return retval = new chronos_antlrParser.primary_expr_return();
-        retval.start = input.LT(1);
-
-
-        Object root_0 = null;
-
-        Token ID89=null;
-        Token STRING90=null;
-        Token TIME91=null;
-        Token char_literal92=null;
-        Token char_literal94=null;
-        chronos_antlrParser.constant_return constant88 =null;
-
-        chronos_antlrParser.expr_return expr93 =null;
-
-
-        Object ID89_tree=null;
-        Object STRING90_tree=null;
-        Object TIME91_tree=null;
-        Object char_literal92_tree=null;
-        Object char_literal94_tree=null;
-
-        try { dbg.enterRule(getGrammarFileName(), "primary_expr");
-        if ( getRuleLevel()==0 ) {dbg.commence();}
-        incRuleLevel();
-        dbg.location(79, 0);
-
-        try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:80:2: ( constant | ID | STRING | TIME | '(' expr ')' )
-            int alt25=5;
-            try { dbg.enterDecision(25, decisionCanBacktrack[25]);
-
-            switch ( input.LA(1) ) {
-            case FLOAT:
-            case INT:
-                {
-                alt25=1;
-                }
-                break;
-            case ID:
-                {
-                alt25=2;
-                }
-                break;
-            case STRING:
-                {
-                alt25=3;
-                }
-                break;
-            case TIME:
-                {
-                alt25=4;
-                }
-                break;
-            case 38:
-                {
-                alt25=5;
-                }
-                break;
-            default:
-                NoViableAltException nvae =
-                    new NoViableAltException("", 25, 0, input);
-
-                dbg.recognitionException(nvae);
-                throw nvae;
-
-            }
-
-            } finally {dbg.exitDecision(25);}
-
-            switch (alt25) {
+            switch (alt26) {
                 case 1 :
                     dbg.enterAlt(1);
 
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:80:4: constant
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:66:14: timeblock
                     {
-                    root_0 = (Object)adaptor.nil();
-
-
-                    dbg.location(80,4);
-                    pushFollow(FOLLOW_constant_in_primary_expr473);
-                    constant88=constant();
+                    dbg.location(66,14);
+                    pushFollow(FOLLOW_timeblock_in_datetime429);
+                    timeblock82=timeblock();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, constant88.getTree());
-
-                    }
-                    break;
-                case 2 :
-                    dbg.enterAlt(2);
-
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:81:4: ID
-                    {
-                    root_0 = (Object)adaptor.nil();
-
-
-                    dbg.location(81,4);
-                    ID89=(Token)match(input,ID,FOLLOW_ID_in_primary_expr478); 
-                    ID89_tree = 
-                    (Object)adaptor.create(ID89)
-                    ;
-                    adaptor.addChild(root_0, ID89_tree);
-
-
-                    }
-                    break;
-                case 3 :
-                    dbg.enterAlt(3);
-
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:82:4: STRING
-                    {
-                    root_0 = (Object)adaptor.nil();
-
-
-                    dbg.location(82,4);
-                    STRING90=(Token)match(input,STRING,FOLLOW_STRING_in_primary_expr483); 
-                    STRING90_tree = 
-                    (Object)adaptor.create(STRING90)
-                    ;
-                    adaptor.addChild(root_0, STRING90_tree);
-
-
-                    }
-                    break;
-                case 4 :
-                    dbg.enterAlt(4);
-
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:83:4: TIME
-                    {
-                    root_0 = (Object)adaptor.nil();
-
-
-                    dbg.location(83,4);
-                    TIME91=(Token)match(input,TIME,FOLLOW_TIME_in_primary_expr488); 
-                    TIME91_tree = 
-                    (Object)adaptor.create(TIME91)
-                    ;
-                    adaptor.addChild(root_0, TIME91_tree);
-
-
-                    }
-                    break;
-                case 5 :
-                    dbg.enterAlt(5);
-
-                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:84:4: '(' expr ')'
-                    {
-                    root_0 = (Object)adaptor.nil();
-
-
-                    dbg.location(84,4);
-                    char_literal92=(Token)match(input,38,FOLLOW_38_in_primary_expr493); 
-                    char_literal92_tree = 
-                    (Object)adaptor.create(char_literal92)
-                    ;
-                    adaptor.addChild(root_0, char_literal92_tree);
-
-                    dbg.location(84,7);
-                    pushFollow(FOLLOW_expr_in_primary_expr494);
-                    expr93=expr();
-
-                    state._fsp--;
-
-                    adaptor.addChild(root_0, expr93.getTree());
-                    dbg.location(84,11);
-                    char_literal94=(Token)match(input,39,FOLLOW_39_in_primary_expr495); 
-                    char_literal94_tree = 
-                    (Object)adaptor.create(char_literal94)
-                    ;
-                    adaptor.addChild(root_0, char_literal94_tree);
-
+                    adaptor.addChild(root_0, timeblock82.getTree());
 
                     }
                     break;
 
             }
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        dbg.location(85, 1);
-
-        }
-        finally {
-            dbg.exitRule(getGrammarFileName(), "primary_expr");
-            decRuleLevel();
-            if ( getRuleLevel()==0 ) {dbg.terminate();}
-        }
-
-        return retval;
-    }
-    // $ANTLR end "primary_expr"
-
-
-    public static class argument_expr_list_return extends ParserRuleReturnScope {
-        Object tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "argument_expr_list"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:86:1: argument_expr_list : ( expr ) ( ',' expr )* ;
-    public final chronos_antlrParser.argument_expr_list_return argument_expr_list() throws RecognitionException {
-        chronos_antlrParser.argument_expr_list_return retval = new chronos_antlrParser.argument_expr_list_return();
-        retval.start = input.LT(1);
-
-
-        Object root_0 = null;
-
-        Token char_literal96=null;
-        chronos_antlrParser.expr_return expr95 =null;
-
-        chronos_antlrParser.expr_return expr97 =null;
-
-
-        Object char_literal96_tree=null;
-
-        try { dbg.enterRule(getGrammarFileName(), "argument_expr_list");
-        if ( getRuleLevel()==0 ) {dbg.commence();}
-        incRuleLevel();
-        dbg.location(86, 0);
-
-        try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:87:2: ( ( expr ) ( ',' expr )* )
-            dbg.enterAlt(1);
-
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:87:4: ( expr ) ( ',' expr )*
-            {
-            root_0 = (Object)adaptor.nil();
-
-
-            dbg.location(87,4);
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:87:4: ( expr )
-            dbg.enterAlt(1);
-
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:87:5: expr
-            {
-            dbg.location(87,5);
-            pushFollow(FOLLOW_expr_in_argument_expr_list506);
-            expr95=expr();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, expr95.getTree());
-
-            }
-
-            dbg.location(87,11);
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:87:11: ( ',' expr )*
-            try { dbg.enterSubRule(26);
-
-            loop26:
-            do {
-                int alt26=2;
-                try { dbg.enterDecision(26, decisionCanBacktrack[26]);
-
-                int LA26_0 = input.LA(1);
-
-                if ( (LA26_0==42) ) {
-                    alt26=1;
-                }
-
-
-                } finally {dbg.exitDecision(26);}
-
-                switch (alt26) {
-            	case 1 :
-            	    dbg.enterAlt(1);
-
-            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:87:12: ',' expr
-            	    {
-            	    dbg.location(87,12);
-            	    char_literal96=(Token)match(input,42,FOLLOW_42_in_argument_expr_list510); 
-            	    char_literal96_tree = 
-            	    (Object)adaptor.create(char_literal96)
-            	    ;
-            	    adaptor.addChild(root_0, char_literal96_tree);
-
-            	    dbg.location(87,16);
-            	    pushFollow(FOLLOW_expr_in_argument_expr_list512);
-            	    expr97=expr();
-
-            	    state._fsp--;
-
-            	    adaptor.addChild(root_0, expr97.getTree());
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop26;
-                }
-            } while (true);
             } finally {dbg.exitSubRule(26);}
 
 
@@ -3472,7 +3039,593 @@ public TreeAdaptor getTreeAdaptor() {
         finally {
         	// do for sure before leaving
         }
-        dbg.location(88, 1);
+        dbg.location(67, 1);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "datetime");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
+        return retval;
+    }
+    // $ANTLR end "datetime"
+
+
+    public static class timeblock_return extends ParserRuleReturnScope {
+        Object tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "timeblock"
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:68:1: timeblock : TIME '~' TIME ;
+    public final chronos_antlrParser.timeblock_return timeblock() throws RecognitionException {
+        chronos_antlrParser.timeblock_return retval = new chronos_antlrParser.timeblock_return();
+        retval.start = input.LT(1);
+
+
+        Object root_0 = null;
+
+        Token TIME83=null;
+        Token char_literal84=null;
+        Token TIME85=null;
+
+        Object TIME83_tree=null;
+        Object char_literal84_tree=null;
+        Object TIME85_tree=null;
+
+        try { dbg.enterRule(getGrammarFileName(), "timeblock");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(68, 0);
+
+        try {
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:69:2: ( TIME '~' TIME )
+            dbg.enterAlt(1);
+
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:69:4: TIME '~' TIME
+            {
+            root_0 = (Object)adaptor.nil();
+
+
+            dbg.location(69,4);
+            TIME83=(Token)match(input,TIME,FOLLOW_TIME_in_timeblock441); 
+            TIME83_tree = 
+            (Object)adaptor.create(TIME83)
+            ;
+            adaptor.addChild(root_0, TIME83_tree);
+
+            dbg.location(69,9);
+            char_literal84=(Token)match(input,59,FOLLOW_59_in_timeblock443); 
+            char_literal84_tree = 
+            (Object)adaptor.create(char_literal84)
+            ;
+            adaptor.addChild(root_0, char_literal84_tree);
+
+            dbg.location(69,13);
+            TIME85=(Token)match(input,TIME,FOLLOW_TIME_in_timeblock445); 
+            TIME85_tree = 
+            (Object)adaptor.create(TIME85)
+            ;
+            adaptor.addChild(root_0, TIME85_tree);
+
+
+            }
+
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        dbg.location(70, 1);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "timeblock");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
+        return retval;
+    }
+    // $ANTLR end "timeblock"
+
+
+    public static class dayblock_return extends ParserRuleReturnScope {
+        Object tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "dayblock"
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:71:1: dayblock : '[' ( 'M' | 'T' | 'W' | 'R' | 'F' )+ ']' ;
+    public final chronos_antlrParser.dayblock_return dayblock() throws RecognitionException {
+        chronos_antlrParser.dayblock_return retval = new chronos_antlrParser.dayblock_return();
+        retval.start = input.LT(1);
+
+
+        Object root_0 = null;
+
+        Token char_literal86=null;
+        Token set87=null;
+        Token char_literal88=null;
+
+        Object char_literal86_tree=null;
+        Object set87_tree=null;
+        Object char_literal88_tree=null;
+
+        try { dbg.enterRule(getGrammarFileName(), "dayblock");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(71, 0);
+
+        try {
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:72:2: ( '[' ( 'M' | 'T' | 'W' | 'R' | 'F' )+ ']' )
+            dbg.enterAlt(1);
+
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:72:4: '[' ( 'M' | 'T' | 'W' | 'R' | 'F' )+ ']'
+            {
+            root_0 = (Object)adaptor.nil();
+
+
+            dbg.location(72,4);
+            char_literal86=(Token)match(input,55,FOLLOW_55_in_dayblock455); 
+            char_literal86_tree = 
+            (Object)adaptor.create(char_literal86)
+            ;
+            adaptor.addChild(root_0, char_literal86_tree);
+
+            dbg.location(72,8);
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:72:8: ( 'M' | 'T' | 'W' | 'R' | 'F' )+
+            int cnt27=0;
+            try { dbg.enterSubRule(27);
+
+            loop27:
+            do {
+                int alt27=2;
+                try { dbg.enterDecision(27, decisionCanBacktrack[27]);
+
+                int LA27_0 = input.LA(1);
+
+                if ( ((LA27_0 >= 50 && LA27_0 <= 54)) ) {
+                    alt27=1;
+                }
+
+
+                } finally {dbg.exitDecision(27);}
+
+                switch (alt27) {
+            	case 1 :
+            	    dbg.enterAlt(1);
+
+            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:
+            	    {
+            	    dbg.location(72,8);
+            	    set87=(Token)input.LT(1);
+
+            	    if ( (input.LA(1) >= 50 && input.LA(1) <= 54) ) {
+            	        input.consume();
+            	        adaptor.addChild(root_0, 
+            	        (Object)adaptor.create(set87)
+            	        );
+            	        state.errorRecovery=false;
+            	    }
+            	    else {
+            	        MismatchedSetException mse = new MismatchedSetException(null,input);
+            	        dbg.recognitionException(mse);
+            	        throw mse;
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    if ( cnt27 >= 1 ) break loop27;
+                        EarlyExitException eee =
+                            new EarlyExitException(27, input);
+                        dbg.recognitionException(eee);
+
+                        throw eee;
+                }
+                cnt27++;
+            } while (true);
+            } finally {dbg.exitSubRule(27);}
+
+            dbg.location(72,31);
+            char_literal88=(Token)match(input,56,FOLLOW_56_in_dayblock470); 
+            char_literal88_tree = 
+            (Object)adaptor.create(char_literal88)
+            ;
+            adaptor.addChild(root_0, char_literal88_tree);
+
+
+            }
+
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        dbg.location(73, 1);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "dayblock");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
+        return retval;
+    }
+    // $ANTLR end "dayblock"
+
+
+    public static class primary_expr_return extends ParserRuleReturnScope {
+        Object tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "primary_expr"
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:74:1: primary_expr : ( constant | ID | STRING | TIME | '(' expr ')' );
+    public final chronos_antlrParser.primary_expr_return primary_expr() throws RecognitionException {
+        chronos_antlrParser.primary_expr_return retval = new chronos_antlrParser.primary_expr_return();
+        retval.start = input.LT(1);
+
+
+        Object root_0 = null;
+
+        Token ID90=null;
+        Token STRING91=null;
+        Token TIME92=null;
+        Token char_literal93=null;
+        Token char_literal95=null;
+        chronos_antlrParser.constant_return constant89 =null;
+
+        chronos_antlrParser.expr_return expr94 =null;
+
+
+        Object ID90_tree=null;
+        Object STRING91_tree=null;
+        Object TIME92_tree=null;
+        Object char_literal93_tree=null;
+        Object char_literal95_tree=null;
+
+        try { dbg.enterRule(getGrammarFileName(), "primary_expr");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(74, 0);
+
+        try {
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:75:2: ( constant | ID | STRING | TIME | '(' expr ')' )
+            int alt28=5;
+            try { dbg.enterDecision(28, decisionCanBacktrack[28]);
+
+            switch ( input.LA(1) ) {
+            case FLOAT:
+            case INT:
+                {
+                alt28=1;
+                }
+                break;
+            case ID:
+                {
+                alt28=2;
+                }
+                break;
+            case STRING:
+                {
+                alt28=3;
+                }
+                break;
+            case TIME:
+                {
+                alt28=4;
+                }
+                break;
+            case 38:
+                {
+                alt28=5;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 28, 0, input);
+
+                dbg.recognitionException(nvae);
+                throw nvae;
+
+            }
+
+            } finally {dbg.exitDecision(28);}
+
+            switch (alt28) {
+                case 1 :
+                    dbg.enterAlt(1);
+
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:75:4: constant
+                    {
+                    root_0 = (Object)adaptor.nil();
+
+
+                    dbg.location(75,4);
+                    pushFollow(FOLLOW_constant_in_primary_expr480);
+                    constant89=constant();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, constant89.getTree());
+
+                    }
+                    break;
+                case 2 :
+                    dbg.enterAlt(2);
+
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:76:4: ID
+                    {
+                    root_0 = (Object)adaptor.nil();
+
+
+                    dbg.location(76,4);
+                    ID90=(Token)match(input,ID,FOLLOW_ID_in_primary_expr485); 
+                    ID90_tree = 
+                    (Object)adaptor.create(ID90)
+                    ;
+                    adaptor.addChild(root_0, ID90_tree);
+
+
+                    }
+                    break;
+                case 3 :
+                    dbg.enterAlt(3);
+
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:77:4: STRING
+                    {
+                    root_0 = (Object)adaptor.nil();
+
+
+                    dbg.location(77,4);
+                    STRING91=(Token)match(input,STRING,FOLLOW_STRING_in_primary_expr490); 
+                    STRING91_tree = 
+                    (Object)adaptor.create(STRING91)
+                    ;
+                    adaptor.addChild(root_0, STRING91_tree);
+
+
+                    }
+                    break;
+                case 4 :
+                    dbg.enterAlt(4);
+
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:78:4: TIME
+                    {
+                    root_0 = (Object)adaptor.nil();
+
+
+                    dbg.location(78,4);
+                    TIME92=(Token)match(input,TIME,FOLLOW_TIME_in_primary_expr495); 
+                    TIME92_tree = 
+                    (Object)adaptor.create(TIME92)
+                    ;
+                    adaptor.addChild(root_0, TIME92_tree);
+
+
+                    }
+                    break;
+                case 5 :
+                    dbg.enterAlt(5);
+
+                    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:79:4: '(' expr ')'
+                    {
+                    root_0 = (Object)adaptor.nil();
+
+
+                    dbg.location(79,4);
+                    char_literal93=(Token)match(input,38,FOLLOW_38_in_primary_expr500); 
+                    char_literal93_tree = 
+                    (Object)adaptor.create(char_literal93)
+                    ;
+                    adaptor.addChild(root_0, char_literal93_tree);
+
+                    dbg.location(79,7);
+                    pushFollow(FOLLOW_expr_in_primary_expr501);
+                    expr94=expr();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, expr94.getTree());
+                    dbg.location(79,11);
+                    char_literal95=(Token)match(input,39,FOLLOW_39_in_primary_expr502); 
+                    char_literal95_tree = 
+                    (Object)adaptor.create(char_literal95)
+                    ;
+                    adaptor.addChild(root_0, char_literal95_tree);
+
+
+                    }
+                    break;
+
+            }
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        dbg.location(80, 1);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "primary_expr");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
+        return retval;
+    }
+    // $ANTLR end "primary_expr"
+
+
+    public static class argument_expr_list_return extends ParserRuleReturnScope {
+        Object tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "argument_expr_list"
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:81:1: argument_expr_list : ( expr ) ( ',' expr )* ;
+    public final chronos_antlrParser.argument_expr_list_return argument_expr_list() throws RecognitionException {
+        chronos_antlrParser.argument_expr_list_return retval = new chronos_antlrParser.argument_expr_list_return();
+        retval.start = input.LT(1);
+
+
+        Object root_0 = null;
+
+        Token char_literal97=null;
+        chronos_antlrParser.expr_return expr96 =null;
+
+        chronos_antlrParser.expr_return expr98 =null;
+
+
+        Object char_literal97_tree=null;
+
+        try { dbg.enterRule(getGrammarFileName(), "argument_expr_list");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(81, 0);
+
+        try {
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:82:2: ( ( expr ) ( ',' expr )* )
+            dbg.enterAlt(1);
+
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:82:4: ( expr ) ( ',' expr )*
+            {
+            root_0 = (Object)adaptor.nil();
+
+
+            dbg.location(82,4);
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:82:4: ( expr )
+            dbg.enterAlt(1);
+
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:82:5: expr
+            {
+            dbg.location(82,5);
+            pushFollow(FOLLOW_expr_in_argument_expr_list513);
+            expr96=expr();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, expr96.getTree());
+
+            }
+
+            dbg.location(82,11);
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:82:11: ( ',' expr )*
+            try { dbg.enterSubRule(29);
+
+            loop29:
+            do {
+                int alt29=2;
+                try { dbg.enterDecision(29, decisionCanBacktrack[29]);
+
+                int LA29_0 = input.LA(1);
+
+                if ( (LA29_0==42) ) {
+                    alt29=1;
+                }
+
+
+                } finally {dbg.exitDecision(29);}
+
+                switch (alt29) {
+            	case 1 :
+            	    dbg.enterAlt(1);
+
+            	    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:82:12: ',' expr
+            	    {
+            	    dbg.location(82,12);
+            	    char_literal97=(Token)match(input,42,FOLLOW_42_in_argument_expr_list517); 
+            	    char_literal97_tree = 
+            	    (Object)adaptor.create(char_literal97)
+            	    ;
+            	    adaptor.addChild(root_0, char_literal97_tree);
+
+            	    dbg.location(82,16);
+            	    pushFollow(FOLLOW_expr_in_argument_expr_list519);
+            	    expr98=expr();
+
+            	    state._fsp--;
+
+            	    adaptor.addChild(root_0, expr98.getTree());
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop29;
+                }
+            } while (true);
+            } finally {dbg.exitSubRule(29);}
+
+
+            }
+
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        dbg.location(83, 1);
 
         }
         finally {
@@ -3493,7 +3646,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "constant"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:89:1: constant : ( INT | FLOAT );
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:84:1: constant : ( INT | FLOAT );
     public final chronos_antlrParser.constant_return constant() throws RecognitionException {
         chronos_antlrParser.constant_return retval = new chronos_antlrParser.constant_return();
         retval.start = input.LT(1);
@@ -3501,17 +3654,17 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token set98=null;
+        Token set99=null;
 
-        Object set98_tree=null;
+        Object set99_tree=null;
 
         try { dbg.enterRule(getGrammarFileName(), "constant");
         if ( getRuleLevel()==0 ) {dbg.commence();}
         incRuleLevel();
-        dbg.location(89, 0);
+        dbg.location(84, 0);
 
         try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:90:2: ( INT | FLOAT )
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:85:2: ( INT | FLOAT )
             dbg.enterAlt(1);
 
             // /Users/shannonlee/PLT_Team20/chronos_antlr.g:
@@ -3519,13 +3672,13 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            dbg.location(90,2);
-            set98=(Token)input.LT(1);
+            dbg.location(85,2);
+            set99=(Token)input.LT(1);
 
             if ( input.LA(1)==FLOAT||input.LA(1)==INT ) {
                 input.consume();
                 adaptor.addChild(root_0, 
-                (Object)adaptor.create(set98)
+                (Object)adaptor.create(set99)
                 );
                 state.errorRecovery=false;
             }
@@ -3555,7 +3708,7 @@ public TreeAdaptor getTreeAdaptor() {
         finally {
         	// do for sure before leaving
         }
-        dbg.location(92, 1);
+        dbg.location(87, 1);
 
         }
         finally {
@@ -3576,7 +3729,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "type_specifier"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:93:1: type_specifier : ( INT_T | DOUBLE_T | TIME_T | STRING_T );
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:88:1: type_specifier : ( INT_T | DOUBLE_T | TIME_T | STRING_T );
     public final chronos_antlrParser.type_specifier_return type_specifier() throws RecognitionException {
         chronos_antlrParser.type_specifier_return retval = new chronos_antlrParser.type_specifier_return();
         retval.start = input.LT(1);
@@ -3584,17 +3737,17 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token set99=null;
+        Token set100=null;
 
-        Object set99_tree=null;
+        Object set100_tree=null;
 
         try { dbg.enterRule(getGrammarFileName(), "type_specifier");
         if ( getRuleLevel()==0 ) {dbg.commence();}
         incRuleLevel();
-        dbg.location(93, 0);
+        dbg.location(88, 0);
 
         try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:94:2: ( INT_T | DOUBLE_T | TIME_T | STRING_T )
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:89:2: ( INT_T | DOUBLE_T | TIME_T | STRING_T )
             dbg.enterAlt(1);
 
             // /Users/shannonlee/PLT_Team20/chronos_antlr.g:
@@ -3602,13 +3755,96 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            dbg.location(94,2);
-            set99=(Token)input.LT(1);
+            dbg.location(89,2);
+            set100=(Token)input.LT(1);
 
             if ( input.LA(1)==DOUBLE_T||input.LA(1)==INT_T||input.LA(1)==STRING_T||input.LA(1)==TIME_T ) {
                 input.consume();
                 adaptor.addChild(root_0, 
-                (Object)adaptor.create(set99)
+                (Object)adaptor.create(set100)
+                );
+                state.errorRecovery=false;
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                dbg.recognitionException(mse);
+                throw mse;
+            }
+
+
+            }
+
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        dbg.location(93, 1);
+
+        }
+        finally {
+            dbg.exitRule(getGrammarFileName(), "type_specifier");
+            decRuleLevel();
+            if ( getRuleLevel()==0 ) {dbg.terminate();}
+        }
+
+        return retval;
+    }
+    // $ANTLR end "type_specifier"
+
+
+    public static class derived_type_specifier_return extends ParserRuleReturnScope {
+        Object tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "derived_type_specifier"
+    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:94:1: derived_type_specifier : ( SCHEDULE_T | COURSE_T | COURSELIST_T );
+    public final chronos_antlrParser.derived_type_specifier_return derived_type_specifier() throws RecognitionException {
+        chronos_antlrParser.derived_type_specifier_return retval = new chronos_antlrParser.derived_type_specifier_return();
+        retval.start = input.LT(1);
+
+
+        Object root_0 = null;
+
+        Token set101=null;
+
+        Object set101_tree=null;
+
+        try { dbg.enterRule(getGrammarFileName(), "derived_type_specifier");
+        if ( getRuleLevel()==0 ) {dbg.commence();}
+        incRuleLevel();
+        dbg.location(94, 0);
+
+        try {
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:95:2: ( SCHEDULE_T | COURSE_T | COURSELIST_T )
+            dbg.enterAlt(1);
+
+            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:
+            {
+            root_0 = (Object)adaptor.nil();
+
+
+            dbg.location(95,2);
+            set101=(Token)input.LT(1);
+
+            if ( (input.LA(1) >= COURSELIST_T && input.LA(1) <= COURSE_T)||input.LA(1)==SCHEDULE_T ) {
+                input.consume();
+                adaptor.addChild(root_0, 
+                (Object)adaptor.create(set101)
                 );
                 state.errorRecovery=false;
             }
@@ -3642,89 +3878,6 @@ public TreeAdaptor getTreeAdaptor() {
 
         }
         finally {
-            dbg.exitRule(getGrammarFileName(), "type_specifier");
-            decRuleLevel();
-            if ( getRuleLevel()==0 ) {dbg.terminate();}
-        }
-
-        return retval;
-    }
-    // $ANTLR end "type_specifier"
-
-
-    public static class derived_type_specifier_return extends ParserRuleReturnScope {
-        Object tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "derived_type_specifier"
-    // /Users/shannonlee/PLT_Team20/chronos_antlr.g:99:1: derived_type_specifier : ( SCHEDULE_T | COURSE_T | COURSELIST_T );
-    public final chronos_antlrParser.derived_type_specifier_return derived_type_specifier() throws RecognitionException {
-        chronos_antlrParser.derived_type_specifier_return retval = new chronos_antlrParser.derived_type_specifier_return();
-        retval.start = input.LT(1);
-
-
-        Object root_0 = null;
-
-        Token set100=null;
-
-        Object set100_tree=null;
-
-        try { dbg.enterRule(getGrammarFileName(), "derived_type_specifier");
-        if ( getRuleLevel()==0 ) {dbg.commence();}
-        incRuleLevel();
-        dbg.location(99, 0);
-
-        try {
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:100:2: ( SCHEDULE_T | COURSE_T | COURSELIST_T )
-            dbg.enterAlt(1);
-
-            // /Users/shannonlee/PLT_Team20/chronos_antlr.g:
-            {
-            root_0 = (Object)adaptor.nil();
-
-
-            dbg.location(100,2);
-            set100=(Token)input.LT(1);
-
-            if ( (input.LA(1) >= COURSELIST_T && input.LA(1) <= COURSE_T)||input.LA(1)==SCHEDULE_T ) {
-                input.consume();
-                adaptor.addChild(root_0, 
-                (Object)adaptor.create(set100)
-                );
-                state.errorRecovery=false;
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                dbg.recognitionException(mse);
-                throw mse;
-            }
-
-
-            }
-
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (Object)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        dbg.location(103, 1);
-
-        }
-        finally {
             dbg.exitRule(getGrammarFileName(), "derived_type_specifier");
             decRuleLevel();
             if ( getRuleLevel()==0 ) {dbg.terminate();}
@@ -3740,101 +3893,101 @@ public TreeAdaptor getTreeAdaptor() {
  
 
     public static final BitSet FOLLOW_declarator_in_translation_unit27 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_46_in_translation_unit28 = new BitSet(new long[]{0x0004404F18F30822L});
-    public static final BitSet FOLLOW_stmt_in_translation_unit33 = new BitSet(new long[]{0x0004404510730022L});
+    public static final BitSet FOLLOW_46_in_translation_unit28 = new BitSet(new long[]{0x0080404F18F30822L});
+    public static final BitSet FOLLOW_stmt_in_translation_unit33 = new BitSet(new long[]{0x0080404510730022L});
     public static final BitSet FOLLOW_primitive_declarator_in_declarator45 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_derived_type_declarator_in_declarator50 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_type_specifier_in_primitive_declarator60 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_ID_in_primitive_declarator62 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_type_specifier_in_primitive_declarator69 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_ID_in_primitive_declarator71 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_48_in_primitive_declarator73 = new BitSet(new long[]{0x0004004510510000L});
-    public static final BitSet FOLLOW_expr_in_primitive_declarator75 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NEW_T_in_derived_type_declarator85 = new BitSet(new long[]{0x0000000080000300L});
-    public static final BitSet FOLLOW_derived_type_specifier_in_derived_type_declarator87 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_ID_in_derived_type_declarator89 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NEW_T_in_derived_type_declarator96 = new BitSet(new long[]{0x0000000080000300L});
-    public static final BitSet FOLLOW_derived_type_specifier_in_derived_type_declarator98 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_ID_in_derived_type_declarator100 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_48_in_derived_type_declarator102 = new BitSet(new long[]{0x0004004510510000L});
-    public static final BitSet FOLLOW_expr_in_derived_type_declarator104 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expr_in_stmt112 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_46_in_stmt113 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_selection_stmt_in_stmt119 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_iteration_stmt_in_stmt124 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_jump_stmt_in_stmt129 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_type_specifier_in_primitive_declarator67 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_ID_in_primitive_declarator69 = new BitSet(new long[]{0x0001000000000000L});
+    public static final BitSet FOLLOW_48_in_primitive_declarator71 = new BitSet(new long[]{0x0080004510510000L});
+    public static final BitSet FOLLOW_expr_in_primitive_declarator73 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NEW_T_in_derived_type_declarator83 = new BitSet(new long[]{0x0000000080000300L});
+    public static final BitSet FOLLOW_derived_type_specifier_in_derived_type_declarator85 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_ID_in_derived_type_declarator87 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_NEW_T_in_derived_type_declarator92 = new BitSet(new long[]{0x0000000080000300L});
+    public static final BitSet FOLLOW_derived_type_specifier_in_derived_type_declarator94 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_ID_in_derived_type_declarator96 = new BitSet(new long[]{0x0001000000000000L});
+    public static final BitSet FOLLOW_48_in_derived_type_declarator98 = new BitSet(new long[]{0x0080004510510000L});
+    public static final BitSet FOLLOW_expr_in_derived_type_declarator100 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expr_in_stmt108 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_46_in_stmt109 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_selection_stmt_in_stmt114 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_iteration_stmt_in_stmt119 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_jump_stmt_in_stmt124 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_46_in_stmt125 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_46_in_stmt130 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_46_in_stmt135 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IF_T_in_selection_stmt145 = new BitSet(new long[]{0x0004004510510000L});
-    public static final BitSet FOLLOW_expr_in_selection_stmt147 = new BitSet(new long[]{0x0010000000000000L});
-    public static final BitSet FOLLOW_52_in_selection_stmt149 = new BitSet(new long[]{0x0024404510730020L});
-    public static final BitSet FOLLOW_stmt_in_selection_stmt150 = new BitSet(new long[]{0x0024404510730020L});
-    public static final BitSet FOLLOW_53_in_selection_stmt152 = new BitSet(new long[]{0x0000000000001002L});
-    public static final BitSet FOLLOW_ELSE_T_in_selection_stmt155 = new BitSet(new long[]{0x0010000000000000L});
-    public static final BitSet FOLLOW_52_in_selection_stmt157 = new BitSet(new long[]{0x0024404510730020L});
-    public static final BitSet FOLLOW_stmt_in_selection_stmt158 = new BitSet(new long[]{0x0024404510730020L});
-    public static final BitSet FOLLOW_53_in_selection_stmt160 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FOREACH_T_in_iteration_stmt172 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_COURSE_T_in_iteration_stmt174 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_ID_in_iteration_stmt176 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_IN_T_in_iteration_stmt178 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_ID_in_iteration_stmt180 = new BitSet(new long[]{0x0010000000000000L});
-    public static final BitSet FOLLOW_52_in_iteration_stmt182 = new BitSet(new long[]{0x0024404F18F30820L});
-    public static final BitSet FOLLOW_declarator_in_iteration_stmt185 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_46_in_iteration_stmt186 = new BitSet(new long[]{0x0024404F18F30820L});
-    public static final BitSet FOLLOW_stmt_in_iteration_stmt191 = new BitSet(new long[]{0x0024404510730020L});
-    public static final BitSet FOLLOW_53_in_iteration_stmt195 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BREAK_T_in_jump_stmt206 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_cond_term_in_expr216 = new BitSet(new long[]{0x0000000040000002L});
-    public static final BitSet FOLLOW_OR_in_expr219 = new BitSet(new long[]{0x0004004510510000L});
-    public static final BitSet FOLLOW_cond_term_in_expr221 = new BitSet(new long[]{0x0000000040000002L});
-    public static final BitSet FOLLOW_ID_in_expr228 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_48_in_expr230 = new BitSet(new long[]{0x0004004510510000L});
-    public static final BitSet FOLLOW_expr_in_expr233 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_equiv_expr_in_cond_term243 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_AND_in_cond_term246 = new BitSet(new long[]{0x0004004510510000L});
-    public static final BitSet FOLLOW_equiv_expr_in_cond_term248 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_rel_expr_in_equiv_expr260 = new BitSet(new long[]{0x0000000004002002L});
-    public static final BitSet FOLLOW_set_in_equiv_expr264 = new BitSet(new long[]{0x0004004510510000L});
-    public static final BitSet FOLLOW_rel_expr_in_equiv_expr272 = new BitSet(new long[]{0x0000000004002002L});
-    public static final BitSet FOLLOW_math_expr_in_rel_expr285 = new BitSet(new long[]{0x0002800002040002L});
-    public static final BitSet FOLLOW_set_in_rel_expr289 = new BitSet(new long[]{0x0000004510510000L});
-    public static final BitSet FOLLOW_math_expr_in_rel_expr305 = new BitSet(new long[]{0x0002800002040002L});
-    public static final BitSet FOLLOW_datetime_in_rel_expr313 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_math_term_in_math_expr323 = new BitSet(new long[]{0x00000A0000000002L});
-    public static final BitSet FOLLOW_set_in_math_expr327 = new BitSet(new long[]{0x0000004510510000L});
-    public static final BitSet FOLLOW_math_term_in_math_expr335 = new BitSet(new long[]{0x00000A0000000002L});
-    public static final BitSet FOLLOW_unary_expr_in_math_term348 = new BitSet(new long[]{0x0000210000000002L});
-    public static final BitSet FOLLOW_set_in_math_term352 = new BitSet(new long[]{0x0000004510510000L});
-    public static final BitSet FOLLOW_unary_expr_in_math_term360 = new BitSet(new long[]{0x0000210000000002L});
-    public static final BitSet FOLLOW_NOT_in_unary_expr376 = new BitSet(new long[]{0x0000004510510000L});
-    public static final BitSet FOLLOW_postfix_expr_in_unary_expr380 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IF_T_in_selection_stmt140 = new BitSet(new long[]{0x0080004510510000L});
+    public static final BitSet FOLLOW_expr_in_selection_stmt143 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_57_in_selection_stmt145 = new BitSet(new long[]{0x0480404510730020L});
+    public static final BitSet FOLLOW_stmt_in_selection_stmt146 = new BitSet(new long[]{0x0480404510730020L});
+    public static final BitSet FOLLOW_58_in_selection_stmt148 = new BitSet(new long[]{0x0000000000001002L});
+    public static final BitSet FOLLOW_ELSE_T_in_selection_stmt151 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_57_in_selection_stmt153 = new BitSet(new long[]{0x0480404510730020L});
+    public static final BitSet FOLLOW_stmt_in_selection_stmt154 = new BitSet(new long[]{0x0480404510730020L});
+    public static final BitSet FOLLOW_58_in_selection_stmt156 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FOREACH_T_in_iteration_stmt168 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_COURSE_T_in_iteration_stmt170 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_ID_in_iteration_stmt172 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_IN_T_in_iteration_stmt174 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_ID_in_iteration_stmt176 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_57_in_iteration_stmt178 = new BitSet(new long[]{0x0480404F18F30820L});
+    public static final BitSet FOLLOW_declarator_in_iteration_stmt181 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_46_in_iteration_stmt182 = new BitSet(new long[]{0x0480404F18F30820L});
+    public static final BitSet FOLLOW_stmt_in_iteration_stmt187 = new BitSet(new long[]{0x0480404510730020L});
+    public static final BitSet FOLLOW_58_in_iteration_stmt191 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BREAK_T_in_jump_stmt202 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_cond_term_in_expr212 = new BitSet(new long[]{0x0000000040000002L});
+    public static final BitSet FOLLOW_OR_in_expr215 = new BitSet(new long[]{0x0080004510510000L});
+    public static final BitSet FOLLOW_cond_term_in_expr217 = new BitSet(new long[]{0x0000000040000002L});
+    public static final BitSet FOLLOW_ID_in_expr224 = new BitSet(new long[]{0x0001000000000000L});
+    public static final BitSet FOLLOW_48_in_expr226 = new BitSet(new long[]{0x0080004510510000L});
+    public static final BitSet FOLLOW_expr_in_expr229 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_equiv_expr_in_cond_term239 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_AND_in_cond_term242 = new BitSet(new long[]{0x0080004510510000L});
+    public static final BitSet FOLLOW_equiv_expr_in_cond_term245 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_rel_expr_in_equiv_expr257 = new BitSet(new long[]{0x0000000004002002L});
+    public static final BitSet FOLLOW_EQ_in_equiv_expr262 = new BitSet(new long[]{0x0080004510510000L});
+    public static final BitSet FOLLOW_NEQ_in_equiv_expr267 = new BitSet(new long[]{0x0080004510510000L});
+    public static final BitSet FOLLOW_rel_expr_in_equiv_expr271 = new BitSet(new long[]{0x0000000004002002L});
+    public static final BitSet FOLLOW_math_expr_in_rel_expr284 = new BitSet(new long[]{0x0002800002040002L});
+    public static final BitSet FOLLOW_47_in_rel_expr289 = new BitSet(new long[]{0x0000004510510000L});
+    public static final BitSet FOLLOW_49_in_rel_expr294 = new BitSet(new long[]{0x0000004510510000L});
+    public static final BitSet FOLLOW_GEQ_in_rel_expr299 = new BitSet(new long[]{0x0000004510510000L});
+    public static final BitSet FOLLOW_LEQ_in_rel_expr304 = new BitSet(new long[]{0x0000004510510000L});
+    public static final BitSet FOLLOW_math_expr_in_rel_expr308 = new BitSet(new long[]{0x0002800002040002L});
+    public static final BitSet FOLLOW_datetime_in_rel_expr316 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_math_term_in_math_expr326 = new BitSet(new long[]{0x00000A0000000002L});
+    public static final BitSet FOLLOW_set_in_math_expr330 = new BitSet(new long[]{0x0000004510510000L});
+    public static final BitSet FOLLOW_math_term_in_math_expr338 = new BitSet(new long[]{0x00000A0000000002L});
+    public static final BitSet FOLLOW_unary_expr_in_math_term351 = new BitSet(new long[]{0x0000210000000002L});
+    public static final BitSet FOLLOW_set_in_math_term355 = new BitSet(new long[]{0x0000004510510000L});
+    public static final BitSet FOLLOW_unary_expr_in_math_term363 = new BitSet(new long[]{0x0000210000000002L});
+    public static final BitSet FOLLOW_NOT_in_unary_expr379 = new BitSet(new long[]{0x0000004510510000L});
+    public static final BitSet FOLLOW_postfix_expr_in_unary_expr383 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ID_in_postfix_expr394 = new BitSet(new long[]{0x0000100000000000L});
     public static final BitSet FOLLOW_44_in_postfix_expr396 = new BitSet(new long[]{0x0000004500510000L});
-    public static final BitSet FOLLOW_primary_expr_in_postfix_expr400 = new BitSet(new long[]{0x0000004000000002L});
-    public static final BitSet FOLLOW_38_in_postfix_expr404 = new BitSet(new long[]{0x000400C510510000L});
-    public static final BitSet FOLLOW_argument_expr_list_in_postfix_expr407 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_39_in_postfix_expr411 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_dayblock_in_datetime425 = new BitSet(new long[]{0x0000040000000000L});
-    public static final BitSet FOLLOW_42_in_datetime426 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_timeblock_in_datetime428 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TIME_in_timeblock438 = new BitSet(new long[]{0x0040000000000000L});
-    public static final BitSet FOLLOW_54_in_timeblock440 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_TIME_in_timeblock442 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_dayblock452 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_INT_in_dayblock454 = new BitSet(new long[]{0x0008040000000000L});
-    public static final BitSet FOLLOW_42_in_dayblock457 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_INT_in_dayblock459 = new BitSet(new long[]{0x0008040000000000L});
-    public static final BitSet FOLLOW_51_in_dayblock463 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_constant_in_primary_expr473 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_primary_expr478 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRING_in_primary_expr483 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TIME_in_primary_expr488 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_primary_expr493 = new BitSet(new long[]{0x0004004510510000L});
-    public static final BitSet FOLLOW_expr_in_primary_expr494 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_39_in_primary_expr495 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expr_in_argument_expr_list506 = new BitSet(new long[]{0x0000040000000002L});
-    public static final BitSet FOLLOW_42_in_argument_expr_list510 = new BitSet(new long[]{0x0004004510510000L});
-    public static final BitSet FOLLOW_expr_in_argument_expr_list512 = new BitSet(new long[]{0x0000040000000002L});
+    public static final BitSet FOLLOW_primary_expr_in_postfix_expr401 = new BitSet(new long[]{0x0000004000000002L});
+    public static final BitSet FOLLOW_38_in_postfix_expr405 = new BitSet(new long[]{0x008000C510510000L});
+    public static final BitSet FOLLOW_argument_expr_list_in_postfix_expr408 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_39_in_postfix_expr412 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_dayblock_in_datetime426 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_timeblock_in_datetime429 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TIME_in_timeblock441 = new BitSet(new long[]{0x0800000000000000L});
+    public static final BitSet FOLLOW_59_in_timeblock443 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_TIME_in_timeblock445 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_55_in_dayblock455 = new BitSet(new long[]{0x007C000000000000L});
+    public static final BitSet FOLLOW_56_in_dayblock470 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_constant_in_primary_expr480 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_primary_expr485 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRING_in_primary_expr490 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TIME_in_primary_expr495 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_primary_expr500 = new BitSet(new long[]{0x0080004510510000L});
+    public static final BitSet FOLLOW_expr_in_primary_expr501 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_39_in_primary_expr502 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expr_in_argument_expr_list513 = new BitSet(new long[]{0x0000040000000002L});
+    public static final BitSet FOLLOW_42_in_argument_expr_list517 = new BitSet(new long[]{0x0080004510510000L});
+    public static final BitSet FOLLOW_expr_in_argument_expr_list519 = new BitSet(new long[]{0x0000040000000002L});
 
 }

@@ -27,7 +27,7 @@ stmt:	expr';'
 	|	';'
 	;
 selection_stmt
-	:	IF_T expr '{'stmt*'}' (ELSE_T '{'stmt*'}')?
+	:	IF_T^ expr '{'stmt*'}' (ELSE_T '{'stmt*'}')?
 	;
 iteration_stmt
 	:	FOREACH_T COURSE_T ID IN_T ID '{' (declarator';')* (stmt)* '}'
@@ -40,13 +40,13 @@ expr
 	|	ID '='^ expr
 	;
 cond_term
-	:	equiv_expr (AND equiv_expr)*
+	:	equiv_expr (AND^ equiv_expr)*
 	;
 equiv_expr
-	:	rel_expr ( (EQ | NEQ) rel_expr )*
+	:	rel_expr ( (EQ^ | NEQ^) rel_expr )*
 	;
 rel_expr
-	:	math_expr ( ('<' | '>' | GEQ | LEQ) math_expr )*
+	:	math_expr ( ('<'^ | '>'^ | GEQ^ | LEQ^) math_expr )*
 	|	datetime
 	;
 math_expr
@@ -54,21 +54,22 @@ math_expr
 	;
 math_term
 	:	unary_expr ( ('*' | '/') unary_expr )*
+	//|	timeblock
 	;
 unary_expr
 	:	(NOT)* postfix_expr
 	;
 postfix_expr
-	:	(ID '.')? primary_expr ( '(' (argument_expr_list)? ')' )?
+	:	(ID '.'!)? primary_expr ( '(' (argument_expr_list)? ')' )?
 	; // doesn't accept postfix_expr.postfix_expr, only id.postfix_expr
 datetime
-	:	dayblock',' timeblock
+	:	dayblock (',' timeblock)?
 	;
 timeblock
 	:	TIME '~' TIME
 	;
 dayblock
-	:	'[' INT (',' INT)* ']'
+	:	'[' ('M'|'T'|'W'|'R'|'F')+ ']'
 	;
 primary_expr
 	:	constant
