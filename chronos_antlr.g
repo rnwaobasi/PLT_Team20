@@ -60,6 +60,7 @@ math_term
 	;
 unary_expr
 	:	(NOT)* postfix_expr
+	|	dayblock
 	;
 postfix_expr
 	:	/*datetime
@@ -67,6 +68,9 @@ postfix_expr
 	; // doesn't accept postfix_expr.postfix_expr, only id.postfix_expr
 timeblock
 	:	TIME '~' TIME
+	;
+dayblock
+	:	'[' INT (',' INT)* ']'
 	;
 primary_expr
 	:	constant
