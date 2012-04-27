@@ -70,7 +70,7 @@ foreach course c in CL
     if (sched.numCourses() <= courseMax 
    && sched.numCredits() + c.numCredits() <= 20)
     {
-if (c.day() == R && sched.numCourses(R) >= courseMaxR)
+if (c.getDay() == [R] && sched.numCourses([R]) >= courseMaxR)
     break;
 else
     sched.addCourse(c);
@@ -100,9 +100,10 @@ new courselist CL = generateCourses(infile);
 new courselist Aho;
 
 /* Add his sections of PLT and CSTheory, respectively */
-if ( CL.getCourse("PLT").hasDatetime() == MW 1:10-2:25 ) {
-    Aho.addCourse( CL.getCourse("PLT") );
-    Aho.getCourse("PLT").setSelectedSection( MW 1:10-2:25 );
+if ( PLT.hasTime() == 1:10~2:25 ) {
+    myPLT = CL.getCourse("PLT");
+    mylist.addCourse( myPLT );
+    myPLT.setSelectedSection( 1:10~2:25 );
 }
 
 if ( CL.getCourse("CSTheory").hasDatetime() == TR 4:10-5:25 ) {

@@ -2,7 +2,7 @@ grammar chronos_antlr;
 
 /*options {
 	output = AST;
-}
+} */
 
 /* GRAMMAR */
 translation_unit
@@ -14,20 +14,23 @@ declarator
 	;
 primitive_declarator
 	:	type_specifier ID
-	|	type_specifier ID '=' assignment_expr
+	//|	type_specifier ID '=' assignment_expr
+	|	type_specifier ID '=' expr
 	;
 derived_type_declarator
 	:	NEW_T derived_type_specifier ID
-	|	NEW_T derived_type_specifier ID '=' assignment_expr
+	//|	NEW_T derived_type_specifier ID '=' assignment_expr
+	|	NEW_T derived_type_specifier ID '=' expr
 	;
-stmt:	assignment_expr';'
+stmt:	expr';'
+//assignment_expr ('=' assignment_expr)? ';'
 	|	selection_stmt
 	|	iteration_stmt
 	|	jump_stmt';'
 	|	';'
 	;
 selection_stmt
-	:	IF_T assignment_expr '{'stmt'}' (ELSE_T '{'stmt'}')?
+	:	IF_T expr '{'stmt*'}' (ELSE_T '{'stmt*'}')?
 	;
 iteration_stmt
 	:	FOREACH_T COURSE_T ID IN_T ID '{' (declarator';')* (stmt)* '}'
@@ -35,8 +38,9 @@ iteration_stmt
 jump_stmt
 	:	BREAK_T
 	;
-assignment_expr
+expr
 	:	cond_term (OR cond_term)*
+	|	ID '=' expr
 	;
 cond_term
 	:	equiv_expr (AND equiv_expr)*
@@ -52,21 +56,27 @@ math_expr
 	;
 math_term
 	:	unary_expr ( ('*' | '/') unary_expr )*
+	|	timeblock
 	;
 unary_expr
 	:	(NOT)* postfix_expr
 	;
 postfix_expr
-	:	(ID '.')? primary_expr ( '(' (argument_expr_list)? ')' )?
+	:	/*datetime
+	|	*/(ID '.')? primary_expr ( '(' (argument_expr_list)? ')' )?
 	; // doesn't accept postfix_expr.postfix_expr, only id.postfix_expr
+timeblock
+	:	TIME '~' TIME
+	;
 primary_expr
 	:	constant
 	|	ID
 	|	STRING
-	|	'('assignment_expr')'
-	; // does parser need to also recognize dates and times? i.e. MW 1:10-2:25
+	|	TIME
+	|	'('expr')'
+	;
 argument_expr_list
-	:	(assignment_expr) (',' assignment_expr)*
+	:	(expr) (',' expr)*
 	;
 constant
 	:	INT
@@ -76,7 +86,6 @@ type_specifier
 	:	INT_T
 	|	DOUBLE_T
 	|	TIME_T
-	|	DAY_T
 	|	STRING_T
 	;
 derived_type_specifier
@@ -111,12 +120,16 @@ DOUBLE_T:	'double'
 		;
 TIME_T	:	'time'
 		;
-DAY_T	:	'day'
-		;
 STRING_T:	'string'
 		;
 
-// boolean and relational ops		
+TIME
+	:	('0'..'2')? ('0'..'9') ':' ('0'..'5')('0'..'9')
+	;
+	// military format for time
+	// hours can have 1 or 2 digits
+
+/* boolean and relational ops */	
 AND	:	'&&'
 	;
 OR	:	'||'
@@ -159,6 +172,10 @@ STRING
 
 CHAR:  '\'' ( ESC_SEQ | ~('\''|'\\') ) '\''
     ;
+    
+fragment
+DAY	:	('M' | 'T' | 'W' | 'R' | 'F')
+	;
 
 fragment
 EXPONENT : ('e'|'E') ('+'|'-')? ('0'..'9')+ ;

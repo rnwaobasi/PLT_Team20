@@ -1,6 +1,5 @@
-foreach course c in CL {
-    string cname = c.name();
-    if ( cname.substring(0,4) == "MUSI" ) {
- 	   music.addCourse( c );
-    }
+if ( PLT.hasTime() == 1:10~2:25 ) {
+    myPLT = CL.getCourse("PLT");
+    mylist.addCourse( myPLT );
+    myPLT.setSelectedSection( 1:10~2:25 );
 }
