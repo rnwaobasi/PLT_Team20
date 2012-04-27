@@ -1,8 +1,8 @@
 grammar chronos_antlr;
 
-/*options {
+options {
 	output = AST;
-} */
+}
 
 /* GRAMMAR */
 translation_unit
@@ -40,7 +40,7 @@ jump_stmt
 	;
 expr
 	:	cond_term (OR cond_term)*
-	|	ID '=' expr
+	|	ID '='^ expr
 	;
 cond_term
 	:	equiv_expr (AND equiv_expr)*
@@ -50,22 +50,26 @@ equiv_expr
 	;
 rel_expr
 	:	math_expr ( ('<' | '>' | GEQ | LEQ) math_expr )*
+	|	datetime
 	;
 math_expr
 	:	math_term ( ('+' | '-') math_term )*
 	;
 math_term
 	:	unary_expr ( ('*' | '/') unary_expr )*
-	|	timeblock
+	//|	timeblock
 	;
 unary_expr
 	:	(NOT)* postfix_expr
-	|	dayblock
+	//|	dayblock
 	;
 postfix_expr
 	:	/*datetime
 	|	*/(ID '.')? primary_expr ( '(' (argument_expr_list)? ')' )?
 	; // doesn't accept postfix_expr.postfix_expr, only id.postfix_expr
+datetime
+	:	dayblock',' timeblock
+	;
 timeblock
 	:	TIME '~' TIME
 	;
