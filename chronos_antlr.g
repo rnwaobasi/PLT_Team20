@@ -5,17 +5,19 @@ options {
 }
 
 tokens {
-	UNIT;
+	SOURCE_PROGRAM;
 	DECL;
-	CLAUSE;
+	COND;
+	BLOCK;
 	DATETIME;
 	DAYS;
 	TIMES;
+	PARAMS;
 }
 
 /* GRAMMAR */
 translation_unit
-	:	(declarator';')* (stmt)* -> ^(UNIT declarator* stmt*)
+	:	(declarator';')* (stmt)* -> ^(SOURCE_PROGRAM declarator* stmt*)
 	;
 declarator
 	:	primitive_declarator
@@ -33,13 +35,13 @@ stmt:	expr';' -> expr
 	|	selection_stmt
 	|	iteration_stmt
 	|	jump_stmt';' -> jump_stmt
-	|	';'
+	|	';'!
 	;
 selection_stmt
-	:	IF_T expr '{'(a=stmt)*'}' (ELSE_T '{'b=stmt*'}')? -> ^(IF_T expr $a*)
+	:	IF_T expr '{'(a=stmt)*'}' (ELSE_T '{'(b=stmt)*'}')? -> ^(COND ^(IF_T expr $a*) ^(ELSE_T $b*)?)
 	;
 iteration_stmt
-	:	FOREACH_T COURSE_T element=ID IN_T list=ID '{' actions=((declarator';')* (stmt)*) '}' -> ^(FOREACH_T $element $list $actions) 
+	:	FOREACH_T COURSE_T element=ID IN_T list=ID '{' (declarator';')* (stmt)* '}' -> ^(FOREACH_T ^(IN_T $element $list) ^(BLOCK (declarator)* (stmt)*)) 
 	; // iterations only exist for courses
 jump_stmt
 	:	BREAK_T
@@ -59,18 +61,19 @@ rel_expr
 	|	datetime
 	;
 math_expr
-	:	math_term ( ('+' | '-') math_term )*
+	:	math_term ( ('+'^ | '-'^) math_term )*
 	;
 math_term
-	:	unary_expr ( ('*' | '/') unary_expr )*
+	:	unary_expr ( ('*'^ | '/'^) unary_expr )*
 	//|	timeblock
 	;
 unary_expr
-	:	(NOT)* postfix_expr
+	:	postfix_expr
+	|	NOT^ postfix_expr
 	;
 postfix_expr
-	:	ID '.' primary_expr ( '(' (argument_expr_list)? ')' )? -> ^(primary_expr ID argument_expr_list)
-	|	primary_expr ( '(' (argument_expr_list)? ')' )?
+	:	ID '.' primary_expr ( '(' (argument_expr_list)? ')' )? -> ^(primary_expr ID argument_expr_list?)
+	|	primary_expr^ ( '('! (argument_expr_list)? ')'! )?
 	; // doesn't accept postfix_expr.postfix_expr, only id.postfix_expr
 datetime
 	:	dayblock timeblock? -> ^(DATETIME dayblock timeblock)
@@ -79,7 +82,10 @@ timeblock
 	:	a=TIME '~' b=TIME -> ^(TIMES $a $b)
 	;
 dayblock
-	:	'[' i+=('M'|'T'|'W'|'R'|'F') ( ',' i+=('M'|'T'|'W'|'R'|'F') )* ']' //-> ^(DAYS $i+)
+	:	'[' daychar ( ',' daychar )* ']' -> ^(DAYS daychar+)
+	;
+daychar
+	:	('M'|'T'|'W'|'R'|'F')
 	;
 primary_expr
 	:	constant
@@ -89,7 +95,7 @@ primary_expr
 	|	'('expr')' -> expr
 	;
 argument_expr_list
-	:	(expr) (',' expr)*
+	:	(expr) (',' expr)* -> ^(PARAMS expr+)
 	;
 constant
 	:	INT

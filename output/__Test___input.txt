@@ -1,4 +1,1 @@
-if ( PLT.hasDatetime( [M,W] 1:10~2:25 ) ) {
-    myPLT = PLT.getSection( [M,W] 1:10~2:25 );
-    mylist.add( myPLT );
-}
+mySchedule.add( myPLT, [M,W] 1:10~2:25 );
