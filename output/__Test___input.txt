@@ -1,8 +1,12 @@
-if (c.getDay() == [R]
-	    && sched.numCourses([R]) >= courseMaxR) {
-    		break;
-	}
-if ( PLT.hasDatetime( [M W] 1:10~2:25 ) ) {
-    myPLT = PLT.getSection( [MW] 1:10~2:25 );
+new courselist Aho = You;
+if ( PLT.hasDatetime( [M,W] 1:10~2:25 ) ) {
+    myPLT = PLT.getSection( [M,W] 1:10~2:25 );
     mylist.add( myPLT );
+}
+new courselist music;
+foreach course c in CL {
+    string cname = c.name();
+    if ( cname.substring(0,4) == "MUSI" ) {
+ 	   music.addCourse( c );
+    }
 }

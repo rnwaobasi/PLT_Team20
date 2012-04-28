@@ -4,30 +4,39 @@ options {
 	output = AST;
 }
 
+tokens {
+	UNIT;
+	DECL;
+	CLAUSE;
+	DATETIME;
+	DAYS;
+	TIMES;
+}
+
 /* GRAMMAR */
 translation_unit
-	:	(declarator';')* (stmt)*
+	:	(declarator';')* (stmt)* -> ^(UNIT declarator* stmt*)
 	;
 declarator
 	:	primitive_declarator
 	|	derived_type_declarator
 	;
 primitive_declarator
-	:	type_specifier ID
+	:	type_specifier ID -> ^(DECL type_specifier ID)
 	|	type_specifier ID '=' expr
 	;
 derived_type_declarator
-	:	NEW_T derived_type_specifier ID
-	|	NEW_T derived_type_specifier ID '=' expr
+	:	NEW_T derived_type_specifier ID -> ^(DECL derived_type_specifier ID)
+	|	NEW_T derived_type_specifier ID '=' expr -> ^('=' ^(DECL derived_type_specifier ID) expr)
 	;
-stmt:	expr';'
+stmt:	expr';' -> expr
 	|	selection_stmt
 	|	iteration_stmt
-	|	jump_stmt';'
+	|	jump_stmt';' -> jump_stmt
 	|	';'
 	;
 selection_stmt
-	:	IF_T^ expr '{'stmt*'}' (ELSE_T '{'stmt*'}')?
+	:	IF_T expr '{'(a=stmt)*'}' (ELSE_T '{'b=stmt*'}')? -> ^(IF_T expr $a*)
 	;
 iteration_stmt
 	:	FOREACH_T COURSE_T ID IN_T ID '{' (declarator';')* (stmt)* '}'
@@ -36,7 +45,7 @@ jump_stmt
 	:	BREAK_T
 	;
 expr
-	:	cond_term (OR cond_term)*
+	:	cond_term (OR^ cond_term)*
 	|	ID '='^ expr
 	;
 cond_term
@@ -60,23 +69,24 @@ unary_expr
 	:	(NOT)* postfix_expr
 	;
 postfix_expr
-	:	(ID '.'!)? primary_expr ( '(' (argument_expr_list)? ')' )?
+	:	ID '.' primary_expr ( '(' (argument_expr_list)? ')' )? -> ^(primary_expr ID argument_expr_list)
+		|	primary_expr ( '(' (argument_expr_list)? ')' )?
 	; // doesn't accept postfix_expr.postfix_expr, only id.postfix_expr
 datetime
-	:	dayblock (',' timeblock)?
+	:	dayblock timeblock? -> ^(DATETIME dayblock timeblock)
 	;
 timeblock
-	:	TIME '~' TIME
+	:	a=TIME '~' b=TIME -> ^(TIMES $a $b)
 	;
 dayblock
-	:	'[' ('M'|'T'|'W'|'R'|'F')+ ']'
+	:	'[' i+=('M'|'T'|'W'|'R'|'F') ( ',' i+=('M'|'T'|'W'|'R'|'F') )* ']' //-> ^(DAYS $i+)
 	;
 primary_expr
 	:	constant
 	|	ID
 	|	STRING
 	|	TIME
-	|	'('expr')'
+	|	'('expr')' -> expr
 	;
 argument_expr_list
 	:	(expr) (',' expr)*
