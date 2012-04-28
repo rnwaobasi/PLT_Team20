@@ -4,6 +4,9 @@ import java.util.regex.*;
 
 public class scheduler {
 	   public static void main(String args[]) {
+		   List<classes> views = new ArrayList<classes>();
+		   int objTracker = 0;
+
 		   try{
 			   String strLine;
 			   int counter = 0;
@@ -19,6 +22,9 @@ public class scheduler {
 				   
 			   if(Pattern.matches("\\d+", strLine)){
 				   System.out.println("Credits: " + strLine);
+				   views.get(objTracker).setCredits(strLine);
+				   //System.out.println(views.get(objTracker).getCredits());
+				   objTracker++;
 				   counter = 0;
 			   }
 			   else if(strLine.isEmpty()){
@@ -26,7 +32,9 @@ public class scheduler {
 			   }
 			   else if(counter == 0 ){
 				   System.out.println("Class Name: " + strLine);
+				   views.add(new classes(strLine));
 				   counter = 1;
+				   
 			   }//end of if counter == 0 
 			   else{
 				   System.out.println("\nSession " + counter);
@@ -35,27 +43,36 @@ public class scheduler {
 				   while (st.hasMoreTokens()) {
 					   if(count == 0){
 						   System.out.println("Days: ");
+						   
 						   String temp = new String(st.nextToken());
-						   for(int j=0; j<temp.length(); j++){
+						   int len = temp.length();
+						   String[] days = new String[len];
+						   for(int j=0; j<len; j++){
 							   if(temp.charAt(j) == 'M'){
+								   days[j] = "Monday";
 								   System.out.println("Monday");
 							   }
 							   else if(temp.charAt(j) == 'T'){
+								   days[j] = "Tuesday";
 								   System.out.println("Tuesday");
 							   }
 							   else if(temp.charAt(j) == 'W'){
+								   days[j] = "Wednesday";
 								   System.out.println("Wednesday");
 							   }
 							   else if(temp.charAt(j) == 'R'){
+								   days[j] = "Thurday";
 								   System.out.println("Thursday");
 							   }
 							   else if(temp.charAt(j) == 'F'){
+								   days[j] = "Friday";
 								   System.out.println("Friday");
 							   }
 							   else{
 								   System.out.println("\"" + temp.charAt(j) + "\" is not a valid school day! Please enter one of M, T, W, R, or F");
 							   }
 						   }
+						   views.get(objTracker).setDays(days, counter);
 						   count++;
 					   }
 					   else{
@@ -67,6 +84,8 @@ public class scheduler {
 						   times = temp.split(delimiter);
 						   System.out.println("Start: " + times[0]);
 						   System.out.println("End: " + times[1]);
+						   views.get(objTracker).setStart(times[0], counter);
+						   views.get(objTracker).setEnd(times[1], counter);
 					   }
 				     
 				   }
