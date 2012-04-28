@@ -1,26 +1,3 @@
-LEXER FILE: lexer.flex (written in JFlex)
-PARSER FILE: parser.y (written in BYACC/J)
+LEXER/PARSER/AST: ANTLR
 
-jflex lexer.flex WILL GIVE YOU ChronosLexer.java (or whatever is after %class in lexer.flex)
-
-**Goals:
-Write a working lexer and parser for just ONE simple statement of our language. Work up from there. Have a working lexer and parser for our ENTIRE language ASAP.
-
-**Help on lexer:
-- Dragon book (on Lex, but similar to JFlex in concept) p.140
-- JFlex manual (in Dropbox and on JFlex website)
-- http://mason.gmu.edu/~white/Java/java_page.html
-Notes:
-- JFlex has states
-- Matches first by longest matching prefix, then by order (first has precedence)
-- In Lex, you can use a slash to say that an additional pattern follows but does not match the lexeme (p.145)
-- Sometimes you may have to preprocess the input to delete whitespace in order to make the matching work
-- p.144 - installID() is a function that is called to place the lexeme found in the symbol table. Do we need this in JFlex/ what is the equivalent?
-
-**Help on parser:
-- Dragon book (on Yacc, but similar) p.287
-- BYACC/J website
-- http://mason.gmu.edu/~white/Java/java_page.html
-Notes:
-- run first without semantic actions, to see if there are any shift/reduce conflicts (is our grammar ambiguous?)
-- if unambiguous, then proceed to add actions
+Look at WHO IS WORKING ON WHAT doc

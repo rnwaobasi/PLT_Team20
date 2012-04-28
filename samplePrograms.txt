@@ -1,5 +1,5 @@
 /* NOTES: user-def func would be awesome
-** idea: schedules have sections; courselists have courses
+** idea: schedules have sections; courselists have courses?
 */
 
 /******** BASICS ********/
@@ -15,7 +15,7 @@ foreach course c in CL {
     if (sched.length() < 5
         && !(sched.conflict( c )))
     {
- 	   sched.addCourse( c );
+ 	   sched.add( c );
     }
     else
     {
@@ -31,20 +31,20 @@ sched.print();
 
 /* CREATE a LIST of required classes */
 new courselist required;
-required.addCourse( CL.getCourse("Math") );
-required.addCourse( CL.getCourse("Stat") );
+required.add( CL.getCourse("Math") );
+required.add( CL.getCourse("Stat") );
 
 /* Create a list of elective classes */
 new courselist electives;
-electives.addCourse( CL.getCourse("PE") );
-electives.addCourse( CL.getCourse("ArtHum") );
+electives.add( CL.getCourse("PE") );
+electives.add( CL.getCourse("ArtHum") );
 
 /* ADD COURSES from the list of required courses
 *  only as long as the schedule has 3 or fewer courses
 *  and the courses do not conflict */
 foreach course c in required {
     if (sched.length() <= 3 && !(sched.conflict( c ))) {
- 	   sched.addCourse( c );
+ 	   sched.add( c );
     }
 }
 
@@ -52,7 +52,7 @@ foreach course c in required {
 *  and only adding until the schedule has 5 courses */
 foreach course c in electives {
     if (sched.length() <= 5 && !(sched.conflict( c ))) {
- 	   sched.addCourse( c );
+ 	   sched.add( c );
     }
 }
 
@@ -75,7 +75,7 @@ foreach course c in CL
     		break;
 	}
 	else {
-    		sched.addCourse(c);
+    		sched.add( c );
 	}
     }
 } 
@@ -100,10 +100,16 @@ if (sched.numCourses() < courseMin)
 new courselist Aho;
 
 /* Add his sections of PLT and CSTheory, respectively */
+new course PLT = CL.getCourse("PLT");
 if ( PLT.hasDatetime( [M,W] 1:10~2:25 ) ) {
-    myPLT = PLT.getSection( [M,W] 1:10~2:25 );
-    mylist.add( myPLT );
+	myPLT = PLT;
+	mySchedule.add( myPLT, [M,W] 1:10~2:25 );
+	mySchedule.add( myPLT ); // adding whatever section works
 }
+
+mySchedule.add( myCalc3 );
+
+mySchedule.make();
 
 /******** SEARCH BY NAME ********/
 
@@ -114,6 +120,6 @@ new courselist music;
 foreach course c in CL {
     string cname = c.name();
     if ( cname.substring(0,4) == "MUSI" ) {
- 	   music.addCourse( c );
+ 	   music.add( c );
     }
 }
