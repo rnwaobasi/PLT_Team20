@@ -11,6 +11,12 @@ public class classes {
 	//String[] session;
 	int credits;
 
+	   String[][] timesStart = new String[100][2];
+	   String[][] timesEnd = new String[100][2];
+	   //delimiter for split
+	   String delimiter = ":";
+	   
+	   
 	//creates object for a class
 	public classes(String name){
 		this.name = name;
@@ -22,10 +28,12 @@ public class classes {
 	
 	public void setStart(String start, int session){
 		this.start[session] = start;
+		timesStart[session] = start.split(delimiter);
 	}
 	
 	public void setEnd(String end, int session){
 		this.end[session] = end;
+		timesEnd[session] = end.split(delimiter);
 	}
 	
 	public void setCredits(String credits){
@@ -45,18 +53,22 @@ public class classes {
 	}
 	
 	public String getStartH(int session){
-		return start[session];
+		//return start[session];
+		return timesStart[session][0];
 	}
 	
 	public String getStartM(int session){
-		return start[session];
+		//return start[session];
+		return timesStart[session][1];
 	}
 	
 	public String getEndH(int session){
-		return end[session];
+		//return end[session];
+		return timesEnd[session][0];
 	}
 	
 	public String getEndM(int session){
-		return end[session];
+		//return end[session];
+		return timesEnd[session][1];
 	}
 }
