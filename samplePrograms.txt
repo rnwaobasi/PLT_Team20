@@ -1,5 +1,6 @@
-/* NOTES: user-def func would be awesome
-** idea: schedules have sections; courselists have courses?
+/* Future improvements if we had more time:
+user def functions
+we have substring capability; what about .has() capability? (getting dangerously into regex territory, but it would be nice...)
 */
 
 /******** BASICS ********/
@@ -12,14 +13,14 @@ new courselist CL = generateCourses(input_file);
 
 /* ADD COURSES to the schedule according to some algorithm */
 foreach course c in CL {
-    if (sched.length() < 5
-        && !(sched.conflict( c )))
+    if (c.getStartTime() > 10:00 //--- User doesn't want to wake up early for class
+        && !(sched.conflict( c ))) //--- c doesn't conflict with schedule. Isn't this obvious?
     {
- 	   sched.add( c );
+ 	   sched.add( c ); //--- Add whatever section of c that works
     }
     else
     {
- 	   print("you got a conflict there");
+ 	   print("you got a conflict there"); //--- Print string output
     }
 }
 
@@ -31,7 +32,7 @@ sched.print();
 
 /* CREATE a LIST of required classes */
 new courselist required;
-required.add( CL.getCourse("Math") );
+required.add( CL.getCourse("Math") ); //--- Add course to a list (regardless of conflicts)
 required.add( CL.getCourse("Stat") );
 
 /* Create a list of elective classes */
@@ -43,7 +44,10 @@ electives.add( CL.getCourse("ArtHum") );
 *  only as long as the schedule has 3 or fewer courses
 *  and the courses do not conflict */
 foreach course c in required {
-    if (sched.length() <= 3 && !(sched.conflict( c ))) {
+    if (sched.length() <= 3
+	&& c.getTime() != 9:10~10:25 //--- User doesn't want to take a class which has this EXACT
+					   time interval (def of equivalence, right?)
+ 	&& !(sched.conflict( c ))) { //--- again, obvious? Is this done in backend automatically?
  	   sched.add( c );
     }
 }
@@ -51,8 +55,16 @@ foreach course c in required {
 /* Same as above, but for elective courses
 *  and only adding until the schedule has 5 courses */
 foreach course c in electives {
-    if (sched.length() <= 5 && !(sched.conflict( c ))) {
- 	   sched.add( c );
+    if (sched.length() <= 5 
+	&& !(sched.conflict( c ))) {
+	/* NEW --- Can we implement this? */
+	   timeblock t = 10:00-11:00; //--- What if I am busy at 10:00-11:00 with some non-course activity?
+					--- Also, if getTime() returns a timeblock, don't we have to
+					    be able to recognize a timeblock as a derived type?
+	   if ( sched.conflict( t ) ) { //--- Recognize a conflict with a specified timeblock, even though
+					      a course is not scheduled at that time
+ 		sched.add( c );
+	   }
     }
 }
 
@@ -67,11 +79,12 @@ int courseMaxR = 2 // maximum number of courses on Thursday
 /* Add classes only if conditions are met */
 foreach course c in CL
 {
-    if (sched.numCourses() <= courseMax 
+    if (sched.numCourses() <= courseMax
         && sched.numCredits() + c.numCredits() <= 20)
     {
-	if (c.getDay() == [R]
-	    && sched.numCourses([R]) >= courseMaxR) {
+	if (c.getDay() == [R] //--- Note that ALL days have to be represented with square brackets
+	    && sched.numCourses([R]) >= courseMaxR) { //--- this means: number of courses on Thursday
+							    in the schedule
     		break;
 	}
 	else {
@@ -81,8 +94,9 @@ foreach course c in CL
 } 
 
 /* PRINT some STRING output */
-if (sched.numCourses() < courseMin)
+if (sched.numCourses() < courseMin) {
     print("Four non-conflicting classes could not be found. Add more potential courses!");
+}
 
 /******** SECTION SELECTION ********/
 
@@ -100,16 +114,11 @@ if (sched.numCourses() < courseMin)
 new courselist Aho;
 
 /* Add his sections of PLT and CSTheory, respectively */
-new course PLT = CL.getCourse("PLT");
-if ( PLT.hasDatetime( [M,W] 1:10~2:25 ) ) {
-	myPLT = PLT;
-	mySchedule.add( myPLT, [M,W] 1:10~2:25 );
-	mySchedule.add( myPLT ); // adding whatever section works
+new course PLT = CL.getCourse("PLT"); //--- Do we need new?
+if ( PLT.hasDatetime( [M,W] 1:10~2:25 ) ) { //--- Similarly, datetime should be a derived type?
+	new course myPLT = PLT; //--- Is this unnecessary?
+	sched.add( myPLT, [M,W] 1:10~2:25 ); //--- Overloaded add function: adds this specific section
 }
-
-mySchedule.add( myCalc3 );
-
-mySchedule.make();
 
 /******** SEARCH BY NAME ********/
 
@@ -118,7 +127,7 @@ new courselist music;
 
 // if course name begins with MUSI, then add it to the music list
 foreach course c in CL {
-    string cname = c.name();
+    string cname = c.getName();
     if ( cname.substring(0,4) == "MUSI" ) {
  	   music.add( c );
     }

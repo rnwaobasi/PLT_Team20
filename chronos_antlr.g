@@ -65,7 +65,7 @@ math_expr
 	;
 math_term
 	:	unary_expr ( ('*'^ | '/'^) unary_expr )*
-	//|	timeblock
+	|	timeblock
 	;
 unary_expr
 	:	postfix_expr
