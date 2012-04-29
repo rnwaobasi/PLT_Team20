@@ -9,7 +9,7 @@ public class __Test__ {
         chronos_antlrLexer lex = new chronos_antlrLexer(new ANTLRFileStream("/Users/shannonlee/PLT_Team20/output/__Test___input.txt", "UTF8"));
         CommonTokenStream tokens = new CommonTokenStream(lex);
 
-        chronos_antlrParser g = new chronos_antlrParser(tokens, 49153, null);
+ g = new (tokens, 49153, null);
         try {
             g.translation_unit();
         } catch (RecognitionException e) {

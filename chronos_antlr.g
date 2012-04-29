@@ -5,31 +5,36 @@ options {
 }
 
 tokens {
-	SOURCE_PROGRAM;
 	DECL;
 	COND;
 	BLOCK;
 	DATETIME;
 	DAYS;
 	TIMES;
+	FUNC;
 	PARAMS;
 }
 
 /* GRAMMAR */
 translation_unit
-	:	(declarator';')* (stmt)* -> ^(SOURCE_PROGRAM declarator* stmt*)
+	:	declarator* 
+	|	stmt*
 	;
 declarator
-	:	primitive_declarator
-	|	derived_type_declarator
+	:	primitive_declarator';'!
+	|	derived_type_declarator';'!
 	;
 primitive_declarator
-	:	type_specifier ID -> ^(DECL type_specifier ID)
-	|	type_specifier ID '=' expr -> ^('=' ^(DECL type_specifier ID) expr)
+	:	type_specifier ID 
+			-> ^(DECL type_specifier ID)
+	|	type_specifier ID '=' expr 
+			-> ^('=' ^(DECL type_specifier ID) expr)
 	;
 derived_type_declarator
-	:	NEW_T derived_type_specifier ID -> ^(DECL derived_type_specifier ID)
-	|	NEW_T derived_type_specifier ID '=' expr -> ^('=' ^(DECL derived_type_specifier ID) expr)
+	:	NEW_T derived_type_specifier ID 
+			-> ^(DECL derived_type_specifier ID)
+	|	NEW_T derived_type_specifier ID '=' expr 
+			-> ^('=' ^(DECL derived_type_specifier ID) expr)
 	;
 stmt:	expr';' -> expr
 	|	selection_stmt
@@ -38,10 +43,12 @@ stmt:	expr';' -> expr
 	|	';'!
 	;
 selection_stmt
-	:	IF_T expr '{'(a=stmt)*'}' (ELSE_T '{'(b=stmt)*'}')? -> ^(COND ^(IF_T expr $a*) ^(ELSE_T $b*)?)
+	:	IF_T expr '{'(a=translation_unit)*'}' (ELSE_T '{'(c=translation_unit)*'}')? 
+			-> ^(COND ^(IF_T expr $a*) ^(ELSE_T $c*)?)
 	;
 iteration_stmt
-	:	FOREACH_T COURSE_T element=ID IN_T list=ID '{' (declarator';')* (stmt)* '}' -> ^(FOREACH_T ^(IN_T $element $list) ^(BLOCK (declarator)* (stmt)*)) 
+	:	FOREACH_T COURSE_T element=ID IN_T list=ID '{' translation_unit '}' 
+			-> ^(FOREACH_T ^(IN_T $element $list) ^(BLOCK translation_unit))
 	; // iterations only exist for courses
 jump_stmt
 	:	BREAK_T
@@ -72,11 +79,26 @@ unary_expr
 	|	NOT^ postfix_expr
 	;
 postfix_expr
-	:	ID '.' primary_expr ( '(' (argument_expr_list)? ')' )? -> ^(primary_expr ID argument_expr_list?)
-	|	primary_expr^ ( '('! (argument_expr_list)? ')'! )?
+	:	( (ID '.')? primary_expr '(' argument_expr_list? ')' )=> function
+	|	variable
+	;
+function
+	:	ID '.' primary_expr '(' (argument_expr_list)? ')'
+			-> ^(FUNC ^('.' ID primary_expr) ^(PARAMS argument_expr_list?))
+			// function
+	|	primary_expr '(' (argument_expr_list)? ')'
+			-> ^(FUNC primary_expr ^(PARAMS argument_expr_list?))
+			// function without a caller object
+	;
+variable
+	:	ID '.' primary_expr -> ^('.' ID primary_expr)
+			// not a function
+	|	primary_expr
+			// also not a function
 	; // doesn't accept postfix_expr.postfix_expr, only id.postfix_expr
 datetime
-	:	dayblock timeblock? -> ^(DATETIME dayblock timeblock)
+	:	dayblock timeblock? 
+			-> ^(DATETIME dayblock timeblock)
 	;
 timeblock
 	:	a=TIME '~' b=TIME -> ^(TIMES $a $b)
@@ -89,13 +111,13 @@ daychar
 	;
 primary_expr
 	:	constant
-	|	ID
+	|	ID { System.out.println(ID); }
 	|	STRING
 	|	TIME
 	|	'('expr')' -> expr
 	;
 argument_expr_list
-	:	(expr) (',' expr)* -> ^(PARAMS expr+)
+	:	(expr) (',' expr)* -> expr+
 	;
 constant
 	:	INT
@@ -104,6 +126,7 @@ constant
 type_specifier
 	:	INT_T
 	|	DOUBLE_T
+	|	DAY_T
 	|	TIME_T
 	|	STRING_T
 	;
@@ -111,6 +134,8 @@ derived_type_specifier
 	:	SCHEDULE_T
 	|	COURSE_T
 	|	COURSELIST_T
+	|	TIMEBLOCK_T
+	|	DATETIME_T
 	;
 	
 /* LEXER */
@@ -133,9 +158,15 @@ COURSE_T:	'course'
 		;
 COURSELIST_T:	'courselist'
 		;
+TIMEBLOCK_T:	'timeblock'
+		;
+DATETIME_T:		'datetime'
+		;
 INT_T	:	'int'
 		;
 DOUBLE_T:	'double'
+		;
+DAY_T	:	'day'
 		;
 TIME_T	:	'time'
 		;

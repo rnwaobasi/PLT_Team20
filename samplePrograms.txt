@@ -8,20 +8,20 @@ we have substring capability; what about .has() capability? (getting dangerously
 new schedule sched;
 
 /* READ the INPUT FILE with all the course information,
-*  and put that into a courselist called CL */
+*  and put that into a courselist called CL */
 new courselist CL = generateCourses(input_file);
 
 /* ADD COURSES to the schedule according to some algorithm */
 foreach course c in CL {
-    if (c.getStartTime() > 10:00 //--- User doesn't want to wake up early for class
+    if (c.getStartTime() > 10:00 //--- User doesn't want to wake up early for class
         && !(sched.conflict( c ))) //--- c doesn't conflict with schedule. Isn't this obvious?
     {
- 	   sched.add( c ); //--- Add whatever section of c that works
-    }
-    else
+ 	   sched.add( c ); //--- Add whatever section of c that works
+    }
+    else
     {
- 	   print("you got a conflict there"); //--- Print string output
-    }
+ 	   print("you got a conflict there"); //--- Print string output
+    }
 }
 
 /* PRINT the SCHEDULE in some readable format */
@@ -41,31 +41,34 @@ electives.add( CL.getCourse("PE") );
 electives.add( CL.getCourse("ArtHum") );
 
 /* ADD COURSES from the list of required courses
-*  only as long as the schedule has 3 or fewer courses
-*  and the courses do not conflict */
+*  only as long as the schedule has 3 or fewer courses
+*  and the courses do not conflict */
 foreach course c in required {
-    if (sched.length() <= 3
-	&& c.getTime() != 9:10~10:25 //--- User doesn't want to take a class which has this EXACT
-					   time interval (def of equivalence, right?)
+    if (sched.length() <= 3
+	&& c.getTimeblock() != 9:10~10:25 /*--- User doesn't want to take a class which has this EXACT
+					        time interval (def of equivalence, right?) */
  	&& !(sched.conflict( c ))) { //--- again, obvious? Is this done in backend automatically?
- 	   sched.add( c );
-    }
+ 	   sched.add( c );
+    }
 }
 
 /* Same as above, but for elective courses
-*  and only adding until the schedule has 5 courses */
+*  and only adding until the schedule has 5 courses */
 foreach course c in electives {
-    if (sched.length() <= 5 
+    if (sched.length() <= 5 
 	&& !(sched.conflict( c ))) {
 	/* NEW --- Can we implement this? */
-	   timeblock t = 10:00-11:00; //--- What if I am busy at 10:00-11:00 with some non-course activity?
-					--- Also, if getTime() returns a timeblock, don't we have to
-					    be able to recognize a timeblock as a derived type?
-	   if ( sched.conflict( t ) ) { //--- Recognize a conflict with a specified timeblock, even though
-					      a course is not scheduled at that time
- 		sched.add( c );
+	   new timeblock t = 10:00~11:00; /*--- What if I am busy at 10:00-11:00 with some non-course activity?
+					--- Also, if getTimeblock() returns a timeblock, don't we have to
+					    be able to recognize a timeblock as a derived type? */
+	   if ( sched.conflict( t ) ) { /*--- Recognize a conflict with a specified timeblock, even though
+					      a course is not scheduled at that time */
+ 		sched.add( c );
+		print("Class successfully added");
+		new course myMath = sched.getCourse("Math");
+		day mathDay = myMath.getDay();
 	   }
-    }
+    }
 }
 
 /******** CONSTRAINTS ********/
@@ -79,23 +82,23 @@ int courseMaxR = 2 // maximum number of courses on Thursday
 /* Add classes only if conditions are met */
 foreach course c in CL
 {
-    if (sched.numCourses() <= courseMax
-        && sched.numCredits() + c.numCredits() <= 20)
-    {
+    if (sched.numCourses() <= courseMax
+        && sched.numCredits() + c.numCredits() <= 20)
+    {
 	if (c.getDay() == [R] //--- Note that ALL days have to be represented with square brackets
-	    && sched.numCourses([R]) >= courseMaxR) { //--- this means: number of courses on Thursday
-							    in the schedule
-    		break;
+	    && sched.numCourses([R]) >= courseMaxR) { /*--- this means: number of courses on Thursday
+							    in the schedule */
+    		break;
 	}
 	else {
-    		sched.add( c );
+    		sched.add( c );
 	}
-    }
+    }
 } 
 
 /* PRINT some STRING output */
 if (sched.numCourses() < courseMin) {
-    print("Four non-conflicting classes could not be found. Add more potential courses!");
+    print("Four non-conflicting classes could not be found. Add more potential courses!");
 }
 
 /******** SECTION SELECTION ********/
@@ -127,8 +130,8 @@ new courselist music;
 
 // if course name begins with MUSI, then add it to the music list
 foreach course c in CL {
-    string cname = c.getName();
-    if ( cname.substring(0,4) == "MUSI" ) {
- 	   music.add( c );
-    }
+    string cname = c.getName();
+    if ( cname.substring(0,4) == "MUSI" ) {
+ 	   music.add( c );
+    }
 }
