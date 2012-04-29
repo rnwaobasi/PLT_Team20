@@ -43,7 +43,6 @@ public class scheduler {
 				   while (st.hasMoreTokens()) {
 					   if(count == 0){
 						   //System.out.println("Days: ");
-						   
 						   String temp = new String(st.nextToken());
 						   int len = temp.length();
 						   String[] days = new String[len];
@@ -110,19 +109,16 @@ public class scheduler {
 			   int endPos = 0;
 			   while(views.get(i).getStartH(session) != null){
 				   System.out.println(views.get(i).getName());
+				   //array with day-number representations
+				   int[] dayNum = new int[5];
+				   int dayCount = 0;
 				   int j = 0;
 				   boolean noConflict = true;
 				   while(j < views.get(i).getDays(session).length && views.get(i).getDays(session)[j] != null){
-					   //System.out.println(views.get(i).getDays(session).length);
-					  
-					   //System.out.println(views.get(i).getDays(session)[j]); 
-					   /*
-					   System.out.println(views.get(i).getStartH(session));
-					   System.out.println(views.get(i).getStartM(session));
-					   System.out.println(views.get(i).getEndH(session));
-					   System.out.println(views.get(i).getEndM(session));
-					   */
+
 					   String holder = views.get(i).getDays(session)[j];
+					   System.out.println(holder);
+					   
 					   j++;
 					   //System.out.println("Length: " + views.get(i).getDays(session).length);
 					   
@@ -161,27 +157,33 @@ public class scheduler {
 							 noConflict = false;
 						 }//end of if
 					 }//end of for loop
+					 
+					 dayNum[dayCount] = row;
+					 
+					 dayCount++;
+					 
 				   }//end of while
-				   
 				   if(noConflict == true){
 						 for(int k = startPos; k < endPos; k++){
 							 //System.out.println(row);
-							 calendar[row][k] = views.get(i).getName();
+							 //System.out.println("Day Count: " + dayCount);
+							 for(int l=0; l<dayCount; l++){
+								 int hold = dayNum[l];
+								 //System.out.println("Day: " + dayNum[l]);
+								 calendar[hold][k] = views.get(i).getName();
+							 }
 						 }//end of for loop
 					   System.out.println("No conflict for: " + views.get(i).getName() + " session " + session);
 					   System.out.println("");
 					   break;
-				   }
+				   }//end of if noConflict
 				   else{
-					   System.out.println("Conflict for: " + views.get(i).getName() + " session " + session + " with " + calendar[row][startPos]);
+					   System.out.println("Conflict for: " + views.get(i).getName() + " session " + session + " with " + calendar[row][startPos+1]);
 					   System.out.println("");
-				   }
+				   }//end of else
 				   session++;
 				   
-				   
 			   }//end of outer while
-			   
 		   }//end of for
-		   
 		   }//end of main function
-}
+}//end of class
