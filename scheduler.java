@@ -1,25 +1,37 @@
 import java.io.*;
 import java.util.*;
 import java.util.regex.*;
+import org.antlr.runtime.ANTLRFileStream;
+import org.antlr.runtime.TokenRewriteStream;
 
 public class scheduler {
 	   public static void main(String args[]) {
+
+
+
+
 		   List<classes> views = new ArrayList<classes>();
 		   int objTracker = 0;
 
 		   try{
+
+				ANTLRFileStream fs = new ANTLRFileStream("sampleProgram.txt");
+				chronos_antlrLexer lex = new chronos_antlrLexer(fs);
+				TokenRewriteStream tokens = new TokenRewriteStream(lex);
+				chronos_antlrParser grammar = new chronos_antlrParser(tokens);
+
 			   String strLine;
 			   int counter = 0;
 			   // open input.txt
 			   FileInputStream fstream = new FileInputStream("input.txt");
-			   
+
 			   // get object of the stream
 			   DataInputStream in = new DataInputStream(fstream);
 			   BufferedReader br = new BufferedReader(new InputStreamReader(in));
-			  
+
 			   //Read File Line By Line
 			   while ((strLine = br.readLine()) != null)   {
-				   
+
 			   if(Pattern.matches("\\d+", strLine)){
 				   //System.out.println("Credits: " + strLine);
 				   views.get(objTracker).setCredits(strLine);
@@ -34,7 +46,7 @@ public class scheduler {
 				   //System.out.println("Class Name: " + strLine);
 				   views.add(new classes(strLine));
 				   counter = 1;
-				   
+
 			   }//end of if counter == 0 
 			   else{
 				   //System.out.println("\nSession " + counter);
@@ -86,22 +98,22 @@ public class scheduler {
 						   views.get(objTracker).setStart(times[0], counter);
 						   views.get(objTracker).setEnd(times[1], counter);
 					   }
-				     
+
 				   }
 				   counter++;
 			   }
 			   }//end of try
-			   
+
 			   in.close();
-			     }catch (Exception e){//Catch exception if any
+				 }catch (Exception e){//Catch exception if any
 			   System.err.println("Error: " + e.getMessage());
 			   }
-		   
+
 		   scheduler schedule = new scheduler();
 		   //create a 2D array with 5 minute interval for the whole week
 		   //5 (num of days in a week) x 28 (num of 5 minute intervals in a day)
 		   String calendar[][] = new String[5][288];
-		   
+
 		   for(int i = 0; i<objTracker; i++){
 			   int session = 1;
 			   int row = 0;
@@ -118,21 +130,21 @@ public class scheduler {
 
 					   String holder = views.get(i).getDays(session)[j];
 					   System.out.println(holder);
-					   
+
 					   j++;
 					   //System.out.println("Length: " + views.get(i).getDays(session).length);
-					   
+
 					 int startH = Integer.parseInt(views.get(i).getStartH(session));
 					 int startM = Integer.parseInt(views.get(i).getStartM(session));
 					 int endH = Integer.parseInt(views.get(i).getEndH(session));
 					 int endM = Integer.parseInt(views.get(i).getEndM(session));
-					 
+
 					 //convert object data into array coordinates
 					 startPos = (startH*12) + (startM/5);
 					 endPos = (endH*12) + (endM/5);
 					 //System.out.println(startPos);
 					 //System.out.println(endPos);
-					 
+
 					 if(holder == "Monday"){
 						 row = 0;
 					 }
@@ -151,17 +163,17 @@ public class scheduler {
 					 else{
 						 System.out.println("Not a valid day input");
 					 }
-					 
+
 					 for(int k = startPos; k < endPos; k++){
 						 if(calendar[row][k] != null){
 							 noConflict = false;
 						 }//end of if
 					 }//end of for loop
-					 
+
 					 dayNum[dayCount] = row;
-					 
+
 					 dayCount++;
-					 
+
 				   }//end of while
 				   if(noConflict == true){
 						 for(int k = startPos; k < endPos; k++){
@@ -182,7 +194,7 @@ public class scheduler {
 					   System.out.println("");
 				   }//end of else
 				   session++;
-				   
+
 			   }//end of outer while
 		   }//end of for
 		   }//end of main function
