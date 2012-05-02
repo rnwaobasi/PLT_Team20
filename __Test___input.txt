@@ -1,0 +1,16 @@
+foreach course c in electives {
+    if (sched.length() <= 5 
+	&& !(sched.conflict( c ))) {
+	/* NEW --- Can we implement this? */
+	   new timeblock t = 10:00~11:00; /*--- What if I am busy at 10:00-11:00 with some non-course activity?
+					--- Also, if getTimeblock() returns a timeblock, don't we have to
+					    be able to recognize a timeblock as a derived type? */
+	   if ( sched.conflict( t ) ) { /*--- Recognize a conflict with a specified timeblock, even though
+					      a course is not scheduled at that time */
+ 		sched.add( c );
+		print("Class successfully added");
+		//new course myMath = sched.getCourse("Math");
+		//day mathDay = myMath.getDay();
+	   }
+    }
+}

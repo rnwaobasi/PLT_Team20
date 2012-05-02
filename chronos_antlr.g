@@ -1,7 +1,9 @@
 grammar chronos_antlr;
 
 options {
+	language = Java;
 	output = AST;
+	ASTLabelType = CommonTree;
 }
 
 tokens {
@@ -16,9 +18,12 @@ tokens {
 }
 
 /* GRAMMAR */
+start_rule
+	:	translation_unit EOF
+	;
+	
 translation_unit
-	:	declarator* 
-	|	stmt*
+	:	declarator* stmt*
 	;
 declarator
 	:	primitive_declarator';'!
@@ -43,8 +48,8 @@ stmt:	expr';' -> expr
 	|	';'!
 	;
 selection_stmt
-	:	IF_T expr '{'(a=translation_unit)*'}' (ELSE_T '{'(c=translation_unit)*'}')? 
-			-> ^(COND ^(IF_T expr $a*) ^(ELSE_T $c*)?)
+	:	IF_T expr '{'a=translation_unit '}' (ELSE_T '{' b=translation_unit '}')? 
+			-> ^(COND ^(IF_T expr $a) ^(ELSE_T $b)?)
 	;
 iteration_stmt
 	:	FOREACH_T COURSE_T element=ID IN_T list=ID '{' translation_unit '}' 
@@ -64,13 +69,13 @@ equiv_expr
 	:	rel_expr ( (EQ^ | NEQ^) rel_expr )*
 	;
 rel_expr
-	:	math_expr ( ('<'^ | '>'^ | GEQ^ | LEQ^) math_expr )*
+	:	add_expr ( ('<'^ | '>'^ | GEQ^ | LEQ^) add_expr )*
 	|	datetime
 	;
-math_expr
-	:	math_term ( ('+'^ | '-'^) math_term )*
+add_expr
+	:	mult_expr ( ('+'^ | '-'^) mult_expr )*
 	;
-math_term
+mult_expr
 	:	unary_expr ( ('*'^ | '/'^) unary_expr )*
 	|	timeblock
 	;
