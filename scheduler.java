@@ -3,11 +3,14 @@ import java.util.*;
 import java.util.regex.*;
 import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.TokenRewriteStream;
+//import org.antlr.runtime.tree.*;
+//import org.antlr.runtime.Token;
 
 public class scheduler {
 	   public static void main(String args[]) {
 
-
+		scheduler sched = new scheduler();
+		
 
 
 		   List<classes> views = new ArrayList<classes>();
@@ -15,10 +18,22 @@ public class scheduler {
 
 		   try{
 
-				ANTLRFileStream fs = new ANTLRFileStream("sampleProgram.txt");
+				ANTLRFileStream fs = new ANTLRFileStream("samplePrograms.txt");
 				chronos_antlrLexer lex = new chronos_antlrLexer(fs);
 				TokenRewriteStream tokens = new TokenRewriteStream(lex);
 				chronos_antlrParser grammar = new chronos_antlrParser(tokens);
+
+static final TreeAdaptor adaptor = new CommonTreeAdaptor() {
+	public Object create(Token payload) {
+		return new CommonTree(payload);
+	}
+};
+
+grammar.setTreeAdaptor(adaptor);
+chronos_antlrParser.start_rule_return ret = grammar.start_rule();
+CommonTree tree = (CommonTree)ret.getTree();
+
+sched.printTree(tree, 2);
 
 			   String strLine;
 			   int counter = 0;
@@ -198,4 +213,16 @@ public class scheduler {
 			   }//end of outer while
 		   }//end of for
 		   }//end of main function
+		   
+		public void printTree(CommonTree t, int indent) {
+			if ( t != null ) {
+				StringBuffer sb = new StringBuffer(indent);
+				for ( int i = 0; i < indent; i++ )
+					sb = sb.append("   ");
+				for ( int i = 0; i < t.getChildCount(); i++ ) {
+					System.out.println(sb.toString() + t.getChild(i).toString());
+					printTree((CommonTree)t.getChild(i), indent+1);
+				}
+			}//end of method
+}
 }//end of class
