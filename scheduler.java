@@ -3,8 +3,8 @@ import java.util.*;
 import java.util.regex.*;
 import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.TokenRewriteStream;
-//import org.antlr.runtime.tree.*;
-//import org.antlr.runtime.Token;
+import org.antlr.runtime.tree.*;
+import org.antlr.runtime.Token;
 
 public class scheduler {
 	   public static void main(String args[]) {
@@ -23,7 +23,7 @@ public class scheduler {
 				TokenRewriteStream tokens = new TokenRewriteStream(lex);
 				chronos_antlrParser grammar = new chronos_antlrParser(tokens);
 
-static final TreeAdaptor adaptor = new CommonTreeAdaptor() {
+final TreeAdaptor adaptor = new CommonTreeAdaptor() {
 	public Object create(Token payload) {
 		return new CommonTree(payload);
 	}
@@ -220,6 +220,7 @@ sched.printTree(tree, 2);
 				for ( int i = 0; i < indent; i++ )
 					sb = sb.append("   ");
 				for ( int i = 0; i < t.getChildCount(); i++ ) {
+					System.out.println("Test " + i);
 					System.out.println(sb.toString() + t.getChild(i).toString());
 					printTree((CommonTree)t.getChild(i), indent+1);
 				}
