@@ -1,6 +1,7 @@
 /* Future improvements if we had more time:
 user def functions
 we have substring capability; what about .has() capability? (getting dangerously into regex territory, but it would be nice...)
+has operators ::=
 */
 
 /******** BASICS ********/
@@ -13,14 +14,9 @@ new courselist CL = generateCourses(input_file);
 
 /* ADD COURSES to the schedule according to some algorithm */
 foreach course c in CL {
-    if (c.getStartTime() > 10:00 //--- User doesn't want to wake up early for class
-        && !(sched.conflict( c ))) //--- c doesn't conflict with schedule. Isn't this obvious?
+    if (c.getStartTime() > 10:00) //--- User doesn't want to wake up early for class
     {
  	   sched.add( c ); //--- Add whatever section of c that works
-    }
-    else
-    {
- 	   print("you got a conflict there"); //--- Print string output
     }
 }
 
@@ -44,10 +40,9 @@ electives.add( CL.getCourse("ArtHum") );
 *  only as long as the schedule has 3 or fewer courses
 *  and the courses do not conflict */
 foreach course c in required {
-    if (sched.length() <= 3
-	&& c.getTimeblock() != 9:10~10:25 /*--- User doesn't want to take a class which has this EXACT
+    if (sched.numCourses() <= 3
+	&& c.getTimeblock() != 9:10~10:25) { /*--- User doesn't want to take a class which has this EXACT
 					        time interval (def of equivalence, right?) */
- 	&& !(sched.conflict( c ))) { //--- again, obvious? Is this done in backend automatically?
  	   sched.add( c );
     }
 }
@@ -55,13 +50,10 @@ foreach course c in required {
 /* Same as above, but for elective courses
 *  and only adding until the schedule has 5 courses */
 foreach course c in electives {
-    if (sched.length() <= 5 
-	&& !(sched.conflict( c ))) {
+    if (sched.numCourses() <= 5) {
 	/* NEW --- Can we implement this? */
-	   new timeblock t = 10:00~11:00; /*--- What if I am busy at 10:00-11:00 with some non-course activity?
-					--- Also, if getTimeblock() returns a timeblock, don't we have to
-					    be able to recognize a timeblock as a derived type? */
-	   if ( sched.conflict( t ) ) { /*--- Recognize a conflict with a specified timeblock, even though
+	   new timeblock soccer = 10:00~11:00; /*--- What if I am busy at 10:00-11:00 with some non-course activity?
+	   if ( !c.conflict( soccer ) ) { /*--- Recognize a conflict with a specified timeblock, even though
 					      a course is not scheduled at that time */
  		sched.add( c );
 		print("Class successfully added");
@@ -80,12 +72,13 @@ int creditMax = 20; // maximum number of credit points
 int courseMaxR = 2 // maximum number of courses on Thursday
 
 /* Add classes only if conditions are met */
-foreach course c in CL
+foreach course c in CL //--- This is equivalent to another foreach loop of sections INSIDE
 {
     if (sched.numCourses() <= courseMax
         && sched.numCredits() + c.numCredits() <= 20)
     {
-	if (c.getDay() == [R] //--- Note that ALL days have to be represented with square brackets
+	if (c.getDays() == [T,R] && c.getTimeblock == 10:00~11:00 //--- EQUIVALENT to c.getDatetime([R] 10:00~11:00)
+						//--- Note that ALL days have to be represented with square brackets
 	    && sched.numCourses([R]) >= courseMaxR) { /*--- this means: number of courses on Thursday
 							    in the schedule */
     		break;
@@ -113,14 +106,13 @@ if (sched.numCourses() < courseMin) {
 ** MW 6:10-7:25 (taught by Cat)
 */
 
-/* Create a list for Aho’s classes */
+/* Create a list for Aho's classes */
 new courselist Aho;
 
 /* Add his sections of PLT and CSTheory, respectively */
-new course PLT = CL.getCourse("PLT"); //--- Do we need new?
-if ( PLT.hasDatetime( [M,W] 1:10~2:25 ) ) { //--- Similarly, datetime should be a derived type?
-	new course myPLT = PLT; //--- Is this unnecessary?
-	sched.add( myPLT, [M,W] 1:10~2:25 ); //--- Overloaded add function: adds this specific section
+new course PLT = CL.getCourse("PLT");
+if ( PLT.hasDatetime( [M,W] 1:10~2:25 ) ) {
+	sched.add( PLT, [M,W] 1:10~2:25 ); //--- Overloaded add function: adds this specific section
 }
 
 /******** SEARCH BY NAME ********/

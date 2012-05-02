@@ -23,23 +23,13 @@ start_rule
 	;
 	
 translation_unit
-	:	declarator* stmt*
+	:	(declarator (';')!)* stmt*
 	;
 declarator
-	:	primitive_declarator';'!
-	|	derived_type_declarator';'!
-	;
-primitive_declarator
 	:	type_specifier ID 
 			-> ^(DECL type_specifier ID)
 	|	type_specifier ID '=' expr 
 			-> ^('=' ^(DECL type_specifier ID) expr)
-	;
-derived_type_declarator
-	:	NEW_T derived_type_specifier ID 
-			-> ^(DECL derived_type_specifier ID)
-	|	NEW_T derived_type_specifier ID '=' expr 
-			-> ^('=' ^(DECL derived_type_specifier ID) expr)
 	;
 stmt:	expr';' -> expr
 	|	selection_stmt
@@ -134,9 +124,7 @@ type_specifier
 	|	DAY_T
 	|	TIME_T
 	|	STRING_T
-	;
-derived_type_specifier
-	:	SCHEDULE_T
+	|	SCHEDULE_T
 	|	COURSE_T
 	|	COURSELIST_T
 	|	TIMEBLOCK_T
