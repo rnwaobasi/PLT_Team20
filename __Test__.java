@@ -11,7 +11,7 @@ public class __Test__ {
 
         chronos_antlrParser g = new chronos_antlrParser(tokens, 49100, null);
         try {
-            g.start_rule();
+            g.program();
         } catch (RecognitionException e) {
             e.printStackTrace();
         }

@@ -1,13 +1,8 @@
-foreach course c in electives {
-    if (sched.numCourses() <= 5) {
-	course myMath = sched.getCourse("Math");
-	day mathDay = myMath.getDay();
-	/* NEW --- Can we implement this? */
-	   timeblock soccer = 10:00~11:00; /*--- What if I am busy at 10:00-11:00 with some non-course activity?
-	   if ( !c.conflict( soccer ) ) { /*--- Recognize a conflict with a specified timeblock, even though
-					      a course is not scheduled at that time */
- 		sched.add( c );
-		print("Class successfully added");
-	   }
+if (c.getStartTime() > 10:00)
+    {
+ 	   sched.add( c );
     }
-}
+
+/* PRINT the SCHEDULE in some readable format */
+sched.print();
+

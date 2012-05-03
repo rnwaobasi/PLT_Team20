@@ -7,7 +7,6 @@ options {
 }
 
 tokens {
-// extra tokens (invisible nodes) for AST
 	DECL;
 	COND;
 	BLOCK;
@@ -18,22 +17,23 @@ tokens {
 	PARAMS;
 }
 
-/* *** GRAMMAR *** */
-// starting rule
-program
-	:	line+ EOF!
+add_expr:	mult_expr ('+'^ mult_expr)*
 	;
-line
-	:	declarator
-	|	stmt
+mult_expr:	INT ('*'^ INT)*
+	;
+/* GRAMMAR */
+/*start_rule
+	:	translation_unit EOF
+	;
+	
+translation_unit
+	:	(declarator (';')!)* stmt*
 	;
 declarator
-// matches int x;
-	:	type_specifier ID ';'
+	:	type_specifier ID 
 			-> ^(DECL type_specifier ID)
-// matches int x = 5;
-	|	type_specifier ID assignment_expr';'
-			-> ^(DECL type_specifier ID assignment_expr)
+	|	type_specifier ID '=' expr 
+			-> ^('=' ^(DECL type_specifier ID) expr)
 	;
 stmt:	expr';' -> expr
 	|	selection_stmt
@@ -42,74 +42,67 @@ stmt:	expr';' -> expr
 	|	';'!
 	;
 selection_stmt
-// matches if and if/else statements
-	:	IF_T expr '{'(a=line)* '}' (ELSE_T '{' (b=line)* '}')? 
+	:	IF_T expr '{'a=translation_unit '}' (ELSE_T '{' b=translation_unit '}')? 
 			-> ^(COND ^(IF_T expr $a) ^(ELSE_T $b)?)
 	;
 iteration_stmt
-// matches foreach statements
-	:	FOREACH_T COURSE_T element=ID IN_T list=ID '{' line* '}' 
-			-> ^(FOREACH_T ^(IN_T $element $list) ^(BLOCK line*))
+	:	FOREACH_T COURSE_T element=ID IN_T list=ID '{' translation_unit '}' 
+			-> ^(FOREACH_T ^(IN_T $element $list) ^(BLOCK translation_unit))
 	; // iterations only exist for courses
 jump_stmt
-// matches break
 	:	BREAK_T
 	;
 expr
-// matches OR statements or assignment expressions
-	:	and_expr (OR^ and_expr)*
-	|	assignment_expr
+	:	cond_term (OR^ cond_term)*
+	|	ID '='^ expr
 	;
-assignment_expr
-// matches = x, = 5, = 5 * 3, etc
-	:	'='! expr
-	;
-and_expr
-// matches AND statements
+cond_term
 	:	equiv_expr (AND^ equiv_expr)*
 	;
 equiv_expr
-// matches equivalence relations
 	:	rel_expr ( (EQ^ | NEQ^) rel_expr )*
 	;
 rel_expr
-// matches other relations
 	:	add_expr ( ('<'^ | '>'^ | GEQ^ | LEQ^) add_expr )*
 	|	datetime
 	;
 add_expr
-// matches add/subtract expr
 	:	mult_expr ( ('+'^ | '-'^) mult_expr )*
 	;
 mult_expr
-// matches mult/division expr
 	:	unary_expr ( ('*'^ | '/'^) unary_expr )*
 	|	timeblock
 	;
 unary_expr
-	:	postfix_expr ('.'^ postfix_expr)?
+	:	postfix_expr
 	|	NOT^ postfix_expr
 	;
 postfix_expr
-// matches functions or variables
-	:	primary_expr function_parens?
-		-> ^(primary_expr function_parens?)
+	:	( (ID '.')? primary_expr '(' argument_expr_list? ')' )=> function
+	|	variable
 	;
-function_parens
-	:	'(' argument_expr_list? ')'
-		-> ^(PARAMS argument_expr_list?)
+function
+	:	ID '.' primary_expr '(' (argument_expr_list)? ')'
+			-> ^(FUNC ^('.' ID primary_expr) ^(PARAMS argument_expr_list?))
+			// function
+	|	primary_expr '(' (argument_expr_list)? ')'
+			-> ^(FUNC primary_expr ^(PARAMS argument_expr_list?))
+			// function without a caller object
 	;
+variable
+	:	ID '.' primary_expr -> ^('.' ID primary_expr)
+			// not a function
+	|	primary_expr
+			// also not a function
+	; // doesn't accept postfix_expr.postfix_expr, only id.postfix_expr
 datetime
-// matches [M,W] 10:00~11:00
-	:	dayblock timeblock 
+	:	dayblock timeblock? 
 			-> ^(DATETIME dayblock timeblock)
 	;
 timeblock
-// matches 13:00~14:00
 	:	a=TIME '~' b=TIME -> ^(TIMES $a $b)
 	;
 dayblock
-// matches [M,W,F] etc
 	:	'[' daychar ( ',' daychar )* ']' -> ^(DAYS daychar+)
 	;
 daychar
@@ -141,6 +134,7 @@ type_specifier
 	|	TIMEBLOCK_T
 	|	DATETIME_T
 	;
+	*/
 	
 /* LEXER */
 // keywords
