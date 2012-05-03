@@ -1,1 +1,0 @@
-days mathDays = sched.getCourse("Math").getDays();

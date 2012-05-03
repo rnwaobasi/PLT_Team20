@@ -19,9 +19,9 @@ public class scheduler {
 		   try{
 
 				ANTLRFileStream fs = new ANTLRFileStream("samplePrograms.txt");
-				chronos_antlrLexer lex = new chronos_antlrLexer(fs);
+				ChronosLexer lex = new ChronosLexer(fs);
 				TokenRewriteStream tokens = new TokenRewriteStream(lex);
-				chronos_antlrParser grammar = new chronos_antlrParser(tokens);
+				ChronosParser grammar = new ChronosParser(tokens);
 
 final TreeAdaptor adaptor = new CommonTreeAdaptor() {
 	public Object create(Token payload) {
@@ -30,7 +30,7 @@ final TreeAdaptor adaptor = new CommonTreeAdaptor() {
 };
 
 grammar.setTreeAdaptor(adaptor);
-chronos_antlrParser.start_rule_return ret = grammar.start_rule();
+ChronosParser.program_return ret = grammar.program();
 CommonTree tree = (CommonTree)ret.getTree();
 
 sched.printTree(tree, 2);
