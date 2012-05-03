@@ -32,8 +32,8 @@ declarator
 	:	type_specifier ID ';'
 			-> ^(DECL type_specifier ID)
 // matches int x = 5;
-	|	type_specifier ID assignment_expr';'
-			-> ^(DECL type_specifier ID assignment_expr)
+	|	type_specifier ID '=' expr ';'
+			-> ^(DECL type_specifier ID '=' expr)
 	;
 stmt:	expr';' -> expr
 	|	selection_stmt
@@ -44,7 +44,7 @@ stmt:	expr';' -> expr
 selection_stmt
 // matches if and if/else statements
 	:	IF_T expr '{'(a=line)* '}' (ELSE_T '{' (b=line)* '}')? 
-			-> ^(COND ^(IF_T expr $a) ^(ELSE_T $b)?)
+			-> ^(COND ^(IF_T expr $a*) ^(ELSE_T $b*)?)
 	;
 iteration_stmt
 // matches foreach statements
@@ -61,8 +61,8 @@ expr
 	|	assignment_expr
 	;
 assignment_expr
-// matches = x, = 5, = 5 * 3, etc
-	:	'='! expr
+// matches x = y, y = 5, z = 5 * 3, etc
+	:	ID '='^ expr
 	;
 and_expr
 // matches AND statements
@@ -74,20 +74,20 @@ equiv_expr
 	;
 rel_expr
 // matches other relations
-	:	add_expr ( ('<'^ | '>'^ | GEQ^ | LEQ^) add_expr )*
+	:	math_expr ( ('<'^ | '>'^ | GEQ^ | LEQ^) math_expr )*
 	|	datetime
 	;
-add_expr
+math_expr
 // matches add/subtract expr
-	:	mult_expr ( ('+'^ | '-'^) mult_expr )*
+	:	math_term ( ('+'^ | '-'^) math_term )*
 	;
-mult_expr
+math_term
 // matches mult/division expr
 	:	unary_expr ( ('*'^ | '/'^) unary_expr )*
 	|	timeblock
 	;
 unary_expr
-	:	postfix_expr ('.'^ postfix_expr)?
+	:	postfix_expr ('.'^ postfix_expr)*
 	|	NOT^ postfix_expr
 	;
 postfix_expr
@@ -110,10 +110,7 @@ timeblock
 	;
 dayblock
 // matches [M,W,F] etc
-	:	'[' daychar ( ',' daychar )* ']' -> ^(DAYS daychar+)
-	;
-daychar
-	:	('M'|'T'|'W'|'R'|'F')
+	:	'[' DAY ( ',' DAY )* ']' -> ^(DAYS DAY+)
 	;
 primary_expr
 	:	constant
@@ -132,7 +129,7 @@ constant
 type_specifier
 	:	INT_T
 	|	DOUBLE_T
-	|	DAY_T
+	|	DAYS_T
 	|	TIME_T
 	|	STRING_T
 	|	SCHEDULE_T
@@ -170,7 +167,7 @@ INT_T	:	'int'
 		;
 DOUBLE_T:	'double'
 		;
-DAY_T	:	'day'
+DAYS_T	:	'days'
 		;
 TIME_T	:	'time'
 		;

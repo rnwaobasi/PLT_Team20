@@ -1,8 +1,1 @@
-if (c.getStartTime() > 10:00)
-    {
- 	   sched.add( c );
-    }
-
-/* PRINT the SCHEDULE in some readable format */
-sched.print();
-
+days mathDays = sched.getCourse("Math").getDays();

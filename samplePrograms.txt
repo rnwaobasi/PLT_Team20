@@ -51,8 +51,7 @@ foreach course c in required {
 *  and only adding until the schedule has 5 courses */
 foreach course c in electives {
     if (sched.numCourses() <= 5) {
-	course myMath = sched.getCourse("Math");
-	days mathDays = myMath.getDays();
+	days mathDays = sched.getCourse("Math").getDays();
 	/* NEW --- Can we implement this? */
 	   timeblock soccer = 10:00~11:00; /*--- What if I am busy at 10:00-11:00 with some non-course activity?
 	   if ( !c.conflict( soccer ) ) { /*--- Recognize a conflict with a specified timeblock, even though
