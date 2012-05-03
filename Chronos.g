@@ -115,7 +115,7 @@ dayblock
 	;
 primary_expr
 	:	constant
-	|	ID { System.out.println(ID); }
+	|	ID
 	|	STRING
 	|	TIME
 	|	'('expr')' -> expr

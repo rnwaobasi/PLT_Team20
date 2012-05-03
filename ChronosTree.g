@@ -87,7 +87,8 @@ line:	declarator
 	|	stmt
 	;
 declarator
-	:	^(DECL type_specifier ID '=' expr) //{ variableMap.put($ID.text, $expr.result)};
+	:	^(DECL type_specifier ID)
+	|	^(DECL type_specifier ID '=' expr) //{ variableMap.put($ID.text, $expr.result)};
 	;
 stmt:	expr
 	;
@@ -146,7 +147,7 @@ dayblock
 	;
 primary_expr
 	:	constant
-	|	ID { out(ID); }
+	|	ID { out($ID.text); }
 	|	STRING
 	|	TIME
 	|	expr

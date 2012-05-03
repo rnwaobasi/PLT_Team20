@@ -1,4 +1,4 @@
-// $ANTLR 3.4 Chronos.g 2012-05-03 11:27:25
+// $ANTLR 3.4 Chronos.g 2012-05-03 11:46:50
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -451,7 +451,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // AST REWRITE
-                    // elements: expr, ID, type_specifier, 59
+                    // elements: type_specifier, 59, ID, expr
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -885,7 +885,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: b, expr, IF_T, a, ELSE_T
+            // elements: expr, ELSE_T, a, IF_T, b
             // token labels: 
             // rule labels: retval, b, a
             // token list labels: 
@@ -926,7 +926,7 @@ public TreeAdaptor getTreeAdaptor() {
                 }
 
                 // Chronos.g:47:31: ( ^( ELSE_T ( $b)* ) )?
-                if ( stream_b.hasNext()||stream_ELSE_T.hasNext() ) {
+                if ( stream_ELSE_T.hasNext()||stream_b.hasNext() ) {
                     // Chronos.g:47:31: ^( ELSE_T ( $b)* )
                     {
                     CommonTree root_2 = (CommonTree)adaptor.nil();
@@ -945,8 +945,8 @@ public TreeAdaptor getTreeAdaptor() {
                     }
 
                 }
-                stream_b.reset();
                 stream_ELSE_T.reset();
+                stream_b.reset();
 
                 adaptor.addChild(root_0, root_1);
                 }
@@ -1083,7 +1083,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: list, element, FOREACH_T, line, IN_T
+            // elements: line, list, IN_T, FOREACH_T, element
             // token labels: element, list
             // rule labels: retval
             // token list labels: 
@@ -2441,7 +2441,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: function_parens, primary_expr
+            // elements: primary_expr, function_parens
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2658,7 +2658,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_timeblock.add(timeblock75.getTree());
 
             // AST REWRITE
-            // elements: dayblock, timeblock
+            // elements: timeblock, dayblock
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -3054,8 +3054,6 @@ public TreeAdaptor getTreeAdaptor() {
                     adaptor.addChild(root_0, ID83_tree);
 
 
-                     System.out.println(ID); 
-
                     }
                     break;
                 case 3 :
@@ -3064,7 +3062,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    STRING84=(Token)match(input,STRING,FOLLOW_STRING_in_primary_expr717); 
+                    STRING84=(Token)match(input,STRING,FOLLOW_STRING_in_primary_expr715); 
                     STRING84_tree = 
                     (CommonTree)adaptor.create(STRING84)
                     ;
@@ -3079,7 +3077,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    TIME85=(Token)match(input,TIME,FOLLOW_TIME_in_primary_expr722); 
+                    TIME85=(Token)match(input,TIME,FOLLOW_TIME_in_primary_expr720); 
                     TIME85_tree = 
                     (CommonTree)adaptor.create(TIME85)
                     ;
@@ -3091,18 +3089,18 @@ public TreeAdaptor getTreeAdaptor() {
                 case 5 :
                     // Chronos.g:121:4: '(' expr ')'
                     {
-                    char_literal86=(Token)match(input,49,FOLLOW_49_in_primary_expr727);  
+                    char_literal86=(Token)match(input,49,FOLLOW_49_in_primary_expr725);  
                     stream_49.add(char_literal86);
 
 
-                    pushFollow(FOLLOW_expr_in_primary_expr728);
+                    pushFollow(FOLLOW_expr_in_primary_expr726);
                     expr87=expr();
 
                     state._fsp--;
 
                     stream_expr.add(expr87.getTree());
 
-                    char_literal88=(Token)match(input,50,FOLLOW_50_in_primary_expr729);  
+                    char_literal88=(Token)match(input,50,FOLLOW_50_in_primary_expr727);  
                     stream_50.add(char_literal88);
 
 
@@ -3183,7 +3181,7 @@ public TreeAdaptor getTreeAdaptor() {
             // Chronos.g:124:4: ( expr )
             // Chronos.g:124:5: expr
             {
-            pushFollow(FOLLOW_expr_in_argument_expr_list744);
+            pushFollow(FOLLOW_expr_in_argument_expr_list742);
             expr89=expr();
 
             state._fsp--;
@@ -3208,11 +3206,11 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // Chronos.g:124:12: ',' expr
             	    {
-            	    char_literal90=(Token)match(input,53,FOLLOW_53_in_argument_expr_list748);  
+            	    char_literal90=(Token)match(input,53,FOLLOW_53_in_argument_expr_list746);  
             	    stream_53.add(char_literal90);
 
 
-            	    pushFollow(FOLLOW_expr_in_argument_expr_list750);
+            	    pushFollow(FOLLOW_expr_in_argument_expr_list748);
             	    expr91=expr();
 
             	    state._fsp--;
@@ -3502,13 +3500,13 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_62_in_dayblock686 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_constant_in_primary_expr705 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ID_in_primary_expr710 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRING_in_primary_expr717 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TIME_in_primary_expr722 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_49_in_primary_expr727 = new BitSet(new long[]{0x20020A1050800000L});
-    public static final BitSet FOLLOW_expr_in_primary_expr728 = new BitSet(new long[]{0x0004000000000000L});
-    public static final BitSet FOLLOW_50_in_primary_expr729 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expr_in_argument_expr_list744 = new BitSet(new long[]{0x0020000000000002L});
-    public static final BitSet FOLLOW_53_in_argument_expr_list748 = new BitSet(new long[]{0x20020A1050800000L});
-    public static final BitSet FOLLOW_expr_in_argument_expr_list750 = new BitSet(new long[]{0x0020000000000002L});
+    public static final BitSet FOLLOW_STRING_in_primary_expr715 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TIME_in_primary_expr720 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_primary_expr725 = new BitSet(new long[]{0x20020A1050800000L});
+    public static final BitSet FOLLOW_expr_in_primary_expr726 = new BitSet(new long[]{0x0004000000000000L});
+    public static final BitSet FOLLOW_50_in_primary_expr727 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expr_in_argument_expr_list742 = new BitSet(new long[]{0x0020000000000002L});
+    public static final BitSet FOLLOW_53_in_argument_expr_list746 = new BitSet(new long[]{0x20020A1050800000L});
+    public static final BitSet FOLLOW_expr_in_argument_expr_list748 = new BitSet(new long[]{0x0020000000000002L});
 
 }
