@@ -119,10 +119,10 @@ if ( PLT.hasDatetime( [M,W] 1:10~2:25 ) ) {
 // make a list of courses called music
 courselist music;
 
-// if course name begins with MUSI, then add it to the music list
+// if course name contains MUSI, then add it to the music list
 foreach course c in CL {
     string cname = c.getName();
-    if ( cname.substring(0,4) == "MUSI" ) {
+    if ( cname.has("MUSI") ) {
  	   music.add( c );
     }
 }

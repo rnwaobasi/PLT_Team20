@@ -96,6 +96,7 @@ postfix_expr
 		-> ^(primary_expr function_parens?)
 	;
 function_parens
+// matches () and the params in a function call
 	:	'(' argument_expr_list? ')'
 		-> ^(PARAMS argument_expr_list?)
 	;
