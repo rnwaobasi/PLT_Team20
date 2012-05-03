@@ -12,14 +12,14 @@ options {
 }
 
 @members {
-  private Map<String, Function> functionMap = new TreeMap<String, Function>();
+  /*private Map<String, Function> functionMap = new TreeMap<String, Function>();
   private Map<String, Double> variableMap = new TreeMap<String, Double>();
   
   private void define(Function function) {
   	functionMap.put(function.getName(), function);
   }
   
-  // retreives a Function from functino Map whose name
+  // retreives a Course from function Map whose name
   // matches the text of a given AST tree node
   private Function getFunction(CommonTree nameNode) {
   	String name = nameNode.getText();
@@ -48,7 +48,7 @@ options {
     }
     return value;
   }
-
+*/
   // This just shortens the code for print calls.
   private static void out(Object obj) {
     System.out.print(obj);
@@ -158,7 +158,7 @@ constant returns [double value]
 	:	INT {$value = toDouble($INT);}
 	|	FLOAT {$value = toDouble($FLOAT);}
 	;
-type_specifier
+type_specifier returns [String type]
 	:	INT_T
 	|	DOUBLE_T
 	|	DAYS_T

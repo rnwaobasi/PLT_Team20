@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /Users/shannonlee/PLT_Team20/chronosTreeGram.g 2012-05-03 08:56:31
+// $ANTLR 3.4 /Users/shannonlee/PLT_Team20/chronosTreeGram.g 2012-05-03 09:26:52
 
   import java.util.Map;
   import java.util.TreeMap;
@@ -91,10 +91,10 @@ public class chronosTreeGram extends DebugTreeParser {
 
 
 public static final String[] ruleNames = new String[] {
-    "invalidRule", "unary_expr", "primary_expr", "and_expr", "argument_expr_list", 
-    "line", "type_specifier", "rel_expr", "stmt", "datetime", "declarator", 
-    "function_parens", "equiv_expr", "dayblock", "expr", "timeblock", "math_expr", 
-    "math_term", "postfix_expr", "assignment_expr", "constant", "program"
+    "invalidRule", "type_specifier", "assignment_expr", "equiv_expr", "postfix_expr", 
+    "expr", "line", "declarator", "argument_expr_list", "constant", "math_term", 
+    "stmt", "unary_expr", "math_expr", "dayblock", "rel_expr", "timeblock", 
+    "function_parens", "program", "datetime", "and_expr", "primary_expr"
 };
 
 public static final boolean[] decisionCanBacktrack = new boolean[] {
@@ -138,14 +138,14 @@ protected boolean evalPredicate(boolean result, String predicate) {
     public String getGrammarFileName() { return "/Users/shannonlee/PLT_Team20/chronosTreeGram.g"; }
 
 
-      private Map<String, Function> functionMap = new TreeMap<String, Function>();
+      /*private Map<String, Function> functionMap = new TreeMap<String, Function>();
       private Map<String, Double> variableMap = new TreeMap<String, Double>();
       
       private void define(Function function) {
       	functionMap.put(function.getName(), function);
       }
       
-      // retreives a Function from functino Map whose name
+      // retreives a Course from function Map whose name
       // matches the text of a given AST tree node
       private Function getFunction(CommonTree nameNode) {
       	String name = nameNode.getText();
@@ -174,7 +174,7 @@ protected boolean evalPredicate(boolean result, String predicate) {
         }
         return value;
       }
-
+    */
       // This just shortens the code for print calls.
       private static void out(Object obj) {
         System.out.print(obj);
@@ -2089,8 +2089,11 @@ protected boolean evalPredicate(boolean result, String predicate) {
 
 
     // $ANTLR start "type_specifier"
-    // /Users/shannonlee/PLT_Team20/chronosTreeGram.g:161:1: type_specifier : ( INT_T | DOUBLE_T | DAYS_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T );
-    public final void type_specifier() throws RecognitionException {
+    // /Users/shannonlee/PLT_Team20/chronosTreeGram.g:161:1: type_specifier returns [String type] : ( INT_T | DOUBLE_T | DAYS_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T );
+    public final String type_specifier() throws RecognitionException {
+        String type = null;
+
+
         try { dbg.enterRule(getGrammarFileName(), "type_specifier");
         if ( getRuleLevel()==0 ) {dbg.commence();}
         incRuleLevel();
@@ -2134,7 +2137,7 @@ protected boolean evalPredicate(boolean result, String predicate) {
             if ( getRuleLevel()==0 ) {dbg.terminate();}
         }
 
-        return ;
+        return type;
     }
     // $ANTLR end "type_specifier"
 
