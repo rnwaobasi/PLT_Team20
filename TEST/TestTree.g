@@ -36,7 +36,7 @@ program
 	;
 line:	print_function
 	|	int_assignment {out("This line is about " + $int_assignment.result);}
-	|	declaration
+	|	timeblock_inst
 	;
 print_function
 	:	^(PRINT STRING) {print($STRING.text);}
@@ -48,6 +48,11 @@ int_assignment returns [int result]
 					out($ID.text + " + 1 = " + $result);
 					}
 	;
-declaration
-	:	^('new' COURSE ID)
+timeblock_inst
+	:	^('=' TIMEBLOCK ID timeblock) {out("Timeblock = " + $timeblock.result);}
+	;
+timeblock returns [Timeblock result]
+	:	^(TIMES a=TIME b=TIME) {
+		$result = new Timeblock($a.text, $b.text);
+		}
 	;

@@ -5,12 +5,16 @@ options {
 	ASTLabelType = CommonTree;
 }
 
+tokens {
+	TIMES;
+}
+
 program
 	:	line+ EOF!
 	;
 line:	print_function ';'!
 	|	int_assignment ';'!
-	|	declaration
+	|	timeblock_inst ';'!
 	;
 print_function
 	:	PRINT^ '('! STRING ')'!
@@ -18,16 +22,23 @@ print_function
 int_assignment
 	:	ID '='^ INT
 	;
-declaration
-	:	'new'^ COURSE ID
+timeblock_inst
+	:	TIMEBLOCK ID '=' timeblock -> ^('=' TIMEBLOCK ID timeblock)
+	;
+timeblock
+	:	a=TIME '~' b=TIME -> ^(TIMES $a $b)
 	;
 	
 PRINT
 	:	'print'
 	;
-COURSE
-	:	'course'
+TIMEBLOCK
+	:	'timeblock'
 	;
+TIME:	('0'..'2')? ('0'..'9') ':' ('0'..'5')('0'..'9')
+	;
+	// military format for time
+	// hours can have 1 or 2 digits
 
 ID  :	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
     ;

@@ -1,4 +1,4 @@
-// $ANTLR 3.4 TestTree.g 2012-05-04 17:50:08
+// $ANTLR 3.4 TestTree.g 2012-05-04 18:26:54
 
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.*;
@@ -9,29 +9,31 @@ import java.util.ArrayList;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class TestTree extends TreeParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "CHAR", "COMMENT", "COURSE", "ESC_SEQ", "EXPONENT", "FLOAT", "HEX_DIGIT", "ID", "INT", "OCTAL_ESC", "PRINT", "STRING", "UNICODE_ESC", "WS", "'('", "')'", "';'", "'='", "'new'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "CHAR", "COMMENT", "ESC_SEQ", "EXPONENT", "FLOAT", "HEX_DIGIT", "ID", "INT", "OCTAL_ESC", "PRINT", "STRING", "TIME", "TIMEBLOCK", "TIMES", "UNICODE_ESC", "WS", "'('", "')'", "';'", "'='", "'~'"
     };
 
     public static final int EOF=-1;
-    public static final int T__18=18;
-    public static final int T__19=19;
     public static final int T__20=20;
     public static final int T__21=21;
     public static final int T__22=22;
+    public static final int T__23=23;
+    public static final int T__24=24;
     public static final int CHAR=4;
     public static final int COMMENT=5;
-    public static final int COURSE=6;
-    public static final int ESC_SEQ=7;
-    public static final int EXPONENT=8;
-    public static final int FLOAT=9;
-    public static final int HEX_DIGIT=10;
-    public static final int ID=11;
-    public static final int INT=12;
-    public static final int OCTAL_ESC=13;
-    public static final int PRINT=14;
-    public static final int STRING=15;
-    public static final int UNICODE_ESC=16;
-    public static final int WS=17;
+    public static final int ESC_SEQ=6;
+    public static final int EXPONENT=7;
+    public static final int FLOAT=8;
+    public static final int HEX_DIGIT=9;
+    public static final int ID=10;
+    public static final int INT=11;
+    public static final int OCTAL_ESC=12;
+    public static final int PRINT=13;
+    public static final int STRING=14;
+    public static final int TIME=15;
+    public static final int TIMEBLOCK=16;
+    public static final int TIMES=17;
+    public static final int UNICODE_ESC=18;
+    public static final int WS=19;
 
     // delegates
     public TreeParser[] getDelegates() {
@@ -92,7 +94,7 @@ public class TestTree extends TreeParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==PRINT||(LA1_0 >= 21 && LA1_0 <= 22)) ) {
+                if ( (LA1_0==PRINT||LA1_0==23) ) {
                     alt1=1;
                 }
 
@@ -138,38 +140,54 @@ public class TestTree extends TreeParser {
 
 
     // $ANTLR start "line"
-    // TestTree.g:37:1: line : ( print_function | int_assignment | declaration );
+    // TestTree.g:37:1: line : ( print_function | int_assignment | timeblock_inst );
     public final void line() throws RecognitionException {
         int int_assignment1 =0;
 
 
         try {
-            // TestTree.g:37:5: ( print_function | int_assignment | declaration )
+            // TestTree.g:37:5: ( print_function | int_assignment | timeblock_inst )
             int alt2=3;
-            switch ( input.LA(1) ) {
-            case PRINT:
-                {
+            int LA2_0 = input.LA(1);
+
+            if ( (LA2_0==PRINT) ) {
                 alt2=1;
+            }
+            else if ( (LA2_0==23) ) {
+                int LA2_2 = input.LA(2);
+
+                if ( (LA2_2==DOWN) ) {
+                    int LA2_3 = input.LA(3);
+
+                    if ( (LA2_3==ID) ) {
+                        alt2=2;
+                    }
+                    else if ( (LA2_3==TIMEBLOCK) ) {
+                        alt2=3;
+                    }
+                    else {
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 2, 3, input);
+
+                        throw nvae;
+
+                    }
                 }
-                break;
-            case 21:
-                {
-                alt2=2;
+                else {
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 2, 2, input);
+
+                    throw nvae;
+
                 }
-                break;
-            case 22:
-                {
-                alt2=3;
-                }
-                break;
-            default:
+            }
+            else {
                 NoViableAltException nvae =
                     new NoViableAltException("", 2, 0, input);
 
                 throw nvae;
 
             }
-
             switch (alt2) {
                 case 1 :
                     // TestTree.g:37:7: print_function
@@ -196,10 +214,10 @@ public class TestTree extends TreeParser {
                     }
                     break;
                 case 3 :
-                    // TestTree.g:39:4: declaration
+                    // TestTree.g:39:4: timeblock_inst
                     {
-                    pushFollow(FOLLOW_declaration_in_line61);
-                    declaration();
+                    pushFollow(FOLLOW_timeblock_inst_in_line61);
+                    timeblock_inst();
 
                     state._fsp--;
 
@@ -272,7 +290,7 @@ public class TestTree extends TreeParser {
             // TestTree.g:45:2: ( ^( '=' ID INT ) )
             // TestTree.g:45:4: ^( '=' ID INT )
             {
-            match(input,21,FOLLOW_21_in_int_assignment92); 
+            match(input,23,FOLLOW_23_in_int_assignment92); 
 
             match(input, Token.DOWN, null); 
             ID3=(CommonTree)match(input,ID,FOLLOW_ID_in_int_assignment94); 
@@ -305,22 +323,33 @@ public class TestTree extends TreeParser {
 
 
 
-    // $ANTLR start "declaration"
-    // TestTree.g:51:1: declaration : ^( 'new' COURSE ID ) ;
-    public final void declaration() throws RecognitionException {
+    // $ANTLR start "timeblock_inst"
+    // TestTree.g:51:1: timeblock_inst : ^( '=' TIMEBLOCK ID timeblock ) ;
+    public final void timeblock_inst() throws RecognitionException {
+        Timeblock timeblock5 =null;
+
+
         try {
-            // TestTree.g:52:2: ( ^( 'new' COURSE ID ) )
-            // TestTree.g:52:4: ^( 'new' COURSE ID )
+            // TestTree.g:52:2: ( ^( '=' TIMEBLOCK ID timeblock ) )
+            // TestTree.g:52:4: ^( '=' TIMEBLOCK ID timeblock )
             {
-            match(input,22,FOLLOW_22_in_declaration109); 
+            match(input,23,FOLLOW_23_in_timeblock_inst109); 
 
             match(input, Token.DOWN, null); 
-            match(input,COURSE,FOLLOW_COURSE_in_declaration111); 
+            match(input,TIMEBLOCK,FOLLOW_TIMEBLOCK_in_timeblock_inst111); 
 
-            match(input,ID,FOLLOW_ID_in_declaration113); 
+            match(input,ID,FOLLOW_ID_in_timeblock_inst113); 
+
+            pushFollow(FOLLOW_timeblock_in_timeblock_inst115);
+            timeblock5=timeblock();
+
+            state._fsp--;
+
 
             match(input, Token.UP, null); 
 
+
+            out("Timeblock = " + timeblock5);
 
             }
 
@@ -335,24 +364,72 @@ public class TestTree extends TreeParser {
         }
         return ;
     }
-    // $ANTLR end "declaration"
+    // $ANTLR end "timeblock_inst"
+
+
+
+    // $ANTLR start "timeblock"
+    // TestTree.g:54:1: timeblock returns [Timeblock result] : ^( TIMES a= TIME b= TIME ) ;
+    public final Timeblock timeblock() throws RecognitionException {
+        Timeblock result = null;
+
+
+        CommonTree a=null;
+        CommonTree b=null;
+
+        try {
+            // TestTree.g:55:2: ( ^( TIMES a= TIME b= TIME ) )
+            // TestTree.g:55:4: ^( TIMES a= TIME b= TIME )
+            {
+            match(input,TIMES,FOLLOW_TIMES_in_timeblock133); 
+
+            match(input, Token.DOWN, null); 
+            a=(CommonTree)match(input,TIME,FOLLOW_TIME_in_timeblock137); 
+
+            b=(CommonTree)match(input,TIME,FOLLOW_TIME_in_timeblock141); 
+
+            match(input, Token.UP, null); 
+
+
+
+            		result = new Timeblock((a!=null?a.getText():null), (b!=null?b.getText():null));
+            		
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return result;
+    }
+    // $ANTLR end "timeblock"
 
     // Delegated rules
 
 
  
 
-    public static final BitSet FOLLOW_line_in_program40 = new BitSet(new long[]{0x0000000000604002L});
+    public static final BitSet FOLLOW_line_in_program40 = new BitSet(new long[]{0x0000000000802002L});
     public static final BitSet FOLLOW_print_function_in_line49 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_int_assignment_in_line54 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_declaration_in_line61 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_timeblock_inst_in_line61 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_PRINT_in_print_function72 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_STRING_in_print_function74 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_21_in_int_assignment92 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_int_assignment94 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_23_in_int_assignment92 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_int_assignment94 = new BitSet(new long[]{0x0000000000000800L});
     public static final BitSet FOLLOW_INT_in_int_assignment96 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_22_in_declaration109 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_COURSE_in_declaration111 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_ID_in_declaration113 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_23_in_timeblock_inst109 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_TIMEBLOCK_in_timeblock_inst111 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_ID_in_timeblock_inst113 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_timeblock_in_timeblock_inst115 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_TIMES_in_timeblock133 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_TIME_in_timeblock137 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_TIME_in_timeblock141 = new BitSet(new long[]{0x0000000000000008L});
 
 }
