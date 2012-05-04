@@ -6,14 +6,14 @@ options {
 }
 
 program
-	:	line+ EOF!
+	:	line+ EOF -> line+
 	;
-line:	print_function';'!
-	|	int_assignment';'!
+line:	/*print_function';'!
+	|*/	int_assignment';' -> int_assignment
 	;
-print_function
+/*print_function
 	:	PRINT^ '('! STRING ')'!
-	;
+	;*/
 int_assignment
 	:	ID '='^ INT
 	;

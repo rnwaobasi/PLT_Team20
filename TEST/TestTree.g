@@ -1,7 +1,6 @@
 tree grammar TestTree;
 
 options {
-	language = Java;
 	tokenVocab = Test;
 	ASTLabelType = CommonTree;
 }
@@ -9,12 +8,12 @@ options {
 program
 	:	line+
 	;
-line:	print_function
-	|	int_assignment
+line:	/*print_function ';'
+	|*/	int_assignment
 	;
-print_function
+/*print_function
 	:	^(PRINT STRING)
-	;
+	;*/
 int_assignment
-	:	^('=' ID INT)
+	:	^('=' ID INT){System.out.println($ID.text);}
 	;

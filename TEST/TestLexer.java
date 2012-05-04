@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /Users/shannonlee/PLT_Team20/TEST/Test.g 2012-05-04 15:39:16
+// $ANTLR 3.4 Test.g 2012-05-04 16:45:35
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -10,8 +10,6 @@ public class TestLexer extends Lexer {
     public static final int EOF=-1;
     public static final int T__17=17;
     public static final int T__18=18;
-    public static final int T__19=19;
-    public static final int T__20=20;
     public static final int CHAR=4;
     public static final int COMMENT=5;
     public static final int ESC_SEQ=6;
@@ -39,17 +37,17 @@ public class TestLexer extends Lexer {
     public TestLexer(CharStream input, RecognizerSharedState state) {
         super(input,state);
     }
-    public String getGrammarFileName() { return "/Users/shannonlee/PLT_Team20/TEST/Test.g"; }
+    public String getGrammarFileName() { return "Test.g"; }
 
     // $ANTLR start "T__17"
     public final void mT__17() throws RecognitionException {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:2:7: ( '(' )
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:2:9: '('
+            // Test.g:2:7: ( ';' )
+            // Test.g:2:9: ';'
             {
-            match('('); 
+            match(';'); 
 
             }
 
@@ -67,50 +65,8 @@ public class TestLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:3:7: ( ')' )
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:3:9: ')'
-            {
-            match(')'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "T__18"
-
-    // $ANTLR start "T__19"
-    public final void mT__19() throws RecognitionException {
-        try {
-            int _type = T__19;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:4:7: ( ';' )
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:4:9: ';'
-            {
-            match(';'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "T__19"
-
-    // $ANTLR start "T__20"
-    public final void mT__20() throws RecognitionException {
-        try {
-            int _type = T__20;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:5:7: ( '=' )
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:5:9: '='
+            // Test.g:3:7: ( '=' )
+            // Test.g:3:9: '='
             {
             match('='); 
 
@@ -123,15 +79,15 @@ public class TestLexer extends Lexer {
         	// do for sure before leaving
         }
     }
-    // $ANTLR end "T__20"
+    // $ANTLR end "T__18"
 
     // $ANTLR start "PRINT"
     public final void mPRINT() throws RecognitionException {
         try {
             int _type = PRINT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:22:2: ( 'print' )
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:22:4: 'print'
+            // Test.g:22:2: ( 'print' )
+            // Test.g:22:4: 'print'
             {
             match("print"); 
 
@@ -153,8 +109,8 @@ public class TestLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:25:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:25:7: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // Test.g:25:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // Test.g:25:7: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
                 input.consume();
@@ -166,7 +122,7 @@ public class TestLexer extends Lexer {
             }
 
 
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:25:31: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // Test.g:25:31: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop1:
             do {
                 int alt1=2;
@@ -179,7 +135,7 @@ public class TestLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // /Users/shannonlee/PLT_Team20/TEST/Test.g:
+            	    // Test.g:
             	    {
             	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
             	        input.consume();
@@ -216,10 +172,10 @@ public class TestLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:28:5: ( ( '0' .. '9' )+ )
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:28:7: ( '0' .. '9' )+
+            // Test.g:28:5: ( ( '0' .. '9' )+ )
+            // Test.g:28:7: ( '0' .. '9' )+
             {
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:28:7: ( '0' .. '9' )+
+            // Test.g:28:7: ( '0' .. '9' )+
             int cnt2=0;
             loop2:
             do {
@@ -233,7 +189,7 @@ public class TestLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // /Users/shannonlee/PLT_Team20/TEST/Test.g:
+            	    // Test.g:
             	    {
             	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
             	        input.consume();
@@ -274,14 +230,14 @@ public class TestLexer extends Lexer {
         try {
             int _type = FLOAT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:32:5: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT )
+            // Test.g:32:5: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT )
             int alt9=3;
             alt9 = dfa9.predict(input);
             switch (alt9) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:32:9: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )?
+                    // Test.g:32:9: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )?
                     {
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:32:9: ( '0' .. '9' )+
+                    // Test.g:32:9: ( '0' .. '9' )+
                     int cnt3=0;
                     loop3:
                     do {
@@ -295,7 +251,7 @@ public class TestLexer extends Lexer {
 
                         switch (alt3) {
                     	case 1 :
-                    	    // /Users/shannonlee/PLT_Team20/TEST/Test.g:
+                    	    // Test.g:
                     	    {
                     	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
                     	        input.consume();
@@ -322,7 +278,7 @@ public class TestLexer extends Lexer {
 
                     match('.'); 
 
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:32:25: ( '0' .. '9' )*
+                    // Test.g:32:25: ( '0' .. '9' )*
                     loop4:
                     do {
                         int alt4=2;
@@ -335,7 +291,7 @@ public class TestLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // /Users/shannonlee/PLT_Team20/TEST/Test.g:
+                    	    // Test.g:
                     	    {
                     	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
                     	        input.consume();
@@ -356,7 +312,7 @@ public class TestLexer extends Lexer {
                     } while (true);
 
 
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:32:37: ( EXPONENT )?
+                    // Test.g:32:37: ( EXPONENT )?
                     int alt5=2;
                     int LA5_0 = input.LA(1);
 
@@ -365,7 +321,7 @@ public class TestLexer extends Lexer {
                     }
                     switch (alt5) {
                         case 1 :
-                            // /Users/shannonlee/PLT_Team20/TEST/Test.g:32:37: EXPONENT
+                            // Test.g:32:37: EXPONENT
                             {
                             mEXPONENT(); 
 
@@ -379,11 +335,11 @@ public class TestLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:33:9: '.' ( '0' .. '9' )+ ( EXPONENT )?
+                    // Test.g:33:9: '.' ( '0' .. '9' )+ ( EXPONENT )?
                     {
                     match('.'); 
 
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:33:13: ( '0' .. '9' )+
+                    // Test.g:33:13: ( '0' .. '9' )+
                     int cnt6=0;
                     loop6:
                     do {
@@ -397,7 +353,7 @@ public class TestLexer extends Lexer {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // /Users/shannonlee/PLT_Team20/TEST/Test.g:
+                    	    // Test.g:
                     	    {
                     	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
                     	        input.consume();
@@ -422,7 +378,7 @@ public class TestLexer extends Lexer {
                     } while (true);
 
 
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:33:25: ( EXPONENT )?
+                    // Test.g:33:25: ( EXPONENT )?
                     int alt7=2;
                     int LA7_0 = input.LA(1);
 
@@ -431,7 +387,7 @@ public class TestLexer extends Lexer {
                     }
                     switch (alt7) {
                         case 1 :
-                            // /Users/shannonlee/PLT_Team20/TEST/Test.g:33:25: EXPONENT
+                            // Test.g:33:25: EXPONENT
                             {
                             mEXPONENT(); 
 
@@ -445,9 +401,9 @@ public class TestLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:34:9: ( '0' .. '9' )+ EXPONENT
+                    // Test.g:34:9: ( '0' .. '9' )+ EXPONENT
                     {
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:34:9: ( '0' .. '9' )+
+                    // Test.g:34:9: ( '0' .. '9' )+
                     int cnt8=0;
                     loop8:
                     do {
@@ -461,7 +417,7 @@ public class TestLexer extends Lexer {
 
                         switch (alt8) {
                     	case 1 :
-                    	    // /Users/shannonlee/PLT_Team20/TEST/Test.g:
+                    	    // Test.g:
                     	    {
                     	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
                     	        input.consume();
@@ -507,7 +463,7 @@ public class TestLexer extends Lexer {
         try {
             int _type = COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:38:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
+            // Test.g:38:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -537,13 +493,13 @@ public class TestLexer extends Lexer {
             }
             switch (alt13) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:38:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+                    // Test.g:38:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
                     {
                     match("//"); 
 
 
 
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:38:14: (~ ( '\\n' | '\\r' ) )*
+                    // Test.g:38:14: (~ ( '\\n' | '\\r' ) )*
                     loop10:
                     do {
                         int alt10=2;
@@ -556,7 +512,7 @@ public class TestLexer extends Lexer {
 
                         switch (alt10) {
                     	case 1 :
-                    	    // /Users/shannonlee/PLT_Team20/TEST/Test.g:
+                    	    // Test.g:
                     	    {
                     	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\t')||(input.LA(1) >= '\u000B' && input.LA(1) <= '\f')||(input.LA(1) >= '\u000E' && input.LA(1) <= '\uFFFF') ) {
                     	        input.consume();
@@ -577,7 +533,7 @@ public class TestLexer extends Lexer {
                     } while (true);
 
 
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:38:28: ( '\\r' )?
+                    // Test.g:38:28: ( '\\r' )?
                     int alt11=2;
                     int LA11_0 = input.LA(1);
 
@@ -586,7 +542,7 @@ public class TestLexer extends Lexer {
                     }
                     switch (alt11) {
                         case 1 :
-                            // /Users/shannonlee/PLT_Team20/TEST/Test.g:38:28: '\\r'
+                            // Test.g:38:28: '\\r'
                             {
                             match('\r'); 
 
@@ -603,13 +559,13 @@ public class TestLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:39:9: '/*' ( options {greedy=false; } : . )* '*/'
+                    // Test.g:39:9: '/*' ( options {greedy=false; } : . )* '*/'
                     {
                     match("/*"); 
 
 
 
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:39:14: ( options {greedy=false; } : . )*
+                    // Test.g:39:14: ( options {greedy=false; } : . )*
                     loop12:
                     do {
                         int alt12=2;
@@ -634,7 +590,7 @@ public class TestLexer extends Lexer {
 
                         switch (alt12) {
                     	case 1 :
-                    	    // /Users/shannonlee/PLT_Team20/TEST/Test.g:39:42: .
+                    	    // Test.g:39:42: .
                     	    {
                     	    matchAny(); 
 
@@ -671,8 +627,8 @@ public class TestLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:42:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:42:9: ( ' ' | '\\t' | '\\r' | '\\n' )
+            // Test.g:42:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+            // Test.g:42:9: ( ' ' | '\\t' | '\\r' | '\\n' )
             {
             if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
                 input.consume();
@@ -702,12 +658,12 @@ public class TestLexer extends Lexer {
         try {
             int _type = STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:50:5: ( '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"' )
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:50:8: '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"'
+            // Test.g:50:5: ( '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"' )
+            // Test.g:50:8: '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"'
             {
             match('\"'); 
 
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:50:12: ( ESC_SEQ |~ ( '\\\\' | '\"' ) )*
+            // Test.g:50:12: ( ESC_SEQ |~ ( '\\\\' | '\"' ) )*
             loop14:
             do {
                 int alt14=3;
@@ -723,7 +679,7 @@ public class TestLexer extends Lexer {
 
                 switch (alt14) {
             	case 1 :
-            	    // /Users/shannonlee/PLT_Team20/TEST/Test.g:50:14: ESC_SEQ
+            	    // Test.g:50:14: ESC_SEQ
             	    {
             	    mESC_SEQ(); 
 
@@ -731,7 +687,7 @@ public class TestLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // /Users/shannonlee/PLT_Team20/TEST/Test.g:50:24: ~ ( '\\\\' | '\"' )
+            	    // Test.g:50:24: ~ ( '\\\\' | '\"' )
             	    {
             	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
             	        input.consume();
@@ -770,12 +726,12 @@ public class TestLexer extends Lexer {
         try {
             int _type = CHAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:53:5: ( '\\'' ( ESC_SEQ |~ ( '\\'' | '\\\\' ) ) '\\'' )
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:53:8: '\\'' ( ESC_SEQ |~ ( '\\'' | '\\\\' ) ) '\\''
+            // Test.g:53:5: ( '\\'' ( ESC_SEQ |~ ( '\\'' | '\\\\' ) ) '\\'' )
+            // Test.g:53:8: '\\'' ( ESC_SEQ |~ ( '\\'' | '\\\\' ) ) '\\''
             {
             match('\''); 
 
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:53:13: ( ESC_SEQ |~ ( '\\'' | '\\\\' ) )
+            // Test.g:53:13: ( ESC_SEQ |~ ( '\\'' | '\\\\' ) )
             int alt15=2;
             int LA15_0 = input.LA(1);
 
@@ -794,7 +750,7 @@ public class TestLexer extends Lexer {
             }
             switch (alt15) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:53:15: ESC_SEQ
+                    // Test.g:53:15: ESC_SEQ
                     {
                     mESC_SEQ(); 
 
@@ -802,7 +758,7 @@ public class TestLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:53:25: ~ ( '\\'' | '\\\\' )
+                    // Test.g:53:25: ~ ( '\\'' | '\\\\' )
                     {
                     if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '&')||(input.LA(1) >= '(' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
                         input.consume();
@@ -836,8 +792,8 @@ public class TestLexer extends Lexer {
     // $ANTLR start "EXPONENT"
     public final void mEXPONENT() throws RecognitionException {
         try {
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:58:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:58:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
+            // Test.g:58:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
+            // Test.g:58:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -849,7 +805,7 @@ public class TestLexer extends Lexer {
             }
 
 
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:58:22: ( '+' | '-' )?
+            // Test.g:58:22: ( '+' | '-' )?
             int alt16=2;
             int LA16_0 = input.LA(1);
 
@@ -858,7 +814,7 @@ public class TestLexer extends Lexer {
             }
             switch (alt16) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:
+                    // Test.g:
                     {
                     if ( input.LA(1)=='+'||input.LA(1)=='-' ) {
                         input.consume();
@@ -876,7 +832,7 @@ public class TestLexer extends Lexer {
             }
 
 
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:58:33: ( '0' .. '9' )+
+            // Test.g:58:33: ( '0' .. '9' )+
             int cnt17=0;
             loop17:
             do {
@@ -890,7 +846,7 @@ public class TestLexer extends Lexer {
 
                 switch (alt17) {
             	case 1 :
-            	    // /Users/shannonlee/PLT_Team20/TEST/Test.g:
+            	    // Test.g:
             	    {
             	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
             	        input.consume();
@@ -928,8 +884,8 @@ public class TestLexer extends Lexer {
     // $ANTLR start "HEX_DIGIT"
     public final void mHEX_DIGIT() throws RecognitionException {
         try {
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:61:11: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:
+            // Test.g:61:11: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+            // Test.g:
             {
             if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'F')||(input.LA(1) >= 'a' && input.LA(1) <= 'f') ) {
                 input.consume();
@@ -954,7 +910,7 @@ public class TestLexer extends Lexer {
     // $ANTLR start "ESC_SEQ"
     public final void mESC_SEQ() throws RecognitionException {
         try {
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:65:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
+            // Test.g:65:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
             int alt18=3;
             int LA18_0 = input.LA(1);
 
@@ -1007,7 +963,7 @@ public class TestLexer extends Lexer {
             }
             switch (alt18) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:65:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+                    // Test.g:65:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
                     {
                     match('\\'); 
 
@@ -1024,7 +980,7 @@ public class TestLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:66:9: UNICODE_ESC
+                    // Test.g:66:9: UNICODE_ESC
                     {
                     mUNICODE_ESC(); 
 
@@ -1032,7 +988,7 @@ public class TestLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:67:9: OCTAL_ESC
+                    // Test.g:67:9: OCTAL_ESC
                     {
                     mOCTAL_ESC(); 
 
@@ -1052,7 +1008,7 @@ public class TestLexer extends Lexer {
     // $ANTLR start "OCTAL_ESC"
     public final void mOCTAL_ESC() throws RecognitionException {
         try {
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:72:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
+            // Test.g:72:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
             int alt19=3;
             int LA19_0 = input.LA(1);
 
@@ -1103,7 +1059,7 @@ public class TestLexer extends Lexer {
             }
             switch (alt19) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:72:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
+                    // Test.g:72:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
                     {
                     match('\\'); 
 
@@ -1140,7 +1096,7 @@ public class TestLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:73:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
+                    // Test.g:73:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
                     {
                     match('\\'); 
 
@@ -1167,7 +1123,7 @@ public class TestLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // /Users/shannonlee/PLT_Team20/TEST/Test.g:74:9: '\\\\' ( '0' .. '7' )
+                    // Test.g:74:9: '\\\\' ( '0' .. '7' )
                     {
                     match('\\'); 
 
@@ -1196,8 +1152,8 @@ public class TestLexer extends Lexer {
     // $ANTLR start "UNICODE_ESC"
     public final void mUNICODE_ESC() throws RecognitionException {
         try {
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:79:5: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
-            // /Users/shannonlee/PLT_Team20/TEST/Test.g:79:9: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+            // Test.g:79:5: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
+            // Test.g:79:9: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
             {
             match('\\'); 
 
@@ -1226,12 +1182,12 @@ public class TestLexer extends Lexer {
     // $ANTLR end "UNICODE_ESC"
 
     public void mTokens() throws RecognitionException {
-        // /Users/shannonlee/PLT_Team20/TEST/Test.g:1:8: ( T__17 | T__18 | T__19 | T__20 | PRINT | ID | INT | FLOAT | COMMENT | WS | STRING | CHAR )
-        int alt20=12;
+        // Test.g:1:8: ( T__17 | T__18 | PRINT | ID | INT | FLOAT | COMMENT | WS | STRING | CHAR )
+        int alt20=10;
         alt20 = dfa20.predict(input);
         switch (alt20) {
             case 1 :
-                // /Users/shannonlee/PLT_Team20/TEST/Test.g:1:10: T__17
+                // Test.g:1:10: T__17
                 {
                 mT__17(); 
 
@@ -1239,7 +1195,7 @@ public class TestLexer extends Lexer {
                 }
                 break;
             case 2 :
-                // /Users/shannonlee/PLT_Team20/TEST/Test.g:1:16: T__18
+                // Test.g:1:16: T__18
                 {
                 mT__18(); 
 
@@ -1247,79 +1203,63 @@ public class TestLexer extends Lexer {
                 }
                 break;
             case 3 :
-                // /Users/shannonlee/PLT_Team20/TEST/Test.g:1:22: T__19
-                {
-                mT__19(); 
-
-
-                }
-                break;
-            case 4 :
-                // /Users/shannonlee/PLT_Team20/TEST/Test.g:1:28: T__20
-                {
-                mT__20(); 
-
-
-                }
-                break;
-            case 5 :
-                // /Users/shannonlee/PLT_Team20/TEST/Test.g:1:34: PRINT
+                // Test.g:1:22: PRINT
                 {
                 mPRINT(); 
 
 
                 }
                 break;
-            case 6 :
-                // /Users/shannonlee/PLT_Team20/TEST/Test.g:1:40: ID
+            case 4 :
+                // Test.g:1:28: ID
                 {
                 mID(); 
 
 
                 }
                 break;
-            case 7 :
-                // /Users/shannonlee/PLT_Team20/TEST/Test.g:1:43: INT
+            case 5 :
+                // Test.g:1:31: INT
                 {
                 mINT(); 
 
 
                 }
                 break;
-            case 8 :
-                // /Users/shannonlee/PLT_Team20/TEST/Test.g:1:47: FLOAT
+            case 6 :
+                // Test.g:1:35: FLOAT
                 {
                 mFLOAT(); 
 
 
                 }
                 break;
-            case 9 :
-                // /Users/shannonlee/PLT_Team20/TEST/Test.g:1:53: COMMENT
+            case 7 :
+                // Test.g:1:41: COMMENT
                 {
                 mCOMMENT(); 
 
 
                 }
                 break;
-            case 10 :
-                // /Users/shannonlee/PLT_Team20/TEST/Test.g:1:61: WS
+            case 8 :
+                // Test.g:1:49: WS
                 {
                 mWS(); 
 
 
                 }
                 break;
-            case 11 :
-                // /Users/shannonlee/PLT_Team20/TEST/Test.g:1:64: STRING
+            case 9 :
+                // Test.g:1:52: STRING
                 {
                 mSTRING(); 
 
 
                 }
                 break;
-            case 12 :
-                // /Users/shannonlee/PLT_Team20/TEST/Test.g:1:71: CHAR
+            case 10 :
+                // Test.g:1:59: CHAR
                 {
                 mCHAR(); 
 
@@ -1388,41 +1328,39 @@ public class TestLexer extends Lexer {
         }
     }
     static final String DFA20_eotS =
-        "\5\uffff\1\6\1\uffff\1\16\5\uffff\1\6\1\uffff\2\6\1\22\1\uffff";
+        "\3\uffff\1\4\1\uffff\1\14\5\uffff\1\4\1\uffff\2\4\1\20\1\uffff";
     static final String DFA20_eofS =
-        "\23\uffff";
+        "\21\uffff";
     static final String DFA20_minS =
-        "\1\11\4\uffff\1\162\1\uffff\1\56\5\uffff\1\151\1\uffff\1\156\1\164"+
+        "\1\11\2\uffff\1\162\1\uffff\1\56\5\uffff\1\151\1\uffff\1\156\1\164"+
         "\1\60\1\uffff";
     static final String DFA20_maxS =
-        "\1\172\4\uffff\1\162\1\uffff\1\145\5\uffff\1\151\1\uffff\1\156\1"+
+        "\1\172\2\uffff\1\162\1\uffff\1\145\5\uffff\1\151\1\uffff\1\156\1"+
         "\164\1\172\1\uffff";
     static final String DFA20_acceptS =
-        "\1\uffff\1\1\1\2\1\3\1\4\1\uffff\1\6\1\uffff\1\10\1\11\1\12\1\13"+
-        "\1\14\1\uffff\1\7\3\uffff\1\5";
+        "\1\uffff\1\1\1\2\1\uffff\1\4\1\uffff\1\6\1\7\1\10\1\11\1\12\1\uffff"+
+        "\1\5\3\uffff\1\3";
     static final String DFA20_specialS =
-        "\23\uffff}>";
+        "\21\uffff}>";
     static final String[] DFA20_transitionS = {
-            "\2\12\2\uffff\1\12\22\uffff\1\12\1\uffff\1\13\4\uffff\1\14\1"+
-            "\1\1\2\4\uffff\1\10\1\11\12\7\1\uffff\1\3\1\uffff\1\4\3\uffff"+
-            "\32\6\4\uffff\1\6\1\uffff\17\6\1\5\12\6",
+            "\2\10\2\uffff\1\10\22\uffff\1\10\1\uffff\1\11\4\uffff\1\12\6"+
+            "\uffff\1\6\1\7\12\5\1\uffff\1\1\1\uffff\1\2\3\uffff\32\4\4\uffff"+
+            "\1\4\1\uffff\17\4\1\3\12\4",
+            "",
+            "",
+            "\1\13",
+            "",
+            "\1\6\1\uffff\12\5\13\uffff\1\6\37\uffff\1\6",
+            "",
             "",
             "",
             "",
             "",
             "\1\15",
             "",
-            "\1\10\1\uffff\12\7\13\uffff\1\10\37\uffff\1\10",
-            "",
-            "",
-            "",
-            "",
-            "",
+            "\1\16",
             "\1\17",
-            "",
-            "\1\20",
-            "\1\21",
-            "\12\6\7\uffff\32\6\4\uffff\1\6\1\uffff\32\6",
+            "\12\4\7\uffff\32\4\4\uffff\1\4\1\uffff\32\4",
             ""
     };
 
@@ -1456,7 +1394,7 @@ public class TestLexer extends Lexer {
             this.transition = DFA20_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__17 | T__18 | T__19 | T__20 | PRINT | ID | INT | FLOAT | COMMENT | WS | STRING | CHAR );";
+            return "1:1: Tokens : ( T__17 | T__18 | PRINT | ID | INT | FLOAT | COMMENT | WS | STRING | CHAR );";
         }
     }
  
