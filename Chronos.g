@@ -16,6 +16,12 @@ tokens {
 	DAYS;
 	TIMES;
 	PARAMS;
+	EXPR;
+	IDENT;
+	CONST;
+	STR;
+	TIM;
+	PARENS;
 }
 
 /* *** GRAMMAR *** */
@@ -35,7 +41,7 @@ declarator
 	|	type_specifier ID '=' expr ';'
 			-> ^(INST ^(DECL type_specifier ID) ^('=' ID expr))
 	;
-stmt:	expr';' -> expr
+stmt:	expr';' -> ^(EXPR expr)
 	|	selection_stmt
 	|	iteration_stmt
 	|	jump_stmt';' -> jump_stmt
@@ -114,11 +120,11 @@ dayblock
 	:	'[' DAY ( ',' DAY )* ']' -> ^(DAYS DAY+)
 	;
 primary_expr
-	:	constant
-	|	ID
-	|	STRING
-	|	TIME
-	|	'('expr')' -> expr
+	:	constant -> ^(CONST constant)
+	|	ID -> ^(IDENT ID ID)
+	|	STRING //-> ^(STR STRING)
+	|	TIME -> //^(TIM TIME)
+	|	'('expr')' -> expr //^(PARENS expr)
 	;
 argument_expr_list
 	:	(expr) (',' expr)* -> expr+

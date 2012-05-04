@@ -1,1 +1,2 @@
-days mathDays = sched.getCourse("Math").getDays();
+print("HELLO WURLD");
+int x = 5;

@@ -21,13 +21,13 @@ declarator
 	:	^(DECL type_specifier ID)
 	|	^(INST ^(DECL type_specifier ID) ^('=' ID expr))
 	;
-stmt:	expr
+stmt:	^(EXPR expr)
 	|	selection_stmt
 	|	iteration_stmt
 	|	jump_stmt
 	;
 selection_stmt
-	:	^(COND ^(IF_T expr a=line*) ^(ELSE_T b=line*)?)
+	:	^(COND ^(IF_T expr a=line*) ^(ELSE_T b=line*))
 	;
 iteration_stmt
 	:	^(FOREACH_T ^(IN_T element=ID list=ID) ^(BLOCK line*))
