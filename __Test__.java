@@ -1,5 +1,6 @@
 import java.io.*;
 import org.antlr.runtime.*;
+import org.antlr.runtime.tree.*;
 import org.antlr.runtime.debug.DebugEventSocketProxy;
 
 
@@ -9,11 +10,19 @@ public class __Test__ {
         ChronosLexer lex = new ChronosLexer(new ANTLRFileStream("/Users/shannonlee/PLT_Team20/__Test___input.txt", "UTF8"));
         CommonTokenStream tokens = new CommonTokenStream(lex);
 
-        ChronosParser g = new ChronosParser(tokens, 49100, null);
+
+        ChronosParser parser = new ChronosParser(tokens);
+        ChronosParser.program_return r = parser.program();
+        CommonTreeNodeStream nodes = new CommonTreeNodeStream(r.getTree());
+
+
+        ChronosTree walker = new ChronosTree(nodes);
         try {
-            g.program();
+            walker.program();
         } catch (RecognitionException e) {
             e.printStackTrace();
         }
+
     }
+
 }
