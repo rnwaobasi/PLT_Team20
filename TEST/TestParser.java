@@ -1,4 +1,4 @@
-// $ANTLR 3.4 Test.g 2012-05-04 17:10:25
+// $ANTLR 3.4 Test.g 2012-05-04 17:50:08
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -11,27 +11,29 @@ import org.antlr.runtime.tree.*;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class TestParser extends Parser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "CHAR", "COMMENT", "ESC_SEQ", "EXPONENT", "FLOAT", "HEX_DIGIT", "ID", "INT", "OCTAL_ESC", "PRINT", "STRING", "UNICODE_ESC", "WS", "'('", "')'", "';'", "'='"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "CHAR", "COMMENT", "COURSE", "ESC_SEQ", "EXPONENT", "FLOAT", "HEX_DIGIT", "ID", "INT", "OCTAL_ESC", "PRINT", "STRING", "UNICODE_ESC", "WS", "'('", "')'", "';'", "'='", "'new'"
     };
 
     public static final int EOF=-1;
-    public static final int T__17=17;
     public static final int T__18=18;
     public static final int T__19=19;
     public static final int T__20=20;
+    public static final int T__21=21;
+    public static final int T__22=22;
     public static final int CHAR=4;
     public static final int COMMENT=5;
-    public static final int ESC_SEQ=6;
-    public static final int EXPONENT=7;
-    public static final int FLOAT=8;
-    public static final int HEX_DIGIT=9;
-    public static final int ID=10;
-    public static final int INT=11;
-    public static final int OCTAL_ESC=12;
-    public static final int PRINT=13;
-    public static final int STRING=14;
-    public static final int UNICODE_ESC=15;
-    public static final int WS=16;
+    public static final int COURSE=6;
+    public static final int ESC_SEQ=7;
+    public static final int EXPONENT=8;
+    public static final int FLOAT=9;
+    public static final int HEX_DIGIT=10;
+    public static final int ID=11;
+    public static final int INT=12;
+    public static final int OCTAL_ESC=13;
+    public static final int PRINT=14;
+    public static final int STRING=15;
+    public static final int UNICODE_ESC=16;
+    public static final int WS=17;
 
     // delegates
     public Parser[] getDelegates() {
@@ -95,7 +97,7 @@ public TreeAdaptor getTreeAdaptor() {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==ID||LA1_0==PRINT) ) {
+                if ( (LA1_0==ID||LA1_0==PRINT||LA1_0==22) ) {
                     alt1=1;
                 }
 
@@ -157,7 +159,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "line"
-    // Test.g:11:1: line : ( print_function ';' !| int_assignment ';' !);
+    // Test.g:11:1: line : ( print_function ';' !| int_assignment ';' !| declaration );
     public final TestParser.line_return line() throws RecognitionException {
         TestParser.line_return retval = new TestParser.line_return();
         retval.start = input.LT(1);
@@ -171,28 +173,39 @@ public TreeAdaptor getTreeAdaptor() {
 
         TestParser.int_assignment_return int_assignment5 =null;
 
+        TestParser.declaration_return declaration7 =null;
+
 
         CommonTree char_literal4_tree=null;
         CommonTree char_literal6_tree=null;
 
         try {
-            // Test.g:11:5: ( print_function ';' !| int_assignment ';' !)
-            int alt2=2;
-            int LA2_0 = input.LA(1);
-
-            if ( (LA2_0==PRINT) ) {
+            // Test.g:11:5: ( print_function ';' !| int_assignment ';' !| declaration )
+            int alt2=3;
+            switch ( input.LA(1) ) {
+            case PRINT:
+                {
                 alt2=1;
-            }
-            else if ( (LA2_0==ID) ) {
+                }
+                break;
+            case ID:
+                {
                 alt2=2;
-            }
-            else {
+                }
+                break;
+            case 22:
+                {
+                alt2=3;
+                }
+                break;
+            default:
                 NoViableAltException nvae =
                     new NoViableAltException("", 2, 0, input);
 
                 throw nvae;
 
             }
+
             switch (alt2) {
                 case 1 :
                     // Test.g:11:7: print_function ';' !
@@ -207,7 +220,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                     adaptor.addChild(root_0, print_function3.getTree());
 
-                    char_literal4=(Token)match(input,19,FOLLOW_19_in_line46); 
+                    char_literal4=(Token)match(input,20,FOLLOW_20_in_line46); 
 
                     }
                     break;
@@ -224,7 +237,22 @@ public TreeAdaptor getTreeAdaptor() {
 
                     adaptor.addChild(root_0, int_assignment5.getTree());
 
-                    char_literal6=(Token)match(input,19,FOLLOW_19_in_line54); 
+                    char_literal6=(Token)match(input,20,FOLLOW_20_in_line54); 
+
+                    }
+                    break;
+                case 3 :
+                    // Test.g:13:4: declaration
+                    {
+                    root_0 = (CommonTree)adaptor.nil();
+
+
+                    pushFollow(FOLLOW_declaration_in_line60);
+                    declaration7=declaration();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, declaration7.getTree());
 
                     }
                     break;
@@ -259,7 +287,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "print_function"
-    // Test.g:14:1: print_function : PRINT ^ '(' ! STRING ')' !;
+    // Test.g:15:1: print_function : PRINT ^ '(' ! STRING ')' !;
     public final TestParser.print_function_return print_function() throws RecognitionException {
         TestParser.print_function_return retval = new TestParser.print_function_return();
         retval.start = input.LT(1);
@@ -267,40 +295,40 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
-        Token PRINT7=null;
-        Token char_literal8=null;
-        Token STRING9=null;
-        Token char_literal10=null;
+        Token PRINT8=null;
+        Token char_literal9=null;
+        Token STRING10=null;
+        Token char_literal11=null;
 
-        CommonTree PRINT7_tree=null;
-        CommonTree char_literal8_tree=null;
-        CommonTree STRING9_tree=null;
-        CommonTree char_literal10_tree=null;
+        CommonTree PRINT8_tree=null;
+        CommonTree char_literal9_tree=null;
+        CommonTree STRING10_tree=null;
+        CommonTree char_literal11_tree=null;
 
         try {
-            // Test.g:15:2: ( PRINT ^ '(' ! STRING ')' !)
-            // Test.g:15:4: PRINT ^ '(' ! STRING ')' !
+            // Test.g:16:2: ( PRINT ^ '(' ! STRING ')' !)
+            // Test.g:16:4: PRINT ^ '(' ! STRING ')' !
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            PRINT7=(Token)match(input,PRINT,FOLLOW_PRINT_in_print_function65); 
-            PRINT7_tree = 
-            (CommonTree)adaptor.create(PRINT7)
+            PRINT8=(Token)match(input,PRINT,FOLLOW_PRINT_in_print_function70); 
+            PRINT8_tree = 
+            (CommonTree)adaptor.create(PRINT8)
             ;
-            root_0 = (CommonTree)adaptor.becomeRoot(PRINT7_tree, root_0);
+            root_0 = (CommonTree)adaptor.becomeRoot(PRINT8_tree, root_0);
 
 
-            char_literal8=(Token)match(input,17,FOLLOW_17_in_print_function68); 
+            char_literal9=(Token)match(input,18,FOLLOW_18_in_print_function73); 
 
-            STRING9=(Token)match(input,STRING,FOLLOW_STRING_in_print_function71); 
-            STRING9_tree = 
-            (CommonTree)adaptor.create(STRING9)
+            STRING10=(Token)match(input,STRING,FOLLOW_STRING_in_print_function76); 
+            STRING10_tree = 
+            (CommonTree)adaptor.create(STRING10)
             ;
-            adaptor.addChild(root_0, STRING9_tree);
+            adaptor.addChild(root_0, STRING10_tree);
 
 
-            char_literal10=(Token)match(input,18,FOLLOW_18_in_print_function73); 
+            char_literal11=(Token)match(input,19,FOLLOW_19_in_print_function78); 
 
             }
 
@@ -333,7 +361,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "int_assignment"
-    // Test.g:17:1: int_assignment : ID '=' ^ INT ;
+    // Test.g:18:1: int_assignment : ID '=' ^ INT ;
     public final TestParser.int_assignment_return int_assignment() throws RecognitionException {
         TestParser.int_assignment_return retval = new TestParser.int_assignment_return();
         retval.start = input.LT(1);
@@ -341,40 +369,40 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
-        Token ID11=null;
-        Token char_literal12=null;
-        Token INT13=null;
+        Token ID12=null;
+        Token char_literal13=null;
+        Token INT14=null;
 
-        CommonTree ID11_tree=null;
-        CommonTree char_literal12_tree=null;
-        CommonTree INT13_tree=null;
+        CommonTree ID12_tree=null;
+        CommonTree char_literal13_tree=null;
+        CommonTree INT14_tree=null;
 
         try {
-            // Test.g:18:2: ( ID '=' ^ INT )
-            // Test.g:18:4: ID '=' ^ INT
+            // Test.g:19:2: ( ID '=' ^ INT )
+            // Test.g:19:4: ID '=' ^ INT
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            ID11=(Token)match(input,ID,FOLLOW_ID_in_int_assignment84); 
-            ID11_tree = 
-            (CommonTree)adaptor.create(ID11)
+            ID12=(Token)match(input,ID,FOLLOW_ID_in_int_assignment89); 
+            ID12_tree = 
+            (CommonTree)adaptor.create(ID12)
             ;
-            adaptor.addChild(root_0, ID11_tree);
+            adaptor.addChild(root_0, ID12_tree);
 
 
-            char_literal12=(Token)match(input,20,FOLLOW_20_in_int_assignment86); 
-            char_literal12_tree = 
-            (CommonTree)adaptor.create(char_literal12)
+            char_literal13=(Token)match(input,21,FOLLOW_21_in_int_assignment91); 
+            char_literal13_tree = 
+            (CommonTree)adaptor.create(char_literal13)
             ;
-            root_0 = (CommonTree)adaptor.becomeRoot(char_literal12_tree, root_0);
+            root_0 = (CommonTree)adaptor.becomeRoot(char_literal13_tree, root_0);
 
 
-            INT13=(Token)match(input,INT,FOLLOW_INT_in_int_assignment89); 
-            INT13_tree = 
-            (CommonTree)adaptor.create(INT13)
+            INT14=(Token)match(input,INT,FOLLOW_INT_in_int_assignment94); 
+            INT14_tree = 
+            (CommonTree)adaptor.create(INT14)
             ;
-            adaptor.addChild(root_0, INT13_tree);
+            adaptor.addChild(root_0, INT14_tree);
 
 
             }
@@ -400,23 +428,102 @@ public TreeAdaptor getTreeAdaptor() {
     }
     // $ANTLR end "int_assignment"
 
+
+    public static class declaration_return extends ParserRuleReturnScope {
+        CommonTree tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "declaration"
+    // Test.g:21:1: declaration : 'new' ^ COURSE ID ;
+    public final TestParser.declaration_return declaration() throws RecognitionException {
+        TestParser.declaration_return retval = new TestParser.declaration_return();
+        retval.start = input.LT(1);
+
+
+        CommonTree root_0 = null;
+
+        Token string_literal15=null;
+        Token COURSE16=null;
+        Token ID17=null;
+
+        CommonTree string_literal15_tree=null;
+        CommonTree COURSE16_tree=null;
+        CommonTree ID17_tree=null;
+
+        try {
+            // Test.g:22:2: ( 'new' ^ COURSE ID )
+            // Test.g:22:4: 'new' ^ COURSE ID
+            {
+            root_0 = (CommonTree)adaptor.nil();
+
+
+            string_literal15=(Token)match(input,22,FOLLOW_22_in_declaration104); 
+            string_literal15_tree = 
+            (CommonTree)adaptor.create(string_literal15)
+            ;
+            root_0 = (CommonTree)adaptor.becomeRoot(string_literal15_tree, root_0);
+
+
+            COURSE16=(Token)match(input,COURSE,FOLLOW_COURSE_in_declaration107); 
+            COURSE16_tree = 
+            (CommonTree)adaptor.create(COURSE16)
+            ;
+            adaptor.addChild(root_0, COURSE16_tree);
+
+
+            ID17=(Token)match(input,ID,FOLLOW_ID_in_declaration109); 
+            ID17_tree = 
+            (CommonTree)adaptor.create(ID17)
+            ;
+            adaptor.addChild(root_0, ID17_tree);
+
+
+            }
+
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return retval;
+    }
+    // $ANTLR end "declaration"
+
     // Delegated rules
 
 
  
 
-    public static final BitSet FOLLOW_line_in_program32 = new BitSet(new long[]{0x0000000000002400L});
+    public static final BitSet FOLLOW_line_in_program32 = new BitSet(new long[]{0x0000000000404800L});
     public static final BitSet FOLLOW_EOF_in_program35 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_print_function_in_line44 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_19_in_line46 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_int_assignment_in_line52 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_19_in_line54 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PRINT_in_print_function65 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_17_in_print_function68 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_STRING_in_print_function71 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_print_function73 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_int_assignment84 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_20_in_int_assignment86 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_INT_in_int_assignment89 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_print_function_in_line44 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_20_in_line46 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_int_assignment_in_line52 = new BitSet(new long[]{0x0000000000100000L});
+    public static final BitSet FOLLOW_20_in_line54 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_declaration_in_line60 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PRINT_in_print_function70 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_18_in_print_function73 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_STRING_in_print_function76 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_print_function78 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_int_assignment89 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_21_in_int_assignment91 = new BitSet(new long[]{0x0000000000001000L});
+    public static final BitSet FOLLOW_INT_in_int_assignment94 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_declaration104 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_COURSE_in_declaration107 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_ID_in_declaration109 = new BitSet(new long[]{0x0000000000000002L});
 
 }

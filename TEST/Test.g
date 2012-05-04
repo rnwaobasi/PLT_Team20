@@ -10,6 +10,7 @@ program
 	;
 line:	print_function ';'!
 	|	int_assignment ';'!
+	|	declaration
 	;
 print_function
 	:	PRINT^ '('! STRING ')'!
@@ -17,9 +18,15 @@ print_function
 int_assignment
 	:	ID '='^ INT
 	;
+declaration
+	:	'new'^ COURSE ID
+	;
 	
 PRINT
 	:	'print'
+	;
+COURSE
+	:	'course'
 	;
 
 ID  :	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*

@@ -17,8 +17,17 @@ options {
 		return value;
 	}
 	
+	// shortcut general print method
 	private void out(String str) {
 		System.out.println(str);
+	}
+
+	// for print statements
+	// gets rid of the surrounding quotes
+	private void print(String str) {
+		int oneBeforeEnd = str.length()-1;
+		String noQuotes = str.substring(1,oneBeforeEnd);
+		out(noQuotes);
 	}
 }
 
@@ -27,9 +36,10 @@ program
 	;
 line:	print_function
 	|	int_assignment {out("This line is about " + $int_assignment.result);}
+	|	declaration
 	;
 print_function
-	:	^(PRINT STRING)
+	:	^(PRINT STRING) {print($STRING.text);}
 	;
 int_assignment returns [int result]
 	:	^('=' ID INT){
@@ -37,4 +47,7 @@ int_assignment returns [int result]
 					$result = toInt($INT) + 1;
 					out($ID.text + " + 1 = " + $result);
 					}
+	;
+declaration
+	:	^('new' COURSE ID)
 	;
