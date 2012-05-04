@@ -1,5 +1,3 @@
-
-
 public class classes {
 	
 	String name;
@@ -70,5 +68,13 @@ public class classes {
 	public String getEndM(int session){
 		//return end[session];
 		return timesEnd[session][1];
+	}
+	
+	public String getBegin(int session){
+		return start[session];
+	}
+	
+	public String getEnd(int session){
+		return end[session];
 	}
 }
