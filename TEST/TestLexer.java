@@ -1,4 +1,4 @@
-// $ANTLR 3.4 Test.g 2012-05-04 16:45:35
+// $ANTLR 3.4 Test.g 2012-05-04 17:10:26
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -10,6 +10,8 @@ public class TestLexer extends Lexer {
     public static final int EOF=-1;
     public static final int T__17=17;
     public static final int T__18=18;
+    public static final int T__19=19;
+    public static final int T__20=20;
     public static final int CHAR=4;
     public static final int COMMENT=5;
     public static final int ESC_SEQ=6;
@@ -44,10 +46,10 @@ public class TestLexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Test.g:2:7: ( ';' )
-            // Test.g:2:9: ';'
+            // Test.g:2:7: ( '(' )
+            // Test.g:2:9: '('
             {
-            match(';'); 
+            match('('); 
 
             }
 
@@ -65,8 +67,50 @@ public class TestLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // Test.g:3:7: ( '=' )
-            // Test.g:3:9: '='
+            // Test.g:3:7: ( ')' )
+            // Test.g:3:9: ')'
+            {
+            match(')'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__18"
+
+    // $ANTLR start "T__19"
+    public final void mT__19() throws RecognitionException {
+        try {
+            int _type = T__19;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // Test.g:4:7: ( ';' )
+            // Test.g:4:9: ';'
+            {
+            match(';'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__19"
+
+    // $ANTLR start "T__20"
+    public final void mT__20() throws RecognitionException {
+        try {
+            int _type = T__20;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // Test.g:5:7: ( '=' )
+            // Test.g:5:9: '='
             {
             match('='); 
 
@@ -79,7 +123,7 @@ public class TestLexer extends Lexer {
         	// do for sure before leaving
         }
     }
-    // $ANTLR end "T__18"
+    // $ANTLR end "T__20"
 
     // $ANTLR start "PRINT"
     public final void mPRINT() throws RecognitionException {
@@ -1182,8 +1226,8 @@ public class TestLexer extends Lexer {
     // $ANTLR end "UNICODE_ESC"
 
     public void mTokens() throws RecognitionException {
-        // Test.g:1:8: ( T__17 | T__18 | PRINT | ID | INT | FLOAT | COMMENT | WS | STRING | CHAR )
-        int alt20=10;
+        // Test.g:1:8: ( T__17 | T__18 | T__19 | T__20 | PRINT | ID | INT | FLOAT | COMMENT | WS | STRING | CHAR )
+        int alt20=12;
         alt20 = dfa20.predict(input);
         switch (alt20) {
             case 1 :
@@ -1203,63 +1247,79 @@ public class TestLexer extends Lexer {
                 }
                 break;
             case 3 :
-                // Test.g:1:22: PRINT
+                // Test.g:1:22: T__19
+                {
+                mT__19(); 
+
+
+                }
+                break;
+            case 4 :
+                // Test.g:1:28: T__20
+                {
+                mT__20(); 
+
+
+                }
+                break;
+            case 5 :
+                // Test.g:1:34: PRINT
                 {
                 mPRINT(); 
 
 
                 }
                 break;
-            case 4 :
-                // Test.g:1:28: ID
+            case 6 :
+                // Test.g:1:40: ID
                 {
                 mID(); 
 
 
                 }
                 break;
-            case 5 :
-                // Test.g:1:31: INT
+            case 7 :
+                // Test.g:1:43: INT
                 {
                 mINT(); 
 
 
                 }
                 break;
-            case 6 :
-                // Test.g:1:35: FLOAT
+            case 8 :
+                // Test.g:1:47: FLOAT
                 {
                 mFLOAT(); 
 
 
                 }
                 break;
-            case 7 :
-                // Test.g:1:41: COMMENT
+            case 9 :
+                // Test.g:1:53: COMMENT
                 {
                 mCOMMENT(); 
 
 
                 }
                 break;
-            case 8 :
-                // Test.g:1:49: WS
+            case 10 :
+                // Test.g:1:61: WS
                 {
                 mWS(); 
 
 
                 }
                 break;
-            case 9 :
-                // Test.g:1:52: STRING
+            case 11 :
+                // Test.g:1:64: STRING
                 {
                 mSTRING(); 
 
 
                 }
                 break;
-            case 10 :
-                // Test.g:1:59: CHAR
+            case 12 :
+                // Test.g:1:71: CHAR
                 {
                 mCHAR(); 
 
@@ -1328,39 +1388,41 @@ public class TestLexer extends Lexer {
         }
     }
     static final String DFA20_eotS =
-        "\3\uffff\1\4\1\uffff\1\14\5\uffff\1\4\1\uffff\2\4\1\20\1\uffff";
+        "\5\uffff\1\6\1\uffff\1\16\5\uffff\1\6\1\uffff\2\6\1\22\1\uffff";
     static final String DFA20_eofS =
-        "\21\uffff";
+        "\23\uffff";
     static final String DFA20_minS =
-        "\1\11\2\uffff\1\162\1\uffff\1\56\5\uffff\1\151\1\uffff\1\156\1\164"+
+        "\1\11\4\uffff\1\162\1\uffff\1\56\5\uffff\1\151\1\uffff\1\156\1\164"+
         "\1\60\1\uffff";
     static final String DFA20_maxS =
-        "\1\172\2\uffff\1\162\1\uffff\1\145\5\uffff\1\151\1\uffff\1\156\1"+
+        "\1\172\4\uffff\1\162\1\uffff\1\145\5\uffff\1\151\1\uffff\1\156\1"+
         "\164\1\172\1\uffff";
     static final String DFA20_acceptS =
-        "\1\uffff\1\1\1\2\1\uffff\1\4\1\uffff\1\6\1\7\1\10\1\11\1\12\1\uffff"+
-        "\1\5\3\uffff\1\3";
+        "\1\uffff\1\1\1\2\1\3\1\4\1\uffff\1\6\1\uffff\1\10\1\11\1\12\1\13"+
+        "\1\14\1\uffff\1\7\3\uffff\1\5";
     static final String DFA20_specialS =
-        "\21\uffff}>";
+        "\23\uffff}>";
     static final String[] DFA20_transitionS = {
-            "\2\10\2\uffff\1\10\22\uffff\1\10\1\uffff\1\11\4\uffff\1\12\6"+
-            "\uffff\1\6\1\7\12\5\1\uffff\1\1\1\uffff\1\2\3\uffff\32\4\4\uffff"+
-            "\1\4\1\uffff\17\4\1\3\12\4",
-            "",
-            "",
-            "\1\13",
-            "",
-            "\1\6\1\uffff\12\5\13\uffff\1\6\37\uffff\1\6",
-            "",
+            "\2\12\2\uffff\1\12\22\uffff\1\12\1\uffff\1\13\4\uffff\1\14\1"+
+            "\1\1\2\4\uffff\1\10\1\11\12\7\1\uffff\1\3\1\uffff\1\4\3\uffff"+
+            "\32\6\4\uffff\1\6\1\uffff\17\6\1\5\12\6",
             "",
             "",
             "",
             "",
             "\1\15",
             "",
-            "\1\16",
+            "\1\10\1\uffff\12\7\13\uffff\1\10\37\uffff\1\10",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\17",
-            "\12\4\7\uffff\32\4\4\uffff\1\4\1\uffff\32\4",
+            "",
+            "\1\20",
+            "\1\21",
+            "\12\6\7\uffff\32\6\4\uffff\1\6\1\uffff\32\6",
             ""
     };
 
@@ -1394,7 +1456,7 @@ public class TestLexer extends Lexer {
             this.transition = DFA20_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__17 | T__18 | PRINT | ID | INT | FLOAT | COMMENT | WS | STRING | CHAR );";
+            return "1:1: Tokens : ( T__17 | T__18 | T__19 | T__20 | PRINT | ID | INT | FLOAT | COMMENT | WS | STRING | CHAR );";
         }
     }
  
