@@ -1,0 +1,2 @@
+print("HELLO WURLD");
+myNumber = 45;
