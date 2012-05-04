@@ -9,12 +9,12 @@ options {
 tokens {
 // extra tokens (invisible nodes) for AST
 	DECL;
+	INST;
 	COND;
 	BLOCK;
 	DATETIME;
 	DAYS;
 	TIMES;
-	FUNC;
 	PARAMS;
 }
 
@@ -33,7 +33,7 @@ declarator
 			-> ^(DECL type_specifier ID)
 // matches int x = 5;
 	|	type_specifier ID '=' expr ';'
-			-> ^(DECL type_specifier ID '=' expr)
+			-> ^(INST ^(DECL type_specifier ID) ^('=' ID expr))
 	;
 stmt:	expr';' -> expr
 	|	selection_stmt

@@ -88,7 +88,7 @@ line:	declarator
 	;
 declarator
 	:	^(DECL type_specifier ID)
-	|	^(DECL type_specifier ID '=' expr) //{ variableMap.put($ID.text, $expr.result)};
+	|	^(INST ^(DECL type_specifier ID) ^('=' ID expr))
 	;
 stmt:	expr
 	;

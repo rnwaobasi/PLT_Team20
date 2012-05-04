@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /Users/shannonlee/PLT_Team20/Chronos.g 2012-05-03 18:32:15
+// $ANTLR 3.4 /Users/shannonlee/PLT_Team20/Chronos.g 2012-05-03 22:45:35
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -46,11 +46,11 @@ public class ChronosLexer extends Lexer {
     public static final int EXPONENT=22;
     public static final int FLOAT=23;
     public static final int FOREACH_T=24;
-    public static final int FUNC=25;
-    public static final int GEQ=26;
-    public static final int HEX_DIGIT=27;
-    public static final int ID=28;
-    public static final int IF_T=29;
+    public static final int GEQ=25;
+    public static final int HEX_DIGIT=26;
+    public static final int ID=27;
+    public static final int IF_T=28;
+    public static final int INST=29;
     public static final int INT=30;
     public static final int INT_T=31;
     public static final int IN_T=32;
