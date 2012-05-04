@@ -203,10 +203,6 @@ NEQ	:	'!='
 EQ	:	'=='
 	;
 		
-WHITESPACE
-	:	( '\t' | ' ' | '\r' | '\n'| '\u000C' )+Ê{$channel = HIDDEN;}
-	;
-
 ID  :	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
     ;
 
@@ -220,8 +216,15 @@ FLOAT
     ;
 
 COMMENT
-    :   '//' ~('\n'|'\r')* '\r'? '\n' {$channel = HIDDEN;}
-    |   '/*' ( options {greedy=false;} : . )* '*/' {$channel = HIDDEN;}
+    :   '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
+    |   '/*' ( options {greedy=false;} : . )* '*/' {$channel=HIDDEN;}
+    ;
+
+WS  :   ( ' '
+        | '\t'
+        | '\r'
+        | '\n'
+        ) {$channel=HIDDEN;}
     ;
 
 STRING

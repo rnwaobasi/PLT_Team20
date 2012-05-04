@@ -1,4 +1,4 @@
-// $ANTLR 3.4 ChronosTree.g 2012-05-04 14:09:47
+// $ANTLR 3.4 ChronosTree.g 2012-05-04 18:34:33
 
   import java.util.Map;
   import java.util.HashMap;
@@ -13,15 +13,10 @@ import java.util.ArrayList;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class ChronosTree extends TreeParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "AND", "BLOCK", "BREAK_T", "CHAR", "COMMENT", "COND", "COURSELIST_T", "COURSE_T", "DATETIME", "DATETIME_T", "DAY", "DAYS", "DAYS_T", "DECL", "DOUBLE_T", "ELSE_T", "EQ", "ESC_SEQ", "EXPONENT", "EXPR", "FLOAT", "FOREACH_T", "GEQ", "HEX_DIGIT", "ID", "IF_T", "INST", "INT", "INT_T", "IN_T", "LEQ", "NEQ", "NEW_T", "NOT", "OCTAL_ESC", "OR", "PARAMS", "SCHEDULE_T", "STRING", "STRING_T", "TIME", "TIMEBLOCK_T", "TIMES", "TIME_T", "UNICODE_ESC", "WHITESPACE", "'('", "')'", "'*'", "'+'", "','", "'-'", "'.'", "'/'", "';'", "'<'", "'='", "'>'", "'['", "']'", "'{'", "'}'", "'~'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "AND", "BLOCK", "BREAK_T", "CHAR", "COMMENT", "COND", "CONST", "COURSELIST_T", "COURSE_T", "DATETIME", "DATETIME_T", "DAY", "DAYS", "DAYS_T", "DECL", "DOUBLE_T", "ELSE_T", "EQ", "ESC_SEQ", "EXPONENT", "EXPR", "FLOAT", "FOREACH_T", "GEQ", "HEX_DIGIT", "ID", "IDENT", "IF_T", "INST", "INT", "INT_T", "IN_T", "LEQ", "NEQ", "NEW_T", "NOT", "OCTAL_ESC", "OR", "PARAMS", "PARENS", "SCHEDULE_T", "STR", "STRING", "STRING_T", "TIM", "TIME", "TIMEBLOCK_T", "TIMES", "TIME_T", "UNICODE_ESC", "WHITESPACE", "'('", "')'", "'*'", "'+'", "','", "'-'", "'.'", "'/'", "';'", "'<'", "'='", "'>'", "'['", "']'", "'{'", "'}'", "'~'"
     };
 
     public static final int EOF=-1;
-    public static final int T__50=50;
-    public static final int T__51=51;
-    public static final int T__52=52;
-    public static final int T__53=53;
-    public static final int T__54=54;
     public static final int T__55=55;
     public static final int T__56=56;
     public static final int T__57=57;
@@ -34,52 +29,62 @@ public class ChronosTree extends TreeParser {
     public static final int T__64=64;
     public static final int T__65=65;
     public static final int T__66=66;
+    public static final int T__67=67;
+    public static final int T__68=68;
+    public static final int T__69=69;
+    public static final int T__70=70;
+    public static final int T__71=71;
     public static final int AND=4;
     public static final int BLOCK=5;
     public static final int BREAK_T=6;
     public static final int CHAR=7;
     public static final int COMMENT=8;
     public static final int COND=9;
-    public static final int COURSELIST_T=10;
-    public static final int COURSE_T=11;
-    public static final int DATETIME=12;
-    public static final int DATETIME_T=13;
-    public static final int DAY=14;
-    public static final int DAYS=15;
-    public static final int DAYS_T=16;
-    public static final int DECL=17;
-    public static final int DOUBLE_T=18;
-    public static final int ELSE_T=19;
-    public static final int EQ=20;
-    public static final int ESC_SEQ=21;
-    public static final int EXPONENT=22;
-    public static final int EXPR=23;
-    public static final int FLOAT=24;
-    public static final int FOREACH_T=25;
-    public static final int GEQ=26;
-    public static final int HEX_DIGIT=27;
-    public static final int ID=28;
-    public static final int IF_T=29;
-    public static final int INST=30;
-    public static final int INT=31;
-    public static final int INT_T=32;
-    public static final int IN_T=33;
-    public static final int LEQ=34;
-    public static final int NEQ=35;
-    public static final int NEW_T=36;
-    public static final int NOT=37;
-    public static final int OCTAL_ESC=38;
-    public static final int OR=39;
-    public static final int PARAMS=40;
-    public static final int SCHEDULE_T=41;
-    public static final int STRING=42;
-    public static final int STRING_T=43;
-    public static final int TIME=44;
-    public static final int TIMEBLOCK_T=45;
-    public static final int TIMES=46;
-    public static final int TIME_T=47;
-    public static final int UNICODE_ESC=48;
-    public static final int WHITESPACE=49;
+    public static final int CONST=10;
+    public static final int COURSELIST_T=11;
+    public static final int COURSE_T=12;
+    public static final int DATETIME=13;
+    public static final int DATETIME_T=14;
+    public static final int DAY=15;
+    public static final int DAYS=16;
+    public static final int DAYS_T=17;
+    public static final int DECL=18;
+    public static final int DOUBLE_T=19;
+    public static final int ELSE_T=20;
+    public static final int EQ=21;
+    public static final int ESC_SEQ=22;
+    public static final int EXPONENT=23;
+    public static final int EXPR=24;
+    public static final int FLOAT=25;
+    public static final int FOREACH_T=26;
+    public static final int GEQ=27;
+    public static final int HEX_DIGIT=28;
+    public static final int ID=29;
+    public static final int IDENT=30;
+    public static final int IF_T=31;
+    public static final int INST=32;
+    public static final int INT=33;
+    public static final int INT_T=34;
+    public static final int IN_T=35;
+    public static final int LEQ=36;
+    public static final int NEQ=37;
+    public static final int NEW_T=38;
+    public static final int NOT=39;
+    public static final int OCTAL_ESC=40;
+    public static final int OR=41;
+    public static final int PARAMS=42;
+    public static final int PARENS=43;
+    public static final int SCHEDULE_T=44;
+    public static final int STR=45;
+    public static final int STRING=46;
+    public static final int STRING_T=47;
+    public static final int TIM=48;
+    public static final int TIME=49;
+    public static final int TIMEBLOCK_T=50;
+    public static final int TIMES=51;
+    public static final int TIME_T=52;
+    public static final int UNICODE_ESC=53;
+    public static final int WHITESPACE=54;
 
     // delegates
     public TreeParser[] getDelegates() {
@@ -282,7 +287,7 @@ public class ChronosTree extends TreeParser {
                     match(input, Token.UP, null); 
 
 
-                    match(input,60,FOLLOW_60_in_declarator97); 
+                    match(input,65,FOLLOW_65_in_declarator97); 
 
                     match(input, Token.DOWN, null); 
                     match(input,ID,FOLLOW_ID_in_declarator99); 
@@ -649,7 +654,7 @@ public class ChronosTree extends TreeParser {
             if ( (LA8_0==OR) ) {
                 alt8=1;
             }
-            else if ( (LA8_0==60) ) {
+            else if ( (LA8_0==65) ) {
                 alt8=2;
             }
             else {
@@ -718,7 +723,7 @@ public class ChronosTree extends TreeParser {
             // ChronosTree.g:42:2: ( ^( '=' ID expr ) )
             // ChronosTree.g:42:4: ^( '=' ID expr )
             {
-            match(input,60,FOLLOW_60_in_assignment_expr233); 
+            match(input,65,FOLLOW_65_in_assignment_expr233); 
 
             match(input, Token.DOWN, null); 
             match(input,ID,FOLLOW_ID_in_assignment_expr235); 
@@ -849,7 +854,7 @@ public class ChronosTree extends TreeParser {
             int alt9=2;
             int LA9_0 = input.LA(1);
 
-            if ( (LA9_0==GEQ||LA9_0==LEQ||LA9_0==59||LA9_0==61) ) {
+            if ( (LA9_0==GEQ||LA9_0==LEQ||LA9_0==64||LA9_0==66) ) {
                 alt9=1;
             }
             else if ( (LA9_0==DATETIME) ) {
@@ -866,7 +871,7 @@ public class ChronosTree extends TreeParser {
                 case 1 :
                     // ChronosTree.g:51:4: ^( ( '<' | '>' | GEQ | LEQ ) math_expr math_expr )
                     {
-                    if ( input.LA(1)==GEQ||input.LA(1)==LEQ||input.LA(1)==59||input.LA(1)==61 ) {
+                    if ( input.LA(1)==GEQ||input.LA(1)==LEQ||input.LA(1)==64||input.LA(1)==66 ) {
                         input.consume();
                         state.errorRecovery=false;
                     }
@@ -929,7 +934,7 @@ public class ChronosTree extends TreeParser {
             // ChronosTree.g:55:2: ( ^( ( '+' | '-' ) math_term math_term ) )
             // ChronosTree.g:55:4: ^( ( '+' | '-' ) math_term math_term )
             {
-            if ( input.LA(1)==53||input.LA(1)==55 ) {
+            if ( input.LA(1)==58||input.LA(1)==60 ) {
                 input.consume();
                 state.errorRecovery=false;
             }
@@ -980,7 +985,7 @@ public class ChronosTree extends TreeParser {
             int alt10=2;
             int LA10_0 = input.LA(1);
 
-            if ( (LA10_0==52||LA10_0==57) ) {
+            if ( (LA10_0==57||LA10_0==62) ) {
                 alt10=1;
             }
             else if ( (LA10_0==TIMES) ) {
@@ -997,7 +1002,7 @@ public class ChronosTree extends TreeParser {
                 case 1 :
                     // ChronosTree.g:58:4: ^( ( '*' | '/' ) unary_expr unary_expr )
                     {
-                    if ( input.LA(1)==52||input.LA(1)==57 ) {
+                    if ( input.LA(1)==57||input.LA(1)==62 ) {
                         input.consume();
                         state.errorRecovery=false;
                     }
@@ -1061,7 +1066,7 @@ public class ChronosTree extends TreeParser {
             int alt11=2;
             int LA11_0 = input.LA(1);
 
-            if ( (LA11_0==56) ) {
+            if ( (LA11_0==61) ) {
                 alt11=1;
             }
             else if ( (LA11_0==NOT) ) {
@@ -1078,7 +1083,7 @@ public class ChronosTree extends TreeParser {
                 case 1 :
                     // ChronosTree.g:62:4: ^( '.' postfix_expr postfix_expr )
                     {
-                    match(input,56,FOLLOW_56_in_unary_expr371); 
+                    match(input,61,FOLLOW_61_in_unary_expr371); 
 
                     match(input, Token.DOWN, null); 
                     pushFollow(FOLLOW_postfix_expr_in_unary_expr373);
@@ -1206,7 +1211,7 @@ public class ChronosTree extends TreeParser {
                 int alt13=2;
                 int LA13_0 = input.LA(1);
 
-                if ( (LA13_0==OR||LA13_0==60) ) {
+                if ( (LA13_0==OR||LA13_0==65) ) {
                     alt13=1;
                 }
                 switch (alt13) {
@@ -1415,7 +1420,7 @@ public class ChronosTree extends TreeParser {
                 }
                 break;
             case OR:
-            case 60:
+            case 65:
                 {
                 alt15=5;
                 }
@@ -1503,7 +1508,7 @@ public class ChronosTree extends TreeParser {
                 int alt16=2;
                 int LA16_0 = input.LA(1);
 
-                if ( (LA16_0==OR||LA16_0==60) ) {
+                if ( (LA16_0==OR||LA16_0==65) ) {
                     alt16=1;
                 }
 
@@ -1619,18 +1624,18 @@ public class ChronosTree extends TreeParser {
 
  
 
-    public static final BitSet FOLLOW_line_in_program50 = new BitSet(new long[]{0x0000000042820242L});
+    public static final BitSet FOLLOW_line_in_program50 = new BitSet(new long[]{0x0000000105040242L});
     public static final BitSet FOLLOW_declarator_in_line59 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_stmt_in_line64 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_DECL_in_declarator75 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_type_specifier_in_declarator77 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_type_specifier_in_declarator77 = new BitSet(new long[]{0x0000000020000000L});
     public static final BitSet FOLLOW_ID_in_declarator79 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_INST_in_declarator86 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_DECL_in_declarator89 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_type_specifier_in_declarator91 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_type_specifier_in_declarator91 = new BitSet(new long[]{0x0000000020000000L});
     public static final BitSet FOLLOW_ID_in_declarator93 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_60_in_declarator97 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_declarator99 = new BitSet(new long[]{0x1000008000000000L});
+    public static final BitSet FOLLOW_65_in_declarator97 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_declarator99 = new BitSet(new long[]{0x0000020000000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_expr_in_declarator101 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_EXPR_in_stmt112 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_expr_in_stmt114 = new BitSet(new long[]{0x0000000000000008L});
@@ -1639,43 +1644,43 @@ public class ChronosTree extends TreeParser {
     public static final BitSet FOLLOW_jump_stmt_in_stmt130 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_COND_in_selection_stmt141 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_IF_T_in_selection_stmt144 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_selection_stmt146 = new BitSet(new long[]{0x0000000042820248L});
-    public static final BitSet FOLLOW_line_in_selection_stmt150 = new BitSet(new long[]{0x0000000042820248L});
+    public static final BitSet FOLLOW_expr_in_selection_stmt146 = new BitSet(new long[]{0x0000000105040248L});
+    public static final BitSet FOLLOW_line_in_selection_stmt150 = new BitSet(new long[]{0x0000000105040248L});
     public static final BitSet FOLLOW_ELSE_T_in_selection_stmt155 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_line_in_selection_stmt159 = new BitSet(new long[]{0x0000000042820248L});
+    public static final BitSet FOLLOW_line_in_selection_stmt159 = new BitSet(new long[]{0x0000000105040248L});
     public static final BitSet FOLLOW_FOREACH_T_in_iteration_stmt173 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_IN_T_in_iteration_stmt176 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_iteration_stmt180 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_ID_in_iteration_stmt180 = new BitSet(new long[]{0x0000000020000000L});
     public static final BitSet FOLLOW_ID_in_iteration_stmt184 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_BLOCK_in_iteration_stmt188 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_line_in_iteration_stmt190 = new BitSet(new long[]{0x0000000042820248L});
+    public static final BitSet FOLLOW_line_in_iteration_stmt190 = new BitSet(new long[]{0x0000000105040248L});
     public static final BitSet FOLLOW_BREAK_T_in_jump_stmt203 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_OR_in_expr212 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_and_expr_in_expr214 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_and_expr_in_expr216 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_assignment_expr_in_expr222 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_60_in_assignment_expr233 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_assignment_expr235 = new BitSet(new long[]{0x1000008000000000L});
+    public static final BitSet FOLLOW_65_in_assignment_expr233 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_assignment_expr235 = new BitSet(new long[]{0x0000020000000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_expr_in_assignment_expr237 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_AND_in_and_expr249 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_equiv_expr_in_and_expr251 = new BitSet(new long[]{0x0000000800100000L});
+    public static final BitSet FOLLOW_equiv_expr_in_and_expr251 = new BitSet(new long[]{0x0000002000200000L});
     public static final BitSet FOLLOW_equiv_expr_in_and_expr253 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_set_in_equiv_expr265 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_rel_expr_in_equiv_expr273 = new BitSet(new long[]{0x2800000404001000L});
+    public static final BitSet FOLLOW_rel_expr_in_equiv_expr273 = new BitSet(new long[]{0x0000001008002000L,0x0000000000000005L});
     public static final BitSet FOLLOW_rel_expr_in_equiv_expr275 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_set_in_rel_expr287 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_math_expr_in_rel_expr303 = new BitSet(new long[]{0x00A0000000000000L});
+    public static final BitSet FOLLOW_math_expr_in_rel_expr303 = new BitSet(new long[]{0x1400000000000000L});
     public static final BitSet FOLLOW_math_expr_in_rel_expr305 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_datetime_in_rel_expr311 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_set_in_math_expr322 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_math_term_in_math_expr330 = new BitSet(new long[]{0x0210400000000000L});
+    public static final BitSet FOLLOW_math_term_in_math_expr330 = new BitSet(new long[]{0x4208000000000000L});
     public static final BitSet FOLLOW_math_term_in_math_expr332 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_set_in_math_term344 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_unary_expr_in_math_term352 = new BitSet(new long[]{0x0100002000000000L});
+    public static final BitSet FOLLOW_unary_expr_in_math_term352 = new BitSet(new long[]{0x2000008000000000L});
     public static final BitSet FOLLOW_unary_expr_in_math_term354 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_timeblock_in_math_term360 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_56_in_unary_expr371 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_postfix_expr_in_unary_expr373 = new BitSet(new long[]{0x1000148091000000L});
+    public static final BitSet FOLLOW_61_in_unary_expr371 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_postfix_expr_in_unary_expr373 = new BitSet(new long[]{0x0002420222000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_postfix_expr_in_unary_expr375 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_NOT_in_unary_expr382 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_postfix_expr_in_unary_expr384 = new BitSet(new long[]{0x0000000000000008L});
@@ -1684,18 +1689,18 @@ public class ChronosTree extends TreeParser {
     public static final BitSet FOLLOW_PARAMS_in_function_parens414 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_argument_expr_list_in_function_parens416 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_DATETIME_in_datetime430 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_dayblock_in_datetime432 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_dayblock_in_datetime432 = new BitSet(new long[]{0x0008000000000000L});
     public static final BitSet FOLLOW_timeblock_in_datetime434 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_TIMES_in_timeblock447 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_TIME_in_timeblock451 = new BitSet(new long[]{0x0000100000000000L});
+    public static final BitSet FOLLOW_TIME_in_timeblock451 = new BitSet(new long[]{0x0002000000000000L});
     public static final BitSet FOLLOW_TIME_in_timeblock455 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_DAYS_in_dayblock468 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_DAY_in_dayblock470 = new BitSet(new long[]{0x0000000000004008L});
+    public static final BitSet FOLLOW_DAY_in_dayblock470 = new BitSet(new long[]{0x0000000000008008L});
     public static final BitSet FOLLOW_constant_in_primary_expr482 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ID_in_primary_expr487 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_STRING_in_primary_expr492 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_TIME_in_primary_expr497 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_expr_in_primary_expr502 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expr_in_argument_expr_list512 = new BitSet(new long[]{0x1000008000000002L});
+    public static final BitSet FOLLOW_expr_in_argument_expr_list512 = new BitSet(new long[]{0x0000020000000002L,0x0000000000000002L});
 
 }
