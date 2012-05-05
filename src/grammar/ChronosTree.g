@@ -95,15 +95,16 @@ expr:	^('=' ID expr) // assignment
 	|	dayblock
 	// master courselist - made from input file
 	|	MASTER_T
-	;
-primary_expr
-	:	constant
+	|	INT
+	|	FLOAT
 	|	ID
 	|	STRING
 	|	TIME
 	;
-function_parens
-	:	^(PARAMS argument_expr_list?)
+function_parens returns [ExprList result]
+	:	^(PARAMS argument_expr_list?) {
+		$result = $argument_expr_list.result;
+		}
 	;
 datetime returns [Datetime result]
 // i.e. [M,W] 10:00~11:00
@@ -119,15 +120,12 @@ timeblock returns [Timeblock result]
 	;
 dayblock returns [Dayblock result]
 // i.e. [M,W,F]
-@init { $daysAL = new ArrayList<Day>(); }
-	:	^(DAYS (DAY {$daysAL.add($DAY.text);})+)
+@init { $daysAL = new ArrayList<String>(); }
+	:	^( DAYS (DAY {$daysAL.add($DAY.text);})+ )
 	;
-argument_expr_list
-	:	expr+
-	;
-constant
-	:	INT
-	|	FLOAT
+argument_expr_list returns [ExprList result]
+@init { $exprList = new ArrayList<String>(); }
+	:	(expr {$exprList.add($expr.text);})+
 	;
 type_specifier
 	:	INT_T

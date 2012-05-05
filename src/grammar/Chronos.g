@@ -125,7 +125,8 @@ dayblock
 	:	'[' DAY ( ',' DAY )* ']' -> ^(DAYS DAY+)
 	;
 primary_expr
-	:	constant
+	:	INT
+	|	FLOAT
 	|	ID 
 	|	STRING
 	|	TIME
@@ -133,10 +134,6 @@ primary_expr
 	;
 argument_expr_list
 	:	(expr) (',' expr)* -> expr+
-	;
-constant
-	:	INT
-	|	FLOAT
 	;
 type_specifier
 	:	INT_T
