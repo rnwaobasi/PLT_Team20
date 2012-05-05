@@ -37,6 +37,7 @@ program
 line:	print_function
 	|	int_assignment {out("This line is about " + $int_assignment.result);}
 	|	timeblock_inst
+	|	and_stmt
 	;
 print_function
 	:	^(PRINT STRING) {print($STRING.text);}
@@ -55,4 +56,7 @@ timeblock returns [Timeblock result]
 	:	^(TIMES a=TIME b=TIME) {
 		$result = new Timeblock($a.text, $b.text);
 		}
+	;
+and_stmt
+	:	^('&' ID ID)
 	;

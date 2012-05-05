@@ -15,6 +15,7 @@ program
 line:	print_function ';'!
 	|	int_assignment ';'!
 	|	timeblock_inst ';'!
+	|	and_stmt
 	;
 print_function
 	:	PRINT^ '('! STRING ')'!
@@ -27,6 +28,9 @@ timeblock_inst
 	;
 timeblock
 	:	a=TIME '~' b=TIME -> ^(TIMES $a $b)
+	;
+and_stmt
+	:	ID ('&'^ ID)*
 	;
 	
 PRINT

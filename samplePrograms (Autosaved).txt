@@ -1,0 +1,125 @@
+/* Future improvements if we had more time:
+user def functions
+we have substring capability; what about .has() capability? (getting dangerously into regex territory, but it would be nice...)
+has operators ::=
+*/
+
+/******** BASICS ********/
+/* CREATE a new SCHEDULE */
+schedule sched;
+
+/* READ the INPUT FILE with all the course information,
+*  and put that into a courselist called CL */
+courselist CL = generateCourses(input_file);
+
+/* ADD COURSES to the schedule according to some algorithm */
+foreach course c in CL {
+    if (c.getStartTime() > 10:00) //--- User doesn't want to wake up early for class
+    {
+ 	   sched.add( c ); //--- Add whatever section of c that works
+    }
+}
+
+/* PRINT the SCHEDULE in some readable format */
+sched.print();
+
+/******** GROUPS ********/
+
+/* CREATE a LIST of required classes */
+courselist required;
+required.add( CL.getCourse("Math") ); //--- Add course to a list (regardless of conflicts)
+required.add( CL.getCourse("Stat") );
+
+/* Create a list of elective classes */
+courselist electives;
+electives.add( CL.getCourse("PE") );
+electives.add( CL.getCourse("ArtHum") );
+
+/* ADD COURSES from the list of required courses
+*  only as long as the schedule has 3 or fewer courses
+*  and the courses do not conflict */
+foreach course c in required {
+    if (sched.numCourses() <= 3
+	&& c.getTimeblock() != 9:10~10:25) { /*--- User doesn't want to take a class which has this EXACT
+					        time interval (def of equivalence, right?) */
+ 	   sched.add( c );
+    }
+}
+
+/* Same as above, but for elective courses
+*  and only adding until the schedule has 5 courses */
+foreach course c in electives {
+    if (sched.numCourses() <= 5) {
+	days mathDays = sched.getCourse("Math").getDays();
+	/* NEW --- Can we implement this? */
+	   timeblock soccer = 10:00~11:00; /*--- What if I am busy at 10:00-11:00 with some non-course activity?
+	   if ( !c.conflict( soccer ) ) { /*--- Recognize a conflict with a specified timeblock, even though
+					      a course is not scheduled at that time */
+ 		sched.add( c );
+		print("Class successfully added");
+	   }
+    }
+}
+
+/******** CONSTRAINTS ********/
+
+/* Creating some int variables */
+int courseMax = 6; // maximum number of courses
+int courseMin = 4; // minimum
+int creditMax = 20; // maximum number of credit points
+int courseMaxR = 2 // maximum number of courses on Thursday
+
+/* Add classes only if conditions are met */
+foreach course c in CL //--- This is equivalent to another foreach loop of datetimes INSIDE
+{
+    if (sched.numCourses() <= courseMax
+        && sched.numCredits() + c.numCredits() <= 20) {
+	if (c.getDays() == [T,R] && c.getTimeblock == 10:00~11:00 //--- EQUIVALENT to c.getDatetime([R] 10:00~11:00)
+						//--- Note that ALL days have to be represented with brackets
+	    && sched.numCourses([R]) >= courseMaxR) { /*--- this means: number of courses on Thursday
+							    in the schedule */
+    		break;
+	}
+	else {
+    		sched.add( c );
+	}
+    }
+} 
+/* PRINT some STRING output */
+if (sched.numCourses() < courseMin) {
+    print("Four non-conflicting classes could not be found. Add more potential courses!");
+}
+
+/******** SECTION SELECTION ********/
+
+/* 
+** PLT has two sections:
+** MW 1:10-2:25 (this one would be taught by Aho)
+** TR 2:40-3:55 (this one would be taught by Bob)
+**
+** CS Theory as two sections:
+** TR 4:10-5:25 (taught by Aho)
+** MW 6:10-7:25 (taught by Cat)
+*/
+
+/* Create a list for Aho's classes */
+courselist Aho;
+
+/* Add his sections of PLT and CSTheory, respectively */
+course PLT = CL.getCourse("PLT");
+if ( PLT.hasDatetime( [M,W] 1:10~2:25 ) ) {
+	sched.add( PLT, [M,W] 1:10~2:25 ); //--- Overloaded add function: adds this specific section
+}
+
+/******** SEARCH BY NAME ********/
+
+// make a list of courses called music
+courselist music;
+
+// if course name contains MUSI, then add it to the music list
+foreach course c in CL {
+    string cname = c.getName();
+    if ( cname.has("MUSI") ) {
+ 	   music.add( c );
+    }
+}

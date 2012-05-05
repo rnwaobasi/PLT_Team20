@@ -4,13 +4,40 @@ options {
 	language = Java;
 	tokenVocab = Chronos;
 	ASTLabelType = CommonTree;
+	filter=true;
 }
 
 @header {
   import java.util.Map;
   import java.util.HashMap;
 }
-  
+
+@members {
+	private int toInt(CommonTree node) {
+		int value = 0;
+		String text = node.getText();
+		try {
+			value = Integer.parseInt(text);
+		} catch (NumberFormatException e) {
+			throw new RuntimeException("Cannot convert to int");
+		}
+		return value;
+	}
+	
+	// shortcut general print method
+	private void out(String str) {
+		System.out.println(str);
+	}
+
+	// for print statements
+	// gets rid of the surrounding quotes
+	private void print(String str) {
+		int oneBeforeEnd = str.length()-1;
+		String noQuotes = str.substring(1,oneBeforeEnd);
+		out(noQuotes);
+	}
+}
+
 program
 	:	line+
 	;
@@ -21,7 +48,7 @@ declarator
 	:	^(DECL type_specifier ID)
 	|	^(INST ^(DECL type_specifier ID) ^('=' ID expr))
 	;
-stmt:	^(EXPR expr)
+stmt:	expr
 	|	selection_stmt
 	|	iteration_stmt
 	|	jump_stmt
@@ -35,6 +62,9 @@ iteration_stmt
 jump_stmt
 	:	BREAK_T
 	;
+/*expr:	^(OR expr expr)
+	|	^(AND expr expr)
+	;*/
 expr:	^(OR and_expr and_expr)
 	|	assignment_expr
 	;
@@ -84,6 +114,7 @@ dayblock
 	;
 primary_expr
 	:	constant
+	|	MASTER_T
 	|	ID
 	|	STRING
 	|	TIME
