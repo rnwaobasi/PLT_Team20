@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /Users/shannonlee/PLT_Team20/Chronos.g 2012-05-04 20:35:50
+// $ANTLR 3.4 C:\\Academics\\COMS W4115\\project\\Chronos.g 2012-05-04 21:43:02
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -86,15 +86,15 @@ public class ChronosLexer extends Lexer {
     public ChronosLexer(CharStream input, RecognizerSharedState state) {
         super(input,state);
     }
-    public String getGrammarFileName() { return "/Users/shannonlee/PLT_Team20/Chronos.g"; }
+    public String getGrammarFileName() { return "C:\\Academics\\COMS W4115\\project\\Chronos.g"; }
 
     // $ANTLR start "T__51"
     public final void mT__51() throws RecognitionException {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:7:7: ( '(' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:7:9: '('
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:7:7: ( '(' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:7:9: '('
             {
             match('('); 
 
@@ -114,8 +114,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:8:7: ( ')' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:8:9: ')'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:8:7: ( ')' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:8:9: ')'
             {
             match(')'); 
 
@@ -135,8 +135,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:9:7: ( '*' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:9:9: '*'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:9:7: ( '*' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:9:9: '*'
             {
             match('*'); 
 
@@ -156,8 +156,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:10:7: ( '+' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:10:9: '+'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:10:7: ( '+' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:10:9: '+'
             {
             match('+'); 
 
@@ -177,8 +177,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:11:7: ( ',' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:11:9: ','
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:11:7: ( ',' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:11:9: ','
             {
             match(','); 
 
@@ -198,8 +198,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:12:7: ( '-' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:12:9: '-'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:12:7: ( '-' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:12:9: '-'
             {
             match('-'); 
 
@@ -219,8 +219,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:13:7: ( '.' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:13:9: '.'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:13:7: ( '.' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:13:9: '.'
             {
             match('.'); 
 
@@ -240,8 +240,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:14:7: ( '/' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:14:9: '/'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:14:7: ( '/' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:14:9: '/'
             {
             match('/'); 
 
@@ -261,8 +261,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__59;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:15:7: ( ';' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:15:9: ';'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:15:7: ( ';' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:15:9: ';'
             {
             match(';'); 
 
@@ -282,8 +282,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__60;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:16:7: ( '<' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:16:9: '<'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:16:7: ( '<' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:16:9: '<'
             {
             match('<'); 
 
@@ -303,8 +303,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__61;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:17:7: ( '=' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:17:9: '='
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:17:7: ( '=' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:17:9: '='
             {
             match('='); 
 
@@ -324,8 +324,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__62;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:18:7: ( '>' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:18:9: '>'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:18:7: ( '>' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:18:9: '>'
             {
             match('>'); 
 
@@ -345,8 +345,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__63;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:19:7: ( '[' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:19:9: '['
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:19:7: ( '[' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:19:9: '['
             {
             match('['); 
 
@@ -366,8 +366,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__64;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:20:7: ( ']' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:20:9: ']'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:20:7: ( ']' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:20:9: ']'
             {
             match(']'); 
 
@@ -387,8 +387,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__65;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:21:7: ( '{' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:21:9: '{'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:21:7: ( '{' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:21:9: '{'
             {
             match('{'); 
 
@@ -408,8 +408,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__66;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:22:7: ( '}' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:22:9: '}'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:22:7: ( '}' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:22:9: '}'
             {
             match('}'); 
 
@@ -429,8 +429,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__67;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:23:7: ( '~' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:23:9: '~'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:23:7: ( '~' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:23:9: '~'
             {
             match('~'); 
 
@@ -450,8 +450,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = IF_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:146:7: ( 'if' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:146:9: 'if'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:146:7: ( 'if' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:146:9: 'if'
             {
             match("if"); 
 
@@ -473,8 +473,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = ELSE_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:148:8: ( 'else' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:148:10: 'else'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:148:8: ( 'else' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:148:10: 'else'
             {
             match("else"); 
 
@@ -496,8 +496,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = NEW_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:150:8: ( 'new' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:150:10: 'new'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:150:8: ( 'new' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:150:10: 'new'
             {
             match("new"); 
 
@@ -519,8 +519,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = FOREACH_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:152:11: ( 'foreach' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:152:13: 'foreach'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:152:11: ( 'foreach' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:152:13: 'foreach'
             {
             match("foreach"); 
 
@@ -542,8 +542,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = IN_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:154:6: ( 'in' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:154:8: 'in'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:154:6: ( 'in' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:154:8: 'in'
             {
             match("in"); 
 
@@ -565,8 +565,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = BREAK_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:156:9: ( 'break' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:156:11: 'break'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:156:9: ( 'break' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:156:11: 'break'
             {
             match("break"); 
 
@@ -588,8 +588,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = SCHEDULE_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:158:11: ( 'schedule' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:158:13: 'schedule'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:158:11: ( 'schedule' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:158:13: 'schedule'
             {
             match("schedule"); 
 
@@ -611,8 +611,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = COURSE_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:160:9: ( 'course' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:160:11: 'course'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:160:9: ( 'course' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:160:11: 'course'
             {
             match("course"); 
 
@@ -634,8 +634,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = COURSELIST_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:162:13: ( 'courselist' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:162:15: 'courselist'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:162:13: ( 'courselist' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:162:15: 'courselist'
             {
             match("courselist"); 
 
@@ -657,8 +657,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = TIMEBLOCK_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:164:12: ( 'timeblock' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:164:14: 'timeblock'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:164:12: ( 'timeblock' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:164:14: 'timeblock'
             {
             match("timeblock"); 
 
@@ -680,8 +680,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = DATETIME_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:166:11: ( 'datetime' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:166:14: 'datetime'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:166:11: ( 'datetime' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:166:14: 'datetime'
             {
             match("datetime"); 
 
@@ -703,8 +703,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = INT_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:168:7: ( 'int' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:168:9: 'int'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:168:7: ( 'int' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:168:9: 'int'
             {
             match("int"); 
 
@@ -726,8 +726,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = DOUBLE_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:170:9: ( 'double' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:170:11: 'double'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:170:9: ( 'double' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:170:11: 'double'
             {
             match("double"); 
 
@@ -749,8 +749,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = DAYS_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:172:8: ( 'days' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:172:10: 'days'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:172:8: ( 'days' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:172:10: 'days'
             {
             match("days"); 
 
@@ -772,8 +772,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = TIME_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:174:8: ( 'time' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:174:10: 'time'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:174:8: ( 'time' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:174:10: 'time'
             {
             match("time"); 
 
@@ -795,8 +795,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = STRING_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:176:9: ( 'string' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:176:11: 'string'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:176:9: ( 'string' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:176:11: 'string'
             {
             match("string"); 
 
@@ -818,8 +818,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = MASTER_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:179:2: ( 'master' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:179:4: 'master'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:179:2: ( 'master' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:179:4: 'master'
             {
             match("master"); 
 
@@ -841,10 +841,10 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = TIME;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:183:2: ( ( '0' .. '2' )? ( '0' .. '9' ) ':' ( '0' .. '5' ) ( '0' .. '9' ) )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:183:4: ( '0' .. '2' )? ( '0' .. '9' ) ':' ( '0' .. '5' ) ( '0' .. '9' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:183:2: ( ( '0' .. '2' )? ( '0' .. '9' ) ':' ( '0' .. '5' ) ( '0' .. '9' ) )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:183:4: ( '0' .. '2' )? ( '0' .. '9' ) ':' ( '0' .. '5' ) ( '0' .. '9' )
             {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:183:4: ( '0' .. '2' )?
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:183:4: ( '0' .. '2' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -857,7 +857,7 @@ public class ChronosLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:
                     {
                     if ( (input.LA(1) >= '0' && input.LA(1) <= '2') ) {
                         input.consume();
@@ -923,8 +923,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:189:5: ( '&&' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:189:7: '&&'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:189:5: ( '&&' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:189:7: '&&'
             {
             match("&&"); 
 
@@ -946,8 +946,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:191:4: ( '||' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:191:6: '||'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:191:4: ( '||' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:191:6: '||'
             {
             match("||"); 
 
@@ -969,8 +969,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = NOT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:193:5: ( '!' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:193:7: '!'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:193:5: ( '!' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:193:7: '!'
             {
             match('!'); 
 
@@ -990,8 +990,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = LEQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:195:5: ( '<=' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:195:7: '<='
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:195:5: ( '<=' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:195:7: '<='
             {
             match("<="); 
 
@@ -1013,8 +1013,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = GEQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:197:5: ( '>=' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:197:7: '>='
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:197:5: ( '>=' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:197:7: '>='
             {
             match(">="); 
 
@@ -1036,8 +1036,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = NEQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:199:5: ( '!=' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:199:7: '!='
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:199:5: ( '!=' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:199:7: '!='
             {
             match("!="); 
 
@@ -1059,8 +1059,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:201:4: ( '==' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:201:6: '=='
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:201:4: ( '==' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:201:6: '=='
             {
             match("=="); 
 
@@ -1082,8 +1082,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:204:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:204:7: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:204:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:204:7: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
                 input.consume();
@@ -1095,7 +1095,7 @@ public class ChronosLexer extends Lexer {
             }
 
 
-            // /Users/shannonlee/PLT_Team20/Chronos.g:204:31: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:204:31: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop2:
             do {
                 int alt2=2;
@@ -1108,7 +1108,7 @@ public class ChronosLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // /Users/shannonlee/PLT_Team20/Chronos.g:
+            	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:
             	    {
             	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
             	        input.consume();
@@ -1145,10 +1145,10 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:207:5: ( ( '0' .. '9' )+ )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:207:7: ( '0' .. '9' )+
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:207:5: ( ( '0' .. '9' )+ )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:207:7: ( '0' .. '9' )+
             {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:207:7: ( '0' .. '9' )+
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:207:7: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -1162,7 +1162,7 @@ public class ChronosLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // /Users/shannonlee/PLT_Team20/Chronos.g:
+            	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:
             	    {
             	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
             	        input.consume();
@@ -1203,14 +1203,14 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = FLOAT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:211:5: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:211:5: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT )
             int alt10=3;
             alt10 = dfa10.predict(input);
             switch (alt10) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:211:9: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )?
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:211:9: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )?
                     {
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:211:9: ( '0' .. '9' )+
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:211:9: ( '0' .. '9' )+
                     int cnt4=0;
                     loop4:
                     do {
@@ -1224,7 +1224,7 @@ public class ChronosLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // /Users/shannonlee/PLT_Team20/Chronos.g:
+                    	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:
                     	    {
                     	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
                     	        input.consume();
@@ -1251,7 +1251,7 @@ public class ChronosLexer extends Lexer {
 
                     match('.'); 
 
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:211:25: ( '0' .. '9' )*
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:211:25: ( '0' .. '9' )*
                     loop5:
                     do {
                         int alt5=2;
@@ -1264,7 +1264,7 @@ public class ChronosLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // /Users/shannonlee/PLT_Team20/Chronos.g:
+                    	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:
                     	    {
                     	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
                     	        input.consume();
@@ -1285,7 +1285,7 @@ public class ChronosLexer extends Lexer {
                     } while (true);
 
 
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:211:37: ( EXPONENT )?
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:211:37: ( EXPONENT )?
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
@@ -1294,7 +1294,7 @@ public class ChronosLexer extends Lexer {
                     }
                     switch (alt6) {
                         case 1 :
-                            // /Users/shannonlee/PLT_Team20/Chronos.g:211:37: EXPONENT
+                            // C:\\Academics\\COMS W4115\\project\\Chronos.g:211:37: EXPONENT
                             {
                             mEXPONENT(); 
 
@@ -1308,11 +1308,11 @@ public class ChronosLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:212:9: '.' ( '0' .. '9' )+ ( EXPONENT )?
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:212:9: '.' ( '0' .. '9' )+ ( EXPONENT )?
                     {
                     match('.'); 
 
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:212:13: ( '0' .. '9' )+
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:212:13: ( '0' .. '9' )+
                     int cnt7=0;
                     loop7:
                     do {
@@ -1326,7 +1326,7 @@ public class ChronosLexer extends Lexer {
 
                         switch (alt7) {
                     	case 1 :
-                    	    // /Users/shannonlee/PLT_Team20/Chronos.g:
+                    	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:
                     	    {
                     	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
                     	        input.consume();
@@ -1351,7 +1351,7 @@ public class ChronosLexer extends Lexer {
                     } while (true);
 
 
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:212:25: ( EXPONENT )?
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:212:25: ( EXPONENT )?
                     int alt8=2;
                     int LA8_0 = input.LA(1);
 
@@ -1360,7 +1360,7 @@ public class ChronosLexer extends Lexer {
                     }
                     switch (alt8) {
                         case 1 :
-                            // /Users/shannonlee/PLT_Team20/Chronos.g:212:25: EXPONENT
+                            // C:\\Academics\\COMS W4115\\project\\Chronos.g:212:25: EXPONENT
                             {
                             mEXPONENT(); 
 
@@ -1374,9 +1374,9 @@ public class ChronosLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:213:9: ( '0' .. '9' )+ EXPONENT
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:213:9: ( '0' .. '9' )+ EXPONENT
                     {
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:213:9: ( '0' .. '9' )+
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:213:9: ( '0' .. '9' )+
                     int cnt9=0;
                     loop9:
                     do {
@@ -1390,7 +1390,7 @@ public class ChronosLexer extends Lexer {
 
                         switch (alt9) {
                     	case 1 :
-                    	    // /Users/shannonlee/PLT_Team20/Chronos.g:
+                    	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:
                     	    {
                     	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
                     	        input.consume();
@@ -1436,7 +1436,7 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:217:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:217:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -1466,13 +1466,13 @@ public class ChronosLexer extends Lexer {
             }
             switch (alt14) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:217:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:217:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
                     {
                     match("//"); 
 
 
 
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:217:14: (~ ( '\\n' | '\\r' ) )*
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:217:14: (~ ( '\\n' | '\\r' ) )*
                     loop11:
                     do {
                         int alt11=2;
@@ -1485,7 +1485,7 @@ public class ChronosLexer extends Lexer {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // /Users/shannonlee/PLT_Team20/Chronos.g:
+                    	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:
                     	    {
                     	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\t')||(input.LA(1) >= '\u000B' && input.LA(1) <= '\f')||(input.LA(1) >= '\u000E' && input.LA(1) <= '\uFFFF') ) {
                     	        input.consume();
@@ -1506,7 +1506,7 @@ public class ChronosLexer extends Lexer {
                     } while (true);
 
 
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:217:28: ( '\\r' )?
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:217:28: ( '\\r' )?
                     int alt12=2;
                     int LA12_0 = input.LA(1);
 
@@ -1515,7 +1515,7 @@ public class ChronosLexer extends Lexer {
                     }
                     switch (alt12) {
                         case 1 :
-                            // /Users/shannonlee/PLT_Team20/Chronos.g:217:28: '\\r'
+                            // C:\\Academics\\COMS W4115\\project\\Chronos.g:217:28: '\\r'
                             {
                             match('\r'); 
 
@@ -1532,13 +1532,13 @@ public class ChronosLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:218:9: '/*' ( options {greedy=false; } : . )* '*/'
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:218:9: '/*' ( options {greedy=false; } : . )* '*/'
                     {
                     match("/*"); 
 
 
 
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:218:14: ( options {greedy=false; } : . )*
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:218:14: ( options {greedy=false; } : . )*
                     loop13:
                     do {
                         int alt13=2;
@@ -1563,7 +1563,7 @@ public class ChronosLexer extends Lexer {
 
                         switch (alt13) {
                     	case 1 :
-                    	    // /Users/shannonlee/PLT_Team20/Chronos.g:218:42: .
+                    	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:218:42: .
                     	    {
                     	    matchAny(); 
 
@@ -1600,8 +1600,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:221:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:221:9: ( ' ' | '\\t' | '\\r' | '\\n' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:221:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:221:9: ( ' ' | '\\t' | '\\r' | '\\n' )
             {
             if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
                 input.consume();
@@ -1631,12 +1631,12 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:229:5: ( '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:229:8: '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:229:5: ( '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:229:8: '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"'
             {
             match('\"'); 
 
-            // /Users/shannonlee/PLT_Team20/Chronos.g:229:12: ( ESC_SEQ |~ ( '\\\\' | '\"' ) )*
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:229:12: ( ESC_SEQ |~ ( '\\\\' | '\"' ) )*
             loop15:
             do {
                 int alt15=3;
@@ -1652,7 +1652,7 @@ public class ChronosLexer extends Lexer {
 
                 switch (alt15) {
             	case 1 :
-            	    // /Users/shannonlee/PLT_Team20/Chronos.g:229:14: ESC_SEQ
+            	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:229:14: ESC_SEQ
             	    {
             	    mESC_SEQ(); 
 
@@ -1660,7 +1660,7 @@ public class ChronosLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // /Users/shannonlee/PLT_Team20/Chronos.g:229:24: ~ ( '\\\\' | '\"' )
+            	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:229:24: ~ ( '\\\\' | '\"' )
             	    {
             	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
             	        input.consume();
@@ -1699,12 +1699,12 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = CHAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // /Users/shannonlee/PLT_Team20/Chronos.g:232:5: ( '\\'' ( ESC_SEQ |~ ( '\\'' | '\\\\' ) ) '\\'' )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:232:8: '\\'' ( ESC_SEQ |~ ( '\\'' | '\\\\' ) ) '\\''
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:232:5: ( '\\'' ( ESC_SEQ |~ ( '\\'' | '\\\\' ) ) '\\'' )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:232:8: '\\'' ( ESC_SEQ |~ ( '\\'' | '\\\\' ) ) '\\''
             {
             match('\''); 
 
-            // /Users/shannonlee/PLT_Team20/Chronos.g:232:13: ( ESC_SEQ |~ ( '\\'' | '\\\\' ) )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:232:13: ( ESC_SEQ |~ ( '\\'' | '\\\\' ) )
             int alt16=2;
             int LA16_0 = input.LA(1);
 
@@ -1723,7 +1723,7 @@ public class ChronosLexer extends Lexer {
             }
             switch (alt16) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:232:15: ESC_SEQ
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:232:15: ESC_SEQ
                     {
                     mESC_SEQ(); 
 
@@ -1731,7 +1731,7 @@ public class ChronosLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:232:25: ~ ( '\\'' | '\\\\' )
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:232:25: ~ ( '\\'' | '\\\\' )
                     {
                     if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '&')||(input.LA(1) >= '(' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
                         input.consume();
@@ -1765,8 +1765,8 @@ public class ChronosLexer extends Lexer {
     // $ANTLR start "DAY"
     public final void mDAY() throws RecognitionException {
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:237:5: ( ( 'M' | 'T' | 'W' | 'R' | 'F' ) )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:237:5: ( ( 'M' | 'T' | 'W' | 'R' | 'F' ) )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:
             {
             if ( input.LA(1)=='F'||input.LA(1)=='M'||input.LA(1)=='R'||input.LA(1)=='T'||input.LA(1)=='W' ) {
                 input.consume();
@@ -1791,8 +1791,8 @@ public class ChronosLexer extends Lexer {
     // $ANTLR start "EXPONENT"
     public final void mEXPONENT() throws RecognitionException {
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:241:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:241:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:241:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:241:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -1804,7 +1804,7 @@ public class ChronosLexer extends Lexer {
             }
 
 
-            // /Users/shannonlee/PLT_Team20/Chronos.g:241:22: ( '+' | '-' )?
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:241:22: ( '+' | '-' )?
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -1813,7 +1813,7 @@ public class ChronosLexer extends Lexer {
             }
             switch (alt17) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:
                     {
                     if ( input.LA(1)=='+'||input.LA(1)=='-' ) {
                         input.consume();
@@ -1831,7 +1831,7 @@ public class ChronosLexer extends Lexer {
             }
 
 
-            // /Users/shannonlee/PLT_Team20/Chronos.g:241:33: ( '0' .. '9' )+
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:241:33: ( '0' .. '9' )+
             int cnt18=0;
             loop18:
             do {
@@ -1845,7 +1845,7 @@ public class ChronosLexer extends Lexer {
 
                 switch (alt18) {
             	case 1 :
-            	    // /Users/shannonlee/PLT_Team20/Chronos.g:
+            	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:
             	    {
             	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
             	        input.consume();
@@ -1883,8 +1883,8 @@ public class ChronosLexer extends Lexer {
     // $ANTLR start "HEX_DIGIT"
     public final void mHEX_DIGIT() throws RecognitionException {
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:244:11: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:244:11: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:
             {
             if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'F')||(input.LA(1) >= 'a' && input.LA(1) <= 'f') ) {
                 input.consume();
@@ -1909,7 +1909,7 @@ public class ChronosLexer extends Lexer {
     // $ANTLR start "ESC_SEQ"
     public final void mESC_SEQ() throws RecognitionException {
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:248:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:248:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
             int alt19=3;
             int LA19_0 = input.LA(1);
 
@@ -1962,7 +1962,7 @@ public class ChronosLexer extends Lexer {
             }
             switch (alt19) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:248:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:248:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
                     {
                     match('\\'); 
 
@@ -1979,7 +1979,7 @@ public class ChronosLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:249:9: UNICODE_ESC
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:249:9: UNICODE_ESC
                     {
                     mUNICODE_ESC(); 
 
@@ -1987,7 +1987,7 @@ public class ChronosLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:250:9: OCTAL_ESC
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:250:9: OCTAL_ESC
                     {
                     mOCTAL_ESC(); 
 
@@ -2007,7 +2007,7 @@ public class ChronosLexer extends Lexer {
     // $ANTLR start "OCTAL_ESC"
     public final void mOCTAL_ESC() throws RecognitionException {
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:255:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:255:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
             int alt20=3;
             int LA20_0 = input.LA(1);
 
@@ -2058,7 +2058,7 @@ public class ChronosLexer extends Lexer {
             }
             switch (alt20) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:255:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:255:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
                     {
                     match('\\'); 
 
@@ -2095,7 +2095,7 @@ public class ChronosLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:256:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:256:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
                     {
                     match('\\'); 
 
@@ -2122,7 +2122,7 @@ public class ChronosLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:257:9: '\\\\' ( '0' .. '7' )
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:257:9: '\\\\' ( '0' .. '7' )
                     {
                     match('\\'); 
 
@@ -2151,8 +2151,8 @@ public class ChronosLexer extends Lexer {
     // $ANTLR start "UNICODE_ESC"
     public final void mUNICODE_ESC() throws RecognitionException {
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:262:5: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:262:9: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:262:5: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:262:9: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
             {
             match('\\'); 
 
@@ -2181,12 +2181,12 @@ public class ChronosLexer extends Lexer {
     // $ANTLR end "UNICODE_ESC"
 
     public void mTokens() throws RecognitionException {
-        // /Users/shannonlee/PLT_Team20/Chronos.g:1:8: ( T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | IF_T | ELSE_T | NEW_T | FOREACH_T | IN_T | BREAK_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T | INT_T | DOUBLE_T | DAYS_T | TIME_T | STRING_T | MASTER_T | TIME | AND | OR | NOT | LEQ | GEQ | NEQ | EQ | ID | INT | FLOAT | COMMENT | WS | STRING | CHAR )
+        // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:8: ( T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | IF_T | ELSE_T | NEW_T | FOREACH_T | IN_T | BREAK_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T | INT_T | DOUBLE_T | DAYS_T | TIME_T | STRING_T | MASTER_T | TIME | AND | OR | NOT | LEQ | GEQ | NEQ | EQ | ID | INT | FLOAT | COMMENT | WS | STRING | CHAR )
         int alt21=49;
         alt21 = dfa21.predict(input);
         switch (alt21) {
             case 1 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:10: T__51
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:10: T__51
                 {
                 mT__51(); 
 
@@ -2194,7 +2194,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 2 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:16: T__52
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:16: T__52
                 {
                 mT__52(); 
 
@@ -2202,7 +2202,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 3 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:22: T__53
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:22: T__53
                 {
                 mT__53(); 
 
@@ -2210,7 +2210,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 4 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:28: T__54
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:28: T__54
                 {
                 mT__54(); 
 
@@ -2218,7 +2218,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 5 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:34: T__55
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:34: T__55
                 {
                 mT__55(); 
 
@@ -2226,7 +2226,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 6 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:40: T__56
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:40: T__56
                 {
                 mT__56(); 
 
@@ -2234,7 +2234,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 7 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:46: T__57
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:46: T__57
                 {
                 mT__57(); 
 
@@ -2242,7 +2242,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 8 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:52: T__58
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:52: T__58
                 {
                 mT__58(); 
 
@@ -2250,7 +2250,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 9 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:58: T__59
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:58: T__59
                 {
                 mT__59(); 
 
@@ -2258,7 +2258,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 10 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:64: T__60
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:64: T__60
                 {
                 mT__60(); 
 
@@ -2266,7 +2266,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 11 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:70: T__61
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:70: T__61
                 {
                 mT__61(); 
 
@@ -2274,7 +2274,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 12 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:76: T__62
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:76: T__62
                 {
                 mT__62(); 
 
@@ -2282,7 +2282,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 13 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:82: T__63
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:82: T__63
                 {
                 mT__63(); 
 
@@ -2290,7 +2290,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 14 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:88: T__64
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:88: T__64
                 {
                 mT__64(); 
 
@@ -2298,7 +2298,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 15 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:94: T__65
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:94: T__65
                 {
                 mT__65(); 
 
@@ -2306,7 +2306,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 16 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:100: T__66
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:100: T__66
                 {
                 mT__66(); 
 
@@ -2314,7 +2314,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 17 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:106: T__67
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:106: T__67
                 {
                 mT__67(); 
 
@@ -2322,7 +2322,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 18 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:112: IF_T
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:112: IF_T
                 {
                 mIF_T(); 
 
@@ -2330,7 +2330,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 19 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:117: ELSE_T
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:117: ELSE_T
                 {
                 mELSE_T(); 
 
@@ -2338,7 +2338,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 20 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:124: NEW_T
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:124: NEW_T
                 {
                 mNEW_T(); 
 
@@ -2346,7 +2346,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 21 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:130: FOREACH_T
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:130: FOREACH_T
                 {
                 mFOREACH_T(); 
 
@@ -2354,7 +2354,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 22 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:140: IN_T
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:140: IN_T
                 {
                 mIN_T(); 
 
@@ -2362,7 +2362,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 23 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:145: BREAK_T
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:145: BREAK_T
                 {
                 mBREAK_T(); 
 
@@ -2370,7 +2370,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 24 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:153: SCHEDULE_T
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:153: SCHEDULE_T
                 {
                 mSCHEDULE_T(); 
 
@@ -2378,7 +2378,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 25 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:164: COURSE_T
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:164: COURSE_T
                 {
                 mCOURSE_T(); 
 
@@ -2386,7 +2386,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 26 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:173: COURSELIST_T
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:173: COURSELIST_T
                 {
                 mCOURSELIST_T(); 
 
@@ -2394,7 +2394,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 27 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:186: TIMEBLOCK_T
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:186: TIMEBLOCK_T
                 {
                 mTIMEBLOCK_T(); 
 
@@ -2402,7 +2402,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 28 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:198: DATETIME_T
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:198: DATETIME_T
                 {
                 mDATETIME_T(); 
 
@@ -2410,7 +2410,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 29 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:209: INT_T
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:209: INT_T
                 {
                 mINT_T(); 
 
@@ -2418,7 +2418,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 30 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:215: DOUBLE_T
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:215: DOUBLE_T
                 {
                 mDOUBLE_T(); 
 
@@ -2426,7 +2426,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 31 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:224: DAYS_T
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:224: DAYS_T
                 {
                 mDAYS_T(); 
 
@@ -2434,7 +2434,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 32 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:231: TIME_T
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:231: TIME_T
                 {
                 mTIME_T(); 
 
@@ -2442,7 +2442,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 33 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:238: STRING_T
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:238: STRING_T
                 {
                 mSTRING_T(); 
 
@@ -2450,7 +2450,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 34 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:247: MASTER_T
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:247: MASTER_T
                 {
                 mMASTER_T(); 
 
@@ -2458,7 +2458,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 35 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:256: TIME
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:256: TIME
                 {
                 mTIME(); 
 
@@ -2466,7 +2466,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 36 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:261: AND
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:261: AND
                 {
                 mAND(); 
 
@@ -2474,7 +2474,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 37 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:265: OR
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:265: OR
                 {
                 mOR(); 
 
@@ -2482,7 +2482,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 38 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:268: NOT
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:268: NOT
                 {
                 mNOT(); 
 
@@ -2490,7 +2490,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 39 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:272: LEQ
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:272: LEQ
                 {
                 mLEQ(); 
 
@@ -2498,7 +2498,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 40 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:276: GEQ
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:276: GEQ
                 {
                 mGEQ(); 
 
@@ -2506,7 +2506,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 41 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:280: NEQ
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:280: NEQ
                 {
                 mNEQ(); 
 
@@ -2514,7 +2514,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 42 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:284: EQ
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:284: EQ
                 {
                 mEQ(); 
 
@@ -2522,7 +2522,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 43 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:287: ID
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:287: ID
                 {
                 mID(); 
 
@@ -2530,7 +2530,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 44 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:290: INT
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:290: INT
                 {
                 mINT(); 
 
@@ -2538,7 +2538,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 45 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:294: FLOAT
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:294: FLOAT
                 {
                 mFLOAT(); 
 
@@ -2546,7 +2546,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 46 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:300: COMMENT
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:300: COMMENT
                 {
                 mCOMMENT(); 
 
@@ -2554,7 +2554,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 47 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:308: WS
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:308: WS
                 {
                 mWS(); 
 
@@ -2562,7 +2562,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 48 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:311: STRING
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:311: STRING
                 {
                 mSTRING(); 
 
@@ -2570,7 +2570,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 49 :
-                // /Users/shannonlee/PLT_Team20/Chronos.g:1:318: CHAR
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:1:318: CHAR
                 {
                 mCHAR(); 
 

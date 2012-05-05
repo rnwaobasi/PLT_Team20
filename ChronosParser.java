@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /Users/shannonlee/PLT_Team20/Chronos.g 2012-05-04 20:35:50
+// $ANTLR 3.4 C:\\Academics\\COMS W4115\\project\\Chronos.g 2012-05-04 21:43:02
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -104,7 +104,7 @@ public TreeAdaptor getTreeAdaptor() {
     return adaptor;
 }
     public String[] getTokenNames() { return ChronosParser.tokenNames; }
-    public String getGrammarFileName() { return "/Users/shannonlee/PLT_Team20/Chronos.g"; }
+    public String getGrammarFileName() { return "C:\\Academics\\COMS W4115\\project\\Chronos.g"; }
 
 
     public static class program_return extends ParserRuleReturnScope {
@@ -114,7 +114,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "program"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:24:1: program : ( line )+ EOF !;
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:24:1: program : ( line )+ EOF !;
     public final ChronosParser.program_return program() throws RecognitionException {
         ChronosParser.program_return retval = new ChronosParser.program_return();
         retval.start = input.LT(1);
@@ -129,13 +129,13 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree EOF2_tree=null;
 
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:25:2: ( ( line )+ EOF !)
-            // /Users/shannonlee/PLT_Team20/Chronos.g:25:4: ( line )+ EOF !
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:25:2: ( ( line )+ EOF !)
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:25:4: ( line )+ EOF !
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // /Users/shannonlee/PLT_Team20/Chronos.g:25:4: ( line )+
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:25:4: ( line )+
             int cnt1=0;
             loop1:
             do {
@@ -149,7 +149,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt1) {
             	case 1 :
-            	    // /Users/shannonlee/PLT_Team20/Chronos.g:25:4: line
+            	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:25:4: line
             	    {
             	    pushFollow(FOLLOW_line_in_program85);
             	    line1=line();
@@ -204,7 +204,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "line"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:27:1: line : ( declarator | stmt );
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:27:1: line : ( declarator | stmt );
     public final ChronosParser.line_return line() throws RecognitionException {
         ChronosParser.line_return retval = new ChronosParser.line_return();
         retval.start = input.LT(1);
@@ -219,7 +219,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:28:2: ( declarator | stmt )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:28:2: ( declarator | stmt )
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -238,7 +238,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt2) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:28:4: declarator
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:28:4: declarator
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -253,7 +253,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:29:4: stmt
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:29:4: stmt
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -298,7 +298,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "declarator"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:31:1: declarator : ( type_specifier ID ';' -> ^( DECL type_specifier ID ) | type_specifier ID '=' expr ';' -> ^( INST ^( DECL type_specifier ID ) ^( '=' ID expr ) ) );
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:31:1: declarator : ( type_specifier ID ';' -> ^( DECL type_specifier ID ) | type_specifier ID '=' expr ';' -> ^( INST ^( DECL type_specifier ID ) ^( '=' ID expr ) ) );
     public final ChronosParser.declarator_return declarator() throws RecognitionException {
         ChronosParser.declarator_return retval = new ChronosParser.declarator_return();
         retval.start = input.LT(1);
@@ -329,7 +329,7 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
         RewriteRuleSubtreeStream stream_type_specifier=new RewriteRuleSubtreeStream(adaptor,"rule type_specifier");
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:33:2: ( type_specifier ID ';' -> ^( DECL type_specifier ID ) | type_specifier ID '=' expr ';' -> ^( INST ^( DECL type_specifier ID ) ^( '=' ID expr ) ) )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:33:2: ( type_specifier ID ';' -> ^( DECL type_specifier ID ) | type_specifier ID '=' expr ';' -> ^( INST ^( DECL type_specifier ID ) ^( '=' ID expr ) ) )
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -370,7 +370,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt3) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:33:4: type_specifier ID ';'
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:33:4: type_specifier ID ';'
                     {
                     pushFollow(FOLLOW_type_specifier_in_declarator115);
                     type_specifier5=type_specifier();
@@ -400,7 +400,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
                     // 34:4: -> ^( DECL type_specifier ID )
                     {
-                        // /Users/shannonlee/PLT_Team20/Chronos.g:34:7: ^( DECL type_specifier ID )
+                        // C:\\Academics\\COMS W4115\\project\\Chronos.g:34:7: ^( DECL type_specifier ID )
                         {
                         CommonTree root_1 = (CommonTree)adaptor.nil();
                         root_1 = (CommonTree)adaptor.becomeRoot(
@@ -424,7 +424,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:36:4: type_specifier ID '=' expr ';'
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:36:4: type_specifier ID '=' expr ';'
                     {
                     pushFollow(FOLLOW_type_specifier_in_declarator138);
                     type_specifier8=type_specifier();
@@ -453,7 +453,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // AST REWRITE
-                    // elements: ID, type_specifier, expr, ID, 61
+                    // elements: expr, type_specifier, ID, ID, 61
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -465,14 +465,14 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
                     // 37:4: -> ^( INST ^( DECL type_specifier ID ) ^( '=' ID expr ) )
                     {
-                        // /Users/shannonlee/PLT_Team20/Chronos.g:37:7: ^( INST ^( DECL type_specifier ID ) ^( '=' ID expr ) )
+                        // C:\\Academics\\COMS W4115\\project\\Chronos.g:37:7: ^( INST ^( DECL type_specifier ID ) ^( '=' ID expr ) )
                         {
                         CommonTree root_1 = (CommonTree)adaptor.nil();
                         root_1 = (CommonTree)adaptor.becomeRoot(
                         (CommonTree)adaptor.create(INST, "INST")
                         , root_1);
 
-                        // /Users/shannonlee/PLT_Team20/Chronos.g:37:14: ^( DECL type_specifier ID )
+                        // C:\\Academics\\COMS W4115\\project\\Chronos.g:37:14: ^( DECL type_specifier ID )
                         {
                         CommonTree root_2 = (CommonTree)adaptor.nil();
                         root_2 = (CommonTree)adaptor.becomeRoot(
@@ -488,7 +488,7 @@ public TreeAdaptor getTreeAdaptor() {
                         adaptor.addChild(root_1, root_2);
                         }
 
-                        // /Users/shannonlee/PLT_Team20/Chronos.g:37:40: ^( '=' ID expr )
+                        // C:\\Academics\\COMS W4115\\project\\Chronos.g:37:40: ^( '=' ID expr )
                         {
                         CommonTree root_2 = (CommonTree)adaptor.nil();
                         root_2 = (CommonTree)adaptor.becomeRoot(
@@ -545,7 +545,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stmt"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:39:1: stmt : ( expr ';' -> expr | selection_stmt | iteration_stmt | jump_stmt ';' -> jump_stmt | ';' !);
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:39:1: stmt : ( expr ';' -> expr | selection_stmt | iteration_stmt | jump_stmt ';' -> jump_stmt | ';' !);
     public final ChronosParser.stmt_return stmt() throws RecognitionException {
         ChronosParser.stmt_return retval = new ChronosParser.stmt_return();
         retval.start = input.LT(1);
@@ -572,7 +572,7 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_jump_stmt=new RewriteRuleSubtreeStream(adaptor,"rule jump_stmt");
         RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:39:5: ( expr ';' -> expr | selection_stmt | iteration_stmt | jump_stmt ';' -> jump_stmt | ';' !)
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:39:5: ( expr ';' -> expr | selection_stmt | iteration_stmt | jump_stmt ';' -> jump_stmt | ';' !)
             int alt4=5;
             switch ( input.LA(1) ) {
             case FLOAT:
@@ -617,7 +617,7 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt4) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:39:7: expr ';'
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:39:7: expr ';'
                     {
                     pushFollow(FOLLOW_expr_in_stmt179);
                     expr13=expr();
@@ -653,7 +653,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:40:4: selection_stmt
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:40:4: selection_stmt
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -668,7 +668,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 3 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:41:4: iteration_stmt
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:41:4: iteration_stmt
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -683,7 +683,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 4 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:42:4: jump_stmt ';'
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:42:4: jump_stmt ';'
                     {
                     pushFollow(FOLLOW_jump_stmt_in_stmt199);
                     jump_stmt17=jump_stmt();
@@ -719,7 +719,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 5 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:43:4: ';' !
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:43:4: ';' !
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -759,7 +759,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "selection_stmt"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:45:1: selection_stmt : IF_T expr '{' (a= line )* '}' ( ELSE_T '{' (b= line )* '}' )? -> ^( COND ^( IF_T expr ( $a)* ) ( ^( ELSE_T ( $b)* ) )? ) ;
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:45:1: selection_stmt : IF_T expr '{' (a= line )* '}' ( ELSE_T '{' (b= line )* '}' )? -> ^( COND ^( IF_T expr ( $a)* ) ( ^( ELSE_T ( $b)* ) )? ) ;
     public final ChronosParser.selection_stmt_return selection_stmt() throws RecognitionException {
         ChronosParser.selection_stmt_return retval = new ChronosParser.selection_stmt_return();
         retval.start = input.LT(1);
@@ -793,8 +793,8 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_line=new RewriteRuleSubtreeStream(adaptor,"rule line");
         RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:47:2: ( IF_T expr '{' (a= line )* '}' ( ELSE_T '{' (b= line )* '}' )? -> ^( COND ^( IF_T expr ( $a)* ) ( ^( ELSE_T ( $b)* ) )? ) )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:47:4: IF_T expr '{' (a= line )* '}' ( ELSE_T '{' (b= line )* '}' )?
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:47:2: ( IF_T expr '{' (a= line )* '}' ( ELSE_T '{' (b= line )* '}' )? -> ^( COND ^( IF_T expr ( $a)* ) ( ^( ELSE_T ( $b)* ) )? ) )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:47:4: IF_T expr '{' (a= line )* '}' ( ELSE_T '{' (b= line )* '}' )?
             {
             IF_T20=(Token)match(input,IF_T,FOLLOW_IF_T_in_selection_stmt221);  
             stream_IF_T.add(IF_T20);
@@ -811,7 +811,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_65.add(char_literal22);
 
 
-            // /Users/shannonlee/PLT_Team20/Chronos.g:47:17: (a= line )*
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:47:17: (a= line )*
             loop5:
             do {
                 int alt5=2;
@@ -824,7 +824,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt5) {
             	case 1 :
-            	    // /Users/shannonlee/PLT_Team20/Chronos.g:47:18: a= line
+            	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:47:18: a= line
             	    {
             	    pushFollow(FOLLOW_line_in_selection_stmt229);
             	    a=line();
@@ -846,7 +846,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_66.add(char_literal23);
 
 
-            // /Users/shannonlee/PLT_Team20/Chronos.g:47:31: ( ELSE_T '{' (b= line )* '}' )?
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:47:31: ( ELSE_T '{' (b= line )* '}' )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -855,7 +855,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt7) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:47:32: ELSE_T '{' (b= line )* '}'
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:47:32: ELSE_T '{' (b= line )* '}'
                     {
                     ELSE_T24=(Token)match(input,ELSE_T,FOLLOW_ELSE_T_in_selection_stmt236);  
                     stream_ELSE_T.add(ELSE_T24);
@@ -865,7 +865,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_65.add(char_literal25);
 
 
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:47:43: (b= line )*
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:47:43: (b= line )*
                     loop6:
                     do {
                         int alt6=2;
@@ -878,7 +878,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // /Users/shannonlee/PLT_Team20/Chronos.g:47:44: b= line
+                    	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:47:44: b= line
                     	    {
                     	    pushFollow(FOLLOW_line_in_selection_stmt243);
                     	    b=line();
@@ -907,7 +907,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: a, expr, b, IF_T, ELSE_T
+            // elements: a, ELSE_T, expr, b, IF_T
             // token labels: 
             // rule labels: retval, b, a
             // token list labels: 
@@ -921,14 +921,14 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
             // 48:4: -> ^( COND ^( IF_T expr ( $a)* ) ( ^( ELSE_T ( $b)* ) )? )
             {
-                // /Users/shannonlee/PLT_Team20/Chronos.g:48:7: ^( COND ^( IF_T expr ( $a)* ) ( ^( ELSE_T ( $b)* ) )? )
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:48:7: ^( COND ^( IF_T expr ( $a)* ) ( ^( ELSE_T ( $b)* ) )? )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(
                 (CommonTree)adaptor.create(COND, "COND")
                 , root_1);
 
-                // /Users/shannonlee/PLT_Team20/Chronos.g:48:14: ^( IF_T expr ( $a)* )
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:48:14: ^( IF_T expr ( $a)* )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
@@ -937,7 +937,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                 adaptor.addChild(root_2, stream_expr.nextTree());
 
-                // /Users/shannonlee/PLT_Team20/Chronos.g:48:27: ( $a)*
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:48:27: ( $a)*
                 while ( stream_a.hasNext() ) {
                     adaptor.addChild(root_2, stream_a.nextTree());
 
@@ -947,16 +947,16 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // /Users/shannonlee/PLT_Team20/Chronos.g:48:31: ( ^( ELSE_T ( $b)* ) )?
-                if ( stream_b.hasNext()||stream_ELSE_T.hasNext() ) {
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:48:31: ^( ELSE_T ( $b)* )
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:48:31: ( ^( ELSE_T ( $b)* ) )?
+                if ( stream_ELSE_T.hasNext()||stream_b.hasNext() ) {
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:48:31: ^( ELSE_T ( $b)* )
                     {
                     CommonTree root_2 = (CommonTree)adaptor.nil();
                     root_2 = (CommonTree)adaptor.becomeRoot(
                     stream_ELSE_T.nextNode()
                     , root_2);
 
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:48:41: ( $b)*
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:48:41: ( $b)*
                     while ( stream_b.hasNext() ) {
                         adaptor.addChild(root_2, stream_b.nextTree());
 
@@ -967,8 +967,8 @@ public TreeAdaptor getTreeAdaptor() {
                     }
 
                 }
-                stream_b.reset();
                 stream_ELSE_T.reset();
+                stream_b.reset();
 
                 adaptor.addChild(root_0, root_1);
                 }
@@ -1009,7 +1009,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "iteration_stmt"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:50:1: iteration_stmt : FOREACH_T COURSE_T element= ID IN_T list= ID '{' ( line )* '}' -> ^( FOREACH_T ^( IN_T $element $list) ^( BLOCK ( line )* ) ) ;
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:50:1: iteration_stmt : FOREACH_T COURSE_T element= ID IN_T list= ID '{' ( line )* '}' -> ^( FOREACH_T ^( IN_T $element $list) ^( BLOCK ( line )* ) ) ;
     public final ChronosParser.iteration_stmt_return iteration_stmt() throws RecognitionException {
         ChronosParser.iteration_stmt_return retval = new ChronosParser.iteration_stmt_return();
         retval.start = input.LT(1);
@@ -1042,8 +1042,8 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleTokenStream stream_IN_T=new RewriteRuleTokenStream(adaptor,"token IN_T");
         RewriteRuleSubtreeStream stream_line=new RewriteRuleSubtreeStream(adaptor,"rule line");
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:52:2: ( FOREACH_T COURSE_T element= ID IN_T list= ID '{' ( line )* '}' -> ^( FOREACH_T ^( IN_T $element $list) ^( BLOCK ( line )* ) ) )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:52:4: FOREACH_T COURSE_T element= ID IN_T list= ID '{' ( line )* '}'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:52:2: ( FOREACH_T COURSE_T element= ID IN_T list= ID '{' ( line )* '}' -> ^( FOREACH_T ^( IN_T $element $list) ^( BLOCK ( line )* ) ) )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:52:4: FOREACH_T COURSE_T element= ID IN_T list= ID '{' ( line )* '}'
             {
             FOREACH_T27=(Token)match(input,FOREACH_T,FOLLOW_FOREACH_T_in_iteration_stmt289);  
             stream_FOREACH_T.add(FOREACH_T27);
@@ -1069,7 +1069,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_65.add(char_literal30);
 
 
-            // /Users/shannonlee/PLT_Team20/Chronos.g:52:51: ( line )*
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:52:51: ( line )*
             loop8:
             do {
                 int alt8=2;
@@ -1082,7 +1082,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt8) {
             	case 1 :
-            	    // /Users/shannonlee/PLT_Team20/Chronos.g:52:51: line
+            	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:52:51: line
             	    {
             	    pushFollow(FOLLOW_line_in_iteration_stmt305);
             	    line31=line();
@@ -1105,7 +1105,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: element, line, IN_T, list, FOREACH_T
+            // elements: FOREACH_T, list, IN_T, line, element
             // token labels: element, list
             // rule labels: retval
             // token list labels: 
@@ -1119,14 +1119,14 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
             // 53:4: -> ^( FOREACH_T ^( IN_T $element $list) ^( BLOCK ( line )* ) )
             {
-                // /Users/shannonlee/PLT_Team20/Chronos.g:53:7: ^( FOREACH_T ^( IN_T $element $list) ^( BLOCK ( line )* ) )
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:53:7: ^( FOREACH_T ^( IN_T $element $list) ^( BLOCK ( line )* ) )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(
                 stream_FOREACH_T.nextNode()
                 , root_1);
 
-                // /Users/shannonlee/PLT_Team20/Chronos.g:53:19: ^( IN_T $element $list)
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:53:19: ^( IN_T $element $list)
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
@@ -1140,14 +1140,14 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // /Users/shannonlee/PLT_Team20/Chronos.g:53:42: ^( BLOCK ( line )* )
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:53:42: ^( BLOCK ( line )* )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
                 (CommonTree)adaptor.create(BLOCK, "BLOCK")
                 , root_2);
 
-                // /Users/shannonlee/PLT_Team20/Chronos.g:53:50: ( line )*
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:53:50: ( line )*
                 while ( stream_line.hasNext() ) {
                     adaptor.addChild(root_2, stream_line.nextTree());
 
@@ -1196,7 +1196,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "jump_stmt"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:55:1: jump_stmt : BREAK_T ;
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:55:1: jump_stmt : BREAK_T ;
     public final ChronosParser.jump_stmt_return jump_stmt() throws RecognitionException {
         ChronosParser.jump_stmt_return retval = new ChronosParser.jump_stmt_return();
         retval.start = input.LT(1);
@@ -1209,8 +1209,8 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree BREAK_T33_tree=null;
 
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:57:2: ( BREAK_T )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:57:4: BREAK_T
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:57:2: ( BREAK_T )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:57:4: BREAK_T
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -1253,7 +1253,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "expr"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:59:1: expr : ( and_expr ( OR ^ and_expr )* | assignment_expr );
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:59:1: expr : ( and_expr ( OR ^ and_expr )* | assignment_expr );
     public final ChronosParser.expr_return expr() throws RecognitionException {
         ChronosParser.expr_return retval = new ChronosParser.expr_return();
         retval.start = input.LT(1);
@@ -1272,7 +1272,7 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree OR35_tree=null;
 
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:61:2: ( and_expr ( OR ^ and_expr )* | assignment_expr )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:61:2: ( and_expr ( OR ^ and_expr )* | assignment_expr )
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1305,7 +1305,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt10) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:61:4: and_expr ( OR ^ and_expr )*
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:61:4: and_expr ( OR ^ and_expr )*
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -1317,7 +1317,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                     adaptor.addChild(root_0, and_expr34.getTree());
 
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:61:13: ( OR ^ and_expr )*
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:61:13: ( OR ^ and_expr )*
                     loop9:
                     do {
                         int alt9=2;
@@ -1330,7 +1330,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                         switch (alt9) {
                     	case 1 :
-                    	    // /Users/shannonlee/PLT_Team20/Chronos.g:61:14: OR ^ and_expr
+                    	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:61:14: OR ^ and_expr
                     	    {
                     	    OR35=(Token)match(input,OR,FOLLOW_OR_in_expr361); 
                     	    OR35_tree = 
@@ -1358,7 +1358,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:62:4: assignment_expr
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:62:4: assignment_expr
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -1403,7 +1403,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "assignment_expr"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:64:1: assignment_expr : ID '=' ^ expr ;
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:64:1: assignment_expr : ID '=' ^ expr ;
     public final ChronosParser.assignment_expr_return assignment_expr() throws RecognitionException {
         ChronosParser.assignment_expr_return retval = new ChronosParser.assignment_expr_return();
         retval.start = input.LT(1);
@@ -1420,8 +1420,8 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree char_literal39_tree=null;
 
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:66:2: ( ID '=' ^ expr )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:66:4: ID '=' ^ expr
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:66:2: ( ID '=' ^ expr )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:66:4: ID '=' ^ expr
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -1478,7 +1478,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "and_expr"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:68:1: and_expr : equiv_expr ( AND ^ equiv_expr )* ;
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:68:1: and_expr : equiv_expr ( AND ^ equiv_expr )* ;
     public final ChronosParser.and_expr_return and_expr() throws RecognitionException {
         ChronosParser.and_expr_return retval = new ChronosParser.and_expr_return();
         retval.start = input.LT(1);
@@ -1495,8 +1495,8 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree AND42_tree=null;
 
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:70:2: ( equiv_expr ( AND ^ equiv_expr )* )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:70:4: equiv_expr ( AND ^ equiv_expr )*
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:70:2: ( equiv_expr ( AND ^ equiv_expr )* )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:70:4: equiv_expr ( AND ^ equiv_expr )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -1508,7 +1508,7 @@ public TreeAdaptor getTreeAdaptor() {
 
             adaptor.addChild(root_0, equiv_expr41.getTree());
 
-            // /Users/shannonlee/PLT_Team20/Chronos.g:70:15: ( AND ^ equiv_expr )*
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:70:15: ( AND ^ equiv_expr )*
             loop11:
             do {
                 int alt11=2;
@@ -1521,7 +1521,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt11) {
             	case 1 :
-            	    // /Users/shannonlee/PLT_Team20/Chronos.g:70:16: AND ^ equiv_expr
+            	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:70:16: AND ^ equiv_expr
             	    {
             	    AND42=(Token)match(input,AND,FOLLOW_AND_in_and_expr401); 
             	    AND42_tree = 
@@ -1577,7 +1577,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "equiv_expr"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:72:1: equiv_expr : rel_expr ( ( EQ ^| NEQ ^) rel_expr )* ;
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:72:1: equiv_expr : rel_expr ( ( EQ ^| NEQ ^) rel_expr )* ;
     public final ChronosParser.equiv_expr_return equiv_expr() throws RecognitionException {
         ChronosParser.equiv_expr_return retval = new ChronosParser.equiv_expr_return();
         retval.start = input.LT(1);
@@ -1596,8 +1596,8 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree NEQ46_tree=null;
 
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:74:2: ( rel_expr ( ( EQ ^| NEQ ^) rel_expr )* )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:74:4: rel_expr ( ( EQ ^| NEQ ^) rel_expr )*
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:74:2: ( rel_expr ( ( EQ ^| NEQ ^) rel_expr )* )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:74:4: rel_expr ( ( EQ ^| NEQ ^) rel_expr )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -1609,7 +1609,7 @@ public TreeAdaptor getTreeAdaptor() {
 
             adaptor.addChild(root_0, rel_expr44.getTree());
 
-            // /Users/shannonlee/PLT_Team20/Chronos.g:74:13: ( ( EQ ^| NEQ ^) rel_expr )*
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:74:13: ( ( EQ ^| NEQ ^) rel_expr )*
             loop13:
             do {
                 int alt13=2;
@@ -1622,9 +1622,9 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt13) {
             	case 1 :
-            	    // /Users/shannonlee/PLT_Team20/Chronos.g:74:15: ( EQ ^| NEQ ^) rel_expr
+            	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:74:15: ( EQ ^| NEQ ^) rel_expr
             	    {
-            	    // /Users/shannonlee/PLT_Team20/Chronos.g:74:15: ( EQ ^| NEQ ^)
+            	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:74:15: ( EQ ^| NEQ ^)
             	    int alt12=2;
             	    int LA12_0 = input.LA(1);
 
@@ -1643,7 +1643,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
             	    switch (alt12) {
             	        case 1 :
-            	            // /Users/shannonlee/PLT_Team20/Chronos.g:74:16: EQ ^
+            	            // C:\\Academics\\COMS W4115\\project\\Chronos.g:74:16: EQ ^
             	            {
             	            EQ45=(Token)match(input,EQ,FOLLOW_EQ_in_equiv_expr422); 
             	            EQ45_tree = 
@@ -1655,7 +1655,7 @@ public TreeAdaptor getTreeAdaptor() {
             	            }
             	            break;
             	        case 2 :
-            	            // /Users/shannonlee/PLT_Team20/Chronos.g:74:22: NEQ ^
+            	            // C:\\Academics\\COMS W4115\\project\\Chronos.g:74:22: NEQ ^
             	            {
             	            NEQ46=(Token)match(input,NEQ,FOLLOW_NEQ_in_equiv_expr427); 
             	            NEQ46_tree = 
@@ -1717,7 +1717,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "rel_expr"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:76:1: rel_expr : ( math_expr ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )* | datetime );
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:76:1: rel_expr : ( math_expr ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )* | datetime );
     public final ChronosParser.rel_expr_return rel_expr() throws RecognitionException {
         ChronosParser.rel_expr_return retval = new ChronosParser.rel_expr_return();
         retval.start = input.LT(1);
@@ -1742,7 +1742,7 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree LEQ52_tree=null;
 
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:78:2: ( math_expr ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )* | datetime )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:78:2: ( math_expr ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )* | datetime )
             int alt16=2;
             int LA16_0 = input.LA(1);
 
@@ -1761,7 +1761,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt16) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:78:4: math_expr ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )*
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:78:4: math_expr ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )*
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -1773,7 +1773,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                     adaptor.addChild(root_0, math_expr48.getTree());
 
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:78:14: ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )*
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:78:14: ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )*
                     loop15:
                     do {
                         int alt15=2;
@@ -1786,9 +1786,9 @@ public TreeAdaptor getTreeAdaptor() {
 
                         switch (alt15) {
                     	case 1 :
-                    	    // /Users/shannonlee/PLT_Team20/Chronos.g:78:16: ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr
+                    	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:78:16: ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr
                     	    {
-                    	    // /Users/shannonlee/PLT_Team20/Chronos.g:78:16: ( '<' ^| '>' ^| GEQ ^| LEQ ^)
+                    	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:78:16: ( '<' ^| '>' ^| GEQ ^| LEQ ^)
                     	    int alt14=4;
                     	    switch ( input.LA(1) ) {
                     	    case 60:
@@ -1821,7 +1821,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                     	    switch (alt14) {
                     	        case 1 :
-                    	            // /Users/shannonlee/PLT_Team20/Chronos.g:78:17: '<' ^
+                    	            // C:\\Academics\\COMS W4115\\project\\Chronos.g:78:17: '<' ^
                     	            {
                     	            char_literal49=(Token)match(input,60,FOLLOW_60_in_rel_expr450); 
                     	            char_literal49_tree = 
@@ -1833,7 +1833,7 @@ public TreeAdaptor getTreeAdaptor() {
                     	            }
                     	            break;
                     	        case 2 :
-                    	            // /Users/shannonlee/PLT_Team20/Chronos.g:78:24: '>' ^
+                    	            // C:\\Academics\\COMS W4115\\project\\Chronos.g:78:24: '>' ^
                     	            {
                     	            char_literal50=(Token)match(input,62,FOLLOW_62_in_rel_expr455); 
                     	            char_literal50_tree = 
@@ -1845,7 +1845,7 @@ public TreeAdaptor getTreeAdaptor() {
                     	            }
                     	            break;
                     	        case 3 :
-                    	            // /Users/shannonlee/PLT_Team20/Chronos.g:78:31: GEQ ^
+                    	            // C:\\Academics\\COMS W4115\\project\\Chronos.g:78:31: GEQ ^
                     	            {
                     	            GEQ51=(Token)match(input,GEQ,FOLLOW_GEQ_in_rel_expr460); 
                     	            GEQ51_tree = 
@@ -1857,7 +1857,7 @@ public TreeAdaptor getTreeAdaptor() {
                     	            }
                     	            break;
                     	        case 4 :
-                    	            // /Users/shannonlee/PLT_Team20/Chronos.g:78:38: LEQ ^
+                    	            // C:\\Academics\\COMS W4115\\project\\Chronos.g:78:38: LEQ ^
                     	            {
                     	            LEQ52=(Token)match(input,LEQ,FOLLOW_LEQ_in_rel_expr465); 
                     	            LEQ52_tree = 
@@ -1891,7 +1891,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:79:4: datetime
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:79:4: datetime
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -1936,7 +1936,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "math_expr"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:81:1: math_expr : math_term ( ( '+' ^| '-' ^) math_term )* ;
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:81:1: math_expr : math_term ( ( '+' ^| '-' ^) math_term )* ;
     public final ChronosParser.math_expr_return math_expr() throws RecognitionException {
         ChronosParser.math_expr_return retval = new ChronosParser.math_expr_return();
         retval.start = input.LT(1);
@@ -1955,8 +1955,8 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree char_literal57_tree=null;
 
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:83:2: ( math_term ( ( '+' ^| '-' ^) math_term )* )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:83:4: math_term ( ( '+' ^| '-' ^) math_term )*
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:83:2: ( math_term ( ( '+' ^| '-' ^) math_term )* )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:83:4: math_term ( ( '+' ^| '-' ^) math_term )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -1968,7 +1968,7 @@ public TreeAdaptor getTreeAdaptor() {
 
             adaptor.addChild(root_0, math_term55.getTree());
 
-            // /Users/shannonlee/PLT_Team20/Chronos.g:83:14: ( ( '+' ^| '-' ^) math_term )*
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:83:14: ( ( '+' ^| '-' ^) math_term )*
             loop18:
             do {
                 int alt18=2;
@@ -1981,9 +1981,9 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt18) {
             	case 1 :
-            	    // /Users/shannonlee/PLT_Team20/Chronos.g:83:16: ( '+' ^| '-' ^) math_term
+            	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:83:16: ( '+' ^| '-' ^) math_term
             	    {
-            	    // /Users/shannonlee/PLT_Team20/Chronos.g:83:16: ( '+' ^| '-' ^)
+            	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:83:16: ( '+' ^| '-' ^)
             	    int alt17=2;
             	    int LA17_0 = input.LA(1);
 
@@ -2002,7 +2002,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
             	    switch (alt17) {
             	        case 1 :
-            	            // /Users/shannonlee/PLT_Team20/Chronos.g:83:17: '+' ^
+            	            // C:\\Academics\\COMS W4115\\project\\Chronos.g:83:17: '+' ^
             	            {
             	            char_literal56=(Token)match(input,54,FOLLOW_54_in_math_expr493); 
             	            char_literal56_tree = 
@@ -2014,7 +2014,7 @@ public TreeAdaptor getTreeAdaptor() {
             	            }
             	            break;
             	        case 2 :
-            	            // /Users/shannonlee/PLT_Team20/Chronos.g:83:24: '-' ^
+            	            // C:\\Academics\\COMS W4115\\project\\Chronos.g:83:24: '-' ^
             	            {
             	            char_literal57=(Token)match(input,56,FOLLOW_56_in_math_expr498); 
             	            char_literal57_tree = 
@@ -2076,7 +2076,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "math_term"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:85:1: math_term : ( unary_expr ( ( '*' ^| '/' ^) unary_expr )* | timeblock );
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:85:1: math_term : ( unary_expr ( ( '*' ^| '/' ^) unary_expr )* | timeblock );
     public final ChronosParser.math_term_return math_term() throws RecognitionException {
         ChronosParser.math_term_return retval = new ChronosParser.math_term_return();
         retval.start = input.LT(1);
@@ -2097,7 +2097,7 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree char_literal61_tree=null;
 
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:87:2: ( unary_expr ( ( '*' ^| '/' ^) unary_expr )* | timeblock )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:87:2: ( unary_expr ( ( '*' ^| '/' ^) unary_expr )* | timeblock )
             int alt21=2;
             int LA21_0 = input.LA(1);
 
@@ -2130,7 +2130,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt21) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:87:4: unary_expr ( ( '*' ^| '/' ^) unary_expr )*
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:87:4: unary_expr ( ( '*' ^| '/' ^) unary_expr )*
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -2142,7 +2142,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                     adaptor.addChild(root_0, unary_expr59.getTree());
 
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:87:15: ( ( '*' ^| '/' ^) unary_expr )*
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:87:15: ( ( '*' ^| '/' ^) unary_expr )*
                     loop20:
                     do {
                         int alt20=2;
@@ -2155,9 +2155,9 @@ public TreeAdaptor getTreeAdaptor() {
 
                         switch (alt20) {
                     	case 1 :
-                    	    // /Users/shannonlee/PLT_Team20/Chronos.g:87:17: ( '*' ^| '/' ^) unary_expr
+                    	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:87:17: ( '*' ^| '/' ^) unary_expr
                     	    {
-                    	    // /Users/shannonlee/PLT_Team20/Chronos.g:87:17: ( '*' ^| '/' ^)
+                    	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:87:17: ( '*' ^| '/' ^)
                     	    int alt19=2;
                     	    int LA19_0 = input.LA(1);
 
@@ -2176,7 +2176,7 @@ public TreeAdaptor getTreeAdaptor() {
                     	    }
                     	    switch (alt19) {
                     	        case 1 :
-                    	            // /Users/shannonlee/PLT_Team20/Chronos.g:87:18: '*' ^
+                    	            // C:\\Academics\\COMS W4115\\project\\Chronos.g:87:18: '*' ^
                     	            {
                     	            char_literal60=(Token)match(input,53,FOLLOW_53_in_math_term521); 
                     	            char_literal60_tree = 
@@ -2188,7 +2188,7 @@ public TreeAdaptor getTreeAdaptor() {
                     	            }
                     	            break;
                     	        case 2 :
-                    	            // /Users/shannonlee/PLT_Team20/Chronos.g:87:25: '/' ^
+                    	            // C:\\Academics\\COMS W4115\\project\\Chronos.g:87:25: '/' ^
                     	            {
                     	            char_literal61=(Token)match(input,58,FOLLOW_58_in_math_term526); 
                     	            char_literal61_tree = 
@@ -2222,7 +2222,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:88:4: timeblock
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:88:4: timeblock
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -2267,7 +2267,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "unary_expr"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:90:1: unary_expr : ( postfix_expr ( '.' ^ postfix_expr )* | NOT ^ postfix_expr );
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:90:1: unary_expr : ( postfix_expr ( '.' ^ postfix_expr )* | NOT ^ postfix_expr );
     public final ChronosParser.unary_expr_return unary_expr() throws RecognitionException {
         ChronosParser.unary_expr_return retval = new ChronosParser.unary_expr_return();
         retval.start = input.LT(1);
@@ -2288,7 +2288,7 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree NOT67_tree=null;
 
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:91:2: ( postfix_expr ( '.' ^ postfix_expr )* | NOT ^ postfix_expr )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:91:2: ( postfix_expr ( '.' ^ postfix_expr )* | NOT ^ postfix_expr )
             int alt23=2;
             int LA23_0 = input.LA(1);
 
@@ -2307,7 +2307,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt23) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:91:4: postfix_expr ( '.' ^ postfix_expr )*
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:91:4: postfix_expr ( '.' ^ postfix_expr )*
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -2319,7 +2319,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                     adaptor.addChild(root_0, postfix_expr64.getTree());
 
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:91:17: ( '.' ^ postfix_expr )*
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:91:17: ( '.' ^ postfix_expr )*
                     loop22:
                     do {
                         int alt22=2;
@@ -2332,7 +2332,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                         switch (alt22) {
                     	case 1 :
-                    	    // /Users/shannonlee/PLT_Team20/Chronos.g:91:18: '.' ^ postfix_expr
+                    	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:91:18: '.' ^ postfix_expr
                     	    {
                     	    char_literal65=(Token)match(input,57,FOLLOW_57_in_unary_expr551); 
                     	    char_literal65_tree = 
@@ -2360,7 +2360,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:92:4: NOT ^ postfix_expr
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:92:4: NOT ^ postfix_expr
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -2412,7 +2412,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "postfix_expr"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:94:1: postfix_expr : primary_expr ( function_parens )? -> ^( primary_expr ( function_parens )? ) ;
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:94:1: postfix_expr : primary_expr ( function_parens )? -> ^( primary_expr ( function_parens )? ) ;
     public final ChronosParser.postfix_expr_return postfix_expr() throws RecognitionException {
         ChronosParser.postfix_expr_return retval = new ChronosParser.postfix_expr_return();
         retval.start = input.LT(1);
@@ -2428,8 +2428,8 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_function_parens=new RewriteRuleSubtreeStream(adaptor,"rule function_parens");
         RewriteRuleSubtreeStream stream_primary_expr=new RewriteRuleSubtreeStream(adaptor,"rule primary_expr");
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:96:2: ( primary_expr ( function_parens )? -> ^( primary_expr ( function_parens )? ) )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:96:4: primary_expr ( function_parens )?
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:96:2: ( primary_expr ( function_parens )? -> ^( primary_expr ( function_parens )? ) )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:96:4: primary_expr ( function_parens )?
             {
             pushFollow(FOLLOW_primary_expr_in_postfix_expr575);
             primary_expr69=primary_expr();
@@ -2438,7 +2438,7 @@ public TreeAdaptor getTreeAdaptor() {
 
             stream_primary_expr.add(primary_expr69.getTree());
 
-            // /Users/shannonlee/PLT_Team20/Chronos.g:96:17: ( function_parens )?
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:96:17: ( function_parens )?
             int alt24=2;
             int LA24_0 = input.LA(1);
 
@@ -2447,7 +2447,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt24) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:96:17: function_parens
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:96:17: function_parens
                     {
                     pushFollow(FOLLOW_function_parens_in_postfix_expr577);
                     function_parens70=function_parens();
@@ -2475,12 +2475,12 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
             // 97:3: -> ^( primary_expr ( function_parens )? )
             {
-                // /Users/shannonlee/PLT_Team20/Chronos.g:97:6: ^( primary_expr ( function_parens )? )
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:97:6: ^( primary_expr ( function_parens )? )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(stream_primary_expr.nextNode(), root_1);
 
-                // /Users/shannonlee/PLT_Team20/Chronos.g:97:21: ( function_parens )?
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:97:21: ( function_parens )?
                 if ( stream_function_parens.hasNext() ) {
                     adaptor.addChild(root_1, stream_function_parens.nextTree());
 
@@ -2526,7 +2526,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "function_parens"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:99:1: function_parens : '(' ( argument_expr_list )? ')' -> ^( PARAMS ( argument_expr_list )? ) ;
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:99:1: function_parens : '(' ( argument_expr_list )? ')' -> ^( PARAMS ( argument_expr_list )? ) ;
     public final ChronosParser.function_parens_return function_parens() throws RecognitionException {
         ChronosParser.function_parens_return retval = new ChronosParser.function_parens_return();
         retval.start = input.LT(1);
@@ -2545,14 +2545,14 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleTokenStream stream_52=new RewriteRuleTokenStream(adaptor,"token 52");
         RewriteRuleSubtreeStream stream_argument_expr_list=new RewriteRuleSubtreeStream(adaptor,"rule argument_expr_list");
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:101:2: ( '(' ( argument_expr_list )? ')' -> ^( PARAMS ( argument_expr_list )? ) )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:101:4: '(' ( argument_expr_list )? ')'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:101:2: ( '(' ( argument_expr_list )? ')' -> ^( PARAMS ( argument_expr_list )? ) )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:101:4: '(' ( argument_expr_list )? ')'
             {
             char_literal71=(Token)match(input,51,FOLLOW_51_in_function_parens600);  
             stream_51.add(char_literal71);
 
 
-            // /Users/shannonlee/PLT_Team20/Chronos.g:101:8: ( argument_expr_list )?
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:101:8: ( argument_expr_list )?
             int alt25=2;
             int LA25_0 = input.LA(1);
 
@@ -2561,7 +2561,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt25) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:101:8: argument_expr_list
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:101:8: argument_expr_list
                     {
                     pushFollow(FOLLOW_argument_expr_list_in_function_parens602);
                     argument_expr_list72=argument_expr_list();
@@ -2593,14 +2593,14 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
             // 102:3: -> ^( PARAMS ( argument_expr_list )? )
             {
-                // /Users/shannonlee/PLT_Team20/Chronos.g:102:6: ^( PARAMS ( argument_expr_list )? )
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:102:6: ^( PARAMS ( argument_expr_list )? )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(
                 (CommonTree)adaptor.create(PARAMS, "PARAMS")
                 , root_1);
 
-                // /Users/shannonlee/PLT_Team20/Chronos.g:102:15: ( argument_expr_list )?
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:102:15: ( argument_expr_list )?
                 if ( stream_argument_expr_list.hasNext() ) {
                     adaptor.addChild(root_1, stream_argument_expr_list.nextTree());
 
@@ -2646,7 +2646,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "datetime"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:104:1: datetime : dayblock timeblock -> ^( DATETIME dayblock timeblock ) ;
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:104:1: datetime : dayblock timeblock -> ^( DATETIME dayblock timeblock ) ;
     public final ChronosParser.datetime_return datetime() throws RecognitionException {
         ChronosParser.datetime_return retval = new ChronosParser.datetime_return();
         retval.start = input.LT(1);
@@ -2662,8 +2662,8 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_timeblock=new RewriteRuleSubtreeStream(adaptor,"rule timeblock");
         RewriteRuleSubtreeStream stream_dayblock=new RewriteRuleSubtreeStream(adaptor,"rule dayblock");
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:106:2: ( dayblock timeblock -> ^( DATETIME dayblock timeblock ) )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:106:4: dayblock timeblock
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:106:2: ( dayblock timeblock -> ^( DATETIME dayblock timeblock ) )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:106:4: dayblock timeblock
             {
             pushFollow(FOLLOW_dayblock_in_datetime627);
             dayblock74=dayblock();
@@ -2680,7 +2680,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_timeblock.add(timeblock75.getTree());
 
             // AST REWRITE
-            // elements: dayblock, timeblock
+            // elements: timeblock, dayblock
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2692,7 +2692,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
             // 107:4: -> ^( DATETIME dayblock timeblock )
             {
-                // /Users/shannonlee/PLT_Team20/Chronos.g:107:7: ^( DATETIME dayblock timeblock )
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:107:7: ^( DATETIME dayblock timeblock )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(
@@ -2742,7 +2742,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "timeblock"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:109:1: timeblock : a= TIME '~' b= TIME -> ^( TIMES $a $b) ;
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:109:1: timeblock : a= TIME '~' b= TIME -> ^( TIMES $a $b) ;
     public final ChronosParser.timeblock_return timeblock() throws RecognitionException {
         ChronosParser.timeblock_return retval = new ChronosParser.timeblock_return();
         retval.start = input.LT(1);
@@ -2761,8 +2761,8 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleTokenStream stream_TIME=new RewriteRuleTokenStream(adaptor,"token TIME");
 
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:111:2: (a= TIME '~' b= TIME -> ^( TIMES $a $b) )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:111:4: a= TIME '~' b= TIME
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:111:2: (a= TIME '~' b= TIME -> ^( TIMES $a $b) )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:111:4: a= TIME '~' b= TIME
             {
             a=(Token)match(input,TIME,FOLLOW_TIME_in_timeblock656);  
             stream_TIME.add(a);
@@ -2777,7 +2777,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: b, a
+            // elements: a, b
             // token labels: b, a
             // rule labels: retval
             // token list labels: 
@@ -2791,7 +2791,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
             // 111:22: -> ^( TIMES $a $b)
             {
-                // /Users/shannonlee/PLT_Team20/Chronos.g:111:25: ^( TIMES $a $b)
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:111:25: ^( TIMES $a $b)
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(
@@ -2841,7 +2841,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "dayblock"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:113:1: dayblock : '[' DAY ( ',' DAY )* ']' -> ^( DAYS ( DAY )+ ) ;
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:113:1: dayblock : '[' DAY ( ',' DAY )* ']' -> ^( DAYS ( DAY )+ ) ;
     public final ChronosParser.dayblock_return dayblock() throws RecognitionException {
         ChronosParser.dayblock_return retval = new ChronosParser.dayblock_return();
         retval.start = input.LT(1);
@@ -2866,8 +2866,8 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleTokenStream stream_63=new RewriteRuleTokenStream(adaptor,"token 63");
 
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:115:2: ( '[' DAY ( ',' DAY )* ']' -> ^( DAYS ( DAY )+ ) )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:115:4: '[' DAY ( ',' DAY )* ']'
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:115:2: ( '[' DAY ( ',' DAY )* ']' -> ^( DAYS ( DAY )+ ) )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:115:4: '[' DAY ( ',' DAY )* ']'
             {
             char_literal77=(Token)match(input,63,FOLLOW_63_in_dayblock685);  
             stream_63.add(char_literal77);
@@ -2877,7 +2877,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_DAY.add(DAY78);
 
 
-            // /Users/shannonlee/PLT_Team20/Chronos.g:115:12: ( ',' DAY )*
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:115:12: ( ',' DAY )*
             loop26:
             do {
                 int alt26=2;
@@ -2890,7 +2890,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt26) {
             	case 1 :
-            	    // /Users/shannonlee/PLT_Team20/Chronos.g:115:14: ',' DAY
+            	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:115:14: ',' DAY
             	    {
             	    char_literal79=(Token)match(input,55,FOLLOW_55_in_dayblock691);  
             	    stream_55.add(char_literal79);
@@ -2926,7 +2926,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
             // 115:29: -> ^( DAYS ( DAY )+ )
             {
-                // /Users/shannonlee/PLT_Team20/Chronos.g:115:32: ^( DAYS ( DAY )+ )
+                // C:\\Academics\\COMS W4115\\project\\Chronos.g:115:32: ^( DAYS ( DAY )+ )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(
@@ -2983,7 +2983,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "primary_expr"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:117:1: primary_expr : ( constant | ID | STRING | TIME | '(' expr ')' -> expr );
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:117:1: primary_expr : ( constant | ID | STRING | TIME | '(' expr ')' -> expr );
     public final ChronosParser.primary_expr_return primary_expr() throws RecognitionException {
         ChronosParser.primary_expr_return retval = new ChronosParser.primary_expr_return();
         retval.start = input.LT(1);
@@ -3010,7 +3010,7 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleTokenStream stream_52=new RewriteRuleTokenStream(adaptor,"token 52");
         RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:118:2: ( constant | ID | STRING | TIME | '(' expr ')' -> expr )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:118:2: ( constant | ID | STRING | TIME | '(' expr ')' -> expr )
             int alt27=5;
             switch ( input.LA(1) ) {
             case FLOAT:
@@ -3049,7 +3049,7 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt27) {
                 case 1 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:118:4: constant
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:118:4: constant
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -3064,7 +3064,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:119:4: ID
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:119:4: ID
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -3079,7 +3079,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 3 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:120:4: STRING
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:120:4: STRING
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -3094,7 +3094,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 4 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:121:4: TIME
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:121:4: TIME
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
@@ -3109,7 +3109,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 5 :
-                    // /Users/shannonlee/PLT_Team20/Chronos.g:122:4: '(' expr ')'
+                    // C:\\Academics\\COMS W4115\\project\\Chronos.g:122:4: '(' expr ')'
                     {
                     char_literal86=(Token)match(input,51,FOLLOW_51_in_primary_expr737);  
                     stream_51.add(char_literal86);
@@ -3179,7 +3179,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "argument_expr_list"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:124:1: argument_expr_list : ( expr ) ( ',' expr )* -> ( expr )+ ;
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:124:1: argument_expr_list : ( expr ) ( ',' expr )* -> ( expr )+ ;
     public final ChronosParser.argument_expr_list_return argument_expr_list() throws RecognitionException {
         ChronosParser.argument_expr_list_return retval = new ChronosParser.argument_expr_list_return();
         retval.start = input.LT(1);
@@ -3197,11 +3197,11 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleTokenStream stream_55=new RewriteRuleTokenStream(adaptor,"token 55");
         RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:125:2: ( ( expr ) ( ',' expr )* -> ( expr )+ )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:125:4: ( expr ) ( ',' expr )*
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:125:2: ( ( expr ) ( ',' expr )* -> ( expr )+ )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:125:4: ( expr ) ( ',' expr )*
             {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:125:4: ( expr )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:125:5: expr
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:125:4: ( expr )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:125:5: expr
             {
             pushFollow(FOLLOW_expr_in_argument_expr_list754);
             expr89=expr();
@@ -3213,7 +3213,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            // /Users/shannonlee/PLT_Team20/Chronos.g:125:11: ( ',' expr )*
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:125:11: ( ',' expr )*
             loop28:
             do {
                 int alt28=2;
@@ -3226,7 +3226,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt28) {
             	case 1 :
-            	    // /Users/shannonlee/PLT_Team20/Chronos.g:125:12: ',' expr
+            	    // C:\\Academics\\COMS W4115\\project\\Chronos.g:125:12: ',' expr
             	    {
             	    char_literal90=(Token)match(input,55,FOLLOW_55_in_argument_expr_list758);  
             	    stream_55.add(char_literal90);
@@ -3306,7 +3306,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "constant"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:127:1: constant : ( INT | FLOAT );
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:127:1: constant : ( INT | FLOAT );
     public final ChronosParser.constant_return constant() throws RecognitionException {
         ChronosParser.constant_return retval = new ChronosParser.constant_return();
         retval.start = input.LT(1);
@@ -3319,8 +3319,8 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree set92_tree=null;
 
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:128:2: ( INT | FLOAT )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:128:2: ( INT | FLOAT )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
@@ -3371,7 +3371,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "type_specifier"
-    // /Users/shannonlee/PLT_Team20/Chronos.g:131:1: type_specifier : ( INT_T | DOUBLE_T | DAYS_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T );
+    // C:\\Academics\\COMS W4115\\project\\Chronos.g:131:1: type_specifier : ( INT_T | DOUBLE_T | DAYS_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T );
     public final ChronosParser.type_specifier_return type_specifier() throws RecognitionException {
         ChronosParser.type_specifier_return retval = new ChronosParser.type_specifier_return();
         retval.start = input.LT(1);
@@ -3384,8 +3384,8 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree set93_tree=null;
 
         try {
-            // /Users/shannonlee/PLT_Team20/Chronos.g:132:2: ( INT_T | DOUBLE_T | DAYS_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T )
-            // /Users/shannonlee/PLT_Team20/Chronos.g:
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:132:2: ( INT_T | DOUBLE_T | DAYS_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T )
+            // C:\\Academics\\COMS W4115\\project\\Chronos.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 

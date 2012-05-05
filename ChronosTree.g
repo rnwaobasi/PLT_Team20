@@ -78,21 +78,25 @@ expr:	^(OR expr expr)
 	|	^('-' expr expr)
 	|	^('*' expr expr)
 	|	^('/' expr expr)
-	|	^(FUNC ^('.' expr expr) function_parens)
+	|	^('.' expr expr)
 	|	^(NOT expr)
 	|	datetime
 	|	timeblock
 	|	dayblock
-	|	constant
 	|	MASTER_T
-	|	ID
-	|	STRING
-	|	TIME
+	|	^(primary_expr function_parens)
 	;
 /*function //returns [int result]
 // matches functions or variables
 	:	^(primary_expr function_parens)
-	;*/
+	;*/	
+primary_expr
+	:	constant
+	|	ID
+	|	STRING
+	|	TIME
+	;
+
 function_parens
 // matches () and the params in a function call
 	:	^(PARAMS argument_expr_list?)
