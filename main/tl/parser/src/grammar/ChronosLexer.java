@@ -1,4 +1,4 @@
-// $ANTLR 3.4 grammar/Chronos.g 2012-05-05 11:07:11
+// $ANTLR 3.4 src/grammar/Chronos.g 2012-05-05 11:14:24
  
   package tl.parser; 
 
@@ -89,15 +89,15 @@ public class ChronosLexer extends Lexer {
     public ChronosLexer(CharStream input, RecognizerSharedState state) {
         super(input,state);
     }
-    public String getGrammarFileName() { return "grammar/Chronos.g"; }
+    public String getGrammarFileName() { return "src/grammar/Chronos.g"; }
 
     // $ANTLR start "T__51"
     public final void mT__51() throws RecognitionException {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:11:7: ( '(' )
-            // grammar/Chronos.g:11:9: '('
+            // src/grammar/Chronos.g:11:7: ( '(' )
+            // src/grammar/Chronos.g:11:9: '('
             {
             match('('); 
 
@@ -117,8 +117,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:12:7: ( ')' )
-            // grammar/Chronos.g:12:9: ')'
+            // src/grammar/Chronos.g:12:7: ( ')' )
+            // src/grammar/Chronos.g:12:9: ')'
             {
             match(')'); 
 
@@ -138,8 +138,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:13:7: ( '*' )
-            // grammar/Chronos.g:13:9: '*'
+            // src/grammar/Chronos.g:13:7: ( '*' )
+            // src/grammar/Chronos.g:13:9: '*'
             {
             match('*'); 
 
@@ -159,8 +159,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:14:7: ( '+' )
-            // grammar/Chronos.g:14:9: '+'
+            // src/grammar/Chronos.g:14:7: ( '+' )
+            // src/grammar/Chronos.g:14:9: '+'
             {
             match('+'); 
 
@@ -180,8 +180,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:15:7: ( ',' )
-            // grammar/Chronos.g:15:9: ','
+            // src/grammar/Chronos.g:15:7: ( ',' )
+            // src/grammar/Chronos.g:15:9: ','
             {
             match(','); 
 
@@ -201,8 +201,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:16:7: ( '-' )
-            // grammar/Chronos.g:16:9: '-'
+            // src/grammar/Chronos.g:16:7: ( '-' )
+            // src/grammar/Chronos.g:16:9: '-'
             {
             match('-'); 
 
@@ -222,8 +222,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:17:7: ( '.' )
-            // grammar/Chronos.g:17:9: '.'
+            // src/grammar/Chronos.g:17:7: ( '.' )
+            // src/grammar/Chronos.g:17:9: '.'
             {
             match('.'); 
 
@@ -243,8 +243,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:18:7: ( '/' )
-            // grammar/Chronos.g:18:9: '/'
+            // src/grammar/Chronos.g:18:7: ( '/' )
+            // src/grammar/Chronos.g:18:9: '/'
             {
             match('/'); 
 
@@ -264,8 +264,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__59;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:19:7: ( ';' )
-            // grammar/Chronos.g:19:9: ';'
+            // src/grammar/Chronos.g:19:7: ( ';' )
+            // src/grammar/Chronos.g:19:9: ';'
             {
             match(';'); 
 
@@ -285,8 +285,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__60;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:20:7: ( '<' )
-            // grammar/Chronos.g:20:9: '<'
+            // src/grammar/Chronos.g:20:7: ( '<' )
+            // src/grammar/Chronos.g:20:9: '<'
             {
             match('<'); 
 
@@ -306,8 +306,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__61;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:21:7: ( '=' )
-            // grammar/Chronos.g:21:9: '='
+            // src/grammar/Chronos.g:21:7: ( '=' )
+            // src/grammar/Chronos.g:21:9: '='
             {
             match('='); 
 
@@ -327,8 +327,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__62;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:22:7: ( '>' )
-            // grammar/Chronos.g:22:9: '>'
+            // src/grammar/Chronos.g:22:7: ( '>' )
+            // src/grammar/Chronos.g:22:9: '>'
             {
             match('>'); 
 
@@ -348,8 +348,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__63;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:23:7: ( '[' )
-            // grammar/Chronos.g:23:9: '['
+            // src/grammar/Chronos.g:23:7: ( '[' )
+            // src/grammar/Chronos.g:23:9: '['
             {
             match('['); 
 
@@ -369,8 +369,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__64;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:24:7: ( ']' )
-            // grammar/Chronos.g:24:9: ']'
+            // src/grammar/Chronos.g:24:7: ( ']' )
+            // src/grammar/Chronos.g:24:9: ']'
             {
             match(']'); 
 
@@ -390,8 +390,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__65;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:25:7: ( '{' )
-            // grammar/Chronos.g:25:9: '{'
+            // src/grammar/Chronos.g:25:7: ( '{' )
+            // src/grammar/Chronos.g:25:9: '{'
             {
             match('{'); 
 
@@ -411,8 +411,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__66;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:26:7: ( '}' )
-            // grammar/Chronos.g:26:9: '}'
+            // src/grammar/Chronos.g:26:7: ( '}' )
+            // src/grammar/Chronos.g:26:9: '}'
             {
             match('}'); 
 
@@ -432,8 +432,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = T__67;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:27:7: ( '~' )
-            // grammar/Chronos.g:27:9: '~'
+            // src/grammar/Chronos.g:27:7: ( '~' )
+            // src/grammar/Chronos.g:27:9: '~'
             {
             match('~'); 
 
@@ -453,8 +453,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = IF_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:162:7: ( 'if' )
-            // grammar/Chronos.g:162:9: 'if'
+            // src/grammar/Chronos.g:162:7: ( 'if' )
+            // src/grammar/Chronos.g:162:9: 'if'
             {
             match("if"); 
 
@@ -476,8 +476,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = ELSE_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:164:8: ( 'else' )
-            // grammar/Chronos.g:164:10: 'else'
+            // src/grammar/Chronos.g:164:8: ( 'else' )
+            // src/grammar/Chronos.g:164:10: 'else'
             {
             match("else"); 
 
@@ -499,8 +499,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = NEW_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:166:8: ( 'new' )
-            // grammar/Chronos.g:166:10: 'new'
+            // src/grammar/Chronos.g:166:8: ( 'new' )
+            // src/grammar/Chronos.g:166:10: 'new'
             {
             match("new"); 
 
@@ -522,8 +522,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = FOREACH_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:168:11: ( 'foreach' )
-            // grammar/Chronos.g:168:13: 'foreach'
+            // src/grammar/Chronos.g:168:11: ( 'foreach' )
+            // src/grammar/Chronos.g:168:13: 'foreach'
             {
             match("foreach"); 
 
@@ -545,8 +545,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = IN_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:170:6: ( 'in' )
-            // grammar/Chronos.g:170:8: 'in'
+            // src/grammar/Chronos.g:170:6: ( 'in' )
+            // src/grammar/Chronos.g:170:8: 'in'
             {
             match("in"); 
 
@@ -568,8 +568,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = BREAK_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:172:9: ( 'break' )
-            // grammar/Chronos.g:172:11: 'break'
+            // src/grammar/Chronos.g:172:9: ( 'break' )
+            // src/grammar/Chronos.g:172:11: 'break'
             {
             match("break"); 
 
@@ -591,8 +591,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = SCHEDULE_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:174:11: ( 'schedule' )
-            // grammar/Chronos.g:174:13: 'schedule'
+            // src/grammar/Chronos.g:174:11: ( 'schedule' )
+            // src/grammar/Chronos.g:174:13: 'schedule'
             {
             match("schedule"); 
 
@@ -614,8 +614,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = COURSE_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:176:9: ( 'course' )
-            // grammar/Chronos.g:176:11: 'course'
+            // src/grammar/Chronos.g:176:9: ( 'course' )
+            // src/grammar/Chronos.g:176:11: 'course'
             {
             match("course"); 
 
@@ -637,8 +637,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = COURSELIST_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:178:13: ( 'courselist' )
-            // grammar/Chronos.g:178:15: 'courselist'
+            // src/grammar/Chronos.g:178:13: ( 'courselist' )
+            // src/grammar/Chronos.g:178:15: 'courselist'
             {
             match("courselist"); 
 
@@ -660,8 +660,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = TIMEBLOCK_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:180:12: ( 'timeblock' )
-            // grammar/Chronos.g:180:14: 'timeblock'
+            // src/grammar/Chronos.g:180:12: ( 'timeblock' )
+            // src/grammar/Chronos.g:180:14: 'timeblock'
             {
             match("timeblock"); 
 
@@ -683,8 +683,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = DATETIME_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:182:11: ( 'datetime' )
-            // grammar/Chronos.g:182:14: 'datetime'
+            // src/grammar/Chronos.g:182:11: ( 'datetime' )
+            // src/grammar/Chronos.g:182:14: 'datetime'
             {
             match("datetime"); 
 
@@ -706,8 +706,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = INT_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:184:7: ( 'int' )
-            // grammar/Chronos.g:184:9: 'int'
+            // src/grammar/Chronos.g:184:7: ( 'int' )
+            // src/grammar/Chronos.g:184:9: 'int'
             {
             match("int"); 
 
@@ -729,8 +729,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = DOUBLE_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:186:9: ( 'double' )
-            // grammar/Chronos.g:186:11: 'double'
+            // src/grammar/Chronos.g:186:9: ( 'double' )
+            // src/grammar/Chronos.g:186:11: 'double'
             {
             match("double"); 
 
@@ -752,8 +752,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = DAYBLOCK_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:188:12: ( 'dayblock' )
-            // grammar/Chronos.g:188:14: 'dayblock'
+            // src/grammar/Chronos.g:188:12: ( 'dayblock' )
+            // src/grammar/Chronos.g:188:14: 'dayblock'
             {
             match("dayblock"); 
 
@@ -775,8 +775,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = TIME_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:190:8: ( 'time' )
-            // grammar/Chronos.g:190:10: 'time'
+            // src/grammar/Chronos.g:190:8: ( 'time' )
+            // src/grammar/Chronos.g:190:10: 'time'
             {
             match("time"); 
 
@@ -798,8 +798,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = STRING_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:192:9: ( 'string' )
-            // grammar/Chronos.g:192:11: 'string'
+            // src/grammar/Chronos.g:192:9: ( 'string' )
+            // src/grammar/Chronos.g:192:11: 'string'
             {
             match("string"); 
 
@@ -821,8 +821,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = MASTER_T;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:195:2: ( 'master' )
-            // grammar/Chronos.g:195:4: 'master'
+            // src/grammar/Chronos.g:195:2: ( 'master' )
+            // src/grammar/Chronos.g:195:4: 'master'
             {
             match("master"); 
 
@@ -844,10 +844,10 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = TIME;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:199:2: ( ( '0' .. '2' )? ( '0' .. '9' ) ':' ( '0' .. '5' ) ( '0' .. '9' ) )
-            // grammar/Chronos.g:199:4: ( '0' .. '2' )? ( '0' .. '9' ) ':' ( '0' .. '5' ) ( '0' .. '9' )
+            // src/grammar/Chronos.g:199:2: ( ( '0' .. '2' )? ( '0' .. '9' ) ':' ( '0' .. '5' ) ( '0' .. '9' ) )
+            // src/grammar/Chronos.g:199:4: ( '0' .. '2' )? ( '0' .. '9' ) ':' ( '0' .. '5' ) ( '0' .. '9' )
             {
-            // grammar/Chronos.g:199:4: ( '0' .. '2' )?
+            // src/grammar/Chronos.g:199:4: ( '0' .. '2' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -860,7 +860,7 @@ public class ChronosLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // grammar/Chronos.g:
+                    // src/grammar/Chronos.g:
                     {
                     if ( (input.LA(1) >= '0' && input.LA(1) <= '2') ) {
                         input.consume();
@@ -926,8 +926,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:205:5: ( '&&' )
-            // grammar/Chronos.g:205:7: '&&'
+            // src/grammar/Chronos.g:205:5: ( '&&' )
+            // src/grammar/Chronos.g:205:7: '&&'
             {
             match("&&"); 
 
@@ -949,8 +949,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:207:4: ( '||' )
-            // grammar/Chronos.g:207:6: '||'
+            // src/grammar/Chronos.g:207:4: ( '||' )
+            // src/grammar/Chronos.g:207:6: '||'
             {
             match("||"); 
 
@@ -972,8 +972,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = NOT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:209:5: ( '!' )
-            // grammar/Chronos.g:209:7: '!'
+            // src/grammar/Chronos.g:209:5: ( '!' )
+            // src/grammar/Chronos.g:209:7: '!'
             {
             match('!'); 
 
@@ -993,8 +993,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = LEQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:211:5: ( '<=' )
-            // grammar/Chronos.g:211:7: '<='
+            // src/grammar/Chronos.g:211:5: ( '<=' )
+            // src/grammar/Chronos.g:211:7: '<='
             {
             match("<="); 
 
@@ -1016,8 +1016,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = GEQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:213:5: ( '>=' )
-            // grammar/Chronos.g:213:7: '>='
+            // src/grammar/Chronos.g:213:5: ( '>=' )
+            // src/grammar/Chronos.g:213:7: '>='
             {
             match(">="); 
 
@@ -1039,8 +1039,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = NEQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:215:5: ( '!=' )
-            // grammar/Chronos.g:215:7: '!='
+            // src/grammar/Chronos.g:215:5: ( '!=' )
+            // src/grammar/Chronos.g:215:7: '!='
             {
             match("!="); 
 
@@ -1062,8 +1062,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:217:4: ( '==' )
-            // grammar/Chronos.g:217:6: '=='
+            // src/grammar/Chronos.g:217:4: ( '==' )
+            // src/grammar/Chronos.g:217:6: '=='
             {
             match("=="); 
 
@@ -1085,8 +1085,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:220:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // grammar/Chronos.g:220:7: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // src/grammar/Chronos.g:220:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // src/grammar/Chronos.g:220:7: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
                 input.consume();
@@ -1098,7 +1098,7 @@ public class ChronosLexer extends Lexer {
             }
 
 
-            // grammar/Chronos.g:220:31: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // src/grammar/Chronos.g:220:31: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop2:
             do {
                 int alt2=2;
@@ -1111,7 +1111,7 @@ public class ChronosLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // grammar/Chronos.g:
+            	    // src/grammar/Chronos.g:
             	    {
             	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
             	        input.consume();
@@ -1148,10 +1148,10 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:223:5: ( ( '0' .. '9' )+ )
-            // grammar/Chronos.g:223:7: ( '0' .. '9' )+
+            // src/grammar/Chronos.g:223:5: ( ( '0' .. '9' )+ )
+            // src/grammar/Chronos.g:223:7: ( '0' .. '9' )+
             {
-            // grammar/Chronos.g:223:7: ( '0' .. '9' )+
+            // src/grammar/Chronos.g:223:7: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -1165,7 +1165,7 @@ public class ChronosLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // grammar/Chronos.g:
+            	    // src/grammar/Chronos.g:
             	    {
             	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
             	        input.consume();
@@ -1206,14 +1206,14 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = FLOAT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:227:5: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT )
+            // src/grammar/Chronos.g:227:5: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT )
             int alt10=3;
             alt10 = dfa10.predict(input);
             switch (alt10) {
                 case 1 :
-                    // grammar/Chronos.g:227:9: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )?
+                    // src/grammar/Chronos.g:227:9: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )?
                     {
-                    // grammar/Chronos.g:227:9: ( '0' .. '9' )+
+                    // src/grammar/Chronos.g:227:9: ( '0' .. '9' )+
                     int cnt4=0;
                     loop4:
                     do {
@@ -1227,7 +1227,7 @@ public class ChronosLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // grammar/Chronos.g:
+                    	    // src/grammar/Chronos.g:
                     	    {
                     	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
                     	        input.consume();
@@ -1254,7 +1254,7 @@ public class ChronosLexer extends Lexer {
 
                     match('.'); 
 
-                    // grammar/Chronos.g:227:25: ( '0' .. '9' )*
+                    // src/grammar/Chronos.g:227:25: ( '0' .. '9' )*
                     loop5:
                     do {
                         int alt5=2;
@@ -1267,7 +1267,7 @@ public class ChronosLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // grammar/Chronos.g:
+                    	    // src/grammar/Chronos.g:
                     	    {
                     	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
                     	        input.consume();
@@ -1288,7 +1288,7 @@ public class ChronosLexer extends Lexer {
                     } while (true);
 
 
-                    // grammar/Chronos.g:227:37: ( EXPONENT )?
+                    // src/grammar/Chronos.g:227:37: ( EXPONENT )?
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
@@ -1297,7 +1297,7 @@ public class ChronosLexer extends Lexer {
                     }
                     switch (alt6) {
                         case 1 :
-                            // grammar/Chronos.g:227:37: EXPONENT
+                            // src/grammar/Chronos.g:227:37: EXPONENT
                             {
                             mEXPONENT(); 
 
@@ -1311,11 +1311,11 @@ public class ChronosLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // grammar/Chronos.g:228:9: '.' ( '0' .. '9' )+ ( EXPONENT )?
+                    // src/grammar/Chronos.g:228:9: '.' ( '0' .. '9' )+ ( EXPONENT )?
                     {
                     match('.'); 
 
-                    // grammar/Chronos.g:228:13: ( '0' .. '9' )+
+                    // src/grammar/Chronos.g:228:13: ( '0' .. '9' )+
                     int cnt7=0;
                     loop7:
                     do {
@@ -1329,7 +1329,7 @@ public class ChronosLexer extends Lexer {
 
                         switch (alt7) {
                     	case 1 :
-                    	    // grammar/Chronos.g:
+                    	    // src/grammar/Chronos.g:
                     	    {
                     	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
                     	        input.consume();
@@ -1354,7 +1354,7 @@ public class ChronosLexer extends Lexer {
                     } while (true);
 
 
-                    // grammar/Chronos.g:228:25: ( EXPONENT )?
+                    // src/grammar/Chronos.g:228:25: ( EXPONENT )?
                     int alt8=2;
                     int LA8_0 = input.LA(1);
 
@@ -1363,7 +1363,7 @@ public class ChronosLexer extends Lexer {
                     }
                     switch (alt8) {
                         case 1 :
-                            // grammar/Chronos.g:228:25: EXPONENT
+                            // src/grammar/Chronos.g:228:25: EXPONENT
                             {
                             mEXPONENT(); 
 
@@ -1377,9 +1377,9 @@ public class ChronosLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // grammar/Chronos.g:229:9: ( '0' .. '9' )+ EXPONENT
+                    // src/grammar/Chronos.g:229:9: ( '0' .. '9' )+ EXPONENT
                     {
-                    // grammar/Chronos.g:229:9: ( '0' .. '9' )+
+                    // src/grammar/Chronos.g:229:9: ( '0' .. '9' )+
                     int cnt9=0;
                     loop9:
                     do {
@@ -1393,7 +1393,7 @@ public class ChronosLexer extends Lexer {
 
                         switch (alt9) {
                     	case 1 :
-                    	    // grammar/Chronos.g:
+                    	    // src/grammar/Chronos.g:
                     	    {
                     	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
                     	        input.consume();
@@ -1439,7 +1439,7 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:233:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
+            // src/grammar/Chronos.g:233:5: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '/*' ( options {greedy=false; } : . )* '*/' )
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -1469,13 +1469,13 @@ public class ChronosLexer extends Lexer {
             }
             switch (alt14) {
                 case 1 :
-                    // grammar/Chronos.g:233:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+                    // src/grammar/Chronos.g:233:9: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
                     {
                     match("//"); 
 
 
 
-                    // grammar/Chronos.g:233:14: (~ ( '\\n' | '\\r' ) )*
+                    // src/grammar/Chronos.g:233:14: (~ ( '\\n' | '\\r' ) )*
                     loop11:
                     do {
                         int alt11=2;
@@ -1488,7 +1488,7 @@ public class ChronosLexer extends Lexer {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // grammar/Chronos.g:
+                    	    // src/grammar/Chronos.g:
                     	    {
                     	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\t')||(input.LA(1) >= '\u000B' && input.LA(1) <= '\f')||(input.LA(1) >= '\u000E' && input.LA(1) <= '\uFFFF') ) {
                     	        input.consume();
@@ -1509,7 +1509,7 @@ public class ChronosLexer extends Lexer {
                     } while (true);
 
 
-                    // grammar/Chronos.g:233:28: ( '\\r' )?
+                    // src/grammar/Chronos.g:233:28: ( '\\r' )?
                     int alt12=2;
                     int LA12_0 = input.LA(1);
 
@@ -1518,7 +1518,7 @@ public class ChronosLexer extends Lexer {
                     }
                     switch (alt12) {
                         case 1 :
-                            // grammar/Chronos.g:233:28: '\\r'
+                            // src/grammar/Chronos.g:233:28: '\\r'
                             {
                             match('\r'); 
 
@@ -1535,13 +1535,13 @@ public class ChronosLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // grammar/Chronos.g:234:9: '/*' ( options {greedy=false; } : . )* '*/'
+                    // src/grammar/Chronos.g:234:9: '/*' ( options {greedy=false; } : . )* '*/'
                     {
                     match("/*"); 
 
 
 
-                    // grammar/Chronos.g:234:14: ( options {greedy=false; } : . )*
+                    // src/grammar/Chronos.g:234:14: ( options {greedy=false; } : . )*
                     loop13:
                     do {
                         int alt13=2;
@@ -1566,7 +1566,7 @@ public class ChronosLexer extends Lexer {
 
                         switch (alt13) {
                     	case 1 :
-                    	    // grammar/Chronos.g:234:42: .
+                    	    // src/grammar/Chronos.g:234:42: .
                     	    {
                     	    matchAny(); 
 
@@ -1603,8 +1603,8 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:237:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-            // grammar/Chronos.g:237:9: ( ' ' | '\\t' | '\\r' | '\\n' )
+            // src/grammar/Chronos.g:237:5: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+            // src/grammar/Chronos.g:237:9: ( ' ' | '\\t' | '\\r' | '\\n' )
             {
             if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
                 input.consume();
@@ -1634,12 +1634,12 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:245:5: ( '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"' )
-            // grammar/Chronos.g:245:8: '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"'
+            // src/grammar/Chronos.g:245:5: ( '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"' )
+            // src/grammar/Chronos.g:245:8: '\"' ( ESC_SEQ |~ ( '\\\\' | '\"' ) )* '\"'
             {
             match('\"'); 
 
-            // grammar/Chronos.g:245:12: ( ESC_SEQ |~ ( '\\\\' | '\"' ) )*
+            // src/grammar/Chronos.g:245:12: ( ESC_SEQ |~ ( '\\\\' | '\"' ) )*
             loop15:
             do {
                 int alt15=3;
@@ -1655,7 +1655,7 @@ public class ChronosLexer extends Lexer {
 
                 switch (alt15) {
             	case 1 :
-            	    // grammar/Chronos.g:245:14: ESC_SEQ
+            	    // src/grammar/Chronos.g:245:14: ESC_SEQ
             	    {
             	    mESC_SEQ(); 
 
@@ -1663,7 +1663,7 @@ public class ChronosLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // grammar/Chronos.g:245:24: ~ ( '\\\\' | '\"' )
+            	    // src/grammar/Chronos.g:245:24: ~ ( '\\\\' | '\"' )
             	    {
             	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
             	        input.consume();
@@ -1702,12 +1702,12 @@ public class ChronosLexer extends Lexer {
         try {
             int _type = CHAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // grammar/Chronos.g:248:5: ( '\\'' ( ESC_SEQ |~ ( '\\'' | '\\\\' ) ) '\\'' )
-            // grammar/Chronos.g:248:8: '\\'' ( ESC_SEQ |~ ( '\\'' | '\\\\' ) ) '\\''
+            // src/grammar/Chronos.g:248:5: ( '\\'' ( ESC_SEQ |~ ( '\\'' | '\\\\' ) ) '\\'' )
+            // src/grammar/Chronos.g:248:8: '\\'' ( ESC_SEQ |~ ( '\\'' | '\\\\' ) ) '\\''
             {
             match('\''); 
 
-            // grammar/Chronos.g:248:13: ( ESC_SEQ |~ ( '\\'' | '\\\\' ) )
+            // src/grammar/Chronos.g:248:13: ( ESC_SEQ |~ ( '\\'' | '\\\\' ) )
             int alt16=2;
             int LA16_0 = input.LA(1);
 
@@ -1726,7 +1726,7 @@ public class ChronosLexer extends Lexer {
             }
             switch (alt16) {
                 case 1 :
-                    // grammar/Chronos.g:248:15: ESC_SEQ
+                    // src/grammar/Chronos.g:248:15: ESC_SEQ
                     {
                     mESC_SEQ(); 
 
@@ -1734,7 +1734,7 @@ public class ChronosLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // grammar/Chronos.g:248:25: ~ ( '\\'' | '\\\\' )
+                    // src/grammar/Chronos.g:248:25: ~ ( '\\'' | '\\\\' )
                     {
                     if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '&')||(input.LA(1) >= '(' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
                         input.consume();
@@ -1768,8 +1768,8 @@ public class ChronosLexer extends Lexer {
     // $ANTLR start "DAY"
     public final void mDAY() throws RecognitionException {
         try {
-            // grammar/Chronos.g:253:5: ( ( 'M' | 'T' | 'W' | 'R' | 'F' ) )
-            // grammar/Chronos.g:
+            // src/grammar/Chronos.g:253:5: ( ( 'M' | 'T' | 'W' | 'R' | 'F' ) )
+            // src/grammar/Chronos.g:
             {
             if ( input.LA(1)=='F'||input.LA(1)=='M'||input.LA(1)=='R'||input.LA(1)=='T'||input.LA(1)=='W' ) {
                 input.consume();
@@ -1794,8 +1794,8 @@ public class ChronosLexer extends Lexer {
     // $ANTLR start "EXPONENT"
     public final void mEXPONENT() throws RecognitionException {
         try {
-            // grammar/Chronos.g:257:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
-            // grammar/Chronos.g:257:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
+            // src/grammar/Chronos.g:257:10: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
+            // src/grammar/Chronos.g:257:12: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
             {
             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                 input.consume();
@@ -1807,7 +1807,7 @@ public class ChronosLexer extends Lexer {
             }
 
 
-            // grammar/Chronos.g:257:22: ( '+' | '-' )?
+            // src/grammar/Chronos.g:257:22: ( '+' | '-' )?
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -1816,7 +1816,7 @@ public class ChronosLexer extends Lexer {
             }
             switch (alt17) {
                 case 1 :
-                    // grammar/Chronos.g:
+                    // src/grammar/Chronos.g:
                     {
                     if ( input.LA(1)=='+'||input.LA(1)=='-' ) {
                         input.consume();
@@ -1834,7 +1834,7 @@ public class ChronosLexer extends Lexer {
             }
 
 
-            // grammar/Chronos.g:257:33: ( '0' .. '9' )+
+            // src/grammar/Chronos.g:257:33: ( '0' .. '9' )+
             int cnt18=0;
             loop18:
             do {
@@ -1848,7 +1848,7 @@ public class ChronosLexer extends Lexer {
 
                 switch (alt18) {
             	case 1 :
-            	    // grammar/Chronos.g:
+            	    // src/grammar/Chronos.g:
             	    {
             	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
             	        input.consume();
@@ -1886,8 +1886,8 @@ public class ChronosLexer extends Lexer {
     // $ANTLR start "HEX_DIGIT"
     public final void mHEX_DIGIT() throws RecognitionException {
         try {
-            // grammar/Chronos.g:260:11: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
-            // grammar/Chronos.g:
+            // src/grammar/Chronos.g:260:11: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+            // src/grammar/Chronos.g:
             {
             if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'F')||(input.LA(1) >= 'a' && input.LA(1) <= 'f') ) {
                 input.consume();
@@ -1912,7 +1912,7 @@ public class ChronosLexer extends Lexer {
     // $ANTLR start "ESC_SEQ"
     public final void mESC_SEQ() throws RecognitionException {
         try {
-            // grammar/Chronos.g:264:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
+            // src/grammar/Chronos.g:264:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
             int alt19=3;
             int LA19_0 = input.LA(1);
 
@@ -1965,7 +1965,7 @@ public class ChronosLexer extends Lexer {
             }
             switch (alt19) {
                 case 1 :
-                    // grammar/Chronos.g:264:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+                    // src/grammar/Chronos.g:264:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
                     {
                     match('\\'); 
 
@@ -1982,7 +1982,7 @@ public class ChronosLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // grammar/Chronos.g:265:9: UNICODE_ESC
+                    // src/grammar/Chronos.g:265:9: UNICODE_ESC
                     {
                     mUNICODE_ESC(); 
 
@@ -1990,7 +1990,7 @@ public class ChronosLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // grammar/Chronos.g:266:9: OCTAL_ESC
+                    // src/grammar/Chronos.g:266:9: OCTAL_ESC
                     {
                     mOCTAL_ESC(); 
 
@@ -2010,7 +2010,7 @@ public class ChronosLexer extends Lexer {
     // $ANTLR start "OCTAL_ESC"
     public final void mOCTAL_ESC() throws RecognitionException {
         try {
-            // grammar/Chronos.g:271:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
+            // src/grammar/Chronos.g:271:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
             int alt20=3;
             int LA20_0 = input.LA(1);
 
@@ -2061,7 +2061,7 @@ public class ChronosLexer extends Lexer {
             }
             switch (alt20) {
                 case 1 :
-                    // grammar/Chronos.g:271:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
+                    // src/grammar/Chronos.g:271:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
                     {
                     match('\\'); 
 
@@ -2098,7 +2098,7 @@ public class ChronosLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // grammar/Chronos.g:272:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
+                    // src/grammar/Chronos.g:272:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
                     {
                     match('\\'); 
 
@@ -2125,7 +2125,7 @@ public class ChronosLexer extends Lexer {
                     }
                     break;
                 case 3 :
-                    // grammar/Chronos.g:273:9: '\\\\' ( '0' .. '7' )
+                    // src/grammar/Chronos.g:273:9: '\\\\' ( '0' .. '7' )
                     {
                     match('\\'); 
 
@@ -2154,8 +2154,8 @@ public class ChronosLexer extends Lexer {
     // $ANTLR start "UNICODE_ESC"
     public final void mUNICODE_ESC() throws RecognitionException {
         try {
-            // grammar/Chronos.g:278:5: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
-            // grammar/Chronos.g:278:9: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+            // src/grammar/Chronos.g:278:5: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
+            // src/grammar/Chronos.g:278:9: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
             {
             match('\\'); 
 
@@ -2184,12 +2184,12 @@ public class ChronosLexer extends Lexer {
     // $ANTLR end "UNICODE_ESC"
 
     public void mTokens() throws RecognitionException {
-        // grammar/Chronos.g:1:8: ( T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | IF_T | ELSE_T | NEW_T | FOREACH_T | IN_T | BREAK_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T | INT_T | DOUBLE_T | DAYBLOCK_T | TIME_T | STRING_T | MASTER_T | TIME | AND | OR | NOT | LEQ | GEQ | NEQ | EQ | ID | INT | FLOAT | COMMENT | WS | STRING | CHAR )
+        // src/grammar/Chronos.g:1:8: ( T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | IF_T | ELSE_T | NEW_T | FOREACH_T | IN_T | BREAK_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T | INT_T | DOUBLE_T | DAYBLOCK_T | TIME_T | STRING_T | MASTER_T | TIME | AND | OR | NOT | LEQ | GEQ | NEQ | EQ | ID | INT | FLOAT | COMMENT | WS | STRING | CHAR )
         int alt21=49;
         alt21 = dfa21.predict(input);
         switch (alt21) {
             case 1 :
-                // grammar/Chronos.g:1:10: T__51
+                // src/grammar/Chronos.g:1:10: T__51
                 {
                 mT__51(); 
 
@@ -2197,7 +2197,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 2 :
-                // grammar/Chronos.g:1:16: T__52
+                // src/grammar/Chronos.g:1:16: T__52
                 {
                 mT__52(); 
 
@@ -2205,7 +2205,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 3 :
-                // grammar/Chronos.g:1:22: T__53
+                // src/grammar/Chronos.g:1:22: T__53
                 {
                 mT__53(); 
 
@@ -2213,7 +2213,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 4 :
-                // grammar/Chronos.g:1:28: T__54
+                // src/grammar/Chronos.g:1:28: T__54
                 {
                 mT__54(); 
 
@@ -2221,7 +2221,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 5 :
-                // grammar/Chronos.g:1:34: T__55
+                // src/grammar/Chronos.g:1:34: T__55
                 {
                 mT__55(); 
 
@@ -2229,7 +2229,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 6 :
-                // grammar/Chronos.g:1:40: T__56
+                // src/grammar/Chronos.g:1:40: T__56
                 {
                 mT__56(); 
 
@@ -2237,7 +2237,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 7 :
-                // grammar/Chronos.g:1:46: T__57
+                // src/grammar/Chronos.g:1:46: T__57
                 {
                 mT__57(); 
 
@@ -2245,7 +2245,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 8 :
-                // grammar/Chronos.g:1:52: T__58
+                // src/grammar/Chronos.g:1:52: T__58
                 {
                 mT__58(); 
 
@@ -2253,7 +2253,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 9 :
-                // grammar/Chronos.g:1:58: T__59
+                // src/grammar/Chronos.g:1:58: T__59
                 {
                 mT__59(); 
 
@@ -2261,7 +2261,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 10 :
-                // grammar/Chronos.g:1:64: T__60
+                // src/grammar/Chronos.g:1:64: T__60
                 {
                 mT__60(); 
 
@@ -2269,7 +2269,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 11 :
-                // grammar/Chronos.g:1:70: T__61
+                // src/grammar/Chronos.g:1:70: T__61
                 {
                 mT__61(); 
 
@@ -2277,7 +2277,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 12 :
-                // grammar/Chronos.g:1:76: T__62
+                // src/grammar/Chronos.g:1:76: T__62
                 {
                 mT__62(); 
 
@@ -2285,7 +2285,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 13 :
-                // grammar/Chronos.g:1:82: T__63
+                // src/grammar/Chronos.g:1:82: T__63
                 {
                 mT__63(); 
 
@@ -2293,7 +2293,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 14 :
-                // grammar/Chronos.g:1:88: T__64
+                // src/grammar/Chronos.g:1:88: T__64
                 {
                 mT__64(); 
 
@@ -2301,7 +2301,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 15 :
-                // grammar/Chronos.g:1:94: T__65
+                // src/grammar/Chronos.g:1:94: T__65
                 {
                 mT__65(); 
 
@@ -2309,7 +2309,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 16 :
-                // grammar/Chronos.g:1:100: T__66
+                // src/grammar/Chronos.g:1:100: T__66
                 {
                 mT__66(); 
 
@@ -2317,7 +2317,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 17 :
-                // grammar/Chronos.g:1:106: T__67
+                // src/grammar/Chronos.g:1:106: T__67
                 {
                 mT__67(); 
 
@@ -2325,7 +2325,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 18 :
-                // grammar/Chronos.g:1:112: IF_T
+                // src/grammar/Chronos.g:1:112: IF_T
                 {
                 mIF_T(); 
 
@@ -2333,7 +2333,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 19 :
-                // grammar/Chronos.g:1:117: ELSE_T
+                // src/grammar/Chronos.g:1:117: ELSE_T
                 {
                 mELSE_T(); 
 
@@ -2341,7 +2341,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 20 :
-                // grammar/Chronos.g:1:124: NEW_T
+                // src/grammar/Chronos.g:1:124: NEW_T
                 {
                 mNEW_T(); 
 
@@ -2349,7 +2349,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 21 :
-                // grammar/Chronos.g:1:130: FOREACH_T
+                // src/grammar/Chronos.g:1:130: FOREACH_T
                 {
                 mFOREACH_T(); 
 
@@ -2357,7 +2357,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 22 :
-                // grammar/Chronos.g:1:140: IN_T
+                // src/grammar/Chronos.g:1:140: IN_T
                 {
                 mIN_T(); 
 
@@ -2365,7 +2365,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 23 :
-                // grammar/Chronos.g:1:145: BREAK_T
+                // src/grammar/Chronos.g:1:145: BREAK_T
                 {
                 mBREAK_T(); 
 
@@ -2373,7 +2373,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 24 :
-                // grammar/Chronos.g:1:153: SCHEDULE_T
+                // src/grammar/Chronos.g:1:153: SCHEDULE_T
                 {
                 mSCHEDULE_T(); 
 
@@ -2381,7 +2381,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 25 :
-                // grammar/Chronos.g:1:164: COURSE_T
+                // src/grammar/Chronos.g:1:164: COURSE_T
                 {
                 mCOURSE_T(); 
 
@@ -2389,7 +2389,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 26 :
-                // grammar/Chronos.g:1:173: COURSELIST_T
+                // src/grammar/Chronos.g:1:173: COURSELIST_T
                 {
                 mCOURSELIST_T(); 
 
@@ -2397,7 +2397,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 27 :
-                // grammar/Chronos.g:1:186: TIMEBLOCK_T
+                // src/grammar/Chronos.g:1:186: TIMEBLOCK_T
                 {
                 mTIMEBLOCK_T(); 
 
@@ -2405,7 +2405,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 28 :
-                // grammar/Chronos.g:1:198: DATETIME_T
+                // src/grammar/Chronos.g:1:198: DATETIME_T
                 {
                 mDATETIME_T(); 
 
@@ -2413,7 +2413,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 29 :
-                // grammar/Chronos.g:1:209: INT_T
+                // src/grammar/Chronos.g:1:209: INT_T
                 {
                 mINT_T(); 
 
@@ -2421,7 +2421,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 30 :
-                // grammar/Chronos.g:1:215: DOUBLE_T
+                // src/grammar/Chronos.g:1:215: DOUBLE_T
                 {
                 mDOUBLE_T(); 
 
@@ -2429,7 +2429,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 31 :
-                // grammar/Chronos.g:1:224: DAYBLOCK_T
+                // src/grammar/Chronos.g:1:224: DAYBLOCK_T
                 {
                 mDAYBLOCK_T(); 
 
@@ -2437,7 +2437,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 32 :
-                // grammar/Chronos.g:1:235: TIME_T
+                // src/grammar/Chronos.g:1:235: TIME_T
                 {
                 mTIME_T(); 
 
@@ -2445,7 +2445,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 33 :
-                // grammar/Chronos.g:1:242: STRING_T
+                // src/grammar/Chronos.g:1:242: STRING_T
                 {
                 mSTRING_T(); 
 
@@ -2453,7 +2453,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 34 :
-                // grammar/Chronos.g:1:251: MASTER_T
+                // src/grammar/Chronos.g:1:251: MASTER_T
                 {
                 mMASTER_T(); 
 
@@ -2461,7 +2461,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 35 :
-                // grammar/Chronos.g:1:260: TIME
+                // src/grammar/Chronos.g:1:260: TIME
                 {
                 mTIME(); 
 
@@ -2469,7 +2469,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 36 :
-                // grammar/Chronos.g:1:265: AND
+                // src/grammar/Chronos.g:1:265: AND
                 {
                 mAND(); 
 
@@ -2477,7 +2477,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 37 :
-                // grammar/Chronos.g:1:269: OR
+                // src/grammar/Chronos.g:1:269: OR
                 {
                 mOR(); 
 
@@ -2485,7 +2485,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 38 :
-                // grammar/Chronos.g:1:272: NOT
+                // src/grammar/Chronos.g:1:272: NOT
                 {
                 mNOT(); 
 
@@ -2493,7 +2493,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 39 :
-                // grammar/Chronos.g:1:276: LEQ
+                // src/grammar/Chronos.g:1:276: LEQ
                 {
                 mLEQ(); 
 
@@ -2501,7 +2501,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 40 :
-                // grammar/Chronos.g:1:280: GEQ
+                // src/grammar/Chronos.g:1:280: GEQ
                 {
                 mGEQ(); 
 
@@ -2509,7 +2509,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 41 :
-                // grammar/Chronos.g:1:284: NEQ
+                // src/grammar/Chronos.g:1:284: NEQ
                 {
                 mNEQ(); 
 
@@ -2517,7 +2517,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 42 :
-                // grammar/Chronos.g:1:288: EQ
+                // src/grammar/Chronos.g:1:288: EQ
                 {
                 mEQ(); 
 
@@ -2525,7 +2525,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 43 :
-                // grammar/Chronos.g:1:291: ID
+                // src/grammar/Chronos.g:1:291: ID
                 {
                 mID(); 
 
@@ -2533,7 +2533,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 44 :
-                // grammar/Chronos.g:1:294: INT
+                // src/grammar/Chronos.g:1:294: INT
                 {
                 mINT(); 
 
@@ -2541,7 +2541,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 45 :
-                // grammar/Chronos.g:1:298: FLOAT
+                // src/grammar/Chronos.g:1:298: FLOAT
                 {
                 mFLOAT(); 
 
@@ -2549,7 +2549,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 46 :
-                // grammar/Chronos.g:1:304: COMMENT
+                // src/grammar/Chronos.g:1:304: COMMENT
                 {
                 mCOMMENT(); 
 
@@ -2557,7 +2557,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 47 :
-                // grammar/Chronos.g:1:312: WS
+                // src/grammar/Chronos.g:1:312: WS
                 {
                 mWS(); 
 
@@ -2565,7 +2565,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 48 :
-                // grammar/Chronos.g:1:315: STRING
+                // src/grammar/Chronos.g:1:315: STRING
                 {
                 mSTRING(); 
 
@@ -2573,7 +2573,7 @@ public class ChronosLexer extends Lexer {
                 }
                 break;
             case 49 :
-                // grammar/Chronos.g:1:322: CHAR
+                // src/grammar/Chronos.g:1:322: CHAR
                 {
                 mCHAR(); 
 

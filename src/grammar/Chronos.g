@@ -147,7 +147,7 @@ argument_expr_list
 type_specifier
 	:	INT_T
 	|	DOUBLE_T
-	|	DAYS_T
+	|	DAYBLOCK_T
 	|	TIME_T
 	|	STRING_T
 	|	SCHEDULE_T
@@ -185,7 +185,7 @@ INT_T	:	'int'
 		;
 DOUBLE_T:	'double'
 		;
-DAYS_T	:	'days'
+DAYBLOCK_T	:	'dayblock'
 		;
 TIME_T	:	'time'
 		;

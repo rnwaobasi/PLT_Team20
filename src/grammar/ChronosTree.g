@@ -138,7 +138,7 @@ timeblock returns [Timeblock result]
 dayblock returns [Dayblock result]
 // i.e. [M,W,F]
 @init { $result = new ArrayList<String>(); }
-	:	^( DAYS (DAY {$result.add($DAY.text);})+ )
+	:	^( DAYBLOCK_T (DAY {$result.add($DAY.text);})+ )
 	;
 argument_expr_list returns [ExprList result]
 @init { $result = new ArrayList<String>(); }
@@ -147,7 +147,7 @@ argument_expr_list returns [ExprList result]
 type_specifier
 	:	INT_T
 	|	DOUBLE_T
-	|	DAYS_T
+	|	DAYBLOCK_T
 	|	TIME_T
 	|	STRING_T
 	|	SCHEDULE_T
