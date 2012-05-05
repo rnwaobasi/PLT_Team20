@@ -124,7 +124,7 @@ dayblock
 	;
 primary_expr
 	:	INT
-	|	FLOAT
+	|	DOUBLE
 	|	ID 
 	|	STRING
 	|	TIME
@@ -213,10 +213,10 @@ ID  :	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
 INT :	'0'..'9'+
     ;
 
-FLOAT
-    :   ('0'..'9')+ '.' ('0'..'9')* EXPONENT?
-    |   '.' ('0'..'9')+ EXPONENT?
-    |   ('0'..'9')+ EXPONENT
+DOUBLE
+    :   ('0'..'9')+ '.' ('0'..'9')*
+    |   '.' ('0'..'9')+
+    |   ('0'..'9')+
     ;
 
 COMMENT
@@ -241,9 +241,6 @@ CHAR:  '\'' ( ESC_SEQ | ~('\''|'\\') ) '\''
 fragment
 DAY	:	('M' | 'T' | 'W' | 'R' | 'F')
 	;
-
-fragment
-EXPONENT : ('e'|'E') ('+'|'-')? ('0'..'9')+ ;
 
 fragment
 HEX_DIGIT : ('0'..'9'|'a'..'f'|'A'..'F') ;
