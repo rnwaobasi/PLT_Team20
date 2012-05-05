@@ -1,5 +1,7 @@
 grammar Chronos;
 
+
+
 options {
 	language = Java;
 	output = AST;
