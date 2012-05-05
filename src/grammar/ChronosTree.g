@@ -86,17 +86,12 @@ expr:	^(OR expr expr)
 	|	MASTER_T
 	|	^(primary_expr function_parens)
 	;
-/*function //returns [int result]
-// matches functions or variables
-	:	^(primary_expr function_parens)
-	;*/	
 primary_expr
 	:	constant
 	|	ID
 	|	STRING
 	|	TIME
 	;
-
 function_parens
 // matches () and the params in a function call
 	:	^(PARAMS argument_expr_list?)
@@ -113,14 +108,6 @@ dayblock
 // matches [M,W,F] etc
 	:	^(DAYS DAY+)
 	;
-/*primary_expr
-	:	constant
-	|	MASTER_T
-	|	ID
-	|	STRING
-	|	TIME
-	|	expr
-	;*/
 argument_expr_list
 	:	expr+
 	;
