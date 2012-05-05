@@ -35,16 +35,19 @@ program
 	:	line+ EOF!
 	;
 line
-	:	declarator
+	:	declarator ';'!
+	|	instantiator
 	|	stmt
 	;
 declarator
-// matches int x;
-	:	type_specifier ID ';'
+// matches int x
+	:	type_specifier ID
 			-> ^(DECL type_specifier ID)
+	;
+instantiator
 // matches int x = 5;
-	|	type_specifier ID '=' expr ';'
-			-> ^(INST ^(DECL type_specifier ID) ^('=' ID expr))
+	:	declarator '=' expr ';'
+			-> ^(INST declarator ^('=' ID expr))
 	;
 stmt:	expr';' -> expr
 	|	selection_stmt
@@ -103,14 +106,19 @@ unary_expr
 	;
 postfix_expr
 // matches functions or variables
-	:	primary_expr function_parens?
-		-> ^(primary_expr function_parens?)
+	:	function
+	|	primary_expr /*function_parens?
+		-> ^(primary_expr function_parens?)*/
 	;
-function_parens
+function
+	:	ID '(' argument_expr_list? ')'
+		-> ^(ID ^(PARAMS argument_expr_list?))
+	;
+/*function_parens
 // matches () and the params in a function call
 	:	'(' argument_expr_list? ')'
 		-> ^(PARAMS argument_expr_list?)
-	;
+	;*/
 datetime
 // matches [M,W] 10:00~11:00
 	:	dayblock timeblock 
@@ -130,6 +138,7 @@ primary_expr
 	|	ID 
 	|	STRING
 	|	TIME
+	|	MASTER_T // master keyword for master courselist
 	|	'('expr')' -> expr
 	;
 argument_expr_list

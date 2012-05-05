@@ -15,8 +15,8 @@ options {
 
 @members {
 	// maps for storing our stuff
- 	private Map<String, Function> functionMap = new TreeMap<String, Function>();
- 	private Map<String, Double> variableMap = new TreeMap<String, Double>();
+ 	//private Map<String, Function> functionMap = new TreeMap<String, Function>();
+ 	//private Map<String, Double> variableMap = new TreeMap<String, Double>();
 
 	// convert node to an int
 	private int toInt(CommonTree node) {
@@ -48,11 +48,19 @@ program
 	:	line+
 	;
 line:	declarator
+	|	instantiator
 	|	stmt
 	;
 declarator
-	:	^(DECL type_specifier ID)
-	|	^(INST ^(DECL type_specifier ID) ^('=' ID expr))
+	:	^(DECL type_specifier ID) {
+		/* if $type_specifier.text == such and such, then
+		construct the type and put it in varMap? */
+		}
+	;
+instantiator
+	:	^(INST declarator assignment_expr) {
+		// nothing needed here?
+		}
 	;
 stmt:	expr
 	|	selection_stmt
@@ -68,7 +76,16 @@ iteration_stmt
 jump_stmt
 	:	BREAK_T
 	;
-expr:	^('=' ID expr) // assignment
+assignment_expr
+	:	^('=' ID expr) {
+		/* if $ID.text is in varMap,
+		set its value to $expr.result
+		otherwise, ERROR */
+		}
+	;
+expr returns [Value result]
+	//:	^('=' ID expr) // assignment
+	:	assignment_expr
 	// logical
 	|	^(OR expr expr)
 	|	^(AND expr expr)
@@ -87,29 +104,29 @@ expr:	^('=' ID expr) // assignment
 	|	^('/' expr expr)
 	// dot operator - car.color
 	|	^('.' expr expr)
-	// functions - print()
-	|	^(ID function_parens)
 	// derived types
 	|	datetime
 	|	timeblock
 	|	dayblock
 	// master courselist - made from input file
 	|	MASTER_T
+	// primary types
 	|	INT
 	|	FLOAT
 	|	ID
 	|	STRING
 	|	TIME
 	;
-function_parens returns [ExprList result]
-	:	^(PARAMS argument_expr_list?) {
-		$result = $argument_expr_list.result;
+function returns [Object result]
+// i.e. print()
+	:	^(ID ^(PARAMS argument_expr_list?)) {
+		$result = evalFunction($ID.text, $argument_expr_list.result);
 		}
 	;
 datetime returns [Datetime result]
 // i.e. [M,W] 10:00~11:00
 	:	^(DATETIME dayblock timeblock) {
-		$result = new Datetime(dayblock, timeblock);
+		$result = new Datetime($dayblock.result, $timeblock.result);
 		}
 	;
 timeblock returns [Timeblock result]
@@ -120,12 +137,12 @@ timeblock returns [Timeblock result]
 	;
 dayblock returns [Dayblock result]
 // i.e. [M,W,F]
-@init { $daysAL = new ArrayList<String>(); }
-	:	^( DAYS (DAY {$daysAL.add($DAY.text);})+ )
+@init { $result = new ArrayList<String>(); }
+	:	^( DAYS (DAY {$result.add($DAY.text);})+ )
 	;
 argument_expr_list returns [ExprList result]
-@init { $exprList = new ArrayList<String>(); }
-	:	(expr {$exprList.add($expr.text);})+
+@init { $result = new ArrayList<String>(); }
+	:	(expr {$result.add($expr.text);})+
 	;
 type_specifier
 	:	INT_T
