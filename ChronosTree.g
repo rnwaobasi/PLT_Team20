@@ -65,37 +65,34 @@ jump_stmt
 /*expr:	^(OR expr expr)
 	|	^(AND expr expr)
 	;*/
-expr:	^(OR and_expr and_expr)
-	|	assignment_expr
-	;
-assignment_expr
-	:	^('=' ID expr)
-	;
-and_expr
-	:	^(AND equiv_expr equiv_expr)
-	;
-equiv_expr
-	:	^((EQ | NEQ) rel_expr rel_expr)
-	;
-rel_expr
-	:	^(('<' | '>' | GEQ | LEQ) math_expr math_expr)
+expr:	^(OR expr expr)
+	|	^('=' ID expr)
+	|	^(AND expr expr)
+	|	^(EQ expr expr)
+	|	^(NEQ expr expr)
+	|	^(GEQ expr expr)
+	|	^(LEQ expr expr)
+	|	^('<' expr expr)
+	|	^('>' expr expr)
+	|	^('+' expr expr)
+	|	^('-' expr expr)
+	|	^('*' expr expr)
+	|	^('/' expr expr)
+	|	^(FUNC ^('.' expr expr) function_parens)
+	|	^(NOT expr)
 	|	datetime
-	;
-math_expr
-	:	^(('+' | '-') math_term math_term)
-	;
-math_term
-	:	^(('*' | '/') unary_expr unary_expr)
 	|	timeblock
+	|	dayblock
+	|	constant
+	|	MASTER_T
+	|	ID
+	|	STRING
+	|	TIME
 	;
-unary_expr
-	:	^('.' postfix_expr postfix_expr)
-	|	^(NOT postfix_expr)
-	;
-postfix_expr //returns [int result]
+/*function //returns [int result]
 // matches functions or variables
-	:	^(primary_expr function_parens?)
-	;
+	:	^(primary_expr function_parens)
+	;*/
 function_parens
 // matches () and the params in a function call
 	:	^(PARAMS argument_expr_list?)
@@ -112,14 +109,14 @@ dayblock
 // matches [M,W,F] etc
 	:	^(DAYS DAY+)
 	;
-primary_expr
+/*primary_expr
 	:	constant
 	|	MASTER_T
 	|	ID
 	|	STRING
 	|	TIME
 	|	expr
-	;
+	;*/
 argument_expr_list
 	:	expr+
 	;

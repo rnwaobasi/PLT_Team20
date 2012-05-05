@@ -16,6 +16,7 @@ tokens {
 	DAYS;
 	TIMES;
 	PARAMS;
+	FUNC;
 }
 
 /* *** GRAMMAR *** */
