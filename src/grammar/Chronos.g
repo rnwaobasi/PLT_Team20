@@ -126,7 +126,7 @@ dayblock
 	;
 primary_expr
 	:	constant
-	|	ID
+	|	ID 
 	|	STRING
 	|	TIME
 	|	'('expr')' -> expr

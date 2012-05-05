@@ -32,7 +32,7 @@ options {
 }
 
 program
-	:	line+
+	:	lines+=line+ {out($lines+.text);}
 	;
 line:	print_function
 	|	int_assignment {out("This line is about " + $int_assignment.result);}

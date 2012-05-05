@@ -10,10 +10,15 @@ options {
 @header {
   package tl.parser;
   import java.util.Map;
-  import java.util.HashMap;
+  import java.util.TreeMap;
 }
 
 @members {
+	// maps for storing our stuff
+ 	private Map<String, Function> functionMap = new TreeMap<String, Function>();
+ 	private Map<String, Double> variableMap = new TreeMap<String, Double>();
+
+	// convert node to an int
 	private int toInt(CommonTree node) {
 		int value = 0;
 		String text = node.getText();
@@ -25,12 +30,12 @@ options {
 		return value;
 	}
 	
-	// shortcut general print method
+	// shortcut for general print method
 	private void out(String str) {
 		System.out.println(str);
 	}
 
-	// for print statements
+	// prints Strings
 	// gets rid of the surrounding quotes
 	private void print(String str) {
 		int oneBeforeEnd = str.length()-1;
@@ -63,29 +68,33 @@ iteration_stmt
 jump_stmt
 	:	BREAK_T
 	;
-/*expr:	^(OR expr expr)
+expr:	^('=' ID expr) // assignment
+	// logical
+	|	^(OR expr expr)
 	|	^(AND expr expr)
-	;*/
-expr:	^(OR expr expr)
-	|	^('=' ID expr)
-	|	^(AND expr expr)
+	|	^(NOT expr)
+	// relative
 	|	^(EQ expr expr)
 	|	^(NEQ expr expr)
 	|	^(GEQ expr expr)
 	|	^(LEQ expr expr)
 	|	^('<' expr expr)
 	|	^('>' expr expr)
+	// math
 	|	^('+' expr expr)
 	|	^('-' expr expr)
 	|	^('*' expr expr)
 	|	^('/' expr expr)
+	// dot operator - car.color
 	|	^('.' expr expr)
-	|	^(NOT expr)
+	// functions - print()
+	|	^(ID function_parens)
+	// derived types
 	|	datetime
 	|	timeblock
 	|	dayblock
+	// master courselist - made from input file
 	|	MASTER_T
-	|	^(primary_expr function_parens)
 	;
 primary_expr
 	:	constant
@@ -94,20 +103,24 @@ primary_expr
 	|	TIME
 	;
 function_parens
-// matches () and the params in a function call
 	:	^(PARAMS argument_expr_list?)
 	;
-datetime
-// matches [M,W] 10:00~11:00
-	:	^(DATETIME dayblock timeblock)
+datetime returns [Datetime result]
+// i.e. [M,W] 10:00~11:00
+	:	^(DATETIME dayblock timeblock) {
+		$result = new Datetime(dayblock, timeblock);
+		}
 	;
-timeblock
-// matches 13:00~14:00
-	:	^(TIMES a=TIME b=TIME)
+timeblock returns [Timeblock result]
+// i.e. 13:00~14:00
+	:	^(TIMES a=TIME b=TIME) {
+		$result = new Timeblock($a.text, $b.text);
+		}
 	;
-dayblock
-// matches [M,W,F] etc
-	:	^(DAYS DAY+)
+dayblock returns [Dayblock result]
+// i.e. [M,W,F]
+@init { $daysAL = new ArrayList<Day>(); }
+	:	^(DAYS (DAY {$daysAL.add($DAY.text);})+)
 	;
 argument_expr_list
 	:	expr+

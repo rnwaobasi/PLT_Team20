@@ -1,4 +1,4 @@
-// $ANTLR 3.4 TestTree.g 2012-05-04 18:58:06
+// $ANTLR 3.4 TestTree.g 2012-05-05 01:36:53
 
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.*;
@@ -82,13 +82,13 @@ public class TestTree extends TreeParser {
 
 
     // $ANTLR start "program"
-    // TestTree.g:34:1: program : ( line )+ ;
+    // TestTree.g:34:1: program : (lines+= line )+ ;
     public final void program() throws RecognitionException {
         try {
-            // TestTree.g:35:2: ( ( line )+ )
-            // TestTree.g:35:4: ( line )+
+            // TestTree.g:35:2: ( (lines+= line )+ )
+            // TestTree.g:35:4: (lines+= line )+
             {
-            // TestTree.g:35:4: ( line )+
+            // TestTree.g:35:9: (lines+= line )+
             int cnt1=0;
             loop1:
             do {
@@ -102,9 +102,9 @@ public class TestTree extends TreeParser {
 
                 switch (alt1) {
             	case 1 :
-            	    // TestTree.g:35:4: line
+            	    // TestTree.g:35:9: lines+= line
             	    {
-            	    pushFollow(FOLLOW_line_in_program40);
+            	    pushFollow(FOLLOW_line_in_program42);
             	    line();
 
             	    state._fsp--;
@@ -122,6 +122,8 @@ public class TestTree extends TreeParser {
                 cnt1++;
             } while (true);
 
+
+            out(list_lines+.text);
 
             }
 
@@ -202,7 +204,7 @@ public class TestTree extends TreeParser {
                 case 1 :
                     // TestTree.g:37:7: print_function
                     {
-                    pushFollow(FOLLOW_print_function_in_line49);
+                    pushFollow(FOLLOW_print_function_in_line53);
                     print_function();
 
                     state._fsp--;
@@ -213,7 +215,7 @@ public class TestTree extends TreeParser {
                 case 2 :
                     // TestTree.g:38:4: int_assignment
                     {
-                    pushFollow(FOLLOW_int_assignment_in_line54);
+                    pushFollow(FOLLOW_int_assignment_in_line58);
                     int_assignment1=int_assignment();
 
                     state._fsp--;
@@ -226,7 +228,7 @@ public class TestTree extends TreeParser {
                 case 3 :
                     // TestTree.g:39:4: timeblock_inst
                     {
-                    pushFollow(FOLLOW_timeblock_inst_in_line61);
+                    pushFollow(FOLLOW_timeblock_inst_in_line65);
                     timeblock_inst();
 
                     state._fsp--;
@@ -237,7 +239,7 @@ public class TestTree extends TreeParser {
                 case 4 :
                     // TestTree.g:40:4: and_stmt
                     {
-                    pushFollow(FOLLOW_and_stmt_in_line66);
+                    pushFollow(FOLLOW_and_stmt_in_line70);
                     and_stmt();
 
                     state._fsp--;
@@ -271,10 +273,10 @@ public class TestTree extends TreeParser {
             // TestTree.g:43:2: ( ^( PRINT STRING ) )
             // TestTree.g:43:4: ^( PRINT STRING )
             {
-            match(input,PRINT,FOLLOW_PRINT_in_print_function77); 
+            match(input,PRINT,FOLLOW_PRINT_in_print_function81); 
 
             match(input, Token.DOWN, null); 
-            STRING2=(CommonTree)match(input,STRING,FOLLOW_STRING_in_print_function79); 
+            STRING2=(CommonTree)match(input,STRING,FOLLOW_STRING_in_print_function83); 
 
             match(input, Token.UP, null); 
 
@@ -311,12 +313,12 @@ public class TestTree extends TreeParser {
             // TestTree.g:46:2: ( ^( '=' ID INT ) )
             // TestTree.g:46:4: ^( '=' ID INT )
             {
-            match(input,24,FOLLOW_24_in_int_assignment97); 
+            match(input,24,FOLLOW_24_in_int_assignment101); 
 
             match(input, Token.DOWN, null); 
-            ID3=(CommonTree)match(input,ID,FOLLOW_ID_in_int_assignment99); 
+            ID3=(CommonTree)match(input,ID,FOLLOW_ID_in_int_assignment103); 
 
-            INT4=(CommonTree)match(input,INT,FOLLOW_INT_in_int_assignment101); 
+            INT4=(CommonTree)match(input,INT,FOLLOW_INT_in_int_assignment105); 
 
             match(input, Token.UP, null); 
 
@@ -354,14 +356,14 @@ public class TestTree extends TreeParser {
             // TestTree.g:53:2: ( ^( '=' TIMEBLOCK ID timeblock ) )
             // TestTree.g:53:4: ^( '=' TIMEBLOCK ID timeblock )
             {
-            match(input,24,FOLLOW_24_in_timeblock_inst114); 
+            match(input,24,FOLLOW_24_in_timeblock_inst118); 
 
             match(input, Token.DOWN, null); 
-            match(input,TIMEBLOCK,FOLLOW_TIMEBLOCK_in_timeblock_inst116); 
+            match(input,TIMEBLOCK,FOLLOW_TIMEBLOCK_in_timeblock_inst120); 
 
-            match(input,ID,FOLLOW_ID_in_timeblock_inst118); 
+            match(input,ID,FOLLOW_ID_in_timeblock_inst122); 
 
-            pushFollow(FOLLOW_timeblock_in_timeblock_inst120);
+            pushFollow(FOLLOW_timeblock_in_timeblock_inst124);
             timeblock5=timeblock();
 
             state._fsp--;
@@ -402,12 +404,12 @@ public class TestTree extends TreeParser {
             // TestTree.g:56:2: ( ^( TIMES a= TIME b= TIME ) )
             // TestTree.g:56:4: ^( TIMES a= TIME b= TIME )
             {
-            match(input,TIMES,FOLLOW_TIMES_in_timeblock138); 
+            match(input,TIMES,FOLLOW_TIMES_in_timeblock142); 
 
             match(input, Token.DOWN, null); 
-            a=(CommonTree)match(input,TIME,FOLLOW_TIME_in_timeblock142); 
+            a=(CommonTree)match(input,TIME,FOLLOW_TIME_in_timeblock146); 
 
-            b=(CommonTree)match(input,TIME,FOLLOW_TIME_in_timeblock146); 
+            b=(CommonTree)match(input,TIME,FOLLOW_TIME_in_timeblock150); 
 
             match(input, Token.UP, null); 
 
@@ -440,12 +442,12 @@ public class TestTree extends TreeParser {
             // TestTree.g:61:2: ( ^( '&' ID ID ) )
             // TestTree.g:61:4: ^( '&' ID ID )
             {
-            match(input,20,FOLLOW_20_in_and_stmt160); 
+            match(input,20,FOLLOW_20_in_and_stmt164); 
 
             match(input, Token.DOWN, null); 
-            match(input,ID,FOLLOW_ID_in_and_stmt162); 
+            match(input,ID,FOLLOW_ID_in_and_stmt166); 
 
-            match(input,ID,FOLLOW_ID_in_and_stmt164); 
+            match(input,ID,FOLLOW_ID_in_and_stmt168); 
 
             match(input, Token.UP, null); 
 
@@ -470,25 +472,25 @@ public class TestTree extends TreeParser {
 
  
 
-    public static final BitSet FOLLOW_line_in_program40 = new BitSet(new long[]{0x0000000001102002L});
-    public static final BitSet FOLLOW_print_function_in_line49 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_int_assignment_in_line54 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_timeblock_inst_in_line61 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_and_stmt_in_line66 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PRINT_in_print_function77 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_STRING_in_print_function79 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_24_in_int_assignment97 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_int_assignment99 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_INT_in_int_assignment101 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_24_in_timeblock_inst114 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_TIMEBLOCK_in_timeblock_inst116 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_ID_in_timeblock_inst118 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_timeblock_in_timeblock_inst120 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_TIMES_in_timeblock138 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_TIME_in_timeblock142 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_TIME_in_timeblock146 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_20_in_and_stmt160 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_and_stmt162 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_ID_in_and_stmt164 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_line_in_program42 = new BitSet(new long[]{0x0000000001102002L});
+    public static final BitSet FOLLOW_print_function_in_line53 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_int_assignment_in_line58 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_timeblock_inst_in_line65 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_and_stmt_in_line70 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PRINT_in_print_function81 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_STRING_in_print_function83 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_24_in_int_assignment101 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_int_assignment103 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_INT_in_int_assignment105 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_24_in_timeblock_inst118 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_TIMEBLOCK_in_timeblock_inst120 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_ID_in_timeblock_inst122 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_timeblock_in_timeblock_inst124 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_TIMES_in_timeblock142 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_TIME_in_timeblock146 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_TIME_in_timeblock150 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_20_in_and_stmt164 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_and_stmt166 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_ID_in_and_stmt168 = new BitSet(new long[]{0x0000000000000008L});
 
 }
