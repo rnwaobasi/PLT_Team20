@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *
  * @author Assata
  */
-public class DayBlockTester {
+public class DataTypeTester {
 
     /**
      * @param args the command line arguments
@@ -51,8 +51,20 @@ public class DayBlockTester {
             System.out.println("dl2 has Friday: " + db2.has(F));
             
             System.out.println(dl3.toString());
+            
+            TimeBlock tb = new TimeBlock("1:10", "2:25");
+            
+            DateTime dt1 = new DateTime(db1, tb);
+            DateTime dt2 = new DateTime(db2, tb);
+            DateTime dt3 = new DateTime(db3, tb);
+            
+            if (dt1.getDayBlock().has(M))
+                System.out.println("Working well");
+            if (dt1.getDayBlock().has(T))
+                System.out.println("PROBLEM");
+            System.out.println(dt3.toString());
         }
-        catch(Exception e){System.out.println("Stick to the weekdays, buster!");}
+        catch(Exception e){System.out.println("Stick to the weekadys, buster!");}
         
         
         

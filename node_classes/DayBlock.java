@@ -37,11 +37,13 @@ public class DayBlock {
 	}
 
 	public String toString() {
-		String dayString = "Dayblock contains ";
+		String dayString = "";
 		for (Day x: days)
 		{
-			dayString += x.toString();
+			dayString += x.toString() + ", ";
 		}
+                
+                dayString += ".";
                 return dayString;
 	}
 }
