@@ -21,6 +21,14 @@ tokens {
 	FUNC;
 }
 
+@parser::header { 
+  package tl.parser; 
+}  
+  
+@lexer::header { 
+  package tl.parser; 
+} 
+
 /* *** GRAMMAR *** */
 // starting rule
 program

@@ -27,6 +27,7 @@
           <arg value="src/main/tl/parser/" />  
           <arg value="src/grammar/Chronos.g" />  
           <arg value="src/grammar/ChronosTree.g" /> 
+          <classpath refid="classpath" />  
         </java>  
         <antcall target="compile" />  
       </target>  
@@ -34,7 +35,8 @@
       <target name="run" depends="generate">  
         <echo>Running the main class...</echo>  
         <java classname="tl.Main">  
-           
+          <arg value="input" /> 
+          <classpath refid="classpath" />  
         </java>  
       </target>  
       

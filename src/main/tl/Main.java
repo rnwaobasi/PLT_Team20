@@ -1,4 +1,4 @@
-//package tl;  
+package tl;  
   
 import tl.parser.*;
 
@@ -8,30 +8,41 @@ import org.antlr.stringtemplate.*;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
+	
+		Main getter = new Main();
 		// create an instance of the lexer
 		CharStream input = new ANTLRFileStream(args[0]);
 		ChronosLexer lex = new ChronosLexer(input);
 		// wrap a token-stream around the lexer
 		CommonTokenStream tokens = new CommonTokenStream(lex);
 		// create the parser
-		ChronosParser parser = new ChronosParser(tokens);
-		// invoke the entry point of the parser
-		ChronosParser.program_return r = parser.program();
-		System.out.println("tree="+((Tree)r.tree).toStringTree());
-		//CommonTree tree = (CommonTree)r.getTree();
-		// generate a DOT image of the tree
-		//DOTTreeGenerator gen = new DOTTreeGenerator();
-		//StringTemplate st = gen.toDOT(tree);
-		//System.out.println(st);
+		ChronosParser grammar = new ChronosParser(tokens);
 
-		if ( parser.getNumberOfSyntaxErrors()>0 ) {
-			// don't tree parse if has errors
-			return;
+	
+		final TreeAdaptor adaptor = new CommonTreeAdaptor() {
+			public Object create(Token payload) {
+				return new CommonTree(payload);
+			}
+		};
+	
+		grammar.setTreeAdaptor(adaptor);
+		ChronosParser.program_return ret = grammar.program();
+		CommonTree tree = (CommonTree)ret.getTree();
+	
+		getter.printTree(tree, 1);
+
+	}//end of main
+
+
+	public void printTree(CommonTree t, int indent) {
+		if ( t != null ) {
+			StringBuffer sb = new StringBuffer(indent);
+			for ( int i = 0; i < indent; i++ )
+				sb = sb.append("   ");
+			for ( int i = 0; i < t.getChildCount(); i++ ) {
+				System.out.println(sb.toString() + t.getChild(i).toString());
+				printTree((CommonTree)t.getChild(i), indent+1);
+			}
 		}
-        	CommonTreeNodeStream nodes = new CommonTreeNodeStream((Tree)r.tree);
-		nodes.setTokenStream(tokens);
-		ChronosTree walker = new ChronosTree(nodes);
-		walker.program();
-
 	}
-}
+}//end of Main.java class
