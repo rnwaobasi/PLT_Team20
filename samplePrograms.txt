@@ -4,6 +4,8 @@ we have substring capability; what about .has() capability? (getting dangerously
 has operators ::=
 */
 
+/*makes no difference*/
+
 /******** BASICS ********/
 /* CREATE a new SCHEDULE */
 schedule sched;
