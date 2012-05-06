@@ -1,15 +1,15 @@
 public class Timeblock {
     
-    String startTime;
-    String endTime;
+    Time start;
+    Time end;
     
-    public Timeblock(String startTime, String endTime){
-        this.startTime = startTime;
-        this.endTime = endTime;
+    public Timeblock(Time startTime, Time endTime){
+        start = startTime;
+        end = endTime;
     }
     
     public String toString(){
-        return "From " + startTime + " to " + endTime;
+        return "From " + start.toString() + " to " + end.toString() + ".\n";
     }
     
 }
