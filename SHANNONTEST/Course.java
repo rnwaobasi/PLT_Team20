@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 public class Course implements Comparable<Course>{
     String name;
@@ -12,6 +11,11 @@ public class Course implements Comparable<Course>{
         credits = tempCredits;
         sections = tempSections;
         selectedSection = 0;
+    }
+    
+    public Datetime getDatetime()
+    {
+        return sections.get(selectedSection);
     }
     
     public Dayblock getDayblock()
@@ -40,7 +44,16 @@ public class Course implements Comparable<Course>{
         return sections.size();
     }
     
-    public bolean equals(Object o){
+    public String toString()
+    {
+        String cString = name + "has sections: ";
+        for (Datetime dt1: sections)
+            cString += dt1.toString() + ", ";
+        
+        return cString;
+    }
+    
+     public boolean equals(Object o){
 		if (this == o) {
 			return true;
 		}
@@ -50,7 +63,7 @@ public class Course implements Comparable<Course>{
 		Course that = (Course) o;
 		if (this.name.equals(that.name) && 
 		this.credits == that.credits && 
-		this.sections.equals(that.sections) {
+		this.sections.equals(that.sections)) {
 			return true;
 		} else {
 			return false;

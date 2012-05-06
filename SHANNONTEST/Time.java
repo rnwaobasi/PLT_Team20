@@ -1,4 +1,3 @@
-
 public class Time implements Comparable<Time>{
     
     int time;
@@ -56,12 +55,12 @@ public class Time implements Comparable<Time>{
         else if(temp.length() ==4)
             timeStr = temp.substring(0,2) + ':' + temp.substring(2);
         else
-            timeStr = "ERROR: TIME WAS NOT CORRECT NUBMER OF DIGITS";
+            timeStr = null;
         
         return timeStr;
     }
-	
-	public bolean equals(Object o){
+    
+    public boolean equals(Object o){
 		if (this == o) {
 			return true;
 		}

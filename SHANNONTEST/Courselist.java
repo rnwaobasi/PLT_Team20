@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 public class Courselist implements Comparable<Courselist>{
     String name;
@@ -14,8 +13,7 @@ public class Courselist implements Comparable<Courselist>{
     {
         courses.add(c);
     }
-    
-    
+
     public int numCredits()
     {
         int credits = 0;
@@ -55,22 +53,20 @@ public class Courselist implements Comparable<Courselist>{
     public Course getCourse(String cName) throws Exception
     {
         boolean found = false;
-        Course courseFound;
         
         for (Course c: courses)
         {
             if (c.name.equals(cName))
             {
                 found = true;
-                courseFound = c;
-                break;
+                return c;
             }
         }
         
         if (!found)
             throw new Exception("Class not found!");
-        
-        return courseFound;
+        else
+            return null;
     }
     
     public String toString()
@@ -83,8 +79,8 @@ public class Courselist implements Comparable<Courselist>{
         clString += ".\n";
         return clString;
     }
-	
-	public bolean equals(Object o){
+    
+    public boolean equals(Object o){
 		if (this == o) {
 			return true;
 		}
@@ -112,4 +108,6 @@ public class Courselist implements Comparable<Courselist>{
 			return -1;
 		}
 	}
+    
+        
 }

@@ -1,4 +1,3 @@
-
 public class Datetime implements Comparable<Datetime>{
     
     //merges Dayblock and Timeblock into one data type of dates and times
@@ -19,8 +18,24 @@ public class Datetime implements Comparable<Datetime>{
               
         return dtString;
     }
-	
-	public bolean equals(Object o){
+    
+    public boolean conflicts(Datetime that)
+    {
+        for (char thisDay: this.db.days)
+        {
+            if(that.db.has(thisDay))
+            {
+                if(that.tb.conflicts(this.tb))
+                    //System.out.println()
+                    return true;
+            }
+                
+        }
+            
+        return false;
+    }
+    
+    public boolean equals(Object o){
 		if (this == o) {
 			return true;
 		}

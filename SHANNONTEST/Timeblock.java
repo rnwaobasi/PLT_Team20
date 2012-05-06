@@ -1,4 +1,3 @@
-
 public class Timeblock implements Comparable<Timeblock>{
     
     Time start;
@@ -11,8 +10,13 @@ public class Timeblock implements Comparable<Timeblock>{
     
     public boolean conflicts(Timeblock that)
     {
-        if (that.start.greaterThan(this.start) && that.start.lessThan(this.start)
-                || that.end.greaterThan(this.start) && that.end.lessThan(this.end))
+        if (that.start.greaterThan(this.start) && that.start.lessThan(this.end))
+                return true;
+        else if (that.end.greaterThan(this.start) && that.end.lessThan(this.end))
+            return true;
+        else if (that.start.equals(this.start))
+            return true;
+        else if (that.end.equals(this.end))
             return true;
         else
             return false;
@@ -21,8 +25,8 @@ public class Timeblock implements Comparable<Timeblock>{
     public String toString(){
         return "From " + start.toString() + " to " + end.toString() + ".\n";
     }
-	
-	public bolean equals(Object o){
+    
+    public boolean equals(Object o){
 		if (this == o) {
 			return true;
 		}
@@ -41,5 +45,4 @@ public class Timeblock implements Comparable<Timeblock>{
 			return -1;
 		}
 	}
-    
 }
