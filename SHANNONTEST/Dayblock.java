@@ -1,28 +1,25 @@
-
-import java.util.ArrayList;
-
-/**
- *
- * @author Assata
- */
-
-
-public class Dayblock {
+public class Dayblock implements Comparable<Dayblock>{
     
-    ArrayList<String> days;
+    char[] days;
     
-        public Dayblock(ArrayList<String> givenDays) {
+        public Dayblock(char[] givenDays) throws Exception {
                      
+            for (char c: givenDays){
+               if (c != 'M' && c != 'T' && c != 'W' && c != 'R' && c != 'F')
+                    throw new Exception("This is not a day!"); 
+                    //we should decide how we will do error handling, and make this a more specific exception
+            }
+           
             days = givenDays;
         }
        
 
-	public boolean has(String d)
+	public boolean has(char d)
 	{
 		Boolean exists = false;
-		for (String x : days)
+		for (char x : days)
 		{
-			if(x.equals(d))
+			if(x == d)
 			{
 				exists = true;
 				break;
@@ -30,15 +27,67 @@ public class Dayblock {
 		}
 		return exists;
 	}
+        
+        public boolean add(char c) throws Exception
+        {
+            //returns true if the day was already in the dayblock
+            //returns false if day was added successfully
+            //returns error if day requested is not M, T, W, R or F
+            
+            if(this.has(c))
+                return false;
+            else if(c != 'M' && c != 'T' && c != 'W' && c != 'R' && c != 'F')
+            {
+                throw new Exception("This is not a day!");
+            }
+            else
+            {
+                char[] temp = new char[days.length + 1];
+                for (int i=0; i < days.length; i++)
+                    temp[i] = days[i];
+                temp[temp.length - 1] = c;
+                days = temp;
+                return true;
+            }
+        }
 
+        public boolean equals(Object o){
+		if (this == o) {
+			return true;
+		}
+		if (o == null || this.getClass() != o.getClass()) {
+			return false;
+		}
+		Dayblock that = (Dayblock)o;
+		if (this.days.length != that.days.length){
+			return false;
+		}
+		
+                for (int i = 0; i < days.length; i++ ){
+			if (this.days[i] != that.days[i]){
+				return false;
+			}
+		}
+		return true;
+	}
+        
 	public String toString() {
 		String dayString = "";
-		for (String x: days)
+		for (char x: days)
 		{
-			dayString += x + ", ";
+			dayString += x;
 		}
                 
-                dayString += ".";
+                dayString += ".\n";
                 return dayString;
+	}
+        
+        public int compareTo(Dayblock that){
+		if (this.equals(that)){
+			return 0;
+		}
+		else {
+			return -1;
+		}
 	}
 }

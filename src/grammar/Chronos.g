@@ -1,7 +1,5 @@
 grammar Chronos;
 
-
-
 options {
 	language = Java;
 	output = AST;
@@ -21,13 +19,13 @@ tokens {
 	FUNC;
 }
 
-@parser::header { 
-  package tl.parser; 
-}  
-  
-@lexer::header { 
-  package tl.parser; 
-} 
+@lexer::header {
+	package chronos.parser;
+}
+
+@parser::header {
+	package chronos.parser;
+}
 
 /* *** GRAMMAR *** */
 // starting rule
@@ -46,10 +44,10 @@ declarator
 	;
 instantiator
 // matches int x = 5;
-	:	declarator '=' expr ';'
-			-> ^(INST declarator ^('=' ID expr))
+	:	type_specifier ID '=' expr ';'
+			-> ^(INST ^(DECL type_specifier ID) ^('=' ID expr))
 	;
-stmt:	expr';' -> expr
+stmt:	expr ('='^ expr)?';'
 	|	selection_stmt
 	|	iteration_stmt
 	|	jump_stmt';' -> jump_stmt
@@ -72,12 +70,12 @@ jump_stmt
 expr
 // matches OR statements or assignment expressions
 	:	and_expr (OR^ and_expr)*
-	|	assignment_expr
+	//|	assignment_expr
 	;
-assignment_expr
+/*assignment_expr
 // matches x = y, y = 5, z = 5 * 3, etc
-	:	ID '='^ expr
-	;
+	:	'='^ expr
+	;*/
 and_expr
 // matches AND statements
 	:	equiv_expr (AND^ equiv_expr)*
@@ -107,18 +105,20 @@ unary_expr
 postfix_expr
 // matches functions or variables
 	:	function
-	|	primary_expr /*function_parens?
-		-> ^(primary_expr function_parens?)*/
+	|	primary_expr
 	;
 function
-	:	ID '(' argument_expr_list? ')'
+	:	PRINT_T '(' print_target* ')'
+	|	ID '(' argument_expr_list? ')'
 		-> ^(ID ^(PARAMS argument_expr_list?))
 	;
-/*function_parens
-// matches () and the params in a function call
-	:	'(' argument_expr_list? ')'
-		-> ^(PARAMS argument_expr_list?)
-	;*/
+print_target
+	:	INT
+	|	DOUBLE
+	|	STRING
+	|	ID
+	|	function
+	;
 datetime
 // matches [M,W] 10:00~11:00
 	:	dayblock timeblock 
@@ -134,11 +134,10 @@ dayblock
 	;
 primary_expr
 	:	INT
-	|	FLOAT
+	|	DOUBLE
 	|	ID 
 	|	STRING
 	|	TIME
-	|	MASTER_T // master keyword for master courselist
 	|	'('expr')' -> expr
 	;
 argument_expr_list
@@ -191,10 +190,8 @@ TIME_T	:	'time'
 		;
 STRING_T:	'string'
 		;
-MASTER_T
-	:	'master'
+PRINT_T:	'print'
 	;
-
 TIME
 	:	('0'..'2')? ('0'..'9') ':' ('0'..'5')('0'..'9')
 	;
@@ -223,10 +220,10 @@ ID  :	('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
 INT :	'0'..'9'+
     ;
 
-FLOAT
-    :   ('0'..'9')+ '.' ('0'..'9')* EXPONENT?
-    |   '.' ('0'..'9')+ EXPONENT?
-    |   ('0'..'9')+ EXPONENT
+DOUBLE
+    :   ('0'..'9')+ '.' ('0'..'9')*
+    |   '.' ('0'..'9')+
+    |   ('0'..'9')+
     ;
 
 COMMENT
@@ -251,9 +248,6 @@ CHAR:  '\'' ( ESC_SEQ | ~('\''|'\\') ) '\''
 fragment
 DAY	:	('M' | 'T' | 'W' | 'R' | 'F')
 	;
-
-fragment
-EXPONENT : ('e'|'E') ('+'|'-')? ('0'..'9')+ ;
 
 fragment
 HEX_DIGIT : ('0'..'9'|'a'..'f'|'A'..'F') ;

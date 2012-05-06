@@ -1,9 +1,4 @@
-
-/**
- *
- * @author Assata
- */
-public class Datetime {
+public class Datetime implements Comparable<Datetime>{
     
     //merges Dayblock and Timeblock into one data type of dates and times
     Dayblock db;
@@ -14,17 +9,7 @@ public class Datetime {
        db = givenDB;
        tb = givenTB;
     }
-     
-    public Dayblock getDayblock()
-    {
-        return db;
-    }
-    
-    public Timeblock getTimeblock()
-    {
-        return tb;
-    }
-    
+      
     public String toString()
     {
         String dtString = "Block is on ";
@@ -34,9 +19,41 @@ public class Datetime {
         return dtString;
     }
     
-    //no toString method is given specific to just days or just times
-    //because these are available by calling this.getTimeblock.toString 
-    //and this.getDayblock.
+    public boolean conflicts(Datetime that)
+    {
+        for (char thisDay: this.db.days)
+        {
+            if(that.db.has(thisDay))
+            {
+                if(that.tb.conflicts(this.tb))
+                    //System.out.println()
+                    return true;
+            }
+                
+        }
+            
+        return false;
+    }
+    
+    public boolean equals(Object o){
+		if (this == o) {
+			return true;
+		}
+		if (o == null || this.getClass() != o.getClass()) {
+			return false;
+		}
+		Datetime that = (Datetime) o;
+		return ( this.db.equals(that.db) && this.tb.equals(that.tb) );
+	}
+	
+	public int compareTo(Datetime that){
+		if (this.equals(that)){
+			return 0;
+		}
+		else {
+			return -1;
+		}
+	}
     
     
 }

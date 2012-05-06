@@ -1,43 +1,59 @@
-<?xml version="1.0" encoding="UTF-8"?>  
-    <project name="TinyLanguage" default="run">  
-      
-      <path id="classpath">  
-        <pathelement location="build/classes/" />  
-        <pathelement location="src/main/" />  
-        <fileset dir="lib">  
-          <include name="*.jar" />  
-        </fileset>  
-      </path>  
-      
-      <target name="clean">  
-        <delete dir="build/classes/" />  
-        <mkdir dir="build/classes/" />  
-      </target>  
-      
-      <target name="compile" depends="clean">  
-        <javac srcdir="src/main/" destdir="build/classes/" includeantruntime="false">  
-          <classpath refid="classpath" />  
-        </javac>  
-      </target>  
-      
-      <target name="generate" depends="clean">  
-        <echo>Generating the lexer and parser...</echo>  
-        <java classname="org.antlr.Tool" fork="true" failonerror="true">  
-          <arg value="-fo" />  
-          <arg value="src/main/tl/parser/" />  
-          <arg value="src/grammar/Chronos.g" />  
-          <arg value="src/grammar/ChronosTree.g" /> 
-          <classpath refid="classpath" />  
-        </java>  
-        <antcall target="compile" />  
-      </target>  
-      
-      <target name="run" depends="generate">  
-        <echo>Running the main class...</echo>  
-        <java classname="tl.Main">  
-          <arg value="input" /> 
-          <classpath refid="classpath" />  
-        </java>  
-      </target>  
-      
-    </project>  
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Chronos" default="run">
+
+	<path id="classpath">
+		<pathelement location="build/classes/" />
+		<pathelement location="src/main/" />
+		<fileset dir="lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<target name="clean">
+		<delete dir="build/classes/" />
+		<mkdir dir="build/classes/" />
+	</target>
+
+	<target name="compile-main" depends="clean">
+		<javac srcdir="src/main/chronos/" destdir="build/classes/" includeantruntime="false">
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+
+	<target name="compile-nodes" depends="clean">
+		<javac srcdir="src/main/chronos/nodes" destdir="build/classes/" includeantruntime="false">
+			<arg value="-d" />
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+
+	<target name="compile-parser" depends="clean">
+		<javac srcdir="src/main/chronos/parser" destdir="build/classes/" includeantruntime="false">
+			<arg value="-d" />
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+
+	<target name="generate" depends="clean">
+	<echo>Generating the lexer and parser...</echo>
+		<java classname="org.antlr.Tool" fork="true" failonerror="true">
+			<arg value="-fo" />
+			<arg value="src/main/chronos/parser/" />
+			<arg value="src/grammar/Chronos.g" />
+			<arg value="src/grammar/ChronosTree.g" />
+			<classpath refid="classpath" />
+		</java>
+		<antcall target="compile-main" />
+		<antcall target="compile-nodes" />
+		<antcall target="compile-parser" />
+	</target>
+
+	<target name="run" depends="generate">
+		<echo>Running the main class...</echo>
+		<java classname="chronos.Main">
+			<arg value="input.chr" />
+			<classpath refid="classpath" />
+		</java>
+	</target>
+
+</project>
