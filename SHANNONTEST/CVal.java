@@ -104,7 +104,7 @@ public class CVal implements Comparable<CVal> {
 		}
 	}
 	
-	public Object value(Object o){
+	public Object value(){
 		if (this.isInt()) {
 			return this.asInt();
 		} else if (this.isDouble()) {
@@ -112,7 +112,7 @@ public class CVal implements Comparable<CVal> {
 		}  else if (this.isDayblock()) {
 			return this.asDayblock();
 		}	else if (this.isTime()) {
-			return this.asTime())
+			return this.asTime();
 		}	else if (this.isTimeblock()) {
 			return this.asTimeblock();
 		}	else if (this.isDatetime()) {
@@ -128,6 +128,41 @@ public class CVal implements Comparable<CVal> {
 		}	else {
 			throw new RuntimeException("illegal expression: can't get value of `"
 					+ this + "`");
+		}
+		
+	public String typename(){
+		if (this.isInt()) {
+			return "Integer";
+		} else if (this.isDouble()) {
+			return "Double";
+		}  else if (this.isDayblock()) {
+			return "Dayblock";
+		}	else if (this.isTime()) {
+			return "Time";
+		}	else if (this.isTimeblock()) {
+			return "Timeblock";
+		}	else if (this.isDatetime()) {
+			return "Datetime";
+		}	else if (this.isString()) {
+			return "String";
+		}	else if (this.isCourse()) {
+			return "Course";
+		}	else if (this.isCourselist()) {
+			return "Courselist";
+		}	else if (this.isSchedule()) {
+			return "Schedule";
+		}	else {
+			throw new RuntimeException("illegal expression: can't get type of `"
+					+ this + "`");
+		}
+	}
+	
+	public boolean isBool(){
+		if (this.isInt && (this.value == 1 || this.value == 0) ) {
+			return true
+		}
+		else {
+			return false
 		}
 	}
 
