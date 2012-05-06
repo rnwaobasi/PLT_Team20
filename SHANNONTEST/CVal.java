@@ -165,7 +165,7 @@ public class CVal implements Comparable<CVal> {
 			return false
 		}
 	}
-
+	
 	@Override
 	public int hashCode() {
 		return value.hashCode();
