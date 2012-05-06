@@ -24,6 +24,11 @@ options {
 		
 	}
 	
+	// is the string a function call?
+	private boolean isFunctionCall(String str) {
+		return str.lastIndexOf(')') == str.length() - 1;
+	}
+	
 	// shortcut for System.out.println
 	private void out(Object obj) {
 		System.out.println(obj);
@@ -187,44 +192,85 @@ expr returns [CVal result]
 	|	^('+' e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			if (val1.isNumber() && val2.isNumber() 
-			 || val1.isString() && val2.isString()) {
-				$result = (Number)val1.value() + (Number)val2.value();
+			if (val1.isInt() && val2.isInt()) {
+				Integer temp = val1.asInt() + val2.asInt();
+				$result = new CVal(temp);
+			}
+			if (val1.isDouble() && val2.isDouble()) {
+				Double temp = val1.asDouble() + val2.asDouble();
+				$result = new CVal(temp);
+			}
+			if (val1.isString() && val2.isString()) {
+				String temp = val1.asString() + val2.asString();
+				$result = new CVal(temp);
 			}
 		}
 	|	^('-' e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			if (val1.isNumber() && val2.isNumber()) {
-				$result = (Number)val1.value() - (Number)val2.value();
-			}		}
+			if (val1.isInt() && val2.isInt()) {
+				Integer temp = val1.asInt() - val2.asInt();
+				$result = new CVal(temp);
+			}
+			if (val1.isDouble() && val2.isDouble()) {
+				Double temp = val1.asDouble() - val2.asDouble();
+				$result = new CVal(temp);
+			}
+		}
 	|	^('*' e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			if (val1.isNumber() && val2.isNumber()) {
-				$result = (Number)val1.value() * (Number)val2.value();
+			if (val1.isInt() && val2.isInt()) {
+				Integer temp = val1.asInt() * val2.asInt();
+				$result = new CVal(temp);
+			}
+			if (val1.isDouble() && val2.isDouble()) {
+				Double temp = val1.asDouble() * val2.asDouble();
+				$result = new CVal(temp);
 			}
 		}
 	|	^('/' e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			if (val1.isNumber() && val2.isNumber()) {
-				$result = (Number)val1.value() / (Number)val2.value();
+			if (val1.isInt() && val2.isInt()) {
+				Integer temp = val1.asInt() / val2.asInt();
+				$result = new CVal(temp);
+			}
+			if (val1.isDouble() && val2.isDouble()) {
+				Double temp = val1.asDouble() / val2.asDouble();
+				$result = new CVal(temp);
 			}
 		}
 	
 	// dot operator - car.color
 	|	^('.' e1=expr e2=expr) {
-			/* 	If varMap has e1.text, then it is an ID,
-			and we can call the function on the value of
-			the matching CVal.
-				If the varMap does not have e1.text, then it may be
-			a return value of a function. in this case we simply
-			call the function on the return object.
-				If neither of these work, then there is an error.*/
+			// Check e1
+			// Is e1 a CVal?
+			CVal left; // left is the CVal equivalent of the e1,
+						// the left side of the . operator
+			if ($e1 instanceof CVal) {
+				left = $e1;
+			}
+			// or a function call?
+			else if ( $e1.text.isFunctionCall() ) {
+				// evalFunction()
+				out($e1.text); // FIX LATER
+			}
+			// or an ID?
+			else if ( varMap.containsKey($e1.text) ) {
+				left = varMap.get($e1.text);
+			}
+			
+			// Get typename of left
+			String type = left.typename();
+			
+			
+			/*
 			if (varMap.containsKey($e1.text)) {
 				CVal val = varMap.get($e1.text);
-				$result = (val.value()).e2;
+				String e2str = $e2.text; // e2str is the name of the attribute
+				String e1type = val.typename(); // e1type is the 
+				$result = new CVal( (val.value()).(e2str) );
 			}
 			if (!varMap.containsKey($e1.text)) {
 				try {
@@ -233,7 +279,7 @@ expr returns [CVal result]
 					out("Dot expression error");
 					excep.printStackTrace();
 				}
-			}
+			}*/
 		}
 	
 	// derived types
@@ -248,7 +294,7 @@ expr returns [CVal result]
 	|	STRING { $result = new CVal( $STRING.text ); }
 	|	TIME { $result = new CVal( new Time($TIME.text) ); }
 	;
-function returns [Object result]
+function returns [String functionName, ArrayList<String>]
 // i.e. print()
 	:	^(PRINT_T print_target*)
 	|	^(ID ^(PARAMS argument_expr_list?)) {

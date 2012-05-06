@@ -1,4 +1,4 @@
-// $ANTLR 3.4 /Users/shannonlee/PLT_Team20/SHANNONTEST/Chronos.g 2012-05-06 00:36:21
+// $ANTLR 3.4 /Users/shannonlee/PLT_Team20/SHANNONTEST/Chronos.g 2012-05-06 12:24:44
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -90,11 +90,11 @@ public class ChronosParser extends DebugParser {
 
 
 public static final String[] ruleNames = new String[] {
-    "invalidRule", "argument_expr_list", "expr", "math_expr", "line", "equiv_expr", 
-    "timeblock", "instantiator", "program", "stmt", "dayblock", "datetime", 
-    "jump_stmt", "declarator", "function", "and_expr", "type_specifier", 
-    "primary_expr", "iteration_stmt", "unary_expr", "math_term", "selection_stmt", 
-    "rel_expr", "print_target", "postfix_expr"
+    "invalidRule", "timeblock", "selection_stmt", "math_expr", "print_target", 
+    "program", "instantiator", "stmt", "expr", "argument_expr_list", "declarator", 
+    "rel_expr", "datetime", "math_term", "function", "postfix_expr", "unary_expr", 
+    "equiv_expr", "primary_expr", "jump_stmt", "line", "and_expr", "type_specifier", 
+    "dayblock", "iteration_stmt"
 };
 
 public static final boolean[] decisionCanBacktrack = new boolean[] {
@@ -631,7 +631,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: ID, 60, expr, type_specifier, ID
+            // elements: type_specifier, ID, ID, 60, expr
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1201,7 +1201,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: a, ELSE_T, IF_T, b, expr
+            // elements: expr, a, IF_T, b, ELSE_T
             // token labels: 
             // rule labels: retval, b, a
             // token list labels: 
@@ -1248,7 +1248,7 @@ public TreeAdaptor getTreeAdaptor() {
                 }
                 dbg.location(51,31);
                 // /Users/shannonlee/PLT_Team20/SHANNONTEST/Chronos.g:51:31: ( ^( ELSE_T ( $b)* ) )?
-                if ( stream_ELSE_T.hasNext()||stream_b.hasNext() ) {
+                if ( stream_b.hasNext()||stream_ELSE_T.hasNext() ) {
                     dbg.location(51,31);
                     // /Users/shannonlee/PLT_Team20/SHANNONTEST/Chronos.g:51:31: ^( ELSE_T ( $b)* )
                     {
@@ -1271,8 +1271,8 @@ public TreeAdaptor getTreeAdaptor() {
                     }
 
                 }
-                stream_ELSE_T.reset();
                 stream_b.reset();
+                stream_ELSE_T.reset();
 
                 adaptor.addChild(root_0, root_1);
                 }
@@ -1436,7 +1436,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: element, FOREACH_T, line, IN_T, list
+            // elements: list, IN_T, element, FOREACH_T, line
             // token labels: element, list
             // rule labels: retval
             // token list labels: 
@@ -3253,7 +3253,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // AST REWRITE
-                    // elements: ID, argument_expr_list
+                    // elements: argument_expr_list, ID
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 

@@ -1,4 +1,4 @@
-// $ANTLR 3.4 src/grammar/ChronosTree.g 2012-05-06 11:34:42
+// $ANTLR 3.4 src/grammar/ChronosTree.g 2012-05-06 11:52:42
 
   package chronos.parser;
 
@@ -1289,16 +1289,24 @@ public class ChronosTree extends TreeFilter {
                     if ( state.backtracking==1 ) {
                     			CVal val1 = new CVal((e1!=null?e1.result:null));
                     			CVal val2 = new CVal((e2!=null?e2.result:null));
-                    			if (val1.isNumber() && val2.isNumber() 
-                    			 || val1.isString() && val2.isString()) {
-                    				retval.result = (Number)val1.value() + (Number)val2.value();
+                    			if (val1.isInt() && val2.isInt()) {
+                    				Integer temp = val1.asInt() + val2.asInt();
+                    				retval.result = new CVal(temp);
+                    			}
+                    			if (val1.isDouble() && val2.isDouble()) {
+                    				Double temp = val1.asDouble() + val2.asDouble();
+                    				retval.result = new CVal(temp);
+                    			}
+                    			if (val1.isString() && val2.isString()) {
+                    				String temp = val1.asString() + val2.asString();
+                    				retval.result = new CVal(temp);
                     			}
                     		}
 
                     }
                     break;
                 case 11 :
-                    // src/grammar/ChronosTree.g:195:4: ^( '-' e1= expr e2= expr )
+                    // src/grammar/ChronosTree.g:203:4: ^( '-' e1= expr e2= expr )
                     {
                     match(input,55,FOLLOW_55_in_expr450); if (state.failed) return retval;
 
@@ -1321,14 +1329,20 @@ public class ChronosTree extends TreeFilter {
                     if ( state.backtracking==1 ) {
                     			CVal val1 = new CVal((e1!=null?e1.result:null));
                     			CVal val2 = new CVal((e2!=null?e2.result:null));
-                    			if (val1.isNumber() && val2.isNumber()) {
-                    				retval.result = (Number)val1.value() - (Number)val2.value();
-                    			}		}
+                    			if (val1.isInt() && val2.isInt()) {
+                    				Integer temp = val1.asInt() - val2.asInt();
+                    				retval.result = new CVal(temp);
+                    			}
+                    			if (val1.isDouble() && val2.isDouble()) {
+                    				Double temp = val1.asDouble() - val2.asDouble();
+                    				retval.result = new CVal(temp);
+                    			}
+                    		}
 
                     }
                     break;
                 case 12 :
-                    // src/grammar/ChronosTree.g:201:4: ^( '*' e1= expr e2= expr )
+                    // src/grammar/ChronosTree.g:215:4: ^( '*' e1= expr e2= expr )
                     {
                     match(input,52,FOLLOW_52_in_expr467); if (state.failed) return retval;
 
@@ -1351,15 +1365,20 @@ public class ChronosTree extends TreeFilter {
                     if ( state.backtracking==1 ) {
                     			CVal val1 = new CVal((e1!=null?e1.result:null));
                     			CVal val2 = new CVal((e2!=null?e2.result:null));
-                    			if (val1.isNumber() && val2.isNumber()) {
-                    				retval.result = (Number)val1.value() * (Number)val2.value();
+                    			if (val1.isInt() && val2.isInt()) {
+                    				Integer temp = val1.asInt() * val2.asInt();
+                    				retval.result = new CVal(temp);
+                    			}
+                    			if (val1.isDouble() && val2.isDouble()) {
+                    				Double temp = val1.asDouble() * val2.asDouble();
+                    				retval.result = new CVal(temp);
                     			}
                     		}
 
                     }
                     break;
                 case 13 :
-                    // src/grammar/ChronosTree.g:208:4: ^( '/' e1= expr e2= expr )
+                    // src/grammar/ChronosTree.g:227:4: ^( '/' e1= expr e2= expr )
                     {
                     match(input,57,FOLLOW_57_in_expr484); if (state.failed) return retval;
 
@@ -1382,15 +1401,20 @@ public class ChronosTree extends TreeFilter {
                     if ( state.backtracking==1 ) {
                     			CVal val1 = new CVal((e1!=null?e1.result:null));
                     			CVal val2 = new CVal((e2!=null?e2.result:null));
-                    			if (val1.isNumber() && val2.isNumber()) {
-                    				retval.result = (Number)val1.value() / (Number)val2.value();
+                    			if (val1.isInt() && val2.isInt()) {
+                    				Integer temp = val1.asInt() / val2.asInt();
+                    				retval.result = new CVal(temp);
+                    			}
+                    			if (val1.isDouble() && val2.isDouble()) {
+                    				Double temp = val1.asDouble() / val2.asDouble();
+                    				retval.result = new CVal(temp);
                     			}
                     		}
 
                     }
                     break;
                 case 14 :
-                    // src/grammar/ChronosTree.g:217:4: ^( '.' e1= expr e2= expr )
+                    // src/grammar/ChronosTree.g:241:4: ^( '.' e1= expr e2= expr )
                     {
                     match(input,56,FOLLOW_56_in_expr505); if (state.failed) return retval;
 
@@ -1420,7 +1444,7 @@ public class ChronosTree extends TreeFilter {
                     				If neither of these work, then there is an error.*/
                     			if (varMap.containsKey((e1!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(e1.start),input.getTreeAdaptor().getTokenStopIndex(e1.start))):null))) {
                     				CVal val = varMap.get((e1!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(e1.start),input.getTreeAdaptor().getTokenStopIndex(e1.start))):null));
-                    				retval.result = (val.value()).e2;
+                    				retval.result = new CVal( (val.value()).((e2!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(e2.start),input.getTreeAdaptor().getTokenStopIndex(e2.start))):null)) );
                     			}
                     			if (!varMap.containsKey((e1!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(e1.start),input.getTreeAdaptor().getTokenStopIndex(e1.start))):null))) {
                     				try {
@@ -1435,7 +1459,7 @@ public class ChronosTree extends TreeFilter {
                     }
                     break;
                 case 15 :
-                    // src/grammar/ChronosTree.g:240:4: datetime
+                    // src/grammar/ChronosTree.g:264:4: datetime
                     {
                     pushFollow(FOLLOW_datetime_in_expr525);
                     datetime7=datetime();
@@ -1448,7 +1472,7 @@ public class ChronosTree extends TreeFilter {
                     }
                     break;
                 case 16 :
-                    // src/grammar/ChronosTree.g:241:4: timeblock
+                    // src/grammar/ChronosTree.g:265:4: timeblock
                     {
                     pushFollow(FOLLOW_timeblock_in_expr532);
                     timeblock8=timeblock();
@@ -1461,7 +1485,7 @@ public class ChronosTree extends TreeFilter {
                     }
                     break;
                 case 17 :
-                    // src/grammar/ChronosTree.g:242:4: dayblock
+                    // src/grammar/ChronosTree.g:266:4: dayblock
                     {
                     pushFollow(FOLLOW_dayblock_in_expr539);
                     dayblock9=dayblock();
@@ -1474,7 +1498,7 @@ public class ChronosTree extends TreeFilter {
                     }
                     break;
                 case 18 :
-                    // src/grammar/ChronosTree.g:245:4: INT
+                    // src/grammar/ChronosTree.g:269:4: INT
                     {
                     INT10=(CommonTree)match(input,INT,FOLLOW_INT_in_expr551); if (state.failed) return retval;
 
@@ -1483,7 +1507,7 @@ public class ChronosTree extends TreeFilter {
                     }
                     break;
                 case 19 :
-                    // src/grammar/ChronosTree.g:246:4: DOUBLE
+                    // src/grammar/ChronosTree.g:270:4: DOUBLE
                     {
                     DOUBLE11=(CommonTree)match(input,DOUBLE,FOLLOW_DOUBLE_in_expr558); if (state.failed) return retval;
 
@@ -1492,7 +1516,7 @@ public class ChronosTree extends TreeFilter {
                     }
                     break;
                 case 20 :
-                    // src/grammar/ChronosTree.g:247:4: ID
+                    // src/grammar/ChronosTree.g:271:4: ID
                     {
                     ID12=(CommonTree)match(input,ID,FOLLOW_ID_in_expr565); if (state.failed) return retval;
 
@@ -1501,7 +1525,7 @@ public class ChronosTree extends TreeFilter {
                     }
                     break;
                 case 21 :
-                    // src/grammar/ChronosTree.g:248:4: STRING
+                    // src/grammar/ChronosTree.g:272:4: STRING
                     {
                     STRING13=(CommonTree)match(input,STRING,FOLLOW_STRING_in_expr572); if (state.failed) return retval;
 
@@ -1510,7 +1534,7 @@ public class ChronosTree extends TreeFilter {
                     }
                     break;
                 case 22 :
-                    // src/grammar/ChronosTree.g:249:4: TIME
+                    // src/grammar/ChronosTree.g:273:4: TIME
                     {
                     TIME14=(CommonTree)match(input,TIME,FOLLOW_TIME_in_expr579); if (state.failed) return retval;
 
@@ -1536,7 +1560,7 @@ public class ChronosTree extends TreeFilter {
 
 
     // $ANTLR start "function"
-    // src/grammar/ChronosTree.g:251:1: function returns [Object result] : ( ^( PRINT_T ( print_target )* ) | ^( ID ^( PARAMS ( argument_expr_list )? ) ) );
+    // src/grammar/ChronosTree.g:275:1: function returns [Object result] : ( ^( PRINT_T ( print_target )* ) | ^( ID ^( PARAMS ( argument_expr_list )? ) ) );
     public final Object function() throws RecognitionException {
         Object result = null;
 
@@ -1546,7 +1570,7 @@ public class ChronosTree extends TreeFilter {
 
 
         try {
-            // src/grammar/ChronosTree.g:253:2: ( ^( PRINT_T ( print_target )* ) | ^( ID ^( PARAMS ( argument_expr_list )? ) ) )
+            // src/grammar/ChronosTree.g:277:2: ( ^( PRINT_T ( print_target )* ) | ^( ID ^( PARAMS ( argument_expr_list )? ) ) )
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1566,13 +1590,13 @@ public class ChronosTree extends TreeFilter {
             }
             switch (alt10) {
                 case 1 :
-                    // src/grammar/ChronosTree.g:253:4: ^( PRINT_T ( print_target )* )
+                    // src/grammar/ChronosTree.g:277:4: ^( PRINT_T ( print_target )* )
                     {
                     match(input,PRINT_T,FOLLOW_PRINT_T_in_function597); if (state.failed) return result;
 
                     if ( input.LA(1)==Token.DOWN ) {
                         match(input, Token.DOWN, null); if (state.failed) return result;
-                        // src/grammar/ChronosTree.g:253:14: ( print_target )*
+                        // src/grammar/ChronosTree.g:277:14: ( print_target )*
                         loop8:
                         do {
                             int alt8=2;
@@ -1585,7 +1609,7 @@ public class ChronosTree extends TreeFilter {
 
                             switch (alt8) {
                         	case 1 :
-                        	    // src/grammar/ChronosTree.g:253:14: print_target
+                        	    // src/grammar/ChronosTree.g:277:14: print_target
                         	    {
                         	    pushFollow(FOLLOW_print_target_in_function599);
                         	    print_target();
@@ -1609,7 +1633,7 @@ public class ChronosTree extends TreeFilter {
                     }
                     break;
                 case 2 :
-                    // src/grammar/ChronosTree.g:254:4: ^( ID ^( PARAMS ( argument_expr_list )? ) )
+                    // src/grammar/ChronosTree.g:278:4: ^( ID ^( PARAMS ( argument_expr_list )? ) )
                     {
                     ID15=(CommonTree)match(input,ID,FOLLOW_ID_in_function607); if (state.failed) return result;
 
@@ -1618,7 +1642,7 @@ public class ChronosTree extends TreeFilter {
 
                     if ( input.LA(1)==Token.DOWN ) {
                         match(input, Token.DOWN, null); if (state.failed) return result;
-                        // src/grammar/ChronosTree.g:254:18: ( argument_expr_list )?
+                        // src/grammar/ChronosTree.g:278:18: ( argument_expr_list )?
                         int alt9=2;
                         int LA9_0 = input.LA(1);
 
@@ -1627,7 +1651,7 @@ public class ChronosTree extends TreeFilter {
                         }
                         switch (alt9) {
                             case 1 :
-                                // src/grammar/ChronosTree.g:254:18: argument_expr_list
+                                // src/grammar/ChronosTree.g:278:18: argument_expr_list
                                 {
                                 pushFollow(FOLLOW_argument_expr_list_in_function612);
                                 argument_expr_list16=argument_expr_list();
@@ -1672,7 +1696,7 @@ public class ChronosTree extends TreeFilter {
 
 
     // $ANTLR start "print_target"
-    // src/grammar/ChronosTree.g:258:1: print_target : ( INT | DOUBLE | ID | function );
+    // src/grammar/ChronosTree.g:282:1: print_target : ( INT | DOUBLE | ID | function );
     public final void print_target() throws RecognitionException {
         CommonTree INT17=null;
         CommonTree DOUBLE18=null;
@@ -1681,7 +1705,7 @@ public class ChronosTree extends TreeFilter {
 
 
         try {
-            // src/grammar/ChronosTree.g:259:2: ( INT | DOUBLE | ID | function )
+            // src/grammar/ChronosTree.g:283:2: ( INT | DOUBLE | ID | function )
             int alt11=4;
             switch ( input.LA(1) ) {
             case INT:
@@ -1730,7 +1754,7 @@ public class ChronosTree extends TreeFilter {
 
             switch (alt11) {
                 case 1 :
-                    // src/grammar/ChronosTree.g:259:4: INT
+                    // src/grammar/ChronosTree.g:283:4: INT
                     {
                     INT17=(CommonTree)match(input,INT,FOLLOW_INT_in_print_target627); if (state.failed) return ;
 
@@ -1739,7 +1763,7 @@ public class ChronosTree extends TreeFilter {
                     }
                     break;
                 case 2 :
-                    // src/grammar/ChronosTree.g:260:4: DOUBLE
+                    // src/grammar/ChronosTree.g:284:4: DOUBLE
                     {
                     DOUBLE18=(CommonTree)match(input,DOUBLE,FOLLOW_DOUBLE_in_print_target634); if (state.failed) return ;
 
@@ -1748,7 +1772,7 @@ public class ChronosTree extends TreeFilter {
                     }
                     break;
                 case 3 :
-                    // src/grammar/ChronosTree.g:261:4: ID
+                    // src/grammar/ChronosTree.g:285:4: ID
                     {
                     ID19=(CommonTree)match(input,ID,FOLLOW_ID_in_print_target641); if (state.failed) return ;
 
@@ -1757,7 +1781,7 @@ public class ChronosTree extends TreeFilter {
                     }
                     break;
                 case 4 :
-                    // src/grammar/ChronosTree.g:262:4: function
+                    // src/grammar/ChronosTree.g:286:4: function
                     {
                     pushFollow(FOLLOW_function_in_print_target648);
                     function20=function();
@@ -1787,7 +1811,7 @@ public class ChronosTree extends TreeFilter {
 
 
     // $ANTLR start "datetime"
-    // src/grammar/ChronosTree.g:264:1: datetime returns [Datetime result] : ^( DATETIME dayblock timeblock ) ;
+    // src/grammar/ChronosTree.g:288:1: datetime returns [Datetime result] : ^( DATETIME dayblock timeblock ) ;
     public final Datetime datetime() throws RecognitionException {
         Datetime result = null;
 
@@ -1798,8 +1822,8 @@ public class ChronosTree extends TreeFilter {
 
 
         try {
-            // src/grammar/ChronosTree.g:266:2: ( ^( DATETIME dayblock timeblock ) )
-            // src/grammar/ChronosTree.g:266:4: ^( DATETIME dayblock timeblock )
+            // src/grammar/ChronosTree.g:290:2: ( ^( DATETIME dayblock timeblock ) )
+            // src/grammar/ChronosTree.g:290:4: ^( DATETIME dayblock timeblock )
             {
             match(input,DATETIME,FOLLOW_DATETIME_in_datetime667); if (state.failed) return result;
 
@@ -1841,7 +1865,7 @@ public class ChronosTree extends TreeFilter {
 
 
     // $ANTLR start "timeblock"
-    // src/grammar/ChronosTree.g:270:1: timeblock returns [Timeblock result] : ^( TIMES a= TIME b= TIME ) ;
+    // src/grammar/ChronosTree.g:294:1: timeblock returns [Timeblock result] : ^( TIMES a= TIME b= TIME ) ;
     public final Timeblock timeblock() throws RecognitionException {
         Timeblock result = null;
 
@@ -1850,8 +1874,8 @@ public class ChronosTree extends TreeFilter {
         CommonTree b=null;
 
         try {
-            // src/grammar/ChronosTree.g:272:2: ( ^( TIMES a= TIME b= TIME ) )
-            // src/grammar/ChronosTree.g:272:4: ^( TIMES a= TIME b= TIME )
+            // src/grammar/ChronosTree.g:296:2: ( ^( TIMES a= TIME b= TIME ) )
+            // src/grammar/ChronosTree.g:296:4: ^( TIMES a= TIME b= TIME )
             {
             match(input,TIMES,FOLLOW_TIMES_in_timeblock690); if (state.failed) return result;
 
@@ -1885,7 +1909,7 @@ public class ChronosTree extends TreeFilter {
 
 
     // $ANTLR start "dayblock"
-    // src/grammar/ChronosTree.g:276:1: dayblock returns [Dayblock result] : ^( DAYBLOCK_T ( DAY )+ ) ;
+    // src/grammar/ChronosTree.g:300:1: dayblock returns [Dayblock result] : ^( DAYBLOCK_T ( DAY )+ ) ;
     public final Dayblock dayblock() throws RecognitionException {
         Dayblock result = null;
 
@@ -1894,13 +1918,13 @@ public class ChronosTree extends TreeFilter {
 
          result = new Dayblock(); 
         try {
-            // src/grammar/ChronosTree.g:279:2: ( ^( DAYBLOCK_T ( DAY )+ ) )
-            // src/grammar/ChronosTree.g:279:4: ^( DAYBLOCK_T ( DAY )+ )
+            // src/grammar/ChronosTree.g:303:2: ( ^( DAYBLOCK_T ( DAY )+ ) )
+            // src/grammar/ChronosTree.g:303:4: ^( DAYBLOCK_T ( DAY )+ )
             {
             match(input,DAYBLOCK_T,FOLLOW_DAYBLOCK_T_in_dayblock723); if (state.failed) return result;
 
             match(input, Token.DOWN, null); if (state.failed) return result;
-            // src/grammar/ChronosTree.g:279:18: ( DAY )+
+            // src/grammar/ChronosTree.g:303:18: ( DAY )+
             int cnt12=0;
             loop12:
             do {
@@ -1914,7 +1938,7 @@ public class ChronosTree extends TreeFilter {
 
                 switch (alt12) {
             	case 1 :
-            	    // src/grammar/ChronosTree.g:279:19: DAY
+            	    // src/grammar/ChronosTree.g:303:19: DAY
             	    {
             	    DAY23=(CommonTree)match(input,DAY,FOLLOW_DAY_in_dayblock726); if (state.failed) return result;
 
@@ -1958,7 +1982,7 @@ public class ChronosTree extends TreeFilter {
 
 
     // $ANTLR start "argument_expr_list"
-    // src/grammar/ChronosTree.g:284:1: argument_expr_list returns [ArrayList<String> result] : ( expr )+ ;
+    // src/grammar/ChronosTree.g:308:1: argument_expr_list returns [ArrayList<String> result] : ( expr )+ ;
     public final ArrayList<String> argument_expr_list() throws RecognitionException {
         ArrayList<String> result = null;
 
@@ -1968,10 +1992,10 @@ public class ChronosTree extends TreeFilter {
 
          result = new ArrayList<String>(); 
         try {
-            // src/grammar/ChronosTree.g:286:2: ( ( expr )+ )
-            // src/grammar/ChronosTree.g:286:4: ( expr )+
+            // src/grammar/ChronosTree.g:310:2: ( ( expr )+ )
+            // src/grammar/ChronosTree.g:310:4: ( expr )+
             {
-            // src/grammar/ChronosTree.g:286:4: ( expr )+
+            // src/grammar/ChronosTree.g:310:4: ( expr )+
             int cnt13=0;
             loop13:
             do {
@@ -1985,7 +2009,7 @@ public class ChronosTree extends TreeFilter {
 
                 switch (alt13) {
             	case 1 :
-            	    // src/grammar/ChronosTree.g:286:5: expr
+            	    // src/grammar/ChronosTree.g:310:5: expr
             	    {
             	    pushFollow(FOLLOW_expr_in_argument_expr_list752);
             	    expr24=expr();
@@ -2030,14 +2054,14 @@ public class ChronosTree extends TreeFilter {
 
 
     // $ANTLR start "type_specifier"
-    // src/grammar/ChronosTree.g:288:1: type_specifier : ( INT_T | DOUBLE_T | DAYBLOCK_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T );
+    // src/grammar/ChronosTree.g:312:1: type_specifier : ( INT_T | DOUBLE_T | DAYBLOCK_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T );
     public final ChronosTree.type_specifier_return type_specifier() throws RecognitionException {
         ChronosTree.type_specifier_return retval = new ChronosTree.type_specifier_return();
         retval.start = input.LT(1);
 
 
         try {
-            // src/grammar/ChronosTree.g:289:2: ( INT_T | DOUBLE_T | DAYBLOCK_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T )
+            // src/grammar/ChronosTree.g:313:2: ( INT_T | DOUBLE_T | DAYBLOCK_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T )
             // src/grammar/ChronosTree.g:
             {
             if ( (input.LA(1) >= COURSELIST_T && input.LA(1) <= COURSE_T)||input.LA(1)==DATETIME_T||input.LA(1)==DAYBLOCK_T||input.LA(1)==DOUBLE_T||input.LA(1)==INT_T||input.LA(1)==SCHEDULE_T||input.LA(1)==STRING_T||input.LA(1)==TIMEBLOCK_T||input.LA(1)==TIME_T ) {
