@@ -27,19 +27,25 @@ public class DataTypeTester {
             
             System.out.println(dl3.toString());
             
-            Timeblock tb = new Timeblock("1:10", "2:25");
+            Time st = new Time("1:10");
+            Time en = new Time("2:25");
+            
+            Timeblock tb = new Timeblock(st, en);
+            
+            System.out.println(tb.toString());
             
             DateTime dt1 = new DateTime(db1, tb);
             DateTime dt2 = new DateTime(db2, tb);
             DateTime dt3 = new DateTime(db3, tb);
             
+            
+            
             if (dt1.db.has('M'))
                 System.out.println("Working well");
-            if (dt1.db.has('T'))
-                System.out.println("PROBLEM");
+
             System.out.println(dt3.toString());
         }
-        catch(Exception e){System.out.println("Stick to the weekadys, buster!");}
+        catch(Exception e){System.out.println(e.getMessage());}
         
         
         
