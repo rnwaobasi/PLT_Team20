@@ -167,6 +167,19 @@ public class CVal implements Comparable<CVal> {
 		}
 	}
 	
+	public boolean getBool(){
+		if (this.isBool()){
+			if (this.value.equals(1)) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			throw new RuntimeException("illegal expression: '" + this + "' is not an "
+					"accepted boolean");
+		}
+	}
+	
 	@Override
 	public int hashCode() {
 		return value.hashCode();
