@@ -97,8 +97,7 @@ unary_expr
 postfix_expr
 // matches functions or variables
 	:	function
-	|	primary_expr /*function_parens?
-		-> ^(primary_expr function_parens?)*/
+	|	primary_expr
 	;
 function
 	:	PRINT_T '(' print_target* ')'
@@ -108,6 +107,7 @@ function
 print_target
 	:	INT
 	|	DOUBLE
+	|	STRING
 	|	ID
 	|	function
 	;
@@ -130,7 +130,6 @@ primary_expr
 	|	ID 
 	|	STRING
 	|	TIME
-	|	MASTER_T // master keyword for master courselist
 	|	'('expr')' -> expr
 	;
 argument_expr_list
@@ -183,8 +182,6 @@ TIME_T	:	'time'
 		;
 STRING_T:	'string'
 		;
-MASTER_T:	'master'
-	;
 PRINT_T:	'print'
 	;
 TIME

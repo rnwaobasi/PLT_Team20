@@ -15,8 +15,6 @@ options {
 @members {
 	// TreeMap for storing our variables
  	private Map<String, CVal> varMap = new TreeMap<String, CVal>();
- 	// TreeMap for storing our master courselist
- 	private Map<String, Course> masterCourselist = new TreeMap<String, Course>();
 
 	// function for evaluating functions!
 	private Object evalFunction(String funcName, ArrayList<String> params) {
@@ -86,14 +84,14 @@ assignment_expr
 expr returns [CVal result]
 	// goes to assignment_expr rule
 	:	assignment_expr
-	// logical
+	// logical; returns 1 or 0
 	|	^(OR e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
 			/* if e1 and e2 are boolean expressions, 
 			then this operation is legal */
 			if (val1.isBool() && val2.isBool()) {
-				$result = val1.value() || val2.value();
+				$result = (val1.value() || val2.value())? 1:0;
 			}
 			else {
 				throw new MismatchedTypeException("Cannot perform \
@@ -104,7 +102,7 @@ expr returns [CVal result]
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
 			if (val1.isBool() && val2.isBool()) {
-				$result = val1.value() && val2.value();
+				$result = (val1.value() && val2.value())? 1:0;
 			}
 			else {
 				throw new MismatchedTypeException("Cannot perform \
@@ -114,71 +112,87 @@ expr returns [CVal result]
 	|	^(NOT e=expr) {
 			Cval val = new CVal($e.result);
 			if (val.isBool()) {
-				$result = !val.value();
+				$result = (!val.value())? 1:0;
 			}
 			else {
 				throw new MismatchedTypeException("Cannot perform \
 				NOT operation on non-boolean expressions");
 			}
 		}
-	// relative
+	// relative; returns 1 or 0
 	|	^(EQ e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			$result = ( val1.value().compareTo(val2.value()) == 0 );
+			$result = ( val1.value().compareTo(val2.value()) == 0 )? 1:0;
 		}
 	|	^(NEQ e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			$result = ( val1.value().compareTo(val2.value()) != 0 );
+			$result = ( val1.value().compareTo(val2.value()) != 0 )? 1:0;
 		}
 	|	^(GEQ e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
 			$result = ( val1.value().compareTo(val2.value()) == 1
-			|| val1.value().compareTo(val2.value()) == 0 );
+			|| val1.value().compareTo(val2.value()) == 0 )? 1:0;
 		}
 	|	^(LEQ e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
 			$result = ( val1.value().compareTo(val2.value()) == -1
-			|| val1.value().compareTo(val2.value()) == 0 );
+			|| val1.value().compareTo(val2.value()) == 0 )? 1:0;
 		}
 	|	^('<' e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			$result = ( val1.value().compareTo(val2.value()) == -1 );
+			$result = ( val1.value().compareTo(val2.value()) == -1 )? 1:0;
 		}
 	|	^('>' e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			$result = ( val1.value().compareTo(val2.value()) == 1 );
+			$result = ( val1.value().compareTo(val2.value()) == 1 )? 1:0;
 		}
-	// math
+	// math; returns int or double
+	// for '+' concatenation, also returns String
 	|	^('+' e1=expr e2=expr) {
-			$result = val1.value() + val2.value();
+			CVal val1 = new CVal($e1.result);
+			CVal val2 = new CVal($e2.result);
+			if ($e1.isNumber() && $e2.isNumber() 
+			 || $e1.isString() && $e2.isString()) {
+				$result = val1.value() + val2.value();
+			}
 		}
 	|	^('-' e1=expr e2=expr) {
-			$result = val1.value() - val2.value();
-		}
+			CVal val1 = new CVal($e1.result);
+			CVal val2 = new CVal($e2.result);
+			if ($e1.isNumber() && $e2.isNumber()) {
+				$result = val1.value() - val2.value();
+			}		}
 	|	^('*' e1=expr e2=expr) {
-			$result = val1.value() * val2.value();
+			CVal val1 = new CVal($e1.result);
+			CVal val2 = new CVal($e2.result);
+			if ($e1.isNumber() && $e2.isNumber() {
+				$result = val1.value() * val2.value();
+			}
 		}
 	|	^('/' e1=expr e2=expr) {
-			$result = val1.value() / val2.value();
+			CVal val1 = new CVal($e1.result);
+			CVal val2 = new CVal($e2.result);
+			if ($e1.isNumber() && $e2.isNumber() {
+				$result = val1.value() / val2.value();
+			}
 		}
 	
 	// dot operator - car.color
-	|	^('.' e1=expr e2=expr) // SEHR, SEHR WICHTIG!!!!!!
+	|	^('.' e1=expr e2=expr) {
+			Object caller = varMap.get($e1.text);
+		}
 	
 	// derived types
 	|	datetime { $result = $datetime.result; }
 	|	timeblock { $result = $timeblock.result; }
 	|	dayblock { $result = $dayblock.result; }
-	
-	// master courselist - made from input file
-	|	MASTER_T //****** HOW TO RECONCILE THIS????
-	
+		
 	// primary types
 	|	INT { $result = new CVal( Integer.parseInt($INT.text) ); }
 	|	DOUBLE { $result = new CVal( Double.parseDouble($DOUBLE.text) ); }
