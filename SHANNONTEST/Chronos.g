@@ -101,14 +101,16 @@ postfix_expr
 		-> ^(primary_expr function_parens?)*/
 	;
 function
-	:	ID '(' argument_expr_list? ')'
+	:	PRINT_T '(' print_target* ')'
+	|	ID '(' argument_expr_list? ')'
 		-> ^(ID ^(PARAMS argument_expr_list?))
 	;
-/*function_parens
-// matches () and the params in a function call
-	:	'(' argument_expr_list? ')'
-		-> ^(PARAMS argument_expr_list?)
-	;*/
+print_target
+	:	INT
+	|	DOUBLE
+	|	ID
+	|	function
+	;
 datetime
 // matches [M,W] 10:00~11:00
 	:	dayblock timeblock 
@@ -181,10 +183,10 @@ TIME_T	:	'time'
 		;
 STRING_T:	'string'
 		;
-MASTER_T
-	:	'master'
+MASTER_T:	'master'
 	;
-
+PRINT_T:	'print'
+	;
 TIME
 	:	('0'..'2')? ('0'..'9') ':' ('0'..'5')('0'..'9')
 	;
