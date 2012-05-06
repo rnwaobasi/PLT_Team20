@@ -13,7 +13,8 @@ public class CVal implements Comparable<CVal> {
 		value = v;
 		// only accept one of our datetypes
 		if (!(isNumber() || isDayblock() || isTime() || isTimeblock()
-				|| isDatetime() || isString() || isCourse() || isCourselist() || isSchedule())) {
+				|| isDatetime() || isString() || isCourse() || isCourselist() 
+				|| isSchedule() || isFunction() )) {
 			throw new RuntimeException("invalid type: " + v + " ("
 					+ v.getClass() + ")");
 		}
@@ -58,6 +59,10 @@ public class CVal implements Comparable<CVal> {
 	public Schedule asSchedule() {
 		return (Schedule) value;
 	}
+	
+	public Function asFunction() {
+		return (Function) value;
+	}
 
 	@Override
 	public int compareTo(CVal that) {
@@ -81,7 +86,9 @@ public class CVal implements Comparable<CVal> {
 			return this.asCourse().compareTo(that.asCourse());
 		} else if (this.isCourselist() && that.isCourselist()) {
 			return this.asCourselist().compareTo(that.asCourselist());
-		} else {
+		} else if (this.isFunction() && that.isFunction()) {
+			return this.asFunction().compareTo(that.asFunction());
+		}else {
 			throw new RuntimeException("illegal expression: can't compare `"
 					+ this + "` to `" + that + "`");
 		}
@@ -125,7 +132,9 @@ public class CVal implements Comparable<CVal> {
 			return this.asCourselist();
 		}	else if (this.isSchedule()) {
 			return this.asSchedule();
-		}	else {
+		}	else if (this.isFunction()) {
+			return this.asFunction();
+		}else {
 			throw new RuntimeException("illegal expression: can't get value of `"
 					+ this + "`");
 		}
@@ -152,7 +161,9 @@ public class CVal implements Comparable<CVal> {
 			return "Courselist";
 		}	else if (this.isSchedule()) {
 			return "Schedule";
-		}	else {
+		}	else if (this.isFunction()) {
+			return "Schedule";
+		}else {
 			throw new RuntimeException("illegal expression: can't get type of `"
 					+ this + "`");
 		}
@@ -231,6 +242,10 @@ public class CVal implements Comparable<CVal> {
 
 	public boolean isSchedule() {
 		return value instanceof Schedule;
+	}
+	
+	public boolean isFunction() {
+		return value instanceof Function;
 	}
 
 	@Override
