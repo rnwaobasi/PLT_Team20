@@ -161,10 +161,10 @@ public class CVal implements Comparable<CVal> {
 	
 	public boolean isBool(){
 		if (this.isInt && (this.value == 1 || this.value == 0) ) {
-			return true
+			return true;
 		}
 		else {
-			return false
+			return false;
 		}
 	}
 	
