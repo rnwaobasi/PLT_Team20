@@ -14,8 +14,7 @@ options {
 
 @members {
 	// maps for storing our stuff
- 	//private Map<String, Function> functionMap = new TreeMap<String, Function>();
- 	//private Map<String, Variable> variableMap = new TreeMap<String, Variable>();
+ 	private Map<String, CVal> varMap = new TreeMap<String, CVal>();
 
 	// convert node to an int
 	private int toInt(CommonTree node) {
@@ -54,6 +53,7 @@ declarator
 	:	^(DECL type_specifier ID) {
 		/* if $type_specifier.text == such and such, then
 		construct the type and put it in varMap? */
+		varMap.put($ID.text, null);
 		}
 	;
 instantiator
@@ -81,17 +81,23 @@ assignment_expr
 		/* if $ID.text is in varMap,
 		set its value to $expr.result
 		otherwise, ERROR */
+			if (found($ID.text)) {
+				//******** CREATE FOUND AND SET METHODS
+				set($ID.text, $expr.result);
+			}
+			else {
+				throw new NullPointerException("This ID doesn't exist");
+			}
 		}
 	;
 expr returns [Value result]
-	//:	^('=' ID expr) // assignment
-	:	assignment_expr
+	:	assignment_expr // goes to assignment_expr rule
 	// logical
 	|	^(OR e1=expr e2=expr) {
-			$val1 = new CVal($e1.result);
-			$val2 = new CVal($e2.result);
-			if ($val1.isBool() && $val2.isBool()) {
-				$result = $val1.value() || $val2.value();
+			CVal val1 = new CVal($e1.result);
+			CVal val2 = new CVal($e2.result);
+			if (val1.isBool() && val2.isBool()) {
+				$result = val1.value() || val2.value();
 			}
 			else {
 				throw new MismatchedTypeException("Cannot perform \
@@ -99,10 +105,10 @@ expr returns [Value result]
 			}
 		}
 	|	^(AND e1=expr e2=expr) {
-			$val1 = new CVal($e1.result);
-			$val2 = new CVal($e2.result);
-			if ($val1.isBool() && $val2.isBool()) {
-				$result = $val1.value() && $val2.value();
+			CVal val1 = new CVal($e1.result);
+			CVal val2 = new CVal($e2.result);
+			if (val1.isBool() && val2.isBool()) {
+				$result = val1.value() && val2.value();
 			}
 			else {
 				throw new MismatchedTypeException("Cannot perform \
@@ -110,9 +116,9 @@ expr returns [Value result]
 			}
 		}
 	|	^(NOT e=expr) {
-			$val = new CVal($e.result);
-			if ($val.isBool()) {
-				$result = !$val.value();
+			Cval val = new CVal($e.result);
+			if (val.isBool()) {
+				$result = !val.value();
 			}
 			else {
 				throw new MismatchedTypeException("Cannot perform \
@@ -121,33 +127,34 @@ expr returns [Value result]
 		}
 	// relative
 	|	^(EQ e1=expr e2=expr) {
-			$val1 = new CVal($e1.result);
-			$val2 = new CVal($e2.result);
+			CVal val1 = new CVal($e1.result);
+			CVal val2 = new CVal($e2.result);
 			$result = $val1.value() == $val2.value();
 		}
 	|	^(NEQ expr expr) {
-			$val1 = new CVal($e1.result);
-			$val2 = new CVal($e2.result);
+			CVal val1 = new CVal($e1.result);
+			CVal val2 = new CVal($e2.result);
 			$result = $val1.value() != $val2.value();
+
 		}
 	|	^(GEQ expr expr) {
-			$val1 = new CVal($e1.result);
-			$val2 = new CVal($e2.result);
+			CVal val1 = new CVal($e1.result);
+			CVal val2 = new CVal($e2.result);
 			$result = $val1.value() >= $val2.value();
 		}
 	|	^(LEQ expr expr) {
-			$val1 = new CVal($e1.result);
-			$val2 = new CVal($e2.result);
+			CVal val1 = new CVal($e1.result);
+			CVal val2 = new CVal($e2.result);
 			$result = $val1.value() <= $val2.value();
 		}
 	|	^('<' expr expr) {
-			$val1 = new CVal($e1.result);
-			$val2 = new CVal($e2.result);
+			CVal val1 = new CVal($e1.result);
+			CVal val2 = new CVal($e2.result);
 			$result = $val1.value() < $val2.value();
 		}
 	|	^('>' expr expr) {
-			$val1 = new CVal($e1.result);
-			$val2 = new CVal($e2.result);
+			CVal val1 = new CVal($e1.result);
+			CVal val2 = new CVal($e2.result);
 			$result = $val1.value() > $val2.value();
 		}
 	// math
@@ -162,9 +169,9 @@ expr returns [Value result]
 	|	timeblock
 	|	dayblock
 	// master courselist - made from input file
-	|	MASTER_T
+	|	MASTER_T //****** HOW TO RECONCILE THIS????
 	// primary types
-	|	INT {
+	|	INT
 	|	DOUBLE
 	|	ID
 	|	STRING
@@ -172,10 +179,17 @@ expr returns [Value result]
 	;
 function returns [Object result]
 // i.e. print()
-	:	^(ID ^(PARAMS argument_expr_list?)) {
+	:	^(PRINT_T print_target*)
+	|	^(ID ^(PARAMS argument_expr_list?)) {
 		$result = evalFunction($ID.text, $argument_expr_list.result);
 		}
 	;
+print_target
+	:	INT { out($INT); }
+	|	DOUBLE { out($DOUBLE); }
+	|	ID { if (found($ID.text)) { out(getVar($ID.text).value);} }
+	|	function { out($function.result); }
+		;
 datetime returns [Datetime result]
 // i.e. [M,W] 10:00~11:00
 	:	^(DATETIME dayblock timeblock) {
@@ -185,7 +199,7 @@ datetime returns [Datetime result]
 timeblock returns [Timeblock result]
 // i.e. 13:00~14:00
 	:	^(TIMES a=TIME b=TIME) {
-		$result = new Timeblock($a.text, $b.text);
+		$result = new Timeblock(new Time($a.text), new Time($b.text));
 		}
 	;
 dayblock returns [Dayblock result]
