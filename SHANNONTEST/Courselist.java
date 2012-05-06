@@ -1,6 +1,6 @@
 
 import java.util.ArrayList;
-public class Courselist {
+public class Courselist implements Comparable<Courselist>{
     String name;
     ArrayList<Course> courses;
     
@@ -83,4 +83,33 @@ public class Courselist {
         clString += ".\n";
         return clString;
     }
+	
+	public bolean equals(Object o){
+		if (this == o) {
+			return true;
+		}
+		if (o == null || this.getClass() != o.getClass()) {
+			return false;
+		}
+		Courselist that = (Courselist) o;
+		if (this.name.equals(that.name) && this.numCourses() == that.numCourses()) {
+			for (int i = 0; i < this.numCourses(); i++) {
+				if ( !(this.courses.get(i).equals(that.courses.get(i))) ) {
+					return false;
+				}
+			}
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public int compareTo(Courselist that){
+		if (this.equals(that)){
+			return 0;
+		}
+		else {
+			return -1;
+		}
+	}
 }

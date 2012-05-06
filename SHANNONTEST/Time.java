@@ -1,5 +1,5 @@
 
-public class Time {
+public class Time implements Comparable<Time>{
     
     int time;
     
@@ -60,5 +60,28 @@ public class Time {
         
         return timeStr;
     }
+	
+	public bolean equals(Object o){
+		if (this == o) {
+			return true;
+		}
+		if (o == null || this.getClass() != o.getClass()) {
+			return false;
+		}
+		Time that = (Time) o;
+		return (this.time == that.time);
+	}
+	
+	public int compareTo(Time that){
+		if (this.equals(that)){
+			return 0;
+		}
+		else if (this.greaterThan(that)){
+			return 1;
+		}
+		else {
+			return -1;
+		}
+	}
         
 }

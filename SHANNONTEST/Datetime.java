@@ -1,5 +1,5 @@
 
-public class Datetime {
+public class Datetime implements Comparable<Datetime>{
     
     //merges Dayblock and Timeblock into one data type of dates and times
     Dayblock db;
@@ -19,6 +19,26 @@ public class Datetime {
               
         return dtString;
     }
+	
+	public bolean equals(Object o){
+		if (this == o) {
+			return true;
+		}
+		if (o == null || this.getClass() != o.getClass()) {
+			return false;
+		}
+		Datetime that = (Datetime) o;
+		return ( this.db.equals(that.db) && this.tb.equals(that.tb) );
+	}
+	
+	public int compareTo(Datetime that){
+		if (this.equals(that)){
+			return 0;
+		}
+		else {
+			return -1;
+		}
+	}
     
     
 }
