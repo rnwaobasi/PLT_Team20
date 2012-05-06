@@ -3,8 +3,8 @@ package chronos;
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.*;
 import org.antlr.stringtemplate.*;
-import chronos.nodes.*
-import chronos.parser.*
+import chronos.nodes.*;
+import chronos.parser.*;
 
 public class Main {
 	public static void main(String[] args) throws Exception {

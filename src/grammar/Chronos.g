@@ -22,11 +22,11 @@ tokens {
 }
 
 @parser::header { 
-  package tl.parser; 
+  package chronos.parser; 
 }  
   
 @lexer::header { 
-  package tl.parser; 
+  package chronos.parser; 
 } 
 
 /* *** GRAMMAR *** */

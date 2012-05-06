@@ -8,9 +8,10 @@ options {
 }
 
 @header {
-  package tl.parser;
+  package chronos.parser;
   import java.util.Map;
   import java.util.TreeMap;
+  import chronos.nodes.*;
 }
 
 @members {

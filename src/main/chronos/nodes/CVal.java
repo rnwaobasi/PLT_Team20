@@ -131,6 +131,7 @@ public class CVal implements Comparable<CVal> {
 			throw new RuntimeException("illegal expression: can't get value of `"
 					+ this + "`");
 		}
+	}
 		
 	public String typename(){
 		if (this.isInt()) {
@@ -160,7 +161,7 @@ public class CVal implements Comparable<CVal> {
 	}
 	
 	public boolean isBool(){
-		if (this.isInt && (this.value == 1 || this.value == 0) ) {
+		if (this.isInt() && (this.value.equals(1) || this.value.equals(0)) ) {
 			return true;
 		}
 		else {

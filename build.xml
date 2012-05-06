@@ -15,7 +15,7 @@
 	</target>
 
 	<target name="compile-main" depends="clean">
-		<javac srcdir="src/main/" destdir="build/classes/" includeantruntime="false">
+		<javac srcdir="src/main/chronos/" destdir="build/classes/" includeantruntime="false">
 			<classpath refid="classpath" />
 		</javac>
 	</target>
