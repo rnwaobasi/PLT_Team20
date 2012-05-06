@@ -72,13 +72,19 @@ stmt:	expr
 	|	jump_stmt
 	;
 selection_stmt // TO DO! LEARN ABOUT SCOPE?
-	:	^(COND ^(IF_T expr a=line*) ^(ELSE_T b=line*))
+	:	^(COND ^(IF_T expr a=line*) ^(ELSE_T b=line*)) {
+			if ($expr) {$a*} else {$b*};
+		}
 	;
 iteration_stmt // TO DO!
-	:	^(FOREACH_T ^(IN_T element=ID list=ID) ^(BLOCK line*))
+	:	^(FOREACH_T ^(IN_T element=ID list=ID) ^(BLOCK line*)) {
+			for (Course $element : $list) {
+				($line;)*
+			}
+		}
 	;
 jump_stmt // TO DO!
-	:	BREAK_T
+	:	BREAK_T { break; }
 	;
 /*assignment_expr
 	:	^('=' expr) {
