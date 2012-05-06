@@ -76,12 +76,21 @@ selection_stmt // TO DO! LEARN ABOUT SCOPE?
 			if ($expr) {$a*} else {$b*};
 		}
 	;
-iteration_stmt // TO DO!
-	:	^(FOREACH_T ^(IN_T element=ID list=ID) ^(BLOCK line*)) {
-			for (Course $element : $list) {
-				($line;)*
-			}
-		}
+iteration_stmt // only works on Courses
+@init {
+	int len = 0;
+	int mark = input.Mark();
+}
+@after {
+	len++;
+	ArrayList<Course> ourList = varMap.get($list.text);
+	if (len < ourList.size()) {
+		input.Rewind(mark);
+	}
+}
+	:	^(FOREACH_T ^(IN_T element=ID list=ID) ^(BLOCK line* {
+		out("Len is " + len);
+	}))
 	;
 jump_stmt // TO DO!
 	:	BREAK_T { break; }
