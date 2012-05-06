@@ -49,12 +49,24 @@ declarator
 		}
 	;
 instantiator
-	:	^(INST declarator assignment_expr) {
-			// nothing needed here.
-			// declarator and assignment_expr do all the work
+	:	^(INST declarator ^('=' ID expr)) {
+			if (varMap.containsKey($ID.text)) {
+				varMap.put($ID.text, $expr.result);
+			}
+			else {
+				throw new NullPointerException("This ID doesn't exist");
+			}
 		}
 	;
 stmt:	expr
+	|	^('=' e1=expr e2=expr) {
+			/* if $e1.text is in varMap,
+			set its value to $e2.result
+			otherwise, ERROR */
+			Cval val1 = new CVal($e1.result);
+			val1.value()
+			
+		}
 	|	selection_stmt
 	|	iteration_stmt
 	|	jump_stmt
@@ -68,24 +80,15 @@ iteration_stmt // TO DO!
 jump_stmt // TO DO!
 	:	BREAK_T
 	;
-assignment_expr
-	:	^('=' ID expr) {
-			/* if $ID.text is in varMap,
-			set its value to $expr.result
-			otherwise, ERROR */
-			if (varMap.containsKey($ID.text)) {
-				varMap.put($ID.text, $expr.result);
-			}
-			else {
-				throw new NullPointerException("This ID doesn't exist");
-			}
+/*assignment_expr
+	:	^('=' expr) {
 		}
-	;
+	;*/
 expr returns [CVal result]
 	// goes to assignment_expr rule
-	:	assignment_expr
+	//	assignment_expr
 	// logical; returns 1 or 0
-	|	^(OR e1=expr e2=expr) {
+	:	^(OR e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
 			/* if e1 and e2 are boolean expressions, 
@@ -185,7 +188,25 @@ expr returns [CVal result]
 	
 	// dot operator - car.color
 	|	^('.' e1=expr e2=expr) {
-			Object caller = varMap.get($e1.text);
+			/* 	If varMap has e1.text, then it is an ID,
+			and we can call the function on the value of
+			the matching CVal.
+				If the varMap does not have e1.text, then it may be
+			a return value of a function. in this case we simply
+			call the function on the return object.
+				If neither of these work, then there is an error.*/
+			if (varMap.contains($e1.text)) {
+				CVal val = varMap.get($e1.text);
+				$result = (val.value()).($e2); //??
+			}
+			if (!varMap.contains($e1.text)) {
+				try {
+					$result = ($e1.result).($e1.text);
+				} catch (Exception e) {
+					out("Dot expression error");
+					e.printStackTrace();
+				}
+			}
 		}
 	
 	// derived types

@@ -36,10 +36,10 @@ declarator
 	;
 instantiator
 // matches int x = 5;
-	:	declarator '=' expr ';'
-			-> ^(INST declarator ^('=' ID expr))
+	:	type_specifier ID '=' expr ';'
+			-> ^(INST ^(DECL type_specifier ID) ^('=' ID expr))
 	;
-stmt:	expr';' -> expr
+stmt:	expr ('='^ expr)?';'
 	|	selection_stmt
 	|	iteration_stmt
 	|	jump_stmt';' -> jump_stmt
@@ -62,12 +62,12 @@ jump_stmt
 expr
 // matches OR statements or assignment expressions
 	:	and_expr (OR^ and_expr)*
-	|	assignment_expr
+	//|	assignment_expr
 	;
-assignment_expr
+/*assignment_expr
 // matches x = y, y = 5, z = 5 * 3, etc
-	:	ID '='^ expr
-	;
+	:	'='^ expr
+	;*/
 and_expr
 // matches AND statements
 	:	equiv_expr (AND^ equiv_expr)*

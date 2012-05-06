@@ -1,4 +1,1 @@
-int x;
-int y = 5;
-x.a = 5;
-generateCourses(infile);
+a = x.y().z();
