@@ -68,7 +68,7 @@ stmt:	expr
 			
 		}
 	|	selection_stmt
-	|	iteration_stmt
+	|	iteration_stmt { out($iteration_stmt.text); }
 	|	jump_stmt
 	;
 selection_stmt // TO DO! LEARN ABOUT SCOPE?
@@ -76,29 +76,24 @@ selection_stmt // TO DO! LEARN ABOUT SCOPE?
 			if ($expr) {$a*} else {$b*};
 		}
 	;
-iteration_stmt // only works on Courses
+iteration_stmt returns [String result] // only works on Courses
 @init {
-	int len = 0;
-	int mark = input.Mark();
 }
-@after {
+/*@after {
 	len++;
 	ArrayList<Course> ourList = varMap.get($list.text);
 	if (len < ourList.size()) {
 		input.Rewind(mark);
 	}
-}
-	:	^(FOREACH_T ^(IN_T element=ID list=ID) ^(BLOCK line* {
-		out("Len is " + len);
-	}))
+}*/
+	:	^(FOREACH_T ^(IN_T element=ID list=ID) ^(BLOCK lines=line*)) {
+			$result = "for ( Course " + $element.text + " : " + $list +
+			" ) {\n" + lines.text + "}";
+		}
 	;
 jump_stmt // TO DO!
 	:	BREAK_T { break; }
 	;
-/*assignment_expr
-	:	^('=' expr) {
-		}
-	;*/
 expr returns [CVal result]
 	// goes to assignment_expr rule
 	//	assignment_expr

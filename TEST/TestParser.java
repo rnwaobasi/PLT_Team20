@@ -1,4 +1,4 @@
-// $ANTLR 3.4 Test.g 2012-05-06 06:58:45
+// $ANTLR 3.4 Test.g 2012-05-06 09:27:55
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -487,7 +487,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_timeblock.add(timeblock19.getTree());
 
             // AST REWRITE
-            // elements: 23, TIMEBLOCK, timeblock, ID
+            // elements: TIMEBLOCK, ID, timeblock, 23
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -590,7 +590,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: a, b
+            // elements: b, a
             // token labels: b, a
             // rule labels: retval
             // token list labels: 

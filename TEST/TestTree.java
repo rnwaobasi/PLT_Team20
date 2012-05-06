@@ -1,4 +1,4 @@
-// $ANTLR 3.4 TestTree.g 2012-05-06 06:58:46
+// $ANTLR 3.4 TestTree.g 2012-05-06 09:27:55
 
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.*;
@@ -144,6 +144,8 @@ public class TestTree extends TreeParser {
     public final void line() throws RecognitionException {
         TestTree.int_assignment_return int_assignment1 =null;
 
+        String timeblock_inst2 =null;
+
 
         try {
             // TestTree.g:37:5: ( print_function | int_assignment | timeblock_inst )
@@ -220,10 +222,12 @@ public class TestTree extends TreeParser {
                     // TestTree.g:42:4: timeblock_inst
                     {
                     pushFollow(FOLLOW_timeblock_inst_in_line61);
-                    timeblock_inst();
+                    timeblock_inst2=timeblock_inst();
 
                     state._fsp--;
 
+
+                     out(timeblock_inst2); 
 
                     }
                     break;
@@ -247,21 +251,21 @@ public class TestTree extends TreeParser {
     // $ANTLR start "print_function"
     // TestTree.g:44:1: print_function : ^( PRINT STRING ) ;
     public final void print_function() throws RecognitionException {
-        CommonTree STRING2=null;
+        CommonTree STRING3=null;
 
         try {
             // TestTree.g:45:2: ( ^( PRINT STRING ) )
             // TestTree.g:45:4: ^( PRINT STRING )
             {
-            match(input,PRINT,FOLLOW_PRINT_in_print_function72); 
+            match(input,PRINT,FOLLOW_PRINT_in_print_function74); 
 
             match(input, Token.DOWN, null); 
-            STRING2=(CommonTree)match(input,STRING,FOLLOW_STRING_in_print_function74); 
+            STRING3=(CommonTree)match(input,STRING,FOLLOW_STRING_in_print_function76); 
 
             match(input, Token.UP, null); 
 
 
-            print((STRING2!=null?STRING2.getText():null));
+            print((STRING3!=null?STRING3.getText():null));
             						out("STRING is " + STRING);
             						out(STRING + "AGAIN");
 
@@ -293,29 +297,29 @@ public class TestTree extends TreeParser {
         retval.start = input.LT(1);
 
 
-        CommonTree ID3=null;
-        CommonTree INT4=null;
+        CommonTree ID4=null;
+        CommonTree INT5=null;
 
         try {
             // TestTree.g:50:2: ( ^( '=' ID INT ) )
             // TestTree.g:50:4: ^( '=' ID INT )
             {
-            match(input,23,FOLLOW_23_in_int_assignment92); 
+            match(input,23,FOLLOW_23_in_int_assignment94); 
 
             match(input, Token.DOWN, null); 
-            ID3=(CommonTree)match(input,ID,FOLLOW_ID_in_int_assignment94); 
+            ID4=(CommonTree)match(input,ID,FOLLOW_ID_in_int_assignment96); 
 
-            INT4=(CommonTree)match(input,INT,FOLLOW_INT_in_int_assignment96); 
+            INT5=(CommonTree)match(input,INT,FOLLOW_INT_in_int_assignment98); 
 
             match(input, Token.UP, null); 
 
 
 
-            					out((ID3!=null?ID3.getText():null) + " = " + (INT4!=null?INT4.getText():null));
-            					retval.result = toInt(INT4) + 1;
-            					out((ID3!=null?ID3.getText():null) + " + 1 = " + retval.result);
-            					out("INT is " + INT4);
-            					out("ID is " + ID3);
+            					out((ID4!=null?ID4.getText():null) + " = " + (INT5!=null?INT5.getText():null));
+            					retval.result = toInt(INT5) + 1;
+            					out((ID4!=null?ID4.getText():null) + " + 1 = " + retval.result);
+            					out("INT is " + INT5);
+            					out("ID is " + ID4);
             					
 
             }
@@ -336,50 +340,74 @@ public class TestTree extends TreeParser {
 
 
     // $ANTLR start "timeblock_inst"
-    // TestTree.g:58:1: timeblock_inst : ^( '=' TIMEBLOCK ID timeblock ) ;
-    public final void timeblock_inst() throws RecognitionException {
-        Timeblock timeblock5 =null;
+    // TestTree.g:60:1: timeblock_inst returns [String result] : ^( '=' TIMEBLOCK ID lines= ( ( timeblock )* ) ) ;
+    public final String timeblock_inst() throws RecognitionException {
+        String result = null;
 
 
+        CommonTree lines=null;
+        CommonTree TIMEBLOCK6=null;
+        CommonTree ID7=null;
+        Timeblock timeblock8 =null;
 
-        	int len = 0;
-        	int mark;
 
         try {
-            // TestTree.g:66:2: ( ^( '=' TIMEBLOCK ID timeblock ) )
-            // TestTree.g:66:4: ^( '=' TIMEBLOCK ID timeblock )
+            // TestTree.g:61:2: ( ^( '=' TIMEBLOCK ID lines= ( ( timeblock )* ) ) )
+            // TestTree.g:61:4: ^( '=' TIMEBLOCK ID lines= ( ( timeblock )* ) )
             {
-            	mark = input.mark();
-
-            match(input,23,FOLLOW_23_in_timeblock_inst121); 
+            match(input,23,FOLLOW_23_in_timeblock_inst118); 
 
             match(input, Token.DOWN, null); 
-            match(input,TIMEBLOCK,FOLLOW_TIMEBLOCK_in_timeblock_inst123); 
+            TIMEBLOCK6=(CommonTree)match(input,TIMEBLOCK,FOLLOW_TIMEBLOCK_in_timeblock_inst120); 
 
-            match(input,ID,FOLLOW_ID_in_timeblock_inst125); 
+            ID7=(CommonTree)match(input,ID,FOLLOW_ID_in_timeblock_inst122); 
 
-            pushFollow(FOLLOW_timeblock_in_timeblock_inst127);
-            timeblock5=timeblock();
+            // TestTree.g:61:29: ( ( timeblock )* )
+            // TestTree.g:61:30: ( timeblock )*
+            {
+            // TestTree.g:61:30: ( timeblock )*
+            loop3:
+            do {
+                int alt3=2;
+                int LA3_0 = input.LA(1);
 
-            state._fsp--;
+                if ( (LA3_0==TIMES) ) {
+                    alt3=1;
+                }
+
+
+                switch (alt3) {
+            	case 1 :
+            	    // TestTree.g:61:30: timeblock
+            	    {
+            	    pushFollow(FOLLOW_timeblock_in_timeblock_inst127);
+            	    timeblock8=timeblock();
+
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop3;
+                }
+            } while (true);
+
+
+            }
 
 
             match(input, Token.UP, null); 
 
 
 
-            	len++;
-            	out("Timeblock = " + timeblock5);
-            	out("THIS IS LEN " + len);
-            	if (len < 5) {
-            		input.release(mark);
-            	}
+            	result = "for ( Course " + (TIMEBLOCK6!=null?TIMEBLOCK6.getText():null) + " : " + ID7 +
+            			" ) {\n" + (lines!=null?lines.getText():null) + "}";
+            	out("Timeblock = " + timeblock8);
             	
 
             }
-
-
-            	
 
         }
         catch (RecognitionException re) {
@@ -390,14 +418,14 @@ public class TestTree extends TreeParser {
         finally {
         	// do for sure before leaving
         }
-        return ;
+        return result;
     }
     // $ANTLR end "timeblock_inst"
 
 
 
     // $ANTLR start "timeblock"
-    // TestTree.g:76:1: timeblock returns [Timeblock result] : ^( TIMES a= TIME b= TIME ) ;
+    // TestTree.g:67:1: timeblock returns [Timeblock result] : ^( TIMES a= TIME b= TIME ) ;
     public final Timeblock timeblock() throws RecognitionException {
         Timeblock result = null;
 
@@ -406,15 +434,15 @@ public class TestTree extends TreeParser {
         CommonTree b=null;
 
         try {
-            // TestTree.g:77:2: ( ^( TIMES a= TIME b= TIME ) )
-            // TestTree.g:77:4: ^( TIMES a= TIME b= TIME )
+            // TestTree.g:68:2: ( ^( TIMES a= TIME b= TIME ) )
+            // TestTree.g:68:4: ^( TIMES a= TIME b= TIME )
             {
-            match(input,TIMES,FOLLOW_TIMES_in_timeblock145); 
+            match(input,TIMES,FOLLOW_TIMES_in_timeblock147); 
 
             match(input, Token.DOWN, null); 
-            a=(CommonTree)match(input,TIME,FOLLOW_TIME_in_timeblock149); 
+            a=(CommonTree)match(input,TIME,FOLLOW_TIME_in_timeblock151); 
 
-            b=(CommonTree)match(input,TIME,FOLLOW_TIME_in_timeblock153); 
+            b=(CommonTree)match(input,TIME,FOLLOW_TIME_in_timeblock155); 
 
             match(input, Token.UP, null); 
 
@@ -451,17 +479,17 @@ public class TestTree extends TreeParser {
     public static final BitSet FOLLOW_print_function_in_line49 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_int_assignment_in_line54 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_timeblock_inst_in_line61 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PRINT_in_print_function72 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_STRING_in_print_function74 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_23_in_int_assignment92 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_int_assignment94 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_INT_in_int_assignment96 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_23_in_timeblock_inst121 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_TIMEBLOCK_in_timeblock_inst123 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_ID_in_timeblock_inst125 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_timeblock_in_timeblock_inst127 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_TIMES_in_timeblock145 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_TIME_in_timeblock149 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_TIME_in_timeblock153 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_PRINT_in_print_function74 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_STRING_in_print_function76 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_23_in_int_assignment94 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_int_assignment96 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_INT_in_int_assignment98 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_23_in_timeblock_inst118 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_TIMEBLOCK_in_timeblock_inst120 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_ID_in_timeblock_inst122 = new BitSet(new long[]{0x0000000000020008L});
+    public static final BitSet FOLLOW_timeblock_in_timeblock_inst127 = new BitSet(new long[]{0x0000000000020008L});
+    public static final BitSet FOLLOW_TIMES_in_timeblock147 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_TIME_in_timeblock151 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_TIME_in_timeblock155 = new BitSet(new long[]{0x0000000000000008L});
 
 }

@@ -1,6 +1,7 @@
-// $ANTLR 3.4 src/grammar/ChronosTree.g 2012-05-06 09:21:10
+// $ANTLR 3.4 src/grammar/ChronosTree.g 2012-05-06 11:14:32
 
   package chronos.parser;
+
   import java.util.Map;
   import java.util.TreeMap;
   import chronos.nodes.*;
@@ -17,10 +18,11 @@ import java.util.HashMap;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class ChronosTree extends TreeFilter {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "AND", "BLOCK", "BREAK_T", "CHAR", "COMMENT", "COND", "COURSELIST_T", "COURSE_T", "DATETIME", "DATETIME_T", "DAY", "DAYBLOCK_T", "DAYS", "DECL", "DOUBLE_T", "ELSE_T", "EQ", "ESC_SEQ", "EXPONENT", "FLOAT", "FOREACH_T", "FUNC", "GEQ", "HEX_DIGIT", "ID", "IF_T", "INST", "INT", "INT_T", "IN_T", "LEQ", "MASTER_T", "NEQ", "NEW_T", "NOT", "OCTAL_ESC", "OR", "PARAMS", "SCHEDULE_T", "STRING", "STRING_T", "TIME", "TIMEBLOCK_T", "TIMES", "TIME_T", "UNICODE_ESC", "WS", "'('", "')'", "'*'", "'+'", "','", "'-'", "'.'", "'/'", "';'", "'<'", "'='", "'>'", "'['", "']'", "'{'", "'}'", "'~'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "AND", "BLOCK", "BREAK_T", "CHAR", "COMMENT", "COND", "COURSELIST_T", "COURSE_T", "DATETIME", "DATETIME_T", "DAY", "DAYBLOCK_T", "DAYS", "DECL", "DOUBLE", "DOUBLE_T", "ELSE_T", "EQ", "ESC_SEQ", "FOREACH_T", "FUNC", "GEQ", "HEX_DIGIT", "ID", "IF_T", "INST", "INT", "INT_T", "IN_T", "LEQ", "NEQ", "NEW_T", "NOT", "OCTAL_ESC", "OR", "PARAMS", "PRINT_T", "SCHEDULE_T", "STRING", "STRING_T", "TIME", "TIMEBLOCK_T", "TIMES", "TIME_T", "UNICODE_ESC", "WS", "'('", "')'", "'*'", "'+'", "','", "'-'", "'.'", "'/'", "';'", "'<'", "'='", "'>'", "'['", "']'", "'{'", "'}'", "'~'"
     };
 
     public static final int EOF=-1;
+    public static final int T__50=50;
     public static final int T__51=51;
     public static final int T__52=52;
     public static final int T__53=53;
@@ -37,7 +39,6 @@ public class ChronosTree extends TreeFilter {
     public static final int T__64=64;
     public static final int T__65=65;
     public static final int T__66=66;
-    public static final int T__67=67;
     public static final int AND=4;
     public static final int BLOCK=5;
     public static final int BREAK_T=6;
@@ -52,39 +53,38 @@ public class ChronosTree extends TreeFilter {
     public static final int DAYBLOCK_T=15;
     public static final int DAYS=16;
     public static final int DECL=17;
-    public static final int DOUBLE_T=18;
-    public static final int ELSE_T=19;
-    public static final int EQ=20;
-    public static final int ESC_SEQ=21;
-    public static final int EXPONENT=22;
-    public static final int FLOAT=23;
-    public static final int FOREACH_T=24;
-    public static final int FUNC=25;
-    public static final int GEQ=26;
-    public static final int HEX_DIGIT=27;
-    public static final int ID=28;
-    public static final int IF_T=29;
-    public static final int INST=30;
-    public static final int INT=31;
-    public static final int INT_T=32;
-    public static final int IN_T=33;
-    public static final int LEQ=34;
-    public static final int MASTER_T=35;
-    public static final int NEQ=36;
-    public static final int NEW_T=37;
-    public static final int NOT=38;
-    public static final int OCTAL_ESC=39;
-    public static final int OR=40;
-    public static final int PARAMS=41;
-    public static final int SCHEDULE_T=42;
-    public static final int STRING=43;
-    public static final int STRING_T=44;
-    public static final int TIME=45;
-    public static final int TIMEBLOCK_T=46;
-    public static final int TIMES=47;
-    public static final int TIME_T=48;
-    public static final int UNICODE_ESC=49;
-    public static final int WS=50;
+    public static final int DOUBLE=18;
+    public static final int DOUBLE_T=19;
+    public static final int ELSE_T=20;
+    public static final int EQ=21;
+    public static final int ESC_SEQ=22;
+    public static final int FOREACH_T=23;
+    public static final int FUNC=24;
+    public static final int GEQ=25;
+    public static final int HEX_DIGIT=26;
+    public static final int ID=27;
+    public static final int IF_T=28;
+    public static final int INST=29;
+    public static final int INT=30;
+    public static final int INT_T=31;
+    public static final int IN_T=32;
+    public static final int LEQ=33;
+    public static final int NEQ=34;
+    public static final int NEW_T=35;
+    public static final int NOT=36;
+    public static final int OCTAL_ESC=37;
+    public static final int OR=38;
+    public static final int PARAMS=39;
+    public static final int PRINT_T=40;
+    public static final int SCHEDULE_T=41;
+    public static final int STRING=42;
+    public static final int STRING_T=43;
+    public static final int TIME=44;
+    public static final int TIMEBLOCK_T=45;
+    public static final int TIMES=46;
+    public static final int TIME_T=47;
+    public static final int UNICODE_ESC=48;
+    public static final int WS=49;
 
     // delegates
     public TreeFilter[] getDelegates() {
@@ -105,59 +105,50 @@ public class ChronosTree extends TreeFilter {
     public String getGrammarFileName() { return "src/grammar/ChronosTree.g"; }
 
 
-    	// maps for storing our stuff
-     	//private Map<String, Function> functionMap = new TreeMap<String, Function>();
-     	//private Map<String, Double> variableMap = new TreeMap<String, Double>();
+    	// TreeMap for storing our variables
+     	private Map<String, CVal> varMap = new TreeMap<String, CVal>();
 
-    	// convert node to an int
-    	private int toInt(CommonTree node) {
-    		int value = 0;
-    		String text = node.getText();
-    		try {
-    			value = Integer.parseInt(text);
-    		} catch (NumberFormatException e) {
-    			throw new RuntimeException("Cannot convert to int");
-    		}
-    		return value;
+    	// function for evaluating functions!
+    	private Object evalFunction(String funcName, ArrayList<String> params) {
+    		
     	}
     	
-    	// shortcut for general print method
-    	private void out(String str) {
-    		System.out.println(str);
+    	// shortcut for System.out.println
+    	private void out(Object obj) {
+    		System.out.println(obj);
     	}
 
     	// prints Strings
     	// gets rid of the surrounding quotes
     	private void print(String str) {
-    		int oneBeforeEnd = str.length()-1;
-    		String noQuotes = str.substring(1,oneBeforeEnd);
+    		String noQuotes = str.substring(1,str.length()-1);
     		out(noQuotes);
     	}
 
 
 
     // $ANTLR start "program"
-    // src/grammar/ChronosTree.g:48:1: program : ( line )+ ;
+    // src/grammar/ChronosTree.g:40:1: program : ( line )+ ;
     public final void program() throws RecognitionException {
         try {
-            // src/grammar/ChronosTree.g:49:2: ( ( line )+ )
-            // src/grammar/ChronosTree.g:49:4: ( line )+
+            // src/grammar/ChronosTree.g:41:2: ( ( line )+ )
+            // src/grammar/ChronosTree.g:41:4: ( line )+
             {
-            // src/grammar/ChronosTree.g:49:4: ( line )+
+            // src/grammar/ChronosTree.g:41:4: ( line )+
             int cnt1=0;
             loop1:
             do {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==AND||LA1_0==BREAK_T||LA1_0==COND||LA1_0==DATETIME||LA1_0==DAYBLOCK_T||LA1_0==DECL||LA1_0==EQ||(LA1_0 >= FLOAT && LA1_0 <= FOREACH_T)||LA1_0==GEQ||LA1_0==ID||(LA1_0 >= INST && LA1_0 <= INT)||(LA1_0 >= LEQ && LA1_0 <= NEQ)||LA1_0==NOT||LA1_0==OR||LA1_0==STRING||LA1_0==TIME||LA1_0==TIMES||(LA1_0 >= 53 && LA1_0 <= 54)||(LA1_0 >= 56 && LA1_0 <= 58)||(LA1_0 >= 60 && LA1_0 <= 62)) ) {
+                if ( (LA1_0==AND||LA1_0==BREAK_T||LA1_0==COND||LA1_0==DATETIME||LA1_0==DAYBLOCK_T||(LA1_0 >= DECL && LA1_0 <= DOUBLE)||LA1_0==EQ||LA1_0==FOREACH_T||LA1_0==GEQ||LA1_0==ID||(LA1_0 >= INST && LA1_0 <= INT)||(LA1_0 >= LEQ && LA1_0 <= NEQ)||LA1_0==NOT||LA1_0==OR||LA1_0==STRING||LA1_0==TIME||LA1_0==TIMES||(LA1_0 >= 52 && LA1_0 <= 53)||(LA1_0 >= 55 && LA1_0 <= 57)||(LA1_0 >= 59 && LA1_0 <= 61)) ) {
                     alt1=1;
                 }
 
 
                 switch (alt1) {
             	case 1 :
-            	    // src/grammar/ChronosTree.g:49:4: line
+            	    // src/grammar/ChronosTree.g:41:4: line
             	    {
             	    pushFollow(FOLLOW_line_in_program60);
             	    line();
@@ -195,12 +186,19 @@ public class ChronosTree extends TreeFilter {
     // $ANTLR end "program"
 
 
+    public static class line_return extends TreeRuleReturnScope {
+    };
+
 
     // $ANTLR start "line"
-    // src/grammar/ChronosTree.g:51:1: line : ( declarator | instantiator | stmt );
-    public final void line() throws RecognitionException {
+    // src/grammar/ChronosTree.g:43:1: line : ( declarator | instantiator | stmt );
+    public final ChronosTree.line_return line() throws RecognitionException {
+        ChronosTree.line_return retval = new ChronosTree.line_return();
+        retval.start = input.LT(1);
+
+
         try {
-            // src/grammar/ChronosTree.g:51:5: ( declarator | instantiator | stmt )
+            // src/grammar/ChronosTree.g:43:5: ( declarator | instantiator | stmt )
             int alt2=3;
             switch ( input.LA(1) ) {
             case DECL:
@@ -218,34 +216,33 @@ public class ChronosTree extends TreeFilter {
             case COND:
             case DATETIME:
             case DAYBLOCK_T:
+            case DOUBLE:
             case EQ:
-            case FLOAT:
             case FOREACH_T:
             case GEQ:
             case ID:
             case INT:
             case LEQ:
-            case MASTER_T:
             case NEQ:
             case NOT:
             case OR:
             case STRING:
             case TIME:
             case TIMES:
+            case 52:
             case 53:
-            case 54:
+            case 55:
             case 56:
             case 57:
-            case 58:
+            case 59:
             case 60:
             case 61:
-            case 62:
                 {
                 alt2=3;
                 }
                 break;
             default:
-                if (state.backtracking>0) {state.failed=true; return ;}
+                if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
                     new NoViableAltException("", 2, 0, input);
 
@@ -255,35 +252,35 @@ public class ChronosTree extends TreeFilter {
 
             switch (alt2) {
                 case 1 :
-                    // src/grammar/ChronosTree.g:51:7: declarator
+                    // src/grammar/ChronosTree.g:43:7: declarator
                     {
                     pushFollow(FOLLOW_declarator_in_line69);
                     declarator();
 
                     state._fsp--;
-                    if (state.failed) return ;
+                    if (state.failed) return retval;
 
                     }
                     break;
                 case 2 :
-                    // src/grammar/ChronosTree.g:52:4: instantiator
+                    // src/grammar/ChronosTree.g:44:4: instantiator
                     {
                     pushFollow(FOLLOW_instantiator_in_line74);
                     instantiator();
 
                     state._fsp--;
-                    if (state.failed) return ;
+                    if (state.failed) return retval;
 
                     }
                     break;
                 case 3 :
-                    // src/grammar/ChronosTree.g:53:4: stmt
+                    // src/grammar/ChronosTree.g:45:4: stmt
                     {
                     pushFollow(FOLLOW_stmt_in_line79);
                     stmt();
 
                     state._fsp--;
-                    if (state.failed) return ;
+                    if (state.failed) return retval;
 
                     }
                     break;
@@ -298,21 +295,22 @@ public class ChronosTree extends TreeFilter {
         finally {
         	// do for sure before leaving
         }
-        return ;
+        return retval;
     }
     // $ANTLR end "line"
 
 
 
     // $ANTLR start "declarator"
-    // src/grammar/ChronosTree.g:55:1: declarator : ^( DECL type_specifier ID ) ;
+    // src/grammar/ChronosTree.g:47:1: declarator : ^( DECL type_specifier ID ) ;
     public final void declarator() throws RecognitionException {
+        CommonTree ID2=null;
         ChronosTree.type_specifier_return type_specifier1 =null;
 
 
         try {
-            // src/grammar/ChronosTree.g:56:2: ( ^( DECL type_specifier ID ) )
-            // src/grammar/ChronosTree.g:56:4: ^( DECL type_specifier ID )
+            // src/grammar/ChronosTree.g:48:2: ( ^( DECL type_specifier ID ) )
+            // src/grammar/ChronosTree.g:48:4: ^( DECL type_specifier ID )
             {
             match(input,DECL,FOLLOW_DECL_in_declarator90); if (state.failed) return ;
 
@@ -323,14 +321,15 @@ public class ChronosTree extends TreeFilter {
             state._fsp--;
             if (state.failed) return ;
 
-            match(input,ID,FOLLOW_ID_in_declarator94); if (state.failed) return ;
+            ID2=(CommonTree)match(input,ID,FOLLOW_ID_in_declarator94); if (state.failed) return ;
 
             match(input, Token.UP, null); if (state.failed) return ;
 
 
             if ( state.backtracking==1 ) {
-            		/* if (type_specifier1!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(type_specifier1.start),input.getTreeAdaptor().getTokenStopIndex(type_specifier1.start))):null) == such and such, then
-            		construct the type and put it in varMap? */
+            			/* if (type_specifier1!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(type_specifier1.start),input.getTreeAdaptor().getTokenStopIndex(type_specifier1.start))):null) == such and such, then
+            			construct the type and put it in varMap? */
+            			varMap.put((ID2!=null?ID2.getText():null), null);
             		}
 
             }
@@ -351,11 +350,15 @@ public class ChronosTree extends TreeFilter {
 
 
     // $ANTLR start "instantiator"
-    // src/grammar/ChronosTree.g:61:1: instantiator : ^( INST declarator assignment_expr ) ;
+    // src/grammar/ChronosTree.g:54:1: instantiator : ^( INST declarator ^( '=' ID expr ) ) ;
     public final void instantiator() throws RecognitionException {
+        CommonTree ID3=null;
+        ChronosTree.expr_return expr4 =null;
+
+
         try {
-            // src/grammar/ChronosTree.g:62:2: ( ^( INST declarator assignment_expr ) )
-            // src/grammar/ChronosTree.g:62:4: ^( INST declarator assignment_expr )
+            // src/grammar/ChronosTree.g:55:2: ( ^( INST declarator ^( '=' ID expr ) ) )
+            // src/grammar/ChronosTree.g:55:4: ^( INST declarator ^( '=' ID expr ) )
             {
             match(input,INST,FOLLOW_INST_in_instantiator108); if (state.failed) return ;
 
@@ -366,8 +369,13 @@ public class ChronosTree extends TreeFilter {
             state._fsp--;
             if (state.failed) return ;
 
-            pushFollow(FOLLOW_assignment_expr_in_instantiator112);
-            assignment_expr();
+            match(input,60,FOLLOW_60_in_instantiator113); if (state.failed) return ;
+
+            match(input, Token.DOWN, null); if (state.failed) return ;
+            ID3=(CommonTree)match(input,ID,FOLLOW_ID_in_instantiator115); if (state.failed) return ;
+
+            pushFollow(FOLLOW_expr_in_instantiator117);
+            expr4=expr();
 
             state._fsp--;
             if (state.failed) return ;
@@ -375,8 +383,16 @@ public class ChronosTree extends TreeFilter {
             match(input, Token.UP, null); if (state.failed) return ;
 
 
+            match(input, Token.UP, null); if (state.failed) return ;
+
+
             if ( state.backtracking==1 ) {
-            		// nothing needed here?
+            			if (varMap.containsKey((ID3!=null?ID3.getText():null))) {
+            				varMap.put((ID3!=null?ID3.getText():null), (expr4!=null?expr4.result:null));
+            			}
+            			else {
+            				throw new NullPointerException("This ID doesn't exist");
+            			}
             		}
 
             }
@@ -397,53 +413,63 @@ public class ChronosTree extends TreeFilter {
 
 
     // $ANTLR start "stmt"
-    // src/grammar/ChronosTree.g:66:1: stmt : ( expr | selection_stmt | iteration_stmt | jump_stmt );
+    // src/grammar/ChronosTree.g:64:1: stmt : ( expr | ^( '=' e1= expr e2= expr ) | selection_stmt | iteration_stmt | jump_stmt );
     public final void stmt() throws RecognitionException {
+        ChronosTree.expr_return e1 =null;
+
+        ChronosTree.expr_return e2 =null;
+
+        ChronosTree.iteration_stmt_return iteration_stmt5 =null;
+
+
         try {
-            // src/grammar/ChronosTree.g:66:5: ( expr | selection_stmt | iteration_stmt | jump_stmt )
-            int alt3=4;
+            // src/grammar/ChronosTree.g:64:5: ( expr | ^( '=' e1= expr e2= expr ) | selection_stmt | iteration_stmt | jump_stmt )
+            int alt3=5;
             switch ( input.LA(1) ) {
             case AND:
             case DATETIME:
             case DAYBLOCK_T:
+            case DOUBLE:
             case EQ:
-            case FLOAT:
             case GEQ:
             case ID:
             case INT:
             case LEQ:
-            case MASTER_T:
             case NEQ:
             case NOT:
             case OR:
             case STRING:
             case TIME:
             case TIMES:
+            case 52:
             case 53:
-            case 54:
+            case 55:
             case 56:
             case 57:
-            case 58:
-            case 60:
+            case 59:
             case 61:
-            case 62:
                 {
                 alt3=1;
                 }
                 break;
-            case COND:
+            case 60:
                 {
                 alt3=2;
                 }
                 break;
-            case FOREACH_T:
+            case COND:
                 {
                 alt3=3;
                 }
                 break;
-            case BREAK_T:
+            case FOREACH_T:
                 {
                 alt3=4;
+                }
+                break;
+            case BREAK_T:
+                {
+                alt3=5;
                 }
                 break;
             default:
@@ -457,9 +483,9 @@ public class ChronosTree extends TreeFilter {
 
             switch (alt3) {
                 case 1 :
-                    // src/grammar/ChronosTree.g:66:7: expr
+                    // src/grammar/ChronosTree.g:64:7: expr
                     {
-                    pushFollow(FOLLOW_expr_in_stmt123);
+                    pushFollow(FOLLOW_expr_in_stmt129);
                     expr();
 
                     state._fsp--;
@@ -468,9 +494,45 @@ public class ChronosTree extends TreeFilter {
                     }
                     break;
                 case 2 :
-                    // src/grammar/ChronosTree.g:67:4: selection_stmt
+                    // src/grammar/ChronosTree.g:65:4: ^( '=' e1= expr e2= expr )
                     {
-                    pushFollow(FOLLOW_selection_stmt_in_stmt128);
+                    match(input,60,FOLLOW_60_in_stmt135); if (state.failed) return ;
+
+                    match(input, Token.DOWN, null); if (state.failed) return ;
+                    pushFollow(FOLLOW_expr_in_stmt139);
+                    e1=expr();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    pushFollow(FOLLOW_expr_in_stmt143);
+                    e2=expr();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    match(input, Token.UP, null); if (state.failed) return ;
+
+
+                    if ( state.backtracking==1 ) {
+                    			// if e1 is an ID:
+                    			if (varMap.containsKey((e1!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(e1.start),input.getTreeAdaptor().getTokenStopIndex(e1.start))):null))) { // look for it in varMap
+                    				varMap.put((e1!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(e1.start),input.getTreeAdaptor().getTokenStopIndex(e1.start))):null), (e2!=null?e2.result:null)); // put in its value
+                    			}
+                    			// if e1 has a dot function:
+                    			else {
+                    				CVal val1 = (e1!=null?e1.result:null); // e1.result is a CVal already
+                    				CVal val2 = (e2!=null?e2.result:null);
+                    				val1 = val2; // set e2 to the value of e1
+                    			}
+                    		}
+
+                    }
+                    break;
+                case 3 :
+                    // src/grammar/ChronosTree.g:77:4: selection_stmt
+                    {
+                    pushFollow(FOLLOW_selection_stmt_in_stmt151);
                     selection_stmt();
 
                     state._fsp--;
@@ -478,21 +540,23 @@ public class ChronosTree extends TreeFilter {
 
                     }
                     break;
-                case 3 :
-                    // src/grammar/ChronosTree.g:68:4: iteration_stmt
+                case 4 :
+                    // src/grammar/ChronosTree.g:78:4: iteration_stmt
                     {
-                    pushFollow(FOLLOW_iteration_stmt_in_stmt133);
-                    iteration_stmt();
+                    pushFollow(FOLLOW_iteration_stmt_in_stmt156);
+                    iteration_stmt5=iteration_stmt();
 
                     state._fsp--;
                     if (state.failed) return ;
 
+                    if ( state.backtracking==1 ) { out((iteration_stmt5!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(iteration_stmt5.start),input.getTreeAdaptor().getTokenStopIndex(iteration_stmt5.start))):null)); }
+
                     }
                     break;
-                case 4 :
-                    // src/grammar/ChronosTree.g:69:4: jump_stmt
+                case 5 :
+                    // src/grammar/ChronosTree.g:79:4: jump_stmt
                     {
-                    pushFollow(FOLLOW_jump_stmt_in_stmt138);
+                    pushFollow(FOLLOW_jump_stmt_in_stmt163);
                     jump_stmt();
 
                     state._fsp--;
@@ -518,41 +582,48 @@ public class ChronosTree extends TreeFilter {
 
 
     // $ANTLR start "selection_stmt"
-    // src/grammar/ChronosTree.g:71:1: selection_stmt : ^( COND ^( IF_T expr (a= line )* ) ^( ELSE_T (b= line )* ) ) ;
+    // src/grammar/ChronosTree.g:81:1: selection_stmt : ^( COND ^( IF_T expr (a= line )* ) ^( ELSE_T (b= line )* ) ) ;
     public final void selection_stmt() throws RecognitionException {
+        ChronosTree.line_return a =null;
+
+        ChronosTree.line_return b =null;
+
+        ChronosTree.expr_return expr6 =null;
+
+
         try {
-            // src/grammar/ChronosTree.g:72:2: ( ^( COND ^( IF_T expr (a= line )* ) ^( ELSE_T (b= line )* ) ) )
-            // src/grammar/ChronosTree.g:72:4: ^( COND ^( IF_T expr (a= line )* ) ^( ELSE_T (b= line )* ) )
+            // src/grammar/ChronosTree.g:82:2: ( ^( COND ^( IF_T expr (a= line )* ) ^( ELSE_T (b= line )* ) ) )
+            // src/grammar/ChronosTree.g:82:4: ^( COND ^( IF_T expr (a= line )* ) ^( ELSE_T (b= line )* ) )
             {
-            match(input,COND,FOLLOW_COND_in_selection_stmt149); if (state.failed) return ;
+            match(input,COND,FOLLOW_COND_in_selection_stmt175); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            match(input,IF_T,FOLLOW_IF_T_in_selection_stmt152); if (state.failed) return ;
+            match(input,IF_T,FOLLOW_IF_T_in_selection_stmt178); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_expr_in_selection_stmt154);
-            expr();
+            pushFollow(FOLLOW_expr_in_selection_stmt180);
+            expr6=expr();
 
             state._fsp--;
             if (state.failed) return ;
 
-            // src/grammar/ChronosTree.g:72:24: (a= line )*
+            // src/grammar/ChronosTree.g:82:24: (a= line )*
             loop4:
             do {
                 int alt4=2;
                 int LA4_0 = input.LA(1);
 
-                if ( (LA4_0==AND||LA4_0==BREAK_T||LA4_0==COND||LA4_0==DATETIME||LA4_0==DAYBLOCK_T||LA4_0==DECL||LA4_0==EQ||(LA4_0 >= FLOAT && LA4_0 <= FOREACH_T)||LA4_0==GEQ||LA4_0==ID||(LA4_0 >= INST && LA4_0 <= INT)||(LA4_0 >= LEQ && LA4_0 <= NEQ)||LA4_0==NOT||LA4_0==OR||LA4_0==STRING||LA4_0==TIME||LA4_0==TIMES||(LA4_0 >= 53 && LA4_0 <= 54)||(LA4_0 >= 56 && LA4_0 <= 58)||(LA4_0 >= 60 && LA4_0 <= 62)) ) {
+                if ( (LA4_0==AND||LA4_0==BREAK_T||LA4_0==COND||LA4_0==DATETIME||LA4_0==DAYBLOCK_T||(LA4_0 >= DECL && LA4_0 <= DOUBLE)||LA4_0==EQ||LA4_0==FOREACH_T||LA4_0==GEQ||LA4_0==ID||(LA4_0 >= INST && LA4_0 <= INT)||(LA4_0 >= LEQ && LA4_0 <= NEQ)||LA4_0==NOT||LA4_0==OR||LA4_0==STRING||LA4_0==TIME||LA4_0==TIMES||(LA4_0 >= 52 && LA4_0 <= 53)||(LA4_0 >= 55 && LA4_0 <= 57)||(LA4_0 >= 59 && LA4_0 <= 61)) ) {
                     alt4=1;
                 }
 
 
                 switch (alt4) {
             	case 1 :
-            	    // src/grammar/ChronosTree.g:72:24: a= line
+            	    // src/grammar/ChronosTree.g:82:24: a= line
             	    {
-            	    pushFollow(FOLLOW_line_in_selection_stmt158);
-            	    line();
+            	    pushFollow(FOLLOW_line_in_selection_stmt184);
+            	    a=line();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -569,27 +640,27 @@ public class ChronosTree extends TreeFilter {
             match(input, Token.UP, null); if (state.failed) return ;
 
 
-            match(input,ELSE_T,FOLLOW_ELSE_T_in_selection_stmt163); if (state.failed) return ;
+            match(input,ELSE_T,FOLLOW_ELSE_T_in_selection_stmt189); if (state.failed) return ;
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); if (state.failed) return ;
-                // src/grammar/ChronosTree.g:72:42: (b= line )*
+                // src/grammar/ChronosTree.g:82:42: (b= line )*
                 loop5:
                 do {
                     int alt5=2;
                     int LA5_0 = input.LA(1);
 
-                    if ( (LA5_0==AND||LA5_0==BREAK_T||LA5_0==COND||LA5_0==DATETIME||LA5_0==DAYBLOCK_T||LA5_0==DECL||LA5_0==EQ||(LA5_0 >= FLOAT && LA5_0 <= FOREACH_T)||LA5_0==GEQ||LA5_0==ID||(LA5_0 >= INST && LA5_0 <= INT)||(LA5_0 >= LEQ && LA5_0 <= NEQ)||LA5_0==NOT||LA5_0==OR||LA5_0==STRING||LA5_0==TIME||LA5_0==TIMES||(LA5_0 >= 53 && LA5_0 <= 54)||(LA5_0 >= 56 && LA5_0 <= 58)||(LA5_0 >= 60 && LA5_0 <= 62)) ) {
+                    if ( (LA5_0==AND||LA5_0==BREAK_T||LA5_0==COND||LA5_0==DATETIME||LA5_0==DAYBLOCK_T||(LA5_0 >= DECL && LA5_0 <= DOUBLE)||LA5_0==EQ||LA5_0==FOREACH_T||LA5_0==GEQ||LA5_0==ID||(LA5_0 >= INST && LA5_0 <= INT)||(LA5_0 >= LEQ && LA5_0 <= NEQ)||LA5_0==NOT||LA5_0==OR||LA5_0==STRING||LA5_0==TIME||LA5_0==TIMES||(LA5_0 >= 52 && LA5_0 <= 53)||(LA5_0 >= 55 && LA5_0 <= 57)||(LA5_0 >= 59 && LA5_0 <= 61)) ) {
                         alt5=1;
                     }
 
 
                     switch (alt5) {
                 	case 1 :
-                	    // src/grammar/ChronosTree.g:72:42: b= line
+                	    // src/grammar/ChronosTree.g:82:42: b= line
                 	    {
-                	    pushFollow(FOLLOW_line_in_selection_stmt167);
-                	    line();
+                	    pushFollow(FOLLOW_line_in_selection_stmt193);
+                	    b=line();
 
                 	    state._fsp--;
                 	    if (state.failed) return ;
@@ -610,6 +681,10 @@ public class ChronosTree extends TreeFilter {
             match(input, Token.UP, null); if (state.failed) return ;
 
 
+            if ( state.backtracking==1 ) {
+            			/*if ((expr6!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(expr6.start),input.getTreeAdaptor().getTokenStopIndex(expr6.start))):null)) {(a!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(a.start),input.getTreeAdaptor().getTokenStopIndex(a.start))):null)*} else {(b!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(b.start),input.getTreeAdaptor().getTokenStopIndex(b.start))):null)*};*/
+            		}
+
             }
 
         }
@@ -626,54 +701,66 @@ public class ChronosTree extends TreeFilter {
     // $ANTLR end "selection_stmt"
 
 
+    public static class iteration_stmt_return extends TreeRuleReturnScope {
+        public String result;
+    };
+
 
     // $ANTLR start "iteration_stmt"
-    // src/grammar/ChronosTree.g:74:1: iteration_stmt : ^( FOREACH_T ^( IN_T element= ID list= ID ) ^( BLOCK ( line )* ) ) ;
-    public final void iteration_stmt() throws RecognitionException {
+    // src/grammar/ChronosTree.g:86:1: iteration_stmt returns [String result] : ^( FOREACH_T ^( IN_T element= ID list= ID ) ^( BLOCK (lines= line )* ) ) ;
+    public final ChronosTree.iteration_stmt_return iteration_stmt() throws RecognitionException {
+        ChronosTree.iteration_stmt_return retval = new ChronosTree.iteration_stmt_return();
+        retval.start = input.LT(1);
+
+
         CommonTree element=null;
         CommonTree list=null;
+        ChronosTree.line_return lines =null;
+
+
+
 
         try {
-            // src/grammar/ChronosTree.g:75:2: ( ^( FOREACH_T ^( IN_T element= ID list= ID ) ^( BLOCK ( line )* ) ) )
-            // src/grammar/ChronosTree.g:75:4: ^( FOREACH_T ^( IN_T element= ID list= ID ) ^( BLOCK ( line )* ) )
+            // src/grammar/ChronosTree.g:96:2: ( ^( FOREACH_T ^( IN_T element= ID list= ID ) ^( BLOCK (lines= line )* ) ) )
+            // src/grammar/ChronosTree.g:96:4: ^( FOREACH_T ^( IN_T element= ID list= ID ) ^( BLOCK (lines= line )* ) )
             {
-            match(input,FOREACH_T,FOLLOW_FOREACH_T_in_iteration_stmt181); if (state.failed) return ;
+            match(input,FOREACH_T,FOLLOW_FOREACH_T_in_iteration_stmt221); if (state.failed) return retval;
 
-            match(input, Token.DOWN, null); if (state.failed) return ;
-            match(input,IN_T,FOLLOW_IN_T_in_iteration_stmt184); if (state.failed) return ;
+            match(input, Token.DOWN, null); if (state.failed) return retval;
+            match(input,IN_T,FOLLOW_IN_T_in_iteration_stmt224); if (state.failed) return retval;
 
-            match(input, Token.DOWN, null); if (state.failed) return ;
-            element=(CommonTree)match(input,ID,FOLLOW_ID_in_iteration_stmt188); if (state.failed) return ;
+            match(input, Token.DOWN, null); if (state.failed) return retval;
+            element=(CommonTree)match(input,ID,FOLLOW_ID_in_iteration_stmt228); if (state.failed) return retval;
 
-            list=(CommonTree)match(input,ID,FOLLOW_ID_in_iteration_stmt192); if (state.failed) return ;
+            list=(CommonTree)match(input,ID,FOLLOW_ID_in_iteration_stmt232); if (state.failed) return retval;
 
-            match(input, Token.UP, null); if (state.failed) return ;
+            match(input, Token.UP, null); if (state.failed) return retval;
 
 
-            match(input,BLOCK,FOLLOW_BLOCK_in_iteration_stmt196); if (state.failed) return ;
+            match(input,BLOCK,FOLLOW_BLOCK_in_iteration_stmt236); if (state.failed) return retval;
 
             if ( input.LA(1)==Token.DOWN ) {
-                match(input, Token.DOWN, null); if (state.failed) return ;
-                // src/grammar/ChronosTree.g:75:51: ( line )*
+                match(input, Token.DOWN, null); if (state.failed) return retval;
+                // src/grammar/ChronosTree.g:96:56: (lines= line )*
                 loop6:
                 do {
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
-                    if ( (LA6_0==AND||LA6_0==BREAK_T||LA6_0==COND||LA6_0==DATETIME||LA6_0==DAYBLOCK_T||LA6_0==DECL||LA6_0==EQ||(LA6_0 >= FLOAT && LA6_0 <= FOREACH_T)||LA6_0==GEQ||LA6_0==ID||(LA6_0 >= INST && LA6_0 <= INT)||(LA6_0 >= LEQ && LA6_0 <= NEQ)||LA6_0==NOT||LA6_0==OR||LA6_0==STRING||LA6_0==TIME||LA6_0==TIMES||(LA6_0 >= 53 && LA6_0 <= 54)||(LA6_0 >= 56 && LA6_0 <= 58)||(LA6_0 >= 60 && LA6_0 <= 62)) ) {
+                    if ( (LA6_0==AND||LA6_0==BREAK_T||LA6_0==COND||LA6_0==DATETIME||LA6_0==DAYBLOCK_T||(LA6_0 >= DECL && LA6_0 <= DOUBLE)||LA6_0==EQ||LA6_0==FOREACH_T||LA6_0==GEQ||LA6_0==ID||(LA6_0 >= INST && LA6_0 <= INT)||(LA6_0 >= LEQ && LA6_0 <= NEQ)||LA6_0==NOT||LA6_0==OR||LA6_0==STRING||LA6_0==TIME||LA6_0==TIMES||(LA6_0 >= 52 && LA6_0 <= 53)||(LA6_0 >= 55 && LA6_0 <= 57)||(LA6_0 >= 59 && LA6_0 <= 61)) ) {
                         alt6=1;
                     }
 
 
                     switch (alt6) {
                 	case 1 :
-                	    // src/grammar/ChronosTree.g:75:51: line
+                	    // src/grammar/ChronosTree.g:96:56: lines= line
                 	    {
-                	    pushFollow(FOLLOW_line_in_iteration_stmt198);
-                	    line();
+                	    pushFollow(FOLLOW_line_in_iteration_stmt240);
+                	    lines=line();
 
                 	    state._fsp--;
-                	    if (state.failed) return ;
+                	    if (state.failed) return retval;
 
                 	    }
                 	    break;
@@ -684,12 +771,17 @@ public class ChronosTree extends TreeFilter {
                 } while (true);
 
 
-                match(input, Token.UP, null); if (state.failed) return ;
+                match(input, Token.UP, null); if (state.failed) return retval;
             }
 
 
-            match(input, Token.UP, null); if (state.failed) return ;
+            match(input, Token.UP, null); if (state.failed) return retval;
 
+
+            if ( state.backtracking==1 ) {
+            			retval.result = "for ( Course " + (element!=null?element.getText():null) + " : " + list +
+            			" ) {\n" + lines + "}";
+            		}
 
             }
 
@@ -702,20 +794,20 @@ public class ChronosTree extends TreeFilter {
         finally {
         	// do for sure before leaving
         }
-        return ;
+        return retval;
     }
     // $ANTLR end "iteration_stmt"
 
 
 
     // $ANTLR start "jump_stmt"
-    // src/grammar/ChronosTree.g:77:1: jump_stmt : BREAK_T ;
+    // src/grammar/ChronosTree.g:101:1: jump_stmt : BREAK_T ;
     public final void jump_stmt() throws RecognitionException {
         try {
-            // src/grammar/ChronosTree.g:78:2: ( BREAK_T )
-            // src/grammar/ChronosTree.g:78:4: BREAK_T
+            // src/grammar/ChronosTree.g:102:2: ( BREAK_T )
+            // src/grammar/ChronosTree.g:102:4: BREAK_T
             {
-            match(input,BREAK_T,FOLLOW_BREAK_T_in_jump_stmt211); if (state.failed) return ;
+            match(input,BREAK_T,FOLLOW_BREAK_T_in_jump_stmt256); if (state.failed) return ;
 
             }
 
@@ -733,188 +825,148 @@ public class ChronosTree extends TreeFilter {
     // $ANTLR end "jump_stmt"
 
 
-
-    // $ANTLR start "assignment_expr"
-    // src/grammar/ChronosTree.g:80:1: assignment_expr : ^( '=' ID expr ) ;
-    public final void assignment_expr() throws RecognitionException {
-        CommonTree ID2=null;
-        ChronosTree.expr_return expr3 =null;
-
-
-        try {
-            // src/grammar/ChronosTree.g:81:2: ( ^( '=' ID expr ) )
-            // src/grammar/ChronosTree.g:81:4: ^( '=' ID expr )
-            {
-            match(input,61,FOLLOW_61_in_assignment_expr222); if (state.failed) return ;
-
-            match(input, Token.DOWN, null); if (state.failed) return ;
-            ID2=(CommonTree)match(input,ID,FOLLOW_ID_in_assignment_expr224); if (state.failed) return ;
-
-            pushFollow(FOLLOW_expr_in_assignment_expr226);
-            expr3=expr();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            match(input, Token.UP, null); if (state.failed) return ;
-
-
-            if ( state.backtracking==1 ) {
-            		/* if (ID2!=null?ID2.getText():null) is in varMap,
-            		set its value to (expr3!=null?expr3.result:null)
-            		otherwise, ERROR */
-            		}
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        return ;
-    }
-    // $ANTLR end "assignment_expr"
-
-
     public static class expr_return extends TreeRuleReturnScope {
-        public Value result;
+        public CVal result;
     };
 
 
     // $ANTLR start "expr"
-    // src/grammar/ChronosTree.g:87:1: expr returns [Value result] : ( assignment_expr | ^( OR expr expr ) | ^( AND expr expr ) | ^( NOT expr ) | ^( EQ expr expr ) | ^( NEQ expr expr ) | ^( GEQ expr expr ) | ^( LEQ expr expr ) | ^( '<' expr expr ) | ^( '>' expr expr ) | ^( '+' expr expr ) | ^( '-' expr expr ) | ^( '*' expr expr ) | ^( '/' expr expr ) | ^( '.' expr expr ) | datetime | timeblock | dayblock | MASTER_T | INT | FLOAT | ID | STRING | TIME );
+    // src/grammar/ChronosTree.g:104:1: expr returns [CVal result] : ( ^( OR e1= expr e2= expr ) | ^( AND e1= expr e2= expr ) | ^( NOT e= expr ) | ^( EQ e1= expr e2= expr ) | ^( NEQ e1= expr e2= expr ) | ^( GEQ e1= expr e2= expr ) | ^( LEQ e1= expr e2= expr ) | ^( '<' e1= expr e2= expr ) | ^( '>' e1= expr e2= expr ) | ^( '+' e1= expr e2= expr ) | ^( '-' e1= expr e2= expr ) | ^( '*' e1= expr e2= expr ) | ^( '/' e1= expr e2= expr ) | ^( '.' e1= expr e2= expr ) | datetime | timeblock | dayblock | INT | DOUBLE | ID | STRING | TIME );
     public final ChronosTree.expr_return expr() throws RecognitionException {
         ChronosTree.expr_return retval = new ChronosTree.expr_return();
         retval.start = input.LT(1);
 
 
+        CommonTree INT10=null;
+        CommonTree DOUBLE11=null;
+        CommonTree ID12=null;
+        CommonTree STRING13=null;
+        CommonTree TIME14=null;
+        ChronosTree.expr_return e1 =null;
+
+        ChronosTree.expr_return e2 =null;
+
+        ChronosTree.expr_return e =null;
+
+        Datetime datetime7 =null;
+
+        Timeblock timeblock8 =null;
+
+        Dayblock dayblock9 =null;
+
+
         try {
-            // src/grammar/ChronosTree.g:89:2: ( assignment_expr | ^( OR expr expr ) | ^( AND expr expr ) | ^( NOT expr ) | ^( EQ expr expr ) | ^( NEQ expr expr ) | ^( GEQ expr expr ) | ^( LEQ expr expr ) | ^( '<' expr expr ) | ^( '>' expr expr ) | ^( '+' expr expr ) | ^( '-' expr expr ) | ^( '*' expr expr ) | ^( '/' expr expr ) | ^( '.' expr expr ) | datetime | timeblock | dayblock | MASTER_T | INT | FLOAT | ID | STRING | TIME )
-            int alt7=24;
+            // src/grammar/ChronosTree.g:108:2: ( ^( OR e1= expr e2= expr ) | ^( AND e1= expr e2= expr ) | ^( NOT e= expr ) | ^( EQ e1= expr e2= expr ) | ^( NEQ e1= expr e2= expr ) | ^( GEQ e1= expr e2= expr ) | ^( LEQ e1= expr e2= expr ) | ^( '<' e1= expr e2= expr ) | ^( '>' e1= expr e2= expr ) | ^( '+' e1= expr e2= expr ) | ^( '-' e1= expr e2= expr ) | ^( '*' e1= expr e2= expr ) | ^( '/' e1= expr e2= expr ) | ^( '.' e1= expr e2= expr ) | datetime | timeblock | dayblock | INT | DOUBLE | ID | STRING | TIME )
+            int alt7=22;
             switch ( input.LA(1) ) {
-            case 61:
+            case OR:
                 {
                 alt7=1;
                 }
                 break;
-            case OR:
+            case AND:
                 {
                 alt7=2;
                 }
                 break;
-            case AND:
+            case NOT:
                 {
                 alt7=3;
                 }
                 break;
-            case NOT:
+            case EQ:
                 {
                 alt7=4;
                 }
                 break;
-            case EQ:
+            case NEQ:
                 {
                 alt7=5;
                 }
                 break;
-            case NEQ:
+            case GEQ:
                 {
                 alt7=6;
                 }
                 break;
-            case GEQ:
+            case LEQ:
                 {
                 alt7=7;
                 }
                 break;
-            case LEQ:
+            case 59:
                 {
                 alt7=8;
                 }
                 break;
-            case 60:
+            case 61:
                 {
                 alt7=9;
                 }
                 break;
-            case 62:
+            case 53:
                 {
                 alt7=10;
                 }
                 break;
-            case 54:
+            case 55:
                 {
                 alt7=11;
                 }
                 break;
-            case 56:
+            case 52:
                 {
                 alt7=12;
                 }
                 break;
-            case 53:
+            case 57:
                 {
                 alt7=13;
                 }
                 break;
-            case 58:
+            case 56:
                 {
                 alt7=14;
                 }
                 break;
-            case 57:
+            case DATETIME:
                 {
                 alt7=15;
                 }
                 break;
-            case DATETIME:
+            case TIMES:
                 {
                 alt7=16;
                 }
                 break;
-            case TIMES:
+            case DAYBLOCK_T:
                 {
                 alt7=17;
                 }
                 break;
-            case DAYBLOCK_T:
+            case INT:
                 {
                 alt7=18;
                 }
                 break;
-            case MASTER_T:
+            case DOUBLE:
                 {
                 alt7=19;
                 }
                 break;
-            case INT:
+            case ID:
                 {
                 alt7=20;
                 }
                 break;
-            case FLOAT:
+            case STRING:
                 {
                 alt7=21;
                 }
                 break;
-            case ID:
-                {
-                alt7=22;
-                }
-                break;
-            case STRING:
-                {
-                alt7=23;
-                }
-                break;
             case TIME:
                 {
-                alt7=24;
+                alt7=22;
                 }
                 break;
             default:
@@ -928,404 +980,543 @@ public class ChronosTree extends TreeFilter {
 
             switch (alt7) {
                 case 1 :
-                    // src/grammar/ChronosTree.g:89:4: assignment_expr
+                    // src/grammar/ChronosTree.g:108:4: ^( OR e1= expr e2= expr )
                     {
-                    pushFollow(FOLLOW_assignment_expr_in_expr245);
-                    assignment_expr();
+                    match(input,OR,FOLLOW_OR_in_expr278); if (state.failed) return retval;
+
+                    match(input, Token.DOWN, null); if (state.failed) return retval;
+                    pushFollow(FOLLOW_expr_in_expr282);
+                    e1=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
+
+                    pushFollow(FOLLOW_expr_in_expr286);
+                    e2=expr();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+
+                    match(input, Token.UP, null); if (state.failed) return retval;
+
+
+                    if ( state.backtracking==1 ) {
+                    			CVal val1 = new CVal((e1!=null?e1.result:null));
+                    			CVal val2 = new CVal((e2!=null?e2.result:null));
+                    			/* if e1 and e2 are boolean expressions, 
+                    			then this operation is legal */
+                    			if (val1.isBool() && val2.isBool()) {
+                    				try {
+                    				retval.result = ((Integer)val1.value() || (Integer)val2.value())? 1:0;
+                    				}
+                    				catch (Exception e) {
+                    				out("Can't do OR on objects");
+                    				}
+                    			}
+                    			else {
+                    				throw new IllegalArgumentException("Cannot perform OR operation on non-boolean expressions");
+                    			}
+                    		}
 
                     }
                     break;
                 case 2 :
-                    // src/grammar/ChronosTree.g:91:4: ^( OR expr expr )
+                    // src/grammar/ChronosTree.g:125:4: ^( AND e1= expr e2= expr )
                     {
-                    match(input,OR,FOLLOW_OR_in_expr253); if (state.failed) return retval;
+                    match(input,AND,FOLLOW_AND_in_expr295); if (state.failed) return retval;
 
                     match(input, Token.DOWN, null); if (state.failed) return retval;
-                    pushFollow(FOLLOW_expr_in_expr255);
-                    expr();
+                    pushFollow(FOLLOW_expr_in_expr299);
+                    e1=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
 
-                    pushFollow(FOLLOW_expr_in_expr257);
-                    expr();
+                    pushFollow(FOLLOW_expr_in_expr303);
+                    e2=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
 
                     match(input, Token.UP, null); if (state.failed) return retval;
 
+
+                    if ( state.backtracking==1 ) {
+                    			CVal val1 = new CVal((e1!=null?e1.result:null));
+                    			CVal val2 = new CVal((e2!=null?e2.result:null));
+                    			if (val1.isBool() && val2.isBool()) {
+                    			try{
+                    				retval.result = (val1.value() && val2.value())? 1:0;
+                    				}
+                    				catch (Exception e) {
+                    				out("Can't do OR on objects");
+                    				}
+                    			}
+                    			else {
+                    				throw new IllegalArgumentException("Cannot perform AND operation on non-boolean expressions");
+                    			}
+                    		}
 
                     }
                     break;
                 case 3 :
-                    // src/grammar/ChronosTree.g:92:4: ^( AND expr expr )
+                    // src/grammar/ChronosTree.g:140:4: ^( NOT e= expr )
                     {
-                    match(input,AND,FOLLOW_AND_in_expr264); if (state.failed) return retval;
+                    match(input,NOT,FOLLOW_NOT_in_expr312); if (state.failed) return retval;
 
                     match(input, Token.DOWN, null); if (state.failed) return retval;
-                    pushFollow(FOLLOW_expr_in_expr266);
-                    expr();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-
-                    pushFollow(FOLLOW_expr_in_expr268);
-                    expr();
+                    pushFollow(FOLLOW_expr_in_expr316);
+                    e=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
 
                     match(input, Token.UP, null); if (state.failed) return retval;
 
+
+                    if ( state.backtracking==1 ) {
+                    			CVal val = new CVal((e!=null?e.result:null));
+                    			if (val.isBool()) {
+                    			try {
+                    				retval.result = (!val.value())? 1:0;
+                    				}
+                    				catch (Exception excep) {
+                    				out("Can't do OR on objects");
+                    				}
+                    			}
+                    			else {
+                    				throw new IllegalArgumentException("Cannot perform NOT operation on non-boolean expressions");
+                    			}
+                    		}
 
                     }
                     break;
                 case 4 :
-                    // src/grammar/ChronosTree.g:93:4: ^( NOT expr )
+                    // src/grammar/ChronosTree.g:155:4: ^( EQ e1= expr e2= expr )
                     {
-                    match(input,NOT,FOLLOW_NOT_in_expr275); if (state.failed) return retval;
+                    match(input,EQ,FOLLOW_EQ_in_expr327); if (state.failed) return retval;
 
                     match(input, Token.DOWN, null); if (state.failed) return retval;
-                    pushFollow(FOLLOW_expr_in_expr277);
-                    expr();
+                    pushFollow(FOLLOW_expr_in_expr331);
+                    e1=expr();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+
+                    pushFollow(FOLLOW_expr_in_expr335);
+                    e2=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
 
                     match(input, Token.UP, null); if (state.failed) return retval;
 
+
+                    if ( state.backtracking==1 ) {
+                    			CVal val1 = new CVal((e1!=null?e1.result:null));
+                    			CVal val2 = new CVal((e2!=null?e2.result:null));
+                    			retval.result = ( val1.compareTo(val2) == 0 )? 1:0;
+                    		}
 
                     }
                     break;
                 case 5 :
-                    // src/grammar/ChronosTree.g:95:4: ^( EQ expr expr )
+                    // src/grammar/ChronosTree.g:160:4: ^( NEQ e1= expr e2= expr )
                     {
-                    match(input,EQ,FOLLOW_EQ_in_expr286); if (state.failed) return retval;
+                    match(input,NEQ,FOLLOW_NEQ_in_expr344); if (state.failed) return retval;
 
                     match(input, Token.DOWN, null); if (state.failed) return retval;
-                    pushFollow(FOLLOW_expr_in_expr288);
-                    expr();
+                    pushFollow(FOLLOW_expr_in_expr348);
+                    e1=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
 
-                    pushFollow(FOLLOW_expr_in_expr290);
-                    expr();
+                    pushFollow(FOLLOW_expr_in_expr352);
+                    e2=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
 
                     match(input, Token.UP, null); if (state.failed) return retval;
 
+
+                    if ( state.backtracking==1 ) {
+                    			CVal val1 = new CVal((e1!=null?e1.result:null));
+                    			CVal val2 = new CVal((e2!=null?e2.result:null));
+                    			retval.result = ( val1.compareTo(val2) != 0 )? 1:0;
+                    		}
 
                     }
                     break;
                 case 6 :
-                    // src/grammar/ChronosTree.g:96:4: ^( NEQ expr expr )
+                    // src/grammar/ChronosTree.g:165:4: ^( GEQ e1= expr e2= expr )
                     {
-                    match(input,NEQ,FOLLOW_NEQ_in_expr297); if (state.failed) return retval;
+                    match(input,GEQ,FOLLOW_GEQ_in_expr361); if (state.failed) return retval;
 
                     match(input, Token.DOWN, null); if (state.failed) return retval;
-                    pushFollow(FOLLOW_expr_in_expr299);
-                    expr();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-
-                    pushFollow(FOLLOW_expr_in_expr301);
-                    expr();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-
-                    match(input, Token.UP, null); if (state.failed) return retval;
-
-
-                    }
-                    break;
-                case 7 :
-                    // src/grammar/ChronosTree.g:97:4: ^( GEQ expr expr )
-                    {
-                    match(input,GEQ,FOLLOW_GEQ_in_expr308); if (state.failed) return retval;
-
-                    match(input, Token.DOWN, null); if (state.failed) return retval;
-                    pushFollow(FOLLOW_expr_in_expr310);
-                    expr();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-
-                    pushFollow(FOLLOW_expr_in_expr312);
-                    expr();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-
-                    match(input, Token.UP, null); if (state.failed) return retval;
-
-
-                    }
-                    break;
-                case 8 :
-                    // src/grammar/ChronosTree.g:98:4: ^( LEQ expr expr )
-                    {
-                    match(input,LEQ,FOLLOW_LEQ_in_expr319); if (state.failed) return retval;
-
-                    match(input, Token.DOWN, null); if (state.failed) return retval;
-                    pushFollow(FOLLOW_expr_in_expr321);
-                    expr();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-
-                    pushFollow(FOLLOW_expr_in_expr323);
-                    expr();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-
-                    match(input, Token.UP, null); if (state.failed) return retval;
-
-
-                    }
-                    break;
-                case 9 :
-                    // src/grammar/ChronosTree.g:99:4: ^( '<' expr expr )
-                    {
-                    match(input,60,FOLLOW_60_in_expr330); if (state.failed) return retval;
-
-                    match(input, Token.DOWN, null); if (state.failed) return retval;
-                    pushFollow(FOLLOW_expr_in_expr332);
-                    expr();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-
-                    pushFollow(FOLLOW_expr_in_expr334);
-                    expr();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-
-                    match(input, Token.UP, null); if (state.failed) return retval;
-
-
-                    }
-                    break;
-                case 10 :
-                    // src/grammar/ChronosTree.g:100:4: ^( '>' expr expr )
-                    {
-                    match(input,62,FOLLOW_62_in_expr341); if (state.failed) return retval;
-
-                    match(input, Token.DOWN, null); if (state.failed) return retval;
-                    pushFollow(FOLLOW_expr_in_expr343);
-                    expr();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-
-                    pushFollow(FOLLOW_expr_in_expr345);
-                    expr();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-
-                    match(input, Token.UP, null); if (state.failed) return retval;
-
-
-                    }
-                    break;
-                case 11 :
-                    // src/grammar/ChronosTree.g:102:4: ^( '+' expr expr )
-                    {
-                    match(input,54,FOLLOW_54_in_expr354); if (state.failed) return retval;
-
-                    match(input, Token.DOWN, null); if (state.failed) return retval;
-                    pushFollow(FOLLOW_expr_in_expr356);
-                    expr();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-
-                    pushFollow(FOLLOW_expr_in_expr358);
-                    expr();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-
-                    match(input, Token.UP, null); if (state.failed) return retval;
-
-
-                    }
-                    break;
-                case 12 :
-                    // src/grammar/ChronosTree.g:103:4: ^( '-' expr expr )
-                    {
-                    match(input,56,FOLLOW_56_in_expr365); if (state.failed) return retval;
-
-                    match(input, Token.DOWN, null); if (state.failed) return retval;
-                    pushFollow(FOLLOW_expr_in_expr367);
-                    expr();
+                    pushFollow(FOLLOW_expr_in_expr365);
+                    e1=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
 
                     pushFollow(FOLLOW_expr_in_expr369);
-                    expr();
+                    e2=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
 
                     match(input, Token.UP, null); if (state.failed) return retval;
 
+
+                    if ( state.backtracking==1 ) {
+                    			CVal val1 = new CVal((e1!=null?e1.result:null));
+                    			CVal val2 = new CVal((e2!=null?e2.result:null));
+                    			retval.result = ( val1.compareTo(val2) == 1
+                    			|| val1.compareTo(val2) == 0 )? 1:0;
+                    		}
+
+                    }
+                    break;
+                case 7 :
+                    // src/grammar/ChronosTree.g:171:4: ^( LEQ e1= expr e2= expr )
+                    {
+                    match(input,LEQ,FOLLOW_LEQ_in_expr378); if (state.failed) return retval;
+
+                    match(input, Token.DOWN, null); if (state.failed) return retval;
+                    pushFollow(FOLLOW_expr_in_expr382);
+                    e1=expr();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+
+                    pushFollow(FOLLOW_expr_in_expr386);
+                    e2=expr();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+
+                    match(input, Token.UP, null); if (state.failed) return retval;
+
+
+                    if ( state.backtracking==1 ) {
+                    			CVal val1 = new CVal((e1!=null?e1.result:null));
+                    			CVal val2 = new CVal((e2!=null?e2.result:null));
+                    			retval.result = ( val1.compareTo(val2) == -1
+                    			|| val1.compareTo(val2) == 0 )? 1:0;
+                    		}
+
+                    }
+                    break;
+                case 8 :
+                    // src/grammar/ChronosTree.g:177:4: ^( '<' e1= expr e2= expr )
+                    {
+                    match(input,59,FOLLOW_59_in_expr395); if (state.failed) return retval;
+
+                    match(input, Token.DOWN, null); if (state.failed) return retval;
+                    pushFollow(FOLLOW_expr_in_expr399);
+                    e1=expr();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+
+                    pushFollow(FOLLOW_expr_in_expr403);
+                    e2=expr();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+
+                    match(input, Token.UP, null); if (state.failed) return retval;
+
+
+                    if ( state.backtracking==1 ) {
+                    			CVal val1 = new CVal((e1!=null?e1.result:null));
+                    			CVal val2 = new CVal((e2!=null?e2.result:null));
+                    			retval.result = ( val1.compareTo(val2) == -1 )? 1:0;
+                    		}
+
+                    }
+                    break;
+                case 9 :
+                    // src/grammar/ChronosTree.g:182:4: ^( '>' e1= expr e2= expr )
+                    {
+                    match(input,61,FOLLOW_61_in_expr412); if (state.failed) return retval;
+
+                    match(input, Token.DOWN, null); if (state.failed) return retval;
+                    pushFollow(FOLLOW_expr_in_expr416);
+                    e1=expr();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+
+                    pushFollow(FOLLOW_expr_in_expr420);
+                    e2=expr();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+
+                    match(input, Token.UP, null); if (state.failed) return retval;
+
+
+                    if ( state.backtracking==1 ) {
+                    			CVal val1 = new CVal((e1!=null?e1.result:null));
+                    			CVal val2 = new CVal((e2!=null?e2.result:null));
+                    			retval.result = ( val1.compareTo(val2) == 1 )? 1:0;
+                    		}
+
+                    }
+                    break;
+                case 10 :
+                    // src/grammar/ChronosTree.g:189:4: ^( '+' e1= expr e2= expr )
+                    {
+                    match(input,53,FOLLOW_53_in_expr433); if (state.failed) return retval;
+
+                    match(input, Token.DOWN, null); if (state.failed) return retval;
+                    pushFollow(FOLLOW_expr_in_expr437);
+                    e1=expr();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+
+                    pushFollow(FOLLOW_expr_in_expr441);
+                    e2=expr();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+
+                    match(input, Token.UP, null); if (state.failed) return retval;
+
+
+                    if ( state.backtracking==1 ) {
+                    			CVal val1 = new CVal((e1!=null?e1.result:null));
+                    			CVal val2 = new CVal((e2!=null?e2.result:null));
+                    			if (val1.isNumber() && val2.isNumber() 
+                    			 || val1.isString() && val2.isString()) {
+                    				retval.result = (Number)val1.value() + (Number)val2.value();
+                    			}
+                    		}
+
+                    }
+                    break;
+                case 11 :
+                    // src/grammar/ChronosTree.g:197:4: ^( '-' e1= expr e2= expr )
+                    {
+                    match(input,55,FOLLOW_55_in_expr450); if (state.failed) return retval;
+
+                    match(input, Token.DOWN, null); if (state.failed) return retval;
+                    pushFollow(FOLLOW_expr_in_expr454);
+                    e1=expr();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+
+                    pushFollow(FOLLOW_expr_in_expr458);
+                    e2=expr();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+
+                    match(input, Token.UP, null); if (state.failed) return retval;
+
+
+                    if ( state.backtracking==1 ) {
+                    			CVal val1 = new CVal((e1!=null?e1.result:null));
+                    			CVal val2 = new CVal((e2!=null?e2.result:null));
+                    			if (val1.isNumber() && val2.isNumber()) {
+                    				retval.result = (Number)val1.value() - (Number)val2.value();
+                    			}		}
+
+                    }
+                    break;
+                case 12 :
+                    // src/grammar/ChronosTree.g:203:4: ^( '*' e1= expr e2= expr )
+                    {
+                    match(input,52,FOLLOW_52_in_expr467); if (state.failed) return retval;
+
+                    match(input, Token.DOWN, null); if (state.failed) return retval;
+                    pushFollow(FOLLOW_expr_in_expr471);
+                    e1=expr();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+
+                    pushFollow(FOLLOW_expr_in_expr475);
+                    e2=expr();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+
+                    match(input, Token.UP, null); if (state.failed) return retval;
+
+
+                    if ( state.backtracking==1 ) {
+                    			CVal val1 = new CVal((e1!=null?e1.result:null));
+                    			CVal val2 = new CVal((e2!=null?e2.result:null));
+                    			if (val1.isNumber() && val2.isNumber()) {
+                    				retval.result = (Number)val1.value() * (Number)val2.value();
+                    			}
+                    		}
 
                     }
                     break;
                 case 13 :
-                    // src/grammar/ChronosTree.g:104:4: ^( '*' expr expr )
+                    // src/grammar/ChronosTree.g:210:4: ^( '/' e1= expr e2= expr )
                     {
-                    match(input,53,FOLLOW_53_in_expr376); if (state.failed) return retval;
+                    match(input,57,FOLLOW_57_in_expr484); if (state.failed) return retval;
 
                     match(input, Token.DOWN, null); if (state.failed) return retval;
-                    pushFollow(FOLLOW_expr_in_expr378);
-                    expr();
+                    pushFollow(FOLLOW_expr_in_expr488);
+                    e1=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
 
-                    pushFollow(FOLLOW_expr_in_expr380);
-                    expr();
+                    pushFollow(FOLLOW_expr_in_expr492);
+                    e2=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
 
                     match(input, Token.UP, null); if (state.failed) return retval;
 
+
+                    if ( state.backtracking==1 ) {
+                    			CVal val1 = new CVal((e1!=null?e1.result:null));
+                    			CVal val2 = new CVal((e2!=null?e2.result:null));
+                    			if (val1.isNumber() && val2.isNumber()) {
+                    				retval.result = (Number)val1.value() / (Number)val2.value();
+                    			}
+                    		}
 
                     }
                     break;
                 case 14 :
-                    // src/grammar/ChronosTree.g:105:4: ^( '/' expr expr )
+                    // src/grammar/ChronosTree.g:219:4: ^( '.' e1= expr e2= expr )
                     {
-                    match(input,58,FOLLOW_58_in_expr387); if (state.failed) return retval;
+                    match(input,56,FOLLOW_56_in_expr505); if (state.failed) return retval;
 
                     match(input, Token.DOWN, null); if (state.failed) return retval;
-                    pushFollow(FOLLOW_expr_in_expr389);
-                    expr();
+                    pushFollow(FOLLOW_expr_in_expr509);
+                    e1=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
 
-                    pushFollow(FOLLOW_expr_in_expr391);
-                    expr();
+                    pushFollow(FOLLOW_expr_in_expr513);
+                    e2=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
 
                     match(input, Token.UP, null); if (state.failed) return retval;
 
+
+                    if ( state.backtracking==1 ) {
+                    			/* 	If varMap has e1.text, then it is an ID,
+                    			and we can call the function on the value of
+                    			the matching CVal.
+                    				If the varMap does not have e1.text, then it may be
+                    			a return value of a function. in this case we simply
+                    			call the function on the return object.
+                    				If neither of these work, then there is an error.*/
+                    			if (varMap.containsKey((e1!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(e1.start),input.getTreeAdaptor().getTokenStopIndex(e1.start))):null))) {
+                    				CVal val = varMap.get((e1!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(e1.start),input.getTreeAdaptor().getTokenStopIndex(e1.start))):null));
+                    				retval.result = (val.value()).e2;
+                    			}
+                    			if (!varMap.containsKey((e1!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(e1.start),input.getTreeAdaptor().getTokenStopIndex(e1.start))):null))) {
+                    				try {
+                    					retval.result = ((e1!=null?e1.result:null)).e1;
+                    				} catch (Exception e) {
+                    					out("Dot expression error");
+                    					e.printStackTrace();
+                    				}
+                    			}
+                    		}
 
                     }
                     break;
                 case 15 :
-                    // src/grammar/ChronosTree.g:107:4: ^( '.' expr expr )
+                    // src/grammar/ChronosTree.g:242:4: datetime
                     {
-                    match(input,57,FOLLOW_57_in_expr400); if (state.failed) return retval;
-
-                    match(input, Token.DOWN, null); if (state.failed) return retval;
-                    pushFollow(FOLLOW_expr_in_expr402);
-                    expr();
+                    pushFollow(FOLLOW_datetime_in_expr525);
+                    datetime7=datetime();
 
                     state._fsp--;
                     if (state.failed) return retval;
 
-                    pushFollow(FOLLOW_expr_in_expr404);
-                    expr();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-
-                    match(input, Token.UP, null); if (state.failed) return retval;
-
+                    if ( state.backtracking==1 ) { retval.result = datetime7; }
 
                     }
                     break;
                 case 16 :
-                    // src/grammar/ChronosTree.g:109:4: datetime
+                    // src/grammar/ChronosTree.g:243:4: timeblock
                     {
-                    pushFollow(FOLLOW_datetime_in_expr412);
-                    datetime();
+                    pushFollow(FOLLOW_timeblock_in_expr532);
+                    timeblock8=timeblock();
 
                     state._fsp--;
                     if (state.failed) return retval;
+
+                    if ( state.backtracking==1 ) { retval.result = timeblock8; }
 
                     }
                     break;
                 case 17 :
-                    // src/grammar/ChronosTree.g:110:4: timeblock
+                    // src/grammar/ChronosTree.g:244:4: dayblock
                     {
-                    pushFollow(FOLLOW_timeblock_in_expr417);
-                    timeblock();
+                    pushFollow(FOLLOW_dayblock_in_expr539);
+                    dayblock9=dayblock();
 
                     state._fsp--;
                     if (state.failed) return retval;
+
+                    if ( state.backtracking==1 ) { retval.result = dayblock9; }
 
                     }
                     break;
                 case 18 :
-                    // src/grammar/ChronosTree.g:111:4: dayblock
+                    // src/grammar/ChronosTree.g:247:4: INT
                     {
-                    pushFollow(FOLLOW_dayblock_in_expr422);
-                    dayblock();
+                    INT10=(CommonTree)match(input,INT,FOLLOW_INT_in_expr551); if (state.failed) return retval;
 
-                    state._fsp--;
-                    if (state.failed) return retval;
+                    if ( state.backtracking==1 ) { retval.result = new CVal( Integer.parseInt((INT10!=null?INT10.getText():null)) ); }
 
                     }
                     break;
                 case 19 :
-                    // src/grammar/ChronosTree.g:113:4: MASTER_T
+                    // src/grammar/ChronosTree.g:248:4: DOUBLE
                     {
-                    match(input,MASTER_T,FOLLOW_MASTER_T_in_expr429); if (state.failed) return retval;
+                    DOUBLE11=(CommonTree)match(input,DOUBLE,FOLLOW_DOUBLE_in_expr558); if (state.failed) return retval;
+
+                    if ( state.backtracking==1 ) { retval.result = new CVal( Double.parseDouble((DOUBLE11!=null?DOUBLE11.getText():null)) ); }
 
                     }
                     break;
                 case 20 :
-                    // src/grammar/ChronosTree.g:115:4: INT
+                    // src/grammar/ChronosTree.g:249:4: ID
                     {
-                    match(input,INT,FOLLOW_INT_in_expr436); if (state.failed) return retval;
+                    ID12=(CommonTree)match(input,ID,FOLLOW_ID_in_expr565); if (state.failed) return retval;
+
+                    if ( state.backtracking==1 ) { retval.result = varMap.get((ID12!=null?ID12.getText():null)); }
 
                     }
                     break;
                 case 21 :
-                    // src/grammar/ChronosTree.g:116:4: FLOAT
+                    // src/grammar/ChronosTree.g:250:4: STRING
                     {
-                    match(input,FLOAT,FOLLOW_FLOAT_in_expr441); if (state.failed) return retval;
+                    STRING13=(CommonTree)match(input,STRING,FOLLOW_STRING_in_expr572); if (state.failed) return retval;
+
+                    if ( state.backtracking==1 ) { retval.result = new CVal( (STRING13!=null?STRING13.getText():null) ); }
 
                     }
                     break;
                 case 22 :
-                    // src/grammar/ChronosTree.g:117:4: ID
+                    // src/grammar/ChronosTree.g:251:4: TIME
                     {
-                    match(input,ID,FOLLOW_ID_in_expr446); if (state.failed) return retval;
+                    TIME14=(CommonTree)match(input,TIME,FOLLOW_TIME_in_expr579); if (state.failed) return retval;
 
-                    }
-                    break;
-                case 23 :
-                    // src/grammar/ChronosTree.g:118:4: STRING
-                    {
-                    match(input,STRING,FOLLOW_STRING_in_expr451); if (state.failed) return retval;
-
-                    }
-                    break;
-                case 24 :
-                    // src/grammar/ChronosTree.g:119:4: TIME
-                    {
-                    match(input,TIME,FOLLOW_TIME_in_expr456); if (state.failed) return retval;
+                    if ( state.backtracking==1 ) { retval.result = new CVal( new Time((TIME14!=null?TIME14.getText():null)) ); }
 
                     }
                     break;
@@ -1347,62 +1538,126 @@ public class ChronosTree extends TreeFilter {
 
 
     // $ANTLR start "function"
-    // src/grammar/ChronosTree.g:121:1: function returns [Object result] : ^( ID ^( PARAMS ( argument_expr_list )? ) ) ;
+    // src/grammar/ChronosTree.g:253:1: function returns [Object result] : ( ^( PRINT_T ( print_target )* ) | ^( ID ^( PARAMS ( argument_expr_list )? ) ) );
     public final Object function() throws RecognitionException {
         Object result = null;
 
 
-        CommonTree ID4=null;
-        ExprList argument_expr_list5 =null;
+        CommonTree ID15=null;
+        ArrayList<String> argument_expr_list16 =null;
 
 
         try {
-            // src/grammar/ChronosTree.g:123:2: ( ^( ID ^( PARAMS ( argument_expr_list )? ) ) )
-            // src/grammar/ChronosTree.g:123:4: ^( ID ^( PARAMS ( argument_expr_list )? ) )
-            {
-            ID4=(CommonTree)match(input,ID,FOLLOW_ID_in_function472); if (state.failed) return result;
+            // src/grammar/ChronosTree.g:255:2: ( ^( PRINT_T ( print_target )* ) | ^( ID ^( PARAMS ( argument_expr_list )? ) ) )
+            int alt10=2;
+            int LA10_0 = input.LA(1);
 
-            match(input, Token.DOWN, null); if (state.failed) return result;
-            match(input,PARAMS,FOLLOW_PARAMS_in_function475); if (state.failed) return result;
+            if ( (LA10_0==PRINT_T) ) {
+                alt10=1;
+            }
+            else if ( (LA10_0==ID) ) {
+                alt10=2;
+            }
+            else {
+                if (state.backtracking>0) {state.failed=true; return result;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 10, 0, input);
 
-            if ( input.LA(1)==Token.DOWN ) {
-                match(input, Token.DOWN, null); if (state.failed) return result;
-                // src/grammar/ChronosTree.g:123:18: ( argument_expr_list )?
-                int alt8=2;
-                int LA8_0 = input.LA(1);
+                throw nvae;
 
-                if ( (LA8_0==AND||LA8_0==DATETIME||LA8_0==DAYBLOCK_T||LA8_0==EQ||LA8_0==FLOAT||LA8_0==GEQ||LA8_0==ID||LA8_0==INT||(LA8_0 >= LEQ && LA8_0 <= NEQ)||LA8_0==NOT||LA8_0==OR||LA8_0==STRING||LA8_0==TIME||LA8_0==TIMES||(LA8_0 >= 53 && LA8_0 <= 54)||(LA8_0 >= 56 && LA8_0 <= 58)||(LA8_0 >= 60 && LA8_0 <= 62)) ) {
-                    alt8=1;
-                }
-                switch (alt8) {
-                    case 1 :
-                        // src/grammar/ChronosTree.g:123:18: argument_expr_list
-                        {
-                        pushFollow(FOLLOW_argument_expr_list_in_function477);
-                        argument_expr_list5=argument_expr_list();
+            }
+            switch (alt10) {
+                case 1 :
+                    // src/grammar/ChronosTree.g:255:4: ^( PRINT_T ( print_target )* )
+                    {
+                    match(input,PRINT_T,FOLLOW_PRINT_T_in_function597); if (state.failed) return result;
 
-                        state._fsp--;
-                        if (state.failed) return result;
+                    if ( input.LA(1)==Token.DOWN ) {
+                        match(input, Token.DOWN, null); if (state.failed) return result;
+                        // src/grammar/ChronosTree.g:255:14: ( print_target )*
+                        loop8:
+                        do {
+                            int alt8=2;
+                            int LA8_0 = input.LA(1);
+
+                            if ( (LA8_0==DOUBLE||LA8_0==ID||LA8_0==INT||LA8_0==PRINT_T) ) {
+                                alt8=1;
+                            }
+
+
+                            switch (alt8) {
+                        	case 1 :
+                        	    // src/grammar/ChronosTree.g:255:14: print_target
+                        	    {
+                        	    pushFollow(FOLLOW_print_target_in_function599);
+                        	    print_target();
+
+                        	    state._fsp--;
+                        	    if (state.failed) return result;
+
+                        	    }
+                        	    break;
+
+                        	default :
+                        	    break loop8;
+                            }
+                        } while (true);
+
+
+                        match(input, Token.UP, null); if (state.failed) return result;
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // src/grammar/ChronosTree.g:256:4: ^( ID ^( PARAMS ( argument_expr_list )? ) )
+                    {
+                    ID15=(CommonTree)match(input,ID,FOLLOW_ID_in_function607); if (state.failed) return result;
+
+                    match(input, Token.DOWN, null); if (state.failed) return result;
+                    match(input,PARAMS,FOLLOW_PARAMS_in_function610); if (state.failed) return result;
+
+                    if ( input.LA(1)==Token.DOWN ) {
+                        match(input, Token.DOWN, null); if (state.failed) return result;
+                        // src/grammar/ChronosTree.g:256:18: ( argument_expr_list )?
+                        int alt9=2;
+                        int LA9_0 = input.LA(1);
+
+                        if ( (LA9_0==AND||LA9_0==DATETIME||LA9_0==DAYBLOCK_T||LA9_0==DOUBLE||LA9_0==EQ||LA9_0==GEQ||LA9_0==ID||LA9_0==INT||(LA9_0 >= LEQ && LA9_0 <= NEQ)||LA9_0==NOT||LA9_0==OR||LA9_0==STRING||LA9_0==TIME||LA9_0==TIMES||(LA9_0 >= 52 && LA9_0 <= 53)||(LA9_0 >= 55 && LA9_0 <= 57)||LA9_0==59||LA9_0==61) ) {
+                            alt9=1;
+                        }
+                        switch (alt9) {
+                            case 1 :
+                                // src/grammar/ChronosTree.g:256:18: argument_expr_list
+                                {
+                                pushFollow(FOLLOW_argument_expr_list_in_function612);
+                                argument_expr_list16=argument_expr_list();
+
+                                state._fsp--;
+                                if (state.failed) return result;
+
+                                }
+                                break;
 
                         }
-                        break;
-
-                }
 
 
-                match(input, Token.UP, null); if (state.failed) return result;
+                        match(input, Token.UP, null); if (state.failed) return result;
+                    }
+
+
+                    match(input, Token.UP, null); if (state.failed) return result;
+
+
+                    if ( state.backtracking==1 ) {
+                    			result = evalFunction((ID15!=null?ID15.getText():null), argument_expr_list16);
+                    		}
+
+                    }
+                    break;
+
             }
-
-
-            match(input, Token.UP, null); if (state.failed) return result;
-
-
-            if ( state.backtracking==1 ) {
-            		result = evalFunction((ID4!=null?ID4.getText():null), argument_expr_list5);
-            		}
-
-            }
-
         }
         catch (RecognitionException re) {
             reportError(re);
@@ -1418,32 +1673,147 @@ public class ChronosTree extends TreeFilter {
 
 
 
+    // $ANTLR start "print_target"
+    // src/grammar/ChronosTree.g:260:1: print_target : ( INT | DOUBLE | ID | function );
+    public final void print_target() throws RecognitionException {
+        CommonTree INT17=null;
+        CommonTree DOUBLE18=null;
+        CommonTree ID19=null;
+        Object function20 =null;
+
+
+        try {
+            // src/grammar/ChronosTree.g:261:2: ( INT | DOUBLE | ID | function )
+            int alt11=4;
+            switch ( input.LA(1) ) {
+            case INT:
+                {
+                alt11=1;
+                }
+                break;
+            case DOUBLE:
+                {
+                alt11=2;
+                }
+                break;
+            case ID:
+                {
+                int LA11_3 = input.LA(2);
+
+                if ( (LA11_3==DOWN) ) {
+                    alt11=4;
+                }
+                else if ( (LA11_3==UP||LA11_3==DOUBLE||LA11_3==ID||LA11_3==INT||LA11_3==PRINT_T) ) {
+                    alt11=3;
+                }
+                else {
+                    if (state.backtracking>0) {state.failed=true; return ;}
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 11, 3, input);
+
+                    throw nvae;
+
+                }
+                }
+                break;
+            case PRINT_T:
+                {
+                alt11=4;
+                }
+                break;
+            default:
+                if (state.backtracking>0) {state.failed=true; return ;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 11, 0, input);
+
+                throw nvae;
+
+            }
+
+            switch (alt11) {
+                case 1 :
+                    // src/grammar/ChronosTree.g:261:4: INT
+                    {
+                    INT17=(CommonTree)match(input,INT,FOLLOW_INT_in_print_target627); if (state.failed) return ;
+
+                    if ( state.backtracking==1 ) { out(INT17); }
+
+                    }
+                    break;
+                case 2 :
+                    // src/grammar/ChronosTree.g:262:4: DOUBLE
+                    {
+                    DOUBLE18=(CommonTree)match(input,DOUBLE,FOLLOW_DOUBLE_in_print_target634); if (state.failed) return ;
+
+                    if ( state.backtracking==1 ) { out(DOUBLE18); }
+
+                    }
+                    break;
+                case 3 :
+                    // src/grammar/ChronosTree.g:263:4: ID
+                    {
+                    ID19=(CommonTree)match(input,ID,FOLLOW_ID_in_print_target641); if (state.failed) return ;
+
+                    if ( state.backtracking==1 ) { if (varMap.containsKey((ID19!=null?ID19.getText():null))) { out((varMap.get((ID19!=null?ID19.getText():null))).value);} }
+
+                    }
+                    break;
+                case 4 :
+                    // src/grammar/ChronosTree.g:264:4: function
+                    {
+                    pushFollow(FOLLOW_function_in_print_target648);
+                    function20=function();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    if ( state.backtracking==1 ) { out(function20); }
+
+                    }
+                    break;
+
+            }
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return ;
+    }
+    // $ANTLR end "print_target"
+
+
+
     // $ANTLR start "datetime"
-    // src/grammar/ChronosTree.g:127:1: datetime returns [Datetime result] : ^( DATETIME dayblock timeblock ) ;
+    // src/grammar/ChronosTree.g:266:1: datetime returns [Datetime result] : ^( DATETIME dayblock timeblock ) ;
     public final Datetime datetime() throws RecognitionException {
         Datetime result = null;
 
 
-        Dayblock dayblock6 =null;
+        Dayblock dayblock21 =null;
 
-        Timeblock timeblock7 =null;
+        Timeblock timeblock22 =null;
 
 
         try {
-            // src/grammar/ChronosTree.g:129:2: ( ^( DATETIME dayblock timeblock ) )
-            // src/grammar/ChronosTree.g:129:4: ^( DATETIME dayblock timeblock )
+            // src/grammar/ChronosTree.g:268:2: ( ^( DATETIME dayblock timeblock ) )
+            // src/grammar/ChronosTree.g:268:4: ^( DATETIME dayblock timeblock )
             {
-            match(input,DATETIME,FOLLOW_DATETIME_in_datetime498); if (state.failed) return result;
+            match(input,DATETIME,FOLLOW_DATETIME_in_datetime667); if (state.failed) return result;
 
             match(input, Token.DOWN, null); if (state.failed) return result;
-            pushFollow(FOLLOW_dayblock_in_datetime500);
-            dayblock6=dayblock();
+            pushFollow(FOLLOW_dayblock_in_datetime669);
+            dayblock21=dayblock();
 
             state._fsp--;
             if (state.failed) return result;
 
-            pushFollow(FOLLOW_timeblock_in_datetime502);
-            timeblock7=timeblock();
+            pushFollow(FOLLOW_timeblock_in_datetime671);
+            timeblock22=timeblock();
 
             state._fsp--;
             if (state.failed) return result;
@@ -1452,7 +1822,7 @@ public class ChronosTree extends TreeFilter {
 
 
             if ( state.backtracking==1 ) {
-            		result = new Datetime(dayblock6, timeblock7);
+            		result = new Datetime(dayblock21, timeblock22);
             		}
 
             }
@@ -1473,7 +1843,7 @@ public class ChronosTree extends TreeFilter {
 
 
     // $ANTLR start "timeblock"
-    // src/grammar/ChronosTree.g:133:1: timeblock returns [Timeblock result] : ^( TIMES a= TIME b= TIME ) ;
+    // src/grammar/ChronosTree.g:272:1: timeblock returns [Timeblock result] : ^( TIMES a= TIME b= TIME ) ;
     public final Timeblock timeblock() throws RecognitionException {
         Timeblock result = null;
 
@@ -1482,21 +1852,21 @@ public class ChronosTree extends TreeFilter {
         CommonTree b=null;
 
         try {
-            // src/grammar/ChronosTree.g:135:2: ( ^( TIMES a= TIME b= TIME ) )
-            // src/grammar/ChronosTree.g:135:4: ^( TIMES a= TIME b= TIME )
+            // src/grammar/ChronosTree.g:274:2: ( ^( TIMES a= TIME b= TIME ) )
+            // src/grammar/ChronosTree.g:274:4: ^( TIMES a= TIME b= TIME )
             {
-            match(input,TIMES,FOLLOW_TIMES_in_timeblock521); if (state.failed) return result;
+            match(input,TIMES,FOLLOW_TIMES_in_timeblock690); if (state.failed) return result;
 
             match(input, Token.DOWN, null); if (state.failed) return result;
-            a=(CommonTree)match(input,TIME,FOLLOW_TIME_in_timeblock525); if (state.failed) return result;
+            a=(CommonTree)match(input,TIME,FOLLOW_TIME_in_timeblock694); if (state.failed) return result;
 
-            b=(CommonTree)match(input,TIME,FOLLOW_TIME_in_timeblock529); if (state.failed) return result;
+            b=(CommonTree)match(input,TIME,FOLLOW_TIME_in_timeblock698); if (state.failed) return result;
 
             match(input, Token.UP, null); if (state.failed) return result;
 
 
             if ( state.backtracking==1 ) {
-            		result = new Timeblock((a!=null?a.getText():null), (b!=null?b.getText():null));
+            			result = new Timeblock(new Time((a!=null?a.getText():null)), new Time((b!=null?b.getText():null)));
             		}
 
             }
@@ -1517,52 +1887,55 @@ public class ChronosTree extends TreeFilter {
 
 
     // $ANTLR start "dayblock"
-    // src/grammar/ChronosTree.g:139:1: dayblock returns [Dayblock result] : ^( DAYBLOCK_T ( DAY )+ ) ;
+    // src/grammar/ChronosTree.g:278:1: dayblock returns [Dayblock result] : ^( DAYBLOCK_T ( DAY )+ ) ;
     public final Dayblock dayblock() throws RecognitionException {
         Dayblock result = null;
 
 
-        CommonTree DAY8=null;
+        CommonTree DAY23=null;
 
-         result = new ArrayList<String>(); 
+         result = new Dayblock(); 
         try {
-            // src/grammar/ChronosTree.g:142:2: ( ^( DAYBLOCK_T ( DAY )+ ) )
-            // src/grammar/ChronosTree.g:142:4: ^( DAYBLOCK_T ( DAY )+ )
+            // src/grammar/ChronosTree.g:281:2: ( ^( DAYBLOCK_T ( DAY )+ ) )
+            // src/grammar/ChronosTree.g:281:4: ^( DAYBLOCK_T ( DAY )+ )
             {
-            match(input,DAYBLOCK_T,FOLLOW_DAYBLOCK_T_in_dayblock554); if (state.failed) return result;
+            match(input,DAYBLOCK_T,FOLLOW_DAYBLOCK_T_in_dayblock723); if (state.failed) return result;
 
             match(input, Token.DOWN, null); if (state.failed) return result;
-            // src/grammar/ChronosTree.g:142:18: ( DAY )+
-            int cnt9=0;
-            loop9:
+            // src/grammar/ChronosTree.g:281:18: ( DAY )+
+            int cnt12=0;
+            loop12:
             do {
-                int alt9=2;
-                int LA9_0 = input.LA(1);
+                int alt12=2;
+                int LA12_0 = input.LA(1);
 
-                if ( (LA9_0==DAY) ) {
-                    alt9=1;
+                if ( (LA12_0==DAY) ) {
+                    alt12=1;
                 }
 
 
-                switch (alt9) {
+                switch (alt12) {
             	case 1 :
-            	    // src/grammar/ChronosTree.g:142:19: DAY
+            	    // src/grammar/ChronosTree.g:281:19: DAY
             	    {
-            	    DAY8=(CommonTree)match(input,DAY,FOLLOW_DAY_in_dayblock557); if (state.failed) return result;
+            	    DAY23=(CommonTree)match(input,DAY,FOLLOW_DAY_in_dayblock726); if (state.failed) return result;
 
-            	    if ( state.backtracking==1 ) {result.add((DAY8!=null?DAY8.getText():null));}
+            	    if ( state.backtracking==1 ) {
+            	    			char daychar = ((DAY23!=null?DAY23.getText():null)).charAt(0);
+            	    			result.add(daychar);
+            	    		}
 
             	    }
             	    break;
 
             	default :
-            	    if ( cnt9 >= 1 ) break loop9;
+            	    if ( cnt12 >= 1 ) break loop12;
             	    if (state.backtracking>0) {state.failed=true; return result;}
                         EarlyExitException eee =
-                            new EarlyExitException(9, input);
+                            new EarlyExitException(12, input);
                         throw eee;
                 }
-                cnt9++;
+                cnt12++;
             } while (true);
 
 
@@ -1587,54 +1960,54 @@ public class ChronosTree extends TreeFilter {
 
 
     // $ANTLR start "argument_expr_list"
-    // src/grammar/ChronosTree.g:144:1: argument_expr_list returns [ExprList result] : ( expr )+ ;
-    public final ExprList argument_expr_list() throws RecognitionException {
-        ExprList result = null;
+    // src/grammar/ChronosTree.g:286:1: argument_expr_list returns [ArrayList<String> result] : ( expr )+ ;
+    public final ArrayList<String> argument_expr_list() throws RecognitionException {
+        ArrayList<String> result = null;
 
 
-        ChronosTree.expr_return expr9 =null;
+        ChronosTree.expr_return expr24 =null;
 
 
          result = new ArrayList<String>(); 
         try {
-            // src/grammar/ChronosTree.g:146:2: ( ( expr )+ )
-            // src/grammar/ChronosTree.g:146:4: ( expr )+
+            // src/grammar/ChronosTree.g:288:2: ( ( expr )+ )
+            // src/grammar/ChronosTree.g:288:4: ( expr )+
             {
-            // src/grammar/ChronosTree.g:146:4: ( expr )+
-            int cnt10=0;
-            loop10:
+            // src/grammar/ChronosTree.g:288:4: ( expr )+
+            int cnt13=0;
+            loop13:
             do {
-                int alt10=2;
-                int LA10_0 = input.LA(1);
+                int alt13=2;
+                int LA13_0 = input.LA(1);
 
-                if ( (LA10_0==AND||LA10_0==DATETIME||LA10_0==DAYBLOCK_T||LA10_0==EQ||LA10_0==FLOAT||LA10_0==GEQ||LA10_0==ID||LA10_0==INT||(LA10_0 >= LEQ && LA10_0 <= NEQ)||LA10_0==NOT||LA10_0==OR||LA10_0==STRING||LA10_0==TIME||LA10_0==TIMES||(LA10_0 >= 53 && LA10_0 <= 54)||(LA10_0 >= 56 && LA10_0 <= 58)||(LA10_0 >= 60 && LA10_0 <= 62)) ) {
-                    alt10=1;
+                if ( (LA13_0==AND||LA13_0==DATETIME||LA13_0==DAYBLOCK_T||LA13_0==DOUBLE||LA13_0==EQ||LA13_0==GEQ||LA13_0==ID||LA13_0==INT||(LA13_0 >= LEQ && LA13_0 <= NEQ)||LA13_0==NOT||LA13_0==OR||LA13_0==STRING||LA13_0==TIME||LA13_0==TIMES||(LA13_0 >= 52 && LA13_0 <= 53)||(LA13_0 >= 55 && LA13_0 <= 57)||LA13_0==59||LA13_0==61) ) {
+                    alt13=1;
                 }
 
 
-                switch (alt10) {
+                switch (alt13) {
             	case 1 :
-            	    // src/grammar/ChronosTree.g:146:5: expr
+            	    // src/grammar/ChronosTree.g:288:5: expr
             	    {
-            	    pushFollow(FOLLOW_expr_in_argument_expr_list583);
-            	    expr9=expr();
+            	    pushFollow(FOLLOW_expr_in_argument_expr_list752);
+            	    expr24=expr();
 
             	    state._fsp--;
             	    if (state.failed) return result;
 
-            	    if ( state.backtracking==1 ) {result.add((expr9!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(expr9.start),input.getTreeAdaptor().getTokenStopIndex(expr9.start))):null));}
+            	    if ( state.backtracking==1 ) {result.add((expr24!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(expr24.start),input.getTreeAdaptor().getTokenStopIndex(expr24.start))):null));}
 
             	    }
             	    break;
 
             	default :
-            	    if ( cnt10 >= 1 ) break loop10;
+            	    if ( cnt13 >= 1 ) break loop13;
             	    if (state.backtracking>0) {state.failed=true; return result;}
                         EarlyExitException eee =
-                            new EarlyExitException(10, input);
+                            new EarlyExitException(13, input);
                         throw eee;
                 }
-                cnt10++;
+                cnt13++;
             } while (true);
 
 
@@ -1659,14 +2032,14 @@ public class ChronosTree extends TreeFilter {
 
 
     // $ANTLR start "type_specifier"
-    // src/grammar/ChronosTree.g:148:1: type_specifier : ( INT_T | DOUBLE_T | DAYBLOCK_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T );
+    // src/grammar/ChronosTree.g:290:1: type_specifier : ( INT_T | DOUBLE_T | DAYBLOCK_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T );
     public final ChronosTree.type_specifier_return type_specifier() throws RecognitionException {
         ChronosTree.type_specifier_return retval = new ChronosTree.type_specifier_return();
         retval.start = input.LT(1);
 
 
         try {
-            // src/grammar/ChronosTree.g:149:2: ( INT_T | DOUBLE_T | DAYBLOCK_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T )
+            // src/grammar/ChronosTree.g:291:2: ( INT_T | DOUBLE_T | DAYBLOCK_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T )
             // src/grammar/ChronosTree.g:
             {
             if ( (input.LA(1) >= COURSELIST_T && input.LA(1) <= COURSE_T)||input.LA(1)==DATETIME_T||input.LA(1)==DAYBLOCK_T||input.LA(1)==DOUBLE_T||input.LA(1)==INT_T||input.LA(1)==SCHEDULE_T||input.LA(1)==STRING_T||input.LA(1)==TIMEBLOCK_T||input.LA(1)==TIME_T ) {
@@ -1701,98 +2074,104 @@ public class ChronosTree extends TreeFilter {
 
  
 
-    public static final BitSet FOLLOW_line_in_program60 = new BitSet(new long[]{0x7760A95CD5929252L});
+    public static final BitSet FOLLOW_line_in_program60 = new BitSet(new long[]{0x3BB054566AA69252L});
     public static final BitSet FOLLOW_declarator_in_line69 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_instantiator_in_line74 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_stmt_in_line79 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_DECL_in_declarator90 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_type_specifier_in_declarator92 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_type_specifier_in_declarator92 = new BitSet(new long[]{0x0000000008000000L});
     public static final BitSet FOLLOW_ID_in_declarator94 = new BitSet(new long[]{0x0000000000000008L});
     public static final BitSet FOLLOW_INST_in_instantiator108 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_declarator_in_instantiator110 = new BitSet(new long[]{0x2000000000000000L});
-    public static final BitSet FOLLOW_assignment_expr_in_instantiator112 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_expr_in_stmt123 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_selection_stmt_in_stmt128 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_iteration_stmt_in_stmt133 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_jump_stmt_in_stmt138 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_COND_in_selection_stmt149 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IF_T_in_selection_stmt152 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_selection_stmt154 = new BitSet(new long[]{0x7760A95CD5929258L});
-    public static final BitSet FOLLOW_line_in_selection_stmt158 = new BitSet(new long[]{0x7760A95CD5929258L});
-    public static final BitSet FOLLOW_ELSE_T_in_selection_stmt163 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_line_in_selection_stmt167 = new BitSet(new long[]{0x7760A95CD5929258L});
-    public static final BitSet FOLLOW_FOREACH_T_in_iteration_stmt181 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IN_T_in_iteration_stmt184 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_iteration_stmt188 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_ID_in_iteration_stmt192 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_BLOCK_in_iteration_stmt196 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_line_in_iteration_stmt198 = new BitSet(new long[]{0x7760A95CD5929258L});
-    public static final BitSet FOLLOW_BREAK_T_in_jump_stmt211 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_61_in_assignment_expr222 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ID_in_assignment_expr224 = new BitSet(new long[]{0x7760A95C94909010L});
-    public static final BitSet FOLLOW_expr_in_assignment_expr226 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_assignment_expr_in_expr245 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_OR_in_expr253 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr255 = new BitSet(new long[]{0x7760A95C94909010L});
-    public static final BitSet FOLLOW_expr_in_expr257 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_AND_in_expr264 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr266 = new BitSet(new long[]{0x7760A95C94909010L});
-    public static final BitSet FOLLOW_expr_in_expr268 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_NOT_in_expr275 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr277 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_EQ_in_expr286 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr288 = new BitSet(new long[]{0x7760A95C94909010L});
-    public static final BitSet FOLLOW_expr_in_expr290 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_NEQ_in_expr297 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr299 = new BitSet(new long[]{0x7760A95C94909010L});
-    public static final BitSet FOLLOW_expr_in_expr301 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_GEQ_in_expr308 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr310 = new BitSet(new long[]{0x7760A95C94909010L});
-    public static final BitSet FOLLOW_expr_in_expr312 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LEQ_in_expr319 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr321 = new BitSet(new long[]{0x7760A95C94909010L});
-    public static final BitSet FOLLOW_expr_in_expr323 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_60_in_expr330 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr332 = new BitSet(new long[]{0x7760A95C94909010L});
-    public static final BitSet FOLLOW_expr_in_expr334 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_62_in_expr341 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr343 = new BitSet(new long[]{0x7760A95C94909010L});
-    public static final BitSet FOLLOW_expr_in_expr345 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_54_in_expr354 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr356 = new BitSet(new long[]{0x7760A95C94909010L});
-    public static final BitSet FOLLOW_expr_in_expr358 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_56_in_expr365 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr367 = new BitSet(new long[]{0x7760A95C94909010L});
+    public static final BitSet FOLLOW_declarator_in_instantiator110 = new BitSet(new long[]{0x1000000000000000L});
+    public static final BitSet FOLLOW_60_in_instantiator113 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_instantiator115 = new BitSet(new long[]{0x2BB054564A249010L});
+    public static final BitSet FOLLOW_expr_in_instantiator117 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_expr_in_stmt129 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_60_in_stmt135 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_stmt139 = new BitSet(new long[]{0x2BB054564A249010L});
+    public static final BitSet FOLLOW_expr_in_stmt143 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_selection_stmt_in_stmt151 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_iteration_stmt_in_stmt156 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_jump_stmt_in_stmt163 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_COND_in_selection_stmt175 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IF_T_in_selection_stmt178 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_selection_stmt180 = new BitSet(new long[]{0x3BB054566AA69258L});
+    public static final BitSet FOLLOW_line_in_selection_stmt184 = new BitSet(new long[]{0x3BB054566AA69258L});
+    public static final BitSet FOLLOW_ELSE_T_in_selection_stmt189 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_line_in_selection_stmt193 = new BitSet(new long[]{0x3BB054566AA69258L});
+    public static final BitSet FOLLOW_FOREACH_T_in_iteration_stmt221 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IN_T_in_iteration_stmt224 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ID_in_iteration_stmt228 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_ID_in_iteration_stmt232 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_BLOCK_in_iteration_stmt236 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_line_in_iteration_stmt240 = new BitSet(new long[]{0x3BB054566AA69258L});
+    public static final BitSet FOLLOW_BREAK_T_in_jump_stmt256 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_OR_in_expr278 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr282 = new BitSet(new long[]{0x2BB054564A249010L});
+    public static final BitSet FOLLOW_expr_in_expr286 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_AND_in_expr295 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr299 = new BitSet(new long[]{0x2BB054564A249010L});
+    public static final BitSet FOLLOW_expr_in_expr303 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_NOT_in_expr312 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr316 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_EQ_in_expr327 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr331 = new BitSet(new long[]{0x2BB054564A249010L});
+    public static final BitSet FOLLOW_expr_in_expr335 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_NEQ_in_expr344 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr348 = new BitSet(new long[]{0x2BB054564A249010L});
+    public static final BitSet FOLLOW_expr_in_expr352 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_GEQ_in_expr361 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr365 = new BitSet(new long[]{0x2BB054564A249010L});
     public static final BitSet FOLLOW_expr_in_expr369 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_53_in_expr376 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr378 = new BitSet(new long[]{0x7760A95C94909010L});
-    public static final BitSet FOLLOW_expr_in_expr380 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_58_in_expr387 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr389 = new BitSet(new long[]{0x7760A95C94909010L});
-    public static final BitSet FOLLOW_expr_in_expr391 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_57_in_expr400 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expr_in_expr402 = new BitSet(new long[]{0x7760A95C94909010L});
-    public static final BitSet FOLLOW_expr_in_expr404 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_datetime_in_expr412 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_timeblock_in_expr417 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_dayblock_in_expr422 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MASTER_T_in_expr429 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INT_in_expr436 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FLOAT_in_expr441 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_expr446 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRING_in_expr451 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TIME_in_expr456 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_function472 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_PARAMS_in_function475 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_argument_expr_list_in_function477 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_DATETIME_in_datetime498 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_dayblock_in_datetime500 = new BitSet(new long[]{0x0000800000000000L});
-    public static final BitSet FOLLOW_timeblock_in_datetime502 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_TIMES_in_timeblock521 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_TIME_in_timeblock525 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_TIME_in_timeblock529 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_DAYBLOCK_T_in_dayblock554 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_DAY_in_dayblock557 = new BitSet(new long[]{0x0000000000004008L});
-    public static final BitSet FOLLOW_expr_in_argument_expr_list583 = new BitSet(new long[]{0x7760A95C94909012L});
+    public static final BitSet FOLLOW_LEQ_in_expr378 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr382 = new BitSet(new long[]{0x2BB054564A249010L});
+    public static final BitSet FOLLOW_expr_in_expr386 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_59_in_expr395 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr399 = new BitSet(new long[]{0x2BB054564A249010L});
+    public static final BitSet FOLLOW_expr_in_expr403 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_61_in_expr412 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr416 = new BitSet(new long[]{0x2BB054564A249010L});
+    public static final BitSet FOLLOW_expr_in_expr420 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_53_in_expr433 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr437 = new BitSet(new long[]{0x2BB054564A249010L});
+    public static final BitSet FOLLOW_expr_in_expr441 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_55_in_expr450 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr454 = new BitSet(new long[]{0x2BB054564A249010L});
+    public static final BitSet FOLLOW_expr_in_expr458 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_52_in_expr467 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr471 = new BitSet(new long[]{0x2BB054564A249010L});
+    public static final BitSet FOLLOW_expr_in_expr475 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_57_in_expr484 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr488 = new BitSet(new long[]{0x2BB054564A249010L});
+    public static final BitSet FOLLOW_expr_in_expr492 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_56_in_expr505 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expr_in_expr509 = new BitSet(new long[]{0x2BB054564A249010L});
+    public static final BitSet FOLLOW_expr_in_expr513 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_datetime_in_expr525 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_timeblock_in_expr532 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_dayblock_in_expr539 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INT_in_expr551 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DOUBLE_in_expr558 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_expr565 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRING_in_expr572 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TIME_in_expr579 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PRINT_T_in_function597 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_print_target_in_function599 = new BitSet(new long[]{0x0000010048040008L});
+    public static final BitSet FOLLOW_ID_in_function607 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_PARAMS_in_function610 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_argument_expr_list_in_function612 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_INT_in_print_target627 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DOUBLE_in_print_target634 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_print_target641 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_function_in_print_target648 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DATETIME_in_datetime667 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_dayblock_in_datetime669 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_timeblock_in_datetime671 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_TIMES_in_timeblock690 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_TIME_in_timeblock694 = new BitSet(new long[]{0x0000100000000000L});
+    public static final BitSet FOLLOW_TIME_in_timeblock698 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_DAYBLOCK_T_in_dayblock723 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_DAY_in_dayblock726 = new BitSet(new long[]{0x0000000000004008L});
+    public static final BitSet FOLLOW_expr_in_argument_expr_list752 = new BitSet(new long[]{0x2BB054564A249012L});
 
 }

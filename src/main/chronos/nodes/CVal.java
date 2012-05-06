@@ -81,8 +81,6 @@ public class CVal implements Comparable<CVal> {
 			return this.asCourse().compareTo(that.asCourse());
 		} else if (this.isCourselist() && that.isCourselist()) {
 			return this.asCourselist().compareTo(that.asCourselist());
-		} else if (this.isSchedule() && that.isSchedule()) {
-			return this.asSchedule().compareTo(that.asSchedule());
 		} else {
 			throw new RuntimeException("illegal expression: can't compare `"
 					+ this + "` to `" + that + "`");

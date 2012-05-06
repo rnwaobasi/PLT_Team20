@@ -39,7 +39,7 @@ line:	print_function
 				out("This line is about " + $int_assignment.text);
 				out("int_assignment itself is " + $int_assignment.text);
 				}
-	|	timeblock_inst
+	|	timeblock_inst { out($timeblock_inst.result); }
 	;
 print_function
 	:	^(PRINT STRING) {print($STRING.text);
@@ -55,19 +55,12 @@ int_assignment returns [int result]
 					out("ID is " + $ID);
 					}
 	;
-timeblock_inst
-@init {
-	int len = 0;
-	int mark = input.mark();
-}
-@after {
-	out("THIS IS LEN " + len);
-	if (len < 5) {
-		input.rewind(mark);
-	}
-}
-	:	^('=' TIMEBLOCK ID timeblock) {
-	len++;
+	
+
+timeblock_inst returns [String result]
+	:	^('=' TIMEBLOCK ID lines=(timeblock*)) {
+	$result = "for ( Course " + $TIMEBLOCK.text + " : " + $ID +
+			" ) {\n" + $lines.text + "}";
 	out("Timeblock = " + $timeblock.result);
 	}
 	;

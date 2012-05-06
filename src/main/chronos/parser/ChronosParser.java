@@ -1,6 +1,6 @@
-// $ANTLR 3.4 src/grammar/Chronos.g 2012-05-06 09:21:08
- 
-  package chronos.parser; 
+// $ANTLR 3.4 src/grammar/Chronos.g 2012-05-06 11:14:30
+
+	package chronos.parser;
 
 
 import org.antlr.runtime.*;
@@ -14,10 +14,11 @@ import org.antlr.runtime.tree.*;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class ChronosParser extends Parser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "AND", "BLOCK", "BREAK_T", "CHAR", "COMMENT", "COND", "COURSELIST_T", "COURSE_T", "DATETIME", "DATETIME_T", "DAY", "DAYBLOCK_T", "DAYS", "DECL", "DOUBLE_T", "ELSE_T", "EQ", "ESC_SEQ", "EXPONENT", "FLOAT", "FOREACH_T", "FUNC", "GEQ", "HEX_DIGIT", "ID", "IF_T", "INST", "INT", "INT_T", "IN_T", "LEQ", "MASTER_T", "NEQ", "NEW_T", "NOT", "OCTAL_ESC", "OR", "PARAMS", "SCHEDULE_T", "STRING", "STRING_T", "TIME", "TIMEBLOCK_T", "TIMES", "TIME_T", "UNICODE_ESC", "WS", "'('", "')'", "'*'", "'+'", "','", "'-'", "'.'", "'/'", "';'", "'<'", "'='", "'>'", "'['", "']'", "'{'", "'}'", "'~'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "AND", "BLOCK", "BREAK_T", "CHAR", "COMMENT", "COND", "COURSELIST_T", "COURSE_T", "DATETIME", "DATETIME_T", "DAY", "DAYBLOCK_T", "DAYS", "DECL", "DOUBLE", "DOUBLE_T", "ELSE_T", "EQ", "ESC_SEQ", "FOREACH_T", "FUNC", "GEQ", "HEX_DIGIT", "ID", "IF_T", "INST", "INT", "INT_T", "IN_T", "LEQ", "NEQ", "NEW_T", "NOT", "OCTAL_ESC", "OR", "PARAMS", "PRINT_T", "SCHEDULE_T", "STRING", "STRING_T", "TIME", "TIMEBLOCK_T", "TIMES", "TIME_T", "UNICODE_ESC", "WS", "'('", "')'", "'*'", "'+'", "','", "'-'", "'.'", "'/'", "';'", "'<'", "'='", "'>'", "'['", "']'", "'{'", "'}'", "'~'"
     };
 
     public static final int EOF=-1;
+    public static final int T__50=50;
     public static final int T__51=51;
     public static final int T__52=52;
     public static final int T__53=53;
@@ -34,7 +35,6 @@ public class ChronosParser extends Parser {
     public static final int T__64=64;
     public static final int T__65=65;
     public static final int T__66=66;
-    public static final int T__67=67;
     public static final int AND=4;
     public static final int BLOCK=5;
     public static final int BREAK_T=6;
@@ -49,39 +49,38 @@ public class ChronosParser extends Parser {
     public static final int DAYBLOCK_T=15;
     public static final int DAYS=16;
     public static final int DECL=17;
-    public static final int DOUBLE_T=18;
-    public static final int ELSE_T=19;
-    public static final int EQ=20;
-    public static final int ESC_SEQ=21;
-    public static final int EXPONENT=22;
-    public static final int FLOAT=23;
-    public static final int FOREACH_T=24;
-    public static final int FUNC=25;
-    public static final int GEQ=26;
-    public static final int HEX_DIGIT=27;
-    public static final int ID=28;
-    public static final int IF_T=29;
-    public static final int INST=30;
-    public static final int INT=31;
-    public static final int INT_T=32;
-    public static final int IN_T=33;
-    public static final int LEQ=34;
-    public static final int MASTER_T=35;
-    public static final int NEQ=36;
-    public static final int NEW_T=37;
-    public static final int NOT=38;
-    public static final int OCTAL_ESC=39;
-    public static final int OR=40;
-    public static final int PARAMS=41;
-    public static final int SCHEDULE_T=42;
-    public static final int STRING=43;
-    public static final int STRING_T=44;
-    public static final int TIME=45;
-    public static final int TIMEBLOCK_T=46;
-    public static final int TIMES=47;
-    public static final int TIME_T=48;
-    public static final int UNICODE_ESC=49;
-    public static final int WS=50;
+    public static final int DOUBLE=18;
+    public static final int DOUBLE_T=19;
+    public static final int ELSE_T=20;
+    public static final int EQ=21;
+    public static final int ESC_SEQ=22;
+    public static final int FOREACH_T=23;
+    public static final int FUNC=24;
+    public static final int GEQ=25;
+    public static final int HEX_DIGIT=26;
+    public static final int ID=27;
+    public static final int IF_T=28;
+    public static final int INST=29;
+    public static final int INT=30;
+    public static final int INT_T=31;
+    public static final int IN_T=32;
+    public static final int LEQ=33;
+    public static final int NEQ=34;
+    public static final int NEW_T=35;
+    public static final int NOT=36;
+    public static final int OCTAL_ESC=37;
+    public static final int OR=38;
+    public static final int PARAMS=39;
+    public static final int PRINT_T=40;
+    public static final int SCHEDULE_T=41;
+    public static final int STRING=42;
+    public static final int STRING_T=43;
+    public static final int TIME=44;
+    public static final int TIMEBLOCK_T=45;
+    public static final int TIMES=46;
+    public static final int TIME_T=47;
+    public static final int UNICODE_ESC=48;
+    public static final int WS=49;
 
     // delegates
     public Parser[] getDelegates() {
@@ -117,7 +116,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "program"
-    // src/grammar/Chronos.g:34:1: program : ( line )+ EOF !;
+    // src/grammar/Chronos.g:32:1: program : ( line )+ EOF !;
     public final ChronosParser.program_return program() throws RecognitionException {
         ChronosParser.program_return retval = new ChronosParser.program_return();
         retval.start = input.LT(1);
@@ -132,29 +131,29 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree EOF2_tree=null;
 
         try {
-            // src/grammar/Chronos.g:35:2: ( ( line )+ EOF !)
-            // src/grammar/Chronos.g:35:4: ( line )+ EOF !
+            // src/grammar/Chronos.g:33:2: ( ( line )+ EOF !)
+            // src/grammar/Chronos.g:33:4: ( line )+ EOF !
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            // src/grammar/Chronos.g:35:4: ( line )+
+            // src/grammar/Chronos.g:33:4: ( line )+
             int cnt1=0;
             loop1:
             do {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==BREAK_T||(LA1_0 >= COURSELIST_T && LA1_0 <= COURSE_T)||LA1_0==DATETIME_T||LA1_0==DAYBLOCK_T||LA1_0==DOUBLE_T||(LA1_0 >= FLOAT && LA1_0 <= FOREACH_T)||(LA1_0 >= ID && LA1_0 <= IF_T)||(LA1_0 >= INT && LA1_0 <= INT_T)||LA1_0==MASTER_T||LA1_0==NOT||(LA1_0 >= SCHEDULE_T && LA1_0 <= TIMEBLOCK_T)||LA1_0==TIME_T||LA1_0==51||LA1_0==59||LA1_0==63) ) {
+                if ( (LA1_0==BREAK_T||(LA1_0 >= COURSELIST_T && LA1_0 <= COURSE_T)||LA1_0==DATETIME_T||LA1_0==DAYBLOCK_T||(LA1_0 >= DOUBLE && LA1_0 <= DOUBLE_T)||LA1_0==FOREACH_T||(LA1_0 >= ID && LA1_0 <= IF_T)||(LA1_0 >= INT && LA1_0 <= INT_T)||LA1_0==NOT||(LA1_0 >= PRINT_T && LA1_0 <= TIMEBLOCK_T)||LA1_0==TIME_T||LA1_0==50||LA1_0==58||LA1_0==62) ) {
                     alt1=1;
                 }
 
 
                 switch (alt1) {
             	case 1 :
-            	    // src/grammar/Chronos.g:35:4: line
+            	    // src/grammar/Chronos.g:33:4: line
             	    {
-            	    pushFollow(FOLLOW_line_in_program110);
+            	    pushFollow(FOLLOW_line_in_program103);
             	    line1=line();
 
             	    state._fsp--;
@@ -174,7 +173,7 @@ public TreeAdaptor getTreeAdaptor() {
             } while (true);
 
 
-            EOF2=(Token)match(input,EOF,FOLLOW_EOF_in_program113); 
+            EOF2=(Token)match(input,EOF,FOLLOW_EOF_in_program106); 
 
             }
 
@@ -207,7 +206,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "line"
-    // src/grammar/Chronos.g:37:1: line : ( declarator ';' !| instantiator | stmt );
+    // src/grammar/Chronos.g:35:1: line : ( declarator ';' !| instantiator | stmt );
     public final ChronosParser.line_return line() throws RecognitionException {
         ChronosParser.line_return retval = new ChronosParser.line_return();
         retval.start = input.LT(1);
@@ -226,7 +225,7 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree char_literal4_tree=null;
 
         try {
-            // src/grammar/Chronos.g:38:2: ( declarator ';' !| instantiator | stmt )
+            // src/grammar/Chronos.g:36:2: ( declarator ';' !| instantiator | stmt )
             int alt2=3;
             int LA2_0 = input.LA(1);
 
@@ -236,11 +235,11 @@ public TreeAdaptor getTreeAdaptor() {
                 if ( (LA2_1==ID) ) {
                     int LA2_3 = input.LA(3);
 
-                    if ( (LA2_3==59) ) {
-                        alt2=1;
-                    }
-                    else if ( (LA2_3==61) ) {
+                    if ( (LA2_3==60) ) {
                         alt2=2;
+                    }
+                    else if ( (LA2_3==58) ) {
+                        alt2=1;
                     }
                     else {
                         NoViableAltException nvae =
@@ -258,7 +257,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                 }
             }
-            else if ( (LA2_0==BREAK_T||(LA2_0 >= FLOAT && LA2_0 <= FOREACH_T)||(LA2_0 >= ID && LA2_0 <= IF_T)||LA2_0==INT||LA2_0==MASTER_T||LA2_0==NOT||LA2_0==STRING||LA2_0==TIME||LA2_0==51||LA2_0==59||LA2_0==63) ) {
+            else if ( (LA2_0==BREAK_T||LA2_0==DOUBLE||LA2_0==FOREACH_T||(LA2_0 >= ID && LA2_0 <= IF_T)||LA2_0==INT||LA2_0==NOT||LA2_0==PRINT_T||LA2_0==STRING||LA2_0==TIME||LA2_0==50||LA2_0==58||LA2_0==62) ) {
                 alt2=3;
             }
             else {
@@ -270,29 +269,29 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt2) {
                 case 1 :
-                    // src/grammar/Chronos.g:38:4: declarator ';' !
+                    // src/grammar/Chronos.g:36:4: declarator ';' !
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_declarator_in_line124);
+                    pushFollow(FOLLOW_declarator_in_line117);
                     declarator3=declarator();
 
                     state._fsp--;
 
                     adaptor.addChild(root_0, declarator3.getTree());
 
-                    char_literal4=(Token)match(input,59,FOLLOW_59_in_line126); 
+                    char_literal4=(Token)match(input,58,FOLLOW_58_in_line119); 
 
                     }
                     break;
                 case 2 :
-                    // src/grammar/Chronos.g:39:4: instantiator
+                    // src/grammar/Chronos.g:37:4: instantiator
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_instantiator_in_line132);
+                    pushFollow(FOLLOW_instantiator_in_line125);
                     instantiator5=instantiator();
 
                     state._fsp--;
@@ -302,12 +301,12 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 3 :
-                    // src/grammar/Chronos.g:40:4: stmt
+                    // src/grammar/Chronos.g:38:4: stmt
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_stmt_in_line137);
+                    pushFollow(FOLLOW_stmt_in_line130);
                     stmt6=stmt();
 
                     state._fsp--;
@@ -347,7 +346,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "declarator"
-    // src/grammar/Chronos.g:42:1: declarator : type_specifier ID -> ^( DECL type_specifier ID ) ;
+    // src/grammar/Chronos.g:40:1: declarator : type_specifier ID -> ^( DECL type_specifier ID ) ;
     public final ChronosParser.declarator_return declarator() throws RecognitionException {
         ChronosParser.declarator_return retval = new ChronosParser.declarator_return();
         retval.start = input.LT(1);
@@ -363,22 +362,22 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
         RewriteRuleSubtreeStream stream_type_specifier=new RewriteRuleSubtreeStream(adaptor,"rule type_specifier");
         try {
-            // src/grammar/Chronos.g:44:2: ( type_specifier ID -> ^( DECL type_specifier ID ) )
-            // src/grammar/Chronos.g:44:4: type_specifier ID
+            // src/grammar/Chronos.g:42:2: ( type_specifier ID -> ^( DECL type_specifier ID ) )
+            // src/grammar/Chronos.g:42:4: type_specifier ID
             {
-            pushFollow(FOLLOW_type_specifier_in_declarator148);
+            pushFollow(FOLLOW_type_specifier_in_declarator141);
             type_specifier7=type_specifier();
 
             state._fsp--;
 
             stream_type_specifier.add(type_specifier7.getTree());
 
-            ID8=(Token)match(input,ID,FOLLOW_ID_in_declarator150);  
+            ID8=(Token)match(input,ID,FOLLOW_ID_in_declarator143);  
             stream_ID.add(ID8);
 
 
             // AST REWRITE
-            // elements: ID, type_specifier
+            // elements: type_specifier, ID
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -388,9 +387,9 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (CommonTree)adaptor.nil();
-            // 45:4: -> ^( DECL type_specifier ID )
+            // 43:4: -> ^( DECL type_specifier ID )
             {
-                // src/grammar/Chronos.g:45:7: ^( DECL type_specifier ID )
+                // src/grammar/Chronos.g:43:7: ^( DECL type_specifier ID )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(
@@ -442,7 +441,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "instantiator"
-    // src/grammar/Chronos.g:47:1: instantiator : declarator '=' expr ';' -> ^( INST declarator ^( '=' ID expr ) ) ;
+    // src/grammar/Chronos.g:45:1: instantiator : type_specifier ID '=' expr ';' -> ^( INST ^( DECL type_specifier ID ) ^( '=' ID expr ) ) ;
     public final ChronosParser.instantiator_return instantiator() throws RecognitionException {
         ChronosParser.instantiator_return retval = new ChronosParser.instantiator_return();
         retval.start = input.LT(1);
@@ -450,47 +449,54 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
-        Token char_literal10=null;
-        Token char_literal12=null;
-        ChronosParser.declarator_return declarator9 =null;
+        Token ID10=null;
+        Token char_literal11=null;
+        Token char_literal13=null;
+        ChronosParser.type_specifier_return type_specifier9 =null;
 
-        ChronosParser.expr_return expr11 =null;
+        ChronosParser.expr_return expr12 =null;
 
 
-        CommonTree char_literal10_tree=null;
-        CommonTree char_literal12_tree=null;
-        RewriteRuleTokenStream stream_59=new RewriteRuleTokenStream(adaptor,"token 59");
-        RewriteRuleTokenStream stream_61=new RewriteRuleTokenStream(adaptor,"token 61");
-        RewriteRuleSubtreeStream stream_declarator=new RewriteRuleSubtreeStream(adaptor,"rule declarator");
+        CommonTree ID10_tree=null;
+        CommonTree char_literal11_tree=null;
+        CommonTree char_literal13_tree=null;
+        RewriteRuleTokenStream stream_58=new RewriteRuleTokenStream(adaptor,"token 58");
+        RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
+        RewriteRuleTokenStream stream_60=new RewriteRuleTokenStream(adaptor,"token 60");
+        RewriteRuleSubtreeStream stream_type_specifier=new RewriteRuleSubtreeStream(adaptor,"rule type_specifier");
         RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
         try {
-            // src/grammar/Chronos.g:49:2: ( declarator '=' expr ';' -> ^( INST declarator ^( '=' ID expr ) ) )
-            // src/grammar/Chronos.g:49:4: declarator '=' expr ';'
+            // src/grammar/Chronos.g:47:2: ( type_specifier ID '=' expr ';' -> ^( INST ^( DECL type_specifier ID ) ^( '=' ID expr ) ) )
+            // src/grammar/Chronos.g:47:4: type_specifier ID '=' expr ';'
             {
-            pushFollow(FOLLOW_declarator_in_instantiator174);
-            declarator9=declarator();
+            pushFollow(FOLLOW_type_specifier_in_instantiator167);
+            type_specifier9=type_specifier();
 
             state._fsp--;
 
-            stream_declarator.add(declarator9.getTree());
+            stream_type_specifier.add(type_specifier9.getTree());
 
-            char_literal10=(Token)match(input,61,FOLLOW_61_in_instantiator176);  
-            stream_61.add(char_literal10);
+            ID10=(Token)match(input,ID,FOLLOW_ID_in_instantiator169);  
+            stream_ID.add(ID10);
 
 
-            pushFollow(FOLLOW_expr_in_instantiator178);
-            expr11=expr();
+            char_literal11=(Token)match(input,60,FOLLOW_60_in_instantiator171);  
+            stream_60.add(char_literal11);
+
+
+            pushFollow(FOLLOW_expr_in_instantiator173);
+            expr12=expr();
 
             state._fsp--;
 
-            stream_expr.add(expr11.getTree());
+            stream_expr.add(expr12.getTree());
 
-            char_literal12=(Token)match(input,59,FOLLOW_59_in_instantiator180);  
-            stream_59.add(char_literal12);
+            char_literal13=(Token)match(input,58,FOLLOW_58_in_instantiator175);  
+            stream_58.add(char_literal13);
 
 
             // AST REWRITE
-            // elements: 61, declarator, expr
+            // elements: ID, expr, ID, 60, type_specifier
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -500,26 +506,40 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (CommonTree)adaptor.nil();
-            // 50:4: -> ^( INST declarator ^( '=' ID expr ) )
+            // 48:4: -> ^( INST ^( DECL type_specifier ID ) ^( '=' ID expr ) )
             {
-                // src/grammar/Chronos.g:50:7: ^( INST declarator ^( '=' ID expr ) )
+                // src/grammar/Chronos.g:48:7: ^( INST ^( DECL type_specifier ID ) ^( '=' ID expr ) )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(
                 (CommonTree)adaptor.create(INST, "INST")
                 , root_1);
 
-                adaptor.addChild(root_1, stream_declarator.nextTree());
-
-                // src/grammar/Chronos.g:50:25: ^( '=' ID expr )
+                // src/grammar/Chronos.g:48:14: ^( DECL type_specifier ID )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
-                stream_61.nextNode()
+                (CommonTree)adaptor.create(DECL, "DECL")
+                , root_2);
+
+                adaptor.addChild(root_2, stream_type_specifier.nextTree());
+
+                adaptor.addChild(root_2, 
+                stream_ID.nextNode()
+                );
+
+                adaptor.addChild(root_1, root_2);
+                }
+
+                // src/grammar/Chronos.g:48:40: ^( '=' ID expr )
+                {
+                CommonTree root_2 = (CommonTree)adaptor.nil();
+                root_2 = (CommonTree)adaptor.becomeRoot(
+                stream_60.nextNode()
                 , root_2);
 
                 adaptor.addChild(root_2, 
-                (CommonTree)adaptor.create(ID, "ID")
+                stream_ID.nextNode()
                 );
 
                 adaptor.addChild(root_2, stream_expr.nextTree());
@@ -566,7 +586,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "stmt"
-    // src/grammar/Chronos.g:52:1: stmt : ( expr ';' -> expr | selection_stmt | iteration_stmt | jump_stmt ';' -> jump_stmt | ';' !);
+    // src/grammar/Chronos.g:50:1: stmt : ( expr ( '=' ^ expr )? ';' | selection_stmt | iteration_stmt | jump_stmt ';' -> jump_stmt | ';' !);
     public final ChronosParser.stmt_return stmt() throws RecognitionException {
         ChronosParser.stmt_return retval = new ChronosParser.stmt_return();
         retval.start = input.LT(1);
@@ -574,148 +594,168 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
-        Token char_literal14=null;
-        Token char_literal18=null;
-        Token char_literal19=null;
-        ChronosParser.expr_return expr13 =null;
+        Token char_literal15=null;
+        Token char_literal17=null;
+        Token char_literal21=null;
+        Token char_literal22=null;
+        ChronosParser.expr_return expr14 =null;
 
-        ChronosParser.selection_stmt_return selection_stmt15 =null;
+        ChronosParser.expr_return expr16 =null;
 
-        ChronosParser.iteration_stmt_return iteration_stmt16 =null;
+        ChronosParser.selection_stmt_return selection_stmt18 =null;
 
-        ChronosParser.jump_stmt_return jump_stmt17 =null;
+        ChronosParser.iteration_stmt_return iteration_stmt19 =null;
+
+        ChronosParser.jump_stmt_return jump_stmt20 =null;
 
 
-        CommonTree char_literal14_tree=null;
-        CommonTree char_literal18_tree=null;
-        CommonTree char_literal19_tree=null;
-        RewriteRuleTokenStream stream_59=new RewriteRuleTokenStream(adaptor,"token 59");
+        CommonTree char_literal15_tree=null;
+        CommonTree char_literal17_tree=null;
+        CommonTree char_literal21_tree=null;
+        CommonTree char_literal22_tree=null;
+        RewriteRuleTokenStream stream_58=new RewriteRuleTokenStream(adaptor,"token 58");
         RewriteRuleSubtreeStream stream_jump_stmt=new RewriteRuleSubtreeStream(adaptor,"rule jump_stmt");
-        RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
         try {
-            // src/grammar/Chronos.g:52:5: ( expr ';' -> expr | selection_stmt | iteration_stmt | jump_stmt ';' -> jump_stmt | ';' !)
-            int alt3=5;
+            // src/grammar/Chronos.g:50:5: ( expr ( '=' ^ expr )? ';' | selection_stmt | iteration_stmt | jump_stmt ';' -> jump_stmt | ';' !)
+            int alt4=5;
             switch ( input.LA(1) ) {
-            case FLOAT:
+            case DOUBLE:
             case ID:
             case INT:
-            case MASTER_T:
             case NOT:
+            case PRINT_T:
             case STRING:
             case TIME:
-            case 51:
-            case 63:
+            case 50:
+            case 62:
                 {
-                alt3=1;
+                alt4=1;
                 }
                 break;
             case IF_T:
                 {
-                alt3=2;
+                alt4=2;
                 }
                 break;
             case FOREACH_T:
                 {
-                alt3=3;
+                alt4=3;
                 }
                 break;
             case BREAK_T:
                 {
-                alt3=4;
+                alt4=4;
                 }
                 break;
-            case 59:
+            case 58:
                 {
-                alt3=5;
+                alt4=5;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 3, 0, input);
+                    new NoViableAltException("", 4, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt3) {
+            switch (alt4) {
                 case 1 :
-                    // src/grammar/Chronos.g:52:7: expr ';'
+                    // src/grammar/Chronos.g:50:7: expr ( '=' ^ expr )? ';'
                     {
-                    pushFollow(FOLLOW_expr_in_stmt207);
-                    expr13=expr();
+                    root_0 = (CommonTree)adaptor.nil();
+
+
+                    pushFollow(FOLLOW_expr_in_stmt208);
+                    expr14=expr();
 
                     state._fsp--;
 
-                    stream_expr.add(expr13.getTree());
+                    adaptor.addChild(root_0, expr14.getTree());
 
-                    char_literal14=(Token)match(input,59,FOLLOW_59_in_stmt208);  
-                    stream_59.add(char_literal14);
+                    // src/grammar/Chronos.g:50:12: ( '=' ^ expr )?
+                    int alt3=2;
+                    int LA3_0 = input.LA(1);
+
+                    if ( (LA3_0==60) ) {
+                        alt3=1;
+                    }
+                    switch (alt3) {
+                        case 1 :
+                            // src/grammar/Chronos.g:50:13: '=' ^ expr
+                            {
+                            char_literal15=(Token)match(input,60,FOLLOW_60_in_stmt211); 
+                            char_literal15_tree = 
+                            (CommonTree)adaptor.create(char_literal15)
+                            ;
+                            root_0 = (CommonTree)adaptor.becomeRoot(char_literal15_tree, root_0);
 
 
-                    // AST REWRITE
-                    // elements: expr
-                    // token labels: 
-                    // rule labels: retval
-                    // token list labels: 
-                    // rule list labels: 
-                    // wildcard labels: 
-                    retval.tree = root_0;
-                    RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+                            pushFollow(FOLLOW_expr_in_stmt214);
+                            expr16=expr();
 
-                    root_0 = (CommonTree)adaptor.nil();
-                    // 52:15: -> expr
-                    {
-                        adaptor.addChild(root_0, stream_expr.nextTree());
+                            state._fsp--;
+
+                            adaptor.addChild(root_0, expr16.getTree());
+
+                            }
+                            break;
 
                     }
 
 
-                    retval.tree = root_0;
+                    char_literal17=(Token)match(input,58,FOLLOW_58_in_stmt217); 
+                    char_literal17_tree = 
+                    (CommonTree)adaptor.create(char_literal17)
+                    ;
+                    adaptor.addChild(root_0, char_literal17_tree);
+
 
                     }
                     break;
                 case 2 :
-                    // src/grammar/Chronos.g:53:4: selection_stmt
+                    // src/grammar/Chronos.g:51:4: selection_stmt
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_selection_stmt_in_stmt217);
-                    selection_stmt15=selection_stmt();
+                    pushFollow(FOLLOW_selection_stmt_in_stmt222);
+                    selection_stmt18=selection_stmt();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, selection_stmt15.getTree());
+                    adaptor.addChild(root_0, selection_stmt18.getTree());
 
                     }
                     break;
                 case 3 :
-                    // src/grammar/Chronos.g:54:4: iteration_stmt
+                    // src/grammar/Chronos.g:52:4: iteration_stmt
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_iteration_stmt_in_stmt222);
-                    iteration_stmt16=iteration_stmt();
+                    pushFollow(FOLLOW_iteration_stmt_in_stmt227);
+                    iteration_stmt19=iteration_stmt();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, iteration_stmt16.getTree());
+                    adaptor.addChild(root_0, iteration_stmt19.getTree());
 
                     }
                     break;
                 case 4 :
-                    // src/grammar/Chronos.g:55:4: jump_stmt ';'
+                    // src/grammar/Chronos.g:53:4: jump_stmt ';'
                     {
-                    pushFollow(FOLLOW_jump_stmt_in_stmt227);
-                    jump_stmt17=jump_stmt();
+                    pushFollow(FOLLOW_jump_stmt_in_stmt232);
+                    jump_stmt20=jump_stmt();
 
                     state._fsp--;
 
-                    stream_jump_stmt.add(jump_stmt17.getTree());
+                    stream_jump_stmt.add(jump_stmt20.getTree());
 
-                    char_literal18=(Token)match(input,59,FOLLOW_59_in_stmt228);  
-                    stream_59.add(char_literal18);
+                    char_literal21=(Token)match(input,58,FOLLOW_58_in_stmt233);  
+                    stream_58.add(char_literal21);
 
 
                     // AST REWRITE
@@ -729,7 +769,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (CommonTree)adaptor.nil();
-                    // 55:17: -> jump_stmt
+                    // 53:17: -> jump_stmt
                     {
                         adaptor.addChild(root_0, stream_jump_stmt.nextTree());
 
@@ -741,12 +781,12 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 5 :
-                    // src/grammar/Chronos.g:56:4: ';' !
+                    // src/grammar/Chronos.g:54:4: ';' !
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    char_literal19=(Token)match(input,59,FOLLOW_59_in_stmt237); 
+                    char_literal22=(Token)match(input,58,FOLLOW_58_in_stmt242); 
 
                     }
                     break;
@@ -781,7 +821,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "selection_stmt"
-    // src/grammar/Chronos.g:58:1: selection_stmt : IF_T expr '{' (a= line )* '}' ( ELSE_T '{' (b= line )* '}' )? -> ^( COND ^( IF_T expr ( $a)* ) ( ^( ELSE_T ( $b)* ) )? ) ;
+    // src/grammar/Chronos.g:56:1: selection_stmt : IF_T expr '{' (a= line )* '}' ( ELSE_T '{' (b= line )* '}' )? -> ^( COND ^( IF_T expr ( $a)* ) ( ^( ELSE_T ( $b)* ) )? ) ;
     public final ChronosParser.selection_stmt_return selection_stmt() throws RecognitionException {
         ChronosParser.selection_stmt_return retval = new ChronosParser.selection_stmt_return();
         retval.start = input.LT(1);
@@ -789,66 +829,66 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
-        Token IF_T20=null;
-        Token char_literal22=null;
-        Token char_literal23=null;
-        Token ELSE_T24=null;
+        Token IF_T23=null;
         Token char_literal25=null;
         Token char_literal26=null;
+        Token ELSE_T27=null;
+        Token char_literal28=null;
+        Token char_literal29=null;
         ChronosParser.line_return a =null;
 
         ChronosParser.line_return b =null;
 
-        ChronosParser.expr_return expr21 =null;
+        ChronosParser.expr_return expr24 =null;
 
 
-        CommonTree IF_T20_tree=null;
-        CommonTree char_literal22_tree=null;
-        CommonTree char_literal23_tree=null;
-        CommonTree ELSE_T24_tree=null;
+        CommonTree IF_T23_tree=null;
         CommonTree char_literal25_tree=null;
         CommonTree char_literal26_tree=null;
-        RewriteRuleTokenStream stream_66=new RewriteRuleTokenStream(adaptor,"token 66");
+        CommonTree ELSE_T27_tree=null;
+        CommonTree char_literal28_tree=null;
+        CommonTree char_literal29_tree=null;
+        RewriteRuleTokenStream stream_64=new RewriteRuleTokenStream(adaptor,"token 64");
         RewriteRuleTokenStream stream_65=new RewriteRuleTokenStream(adaptor,"token 65");
         RewriteRuleTokenStream stream_IF_T=new RewriteRuleTokenStream(adaptor,"token IF_T");
         RewriteRuleTokenStream stream_ELSE_T=new RewriteRuleTokenStream(adaptor,"token ELSE_T");
         RewriteRuleSubtreeStream stream_line=new RewriteRuleSubtreeStream(adaptor,"rule line");
         RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
         try {
-            // src/grammar/Chronos.g:60:2: ( IF_T expr '{' (a= line )* '}' ( ELSE_T '{' (b= line )* '}' )? -> ^( COND ^( IF_T expr ( $a)* ) ( ^( ELSE_T ( $b)* ) )? ) )
-            // src/grammar/Chronos.g:60:4: IF_T expr '{' (a= line )* '}' ( ELSE_T '{' (b= line )* '}' )?
+            // src/grammar/Chronos.g:58:2: ( IF_T expr '{' (a= line )* '}' ( ELSE_T '{' (b= line )* '}' )? -> ^( COND ^( IF_T expr ( $a)* ) ( ^( ELSE_T ( $b)* ) )? ) )
+            // src/grammar/Chronos.g:58:4: IF_T expr '{' (a= line )* '}' ( ELSE_T '{' (b= line )* '}' )?
             {
-            IF_T20=(Token)match(input,IF_T,FOLLOW_IF_T_in_selection_stmt249);  
-            stream_IF_T.add(IF_T20);
+            IF_T23=(Token)match(input,IF_T,FOLLOW_IF_T_in_selection_stmt254);  
+            stream_IF_T.add(IF_T23);
 
 
-            pushFollow(FOLLOW_expr_in_selection_stmt251);
-            expr21=expr();
+            pushFollow(FOLLOW_expr_in_selection_stmt256);
+            expr24=expr();
 
             state._fsp--;
 
-            stream_expr.add(expr21.getTree());
+            stream_expr.add(expr24.getTree());
 
-            char_literal22=(Token)match(input,65,FOLLOW_65_in_selection_stmt253);  
-            stream_65.add(char_literal22);
+            char_literal25=(Token)match(input,64,FOLLOW_64_in_selection_stmt258);  
+            stream_64.add(char_literal25);
 
 
-            // src/grammar/Chronos.g:60:17: (a= line )*
-            loop4:
+            // src/grammar/Chronos.g:58:17: (a= line )*
+            loop5:
             do {
-                int alt4=2;
-                int LA4_0 = input.LA(1);
+                int alt5=2;
+                int LA5_0 = input.LA(1);
 
-                if ( (LA4_0==BREAK_T||(LA4_0 >= COURSELIST_T && LA4_0 <= COURSE_T)||LA4_0==DATETIME_T||LA4_0==DAYBLOCK_T||LA4_0==DOUBLE_T||(LA4_0 >= FLOAT && LA4_0 <= FOREACH_T)||(LA4_0 >= ID && LA4_0 <= IF_T)||(LA4_0 >= INT && LA4_0 <= INT_T)||LA4_0==MASTER_T||LA4_0==NOT||(LA4_0 >= SCHEDULE_T && LA4_0 <= TIMEBLOCK_T)||LA4_0==TIME_T||LA4_0==51||LA4_0==59||LA4_0==63) ) {
-                    alt4=1;
+                if ( (LA5_0==BREAK_T||(LA5_0 >= COURSELIST_T && LA5_0 <= COURSE_T)||LA5_0==DATETIME_T||LA5_0==DAYBLOCK_T||(LA5_0 >= DOUBLE && LA5_0 <= DOUBLE_T)||LA5_0==FOREACH_T||(LA5_0 >= ID && LA5_0 <= IF_T)||(LA5_0 >= INT && LA5_0 <= INT_T)||LA5_0==NOT||(LA5_0 >= PRINT_T && LA5_0 <= TIMEBLOCK_T)||LA5_0==TIME_T||LA5_0==50||LA5_0==58||LA5_0==62) ) {
+                    alt5=1;
                 }
 
 
-                switch (alt4) {
+                switch (alt5) {
             	case 1 :
-            	    // src/grammar/Chronos.g:60:18: a= line
+            	    // src/grammar/Chronos.g:58:18: a= line
             	    {
-            	    pushFollow(FOLLOW_line_in_selection_stmt257);
+            	    pushFollow(FOLLOW_line_in_selection_stmt262);
             	    a=line();
 
             	    state._fsp--;
@@ -859,50 +899,50 @@ public TreeAdaptor getTreeAdaptor() {
             	    break;
 
             	default :
-            	    break loop4;
+            	    break loop5;
                 }
             } while (true);
 
 
-            char_literal23=(Token)match(input,66,FOLLOW_66_in_selection_stmt261);  
-            stream_66.add(char_literal23);
+            char_literal26=(Token)match(input,65,FOLLOW_65_in_selection_stmt266);  
+            stream_65.add(char_literal26);
 
 
-            // src/grammar/Chronos.g:60:31: ( ELSE_T '{' (b= line )* '}' )?
-            int alt6=2;
-            int LA6_0 = input.LA(1);
+            // src/grammar/Chronos.g:58:31: ( ELSE_T '{' (b= line )* '}' )?
+            int alt7=2;
+            int LA7_0 = input.LA(1);
 
-            if ( (LA6_0==ELSE_T) ) {
-                alt6=1;
+            if ( (LA7_0==ELSE_T) ) {
+                alt7=1;
             }
-            switch (alt6) {
+            switch (alt7) {
                 case 1 :
-                    // src/grammar/Chronos.g:60:32: ELSE_T '{' (b= line )* '}'
+                    // src/grammar/Chronos.g:58:32: ELSE_T '{' (b= line )* '}'
                     {
-                    ELSE_T24=(Token)match(input,ELSE_T,FOLLOW_ELSE_T_in_selection_stmt264);  
-                    stream_ELSE_T.add(ELSE_T24);
+                    ELSE_T27=(Token)match(input,ELSE_T,FOLLOW_ELSE_T_in_selection_stmt269);  
+                    stream_ELSE_T.add(ELSE_T27);
 
 
-                    char_literal25=(Token)match(input,65,FOLLOW_65_in_selection_stmt266);  
-                    stream_65.add(char_literal25);
+                    char_literal28=(Token)match(input,64,FOLLOW_64_in_selection_stmt271);  
+                    stream_64.add(char_literal28);
 
 
-                    // src/grammar/Chronos.g:60:43: (b= line )*
-                    loop5:
+                    // src/grammar/Chronos.g:58:43: (b= line )*
+                    loop6:
                     do {
-                        int alt5=2;
-                        int LA5_0 = input.LA(1);
+                        int alt6=2;
+                        int LA6_0 = input.LA(1);
 
-                        if ( (LA5_0==BREAK_T||(LA5_0 >= COURSELIST_T && LA5_0 <= COURSE_T)||LA5_0==DATETIME_T||LA5_0==DAYBLOCK_T||LA5_0==DOUBLE_T||(LA5_0 >= FLOAT && LA5_0 <= FOREACH_T)||(LA5_0 >= ID && LA5_0 <= IF_T)||(LA5_0 >= INT && LA5_0 <= INT_T)||LA5_0==MASTER_T||LA5_0==NOT||(LA5_0 >= SCHEDULE_T && LA5_0 <= TIMEBLOCK_T)||LA5_0==TIME_T||LA5_0==51||LA5_0==59||LA5_0==63) ) {
-                            alt5=1;
+                        if ( (LA6_0==BREAK_T||(LA6_0 >= COURSELIST_T && LA6_0 <= COURSE_T)||LA6_0==DATETIME_T||LA6_0==DAYBLOCK_T||(LA6_0 >= DOUBLE && LA6_0 <= DOUBLE_T)||LA6_0==FOREACH_T||(LA6_0 >= ID && LA6_0 <= IF_T)||(LA6_0 >= INT && LA6_0 <= INT_T)||LA6_0==NOT||(LA6_0 >= PRINT_T && LA6_0 <= TIMEBLOCK_T)||LA6_0==TIME_T||LA6_0==50||LA6_0==58||LA6_0==62) ) {
+                            alt6=1;
                         }
 
 
-                        switch (alt5) {
+                        switch (alt6) {
                     	case 1 :
-                    	    // src/grammar/Chronos.g:60:44: b= line
+                    	    // src/grammar/Chronos.g:58:44: b= line
                     	    {
-                    	    pushFollow(FOLLOW_line_in_selection_stmt271);
+                    	    pushFollow(FOLLOW_line_in_selection_stmt276);
                     	    b=line();
 
                     	    state._fsp--;
@@ -913,13 +953,13 @@ public TreeAdaptor getTreeAdaptor() {
                     	    break;
 
                     	default :
-                    	    break loop5;
+                    	    break loop6;
                         }
                     } while (true);
 
 
-                    char_literal26=(Token)match(input,66,FOLLOW_66_in_selection_stmt275);  
-                    stream_66.add(char_literal26);
+                    char_literal29=(Token)match(input,65,FOLLOW_65_in_selection_stmt280);  
+                    stream_65.add(char_literal29);
 
 
                     }
@@ -929,7 +969,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: a, b, IF_T, ELSE_T, expr
+            // elements: b, ELSE_T, expr, a, IF_T
             // token labels: 
             // rule labels: retval, b, a
             // token list labels: 
@@ -941,16 +981,16 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_a=new RewriteRuleSubtreeStream(adaptor,"rule a",a!=null?a.tree:null);
 
             root_0 = (CommonTree)adaptor.nil();
-            // 61:4: -> ^( COND ^( IF_T expr ( $a)* ) ( ^( ELSE_T ( $b)* ) )? )
+            // 59:4: -> ^( COND ^( IF_T expr ( $a)* ) ( ^( ELSE_T ( $b)* ) )? )
             {
-                // src/grammar/Chronos.g:61:7: ^( COND ^( IF_T expr ( $a)* ) ( ^( ELSE_T ( $b)* ) )? )
+                // src/grammar/Chronos.g:59:7: ^( COND ^( IF_T expr ( $a)* ) ( ^( ELSE_T ( $b)* ) )? )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(
                 (CommonTree)adaptor.create(COND, "COND")
                 , root_1);
 
-                // src/grammar/Chronos.g:61:14: ^( IF_T expr ( $a)* )
+                // src/grammar/Chronos.g:59:14: ^( IF_T expr ( $a)* )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
@@ -959,7 +999,7 @@ public TreeAdaptor getTreeAdaptor() {
 
                 adaptor.addChild(root_2, stream_expr.nextTree());
 
-                // src/grammar/Chronos.g:61:27: ( $a)*
+                // src/grammar/Chronos.g:59:27: ( $a)*
                 while ( stream_a.hasNext() ) {
                     adaptor.addChild(root_2, stream_a.nextTree());
 
@@ -969,16 +1009,16 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // src/grammar/Chronos.g:61:31: ( ^( ELSE_T ( $b)* ) )?
+                // src/grammar/Chronos.g:59:31: ( ^( ELSE_T ( $b)* ) )?
                 if ( stream_b.hasNext()||stream_ELSE_T.hasNext() ) {
-                    // src/grammar/Chronos.g:61:31: ^( ELSE_T ( $b)* )
+                    // src/grammar/Chronos.g:59:31: ^( ELSE_T ( $b)* )
                     {
                     CommonTree root_2 = (CommonTree)adaptor.nil();
                     root_2 = (CommonTree)adaptor.becomeRoot(
                     stream_ELSE_T.nextNode()
                     , root_2);
 
-                    // src/grammar/Chronos.g:61:41: ( $b)*
+                    // src/grammar/Chronos.g:59:41: ( $b)*
                     while ( stream_b.hasNext() ) {
                         adaptor.addChild(root_2, stream_b.nextTree());
 
@@ -1031,7 +1071,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "iteration_stmt"
-    // src/grammar/Chronos.g:63:1: iteration_stmt : FOREACH_T COURSE_T element= ID IN_T list= ID '{' ( line )* '}' -> ^( FOREACH_T ^( IN_T $element $list) ^( BLOCK ( line )* ) ) ;
+    // src/grammar/Chronos.g:61:1: iteration_stmt : FOREACH_T COURSE_T element= ID IN_T list= ID '{' ( line )* '}' -> ^( FOREACH_T ^( IN_T $element $list) ^( BLOCK ( line )* ) ) ;
     public final ChronosParser.iteration_stmt_return iteration_stmt() throws RecognitionException {
         ChronosParser.iteration_stmt_return retval = new ChronosParser.iteration_stmt_return();
         retval.start = input.LT(1);
@@ -1041,22 +1081,22 @@ public TreeAdaptor getTreeAdaptor() {
 
         Token element=null;
         Token list=null;
-        Token FOREACH_T27=null;
-        Token COURSE_T28=null;
-        Token IN_T29=null;
-        Token char_literal30=null;
-        Token char_literal32=null;
-        ChronosParser.line_return line31 =null;
+        Token FOREACH_T30=null;
+        Token COURSE_T31=null;
+        Token IN_T32=null;
+        Token char_literal33=null;
+        Token char_literal35=null;
+        ChronosParser.line_return line34 =null;
 
 
         CommonTree element_tree=null;
         CommonTree list_tree=null;
-        CommonTree FOREACH_T27_tree=null;
-        CommonTree COURSE_T28_tree=null;
-        CommonTree IN_T29_tree=null;
-        CommonTree char_literal30_tree=null;
-        CommonTree char_literal32_tree=null;
-        RewriteRuleTokenStream stream_66=new RewriteRuleTokenStream(adaptor,"token 66");
+        CommonTree FOREACH_T30_tree=null;
+        CommonTree COURSE_T31_tree=null;
+        CommonTree IN_T32_tree=null;
+        CommonTree char_literal33_tree=null;
+        CommonTree char_literal35_tree=null;
+        RewriteRuleTokenStream stream_64=new RewriteRuleTokenStream(adaptor,"token 64");
         RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
         RewriteRuleTokenStream stream_65=new RewriteRuleTokenStream(adaptor,"token 65");
         RewriteRuleTokenStream stream_COURSE_T=new RewriteRuleTokenStream(adaptor,"token COURSE_T");
@@ -1064,70 +1104,70 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleTokenStream stream_IN_T=new RewriteRuleTokenStream(adaptor,"token IN_T");
         RewriteRuleSubtreeStream stream_line=new RewriteRuleSubtreeStream(adaptor,"rule line");
         try {
-            // src/grammar/Chronos.g:65:2: ( FOREACH_T COURSE_T element= ID IN_T list= ID '{' ( line )* '}' -> ^( FOREACH_T ^( IN_T $element $list) ^( BLOCK ( line )* ) ) )
-            // src/grammar/Chronos.g:65:4: FOREACH_T COURSE_T element= ID IN_T list= ID '{' ( line )* '}'
+            // src/grammar/Chronos.g:63:2: ( FOREACH_T COURSE_T element= ID IN_T list= ID '{' ( line )* '}' -> ^( FOREACH_T ^( IN_T $element $list) ^( BLOCK ( line )* ) ) )
+            // src/grammar/Chronos.g:63:4: FOREACH_T COURSE_T element= ID IN_T list= ID '{' ( line )* '}'
             {
-            FOREACH_T27=(Token)match(input,FOREACH_T,FOLLOW_FOREACH_T_in_iteration_stmt317);  
-            stream_FOREACH_T.add(FOREACH_T27);
+            FOREACH_T30=(Token)match(input,FOREACH_T,FOLLOW_FOREACH_T_in_iteration_stmt322);  
+            stream_FOREACH_T.add(FOREACH_T30);
 
 
-            COURSE_T28=(Token)match(input,COURSE_T,FOLLOW_COURSE_T_in_iteration_stmt319);  
-            stream_COURSE_T.add(COURSE_T28);
+            COURSE_T31=(Token)match(input,COURSE_T,FOLLOW_COURSE_T_in_iteration_stmt324);  
+            stream_COURSE_T.add(COURSE_T31);
 
 
-            element=(Token)match(input,ID,FOLLOW_ID_in_iteration_stmt323);  
+            element=(Token)match(input,ID,FOLLOW_ID_in_iteration_stmt328);  
             stream_ID.add(element);
 
 
-            IN_T29=(Token)match(input,IN_T,FOLLOW_IN_T_in_iteration_stmt325);  
-            stream_IN_T.add(IN_T29);
+            IN_T32=(Token)match(input,IN_T,FOLLOW_IN_T_in_iteration_stmt330);  
+            stream_IN_T.add(IN_T32);
 
 
-            list=(Token)match(input,ID,FOLLOW_ID_in_iteration_stmt329);  
+            list=(Token)match(input,ID,FOLLOW_ID_in_iteration_stmt334);  
             stream_ID.add(list);
 
 
-            char_literal30=(Token)match(input,65,FOLLOW_65_in_iteration_stmt331);  
-            stream_65.add(char_literal30);
+            char_literal33=(Token)match(input,64,FOLLOW_64_in_iteration_stmt336);  
+            stream_64.add(char_literal33);
 
 
-            // src/grammar/Chronos.g:65:51: ( line )*
-            loop7:
+            // src/grammar/Chronos.g:63:51: ( line )*
+            loop8:
             do {
-                int alt7=2;
-                int LA7_0 = input.LA(1);
+                int alt8=2;
+                int LA8_0 = input.LA(1);
 
-                if ( (LA7_0==BREAK_T||(LA7_0 >= COURSELIST_T && LA7_0 <= COURSE_T)||LA7_0==DATETIME_T||LA7_0==DAYBLOCK_T||LA7_0==DOUBLE_T||(LA7_0 >= FLOAT && LA7_0 <= FOREACH_T)||(LA7_0 >= ID && LA7_0 <= IF_T)||(LA7_0 >= INT && LA7_0 <= INT_T)||LA7_0==MASTER_T||LA7_0==NOT||(LA7_0 >= SCHEDULE_T && LA7_0 <= TIMEBLOCK_T)||LA7_0==TIME_T||LA7_0==51||LA7_0==59||LA7_0==63) ) {
-                    alt7=1;
+                if ( (LA8_0==BREAK_T||(LA8_0 >= COURSELIST_T && LA8_0 <= COURSE_T)||LA8_0==DATETIME_T||LA8_0==DAYBLOCK_T||(LA8_0 >= DOUBLE && LA8_0 <= DOUBLE_T)||LA8_0==FOREACH_T||(LA8_0 >= ID && LA8_0 <= IF_T)||(LA8_0 >= INT && LA8_0 <= INT_T)||LA8_0==NOT||(LA8_0 >= PRINT_T && LA8_0 <= TIMEBLOCK_T)||LA8_0==TIME_T||LA8_0==50||LA8_0==58||LA8_0==62) ) {
+                    alt8=1;
                 }
 
 
-                switch (alt7) {
+                switch (alt8) {
             	case 1 :
-            	    // src/grammar/Chronos.g:65:51: line
+            	    // src/grammar/Chronos.g:63:51: line
             	    {
-            	    pushFollow(FOLLOW_line_in_iteration_stmt333);
-            	    line31=line();
+            	    pushFollow(FOLLOW_line_in_iteration_stmt338);
+            	    line34=line();
 
             	    state._fsp--;
 
-            	    stream_line.add(line31.getTree());
+            	    stream_line.add(line34.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop7;
+            	    break loop8;
                 }
             } while (true);
 
 
-            char_literal32=(Token)match(input,66,FOLLOW_66_in_iteration_stmt336);  
-            stream_66.add(char_literal32);
+            char_literal35=(Token)match(input,65,FOLLOW_65_in_iteration_stmt341);  
+            stream_65.add(char_literal35);
 
 
             // AST REWRITE
-            // elements: IN_T, list, FOREACH_T, element, line
+            // elements: list, element, line, IN_T, FOREACH_T
             // token labels: element, list
             // rule labels: retval
             // token list labels: 
@@ -1139,16 +1179,16 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (CommonTree)adaptor.nil();
-            // 66:4: -> ^( FOREACH_T ^( IN_T $element $list) ^( BLOCK ( line )* ) )
+            // 64:4: -> ^( FOREACH_T ^( IN_T $element $list) ^( BLOCK ( line )* ) )
             {
-                // src/grammar/Chronos.g:66:7: ^( FOREACH_T ^( IN_T $element $list) ^( BLOCK ( line )* ) )
+                // src/grammar/Chronos.g:64:7: ^( FOREACH_T ^( IN_T $element $list) ^( BLOCK ( line )* ) )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(
                 stream_FOREACH_T.nextNode()
                 , root_1);
 
-                // src/grammar/Chronos.g:66:19: ^( IN_T $element $list)
+                // src/grammar/Chronos.g:64:19: ^( IN_T $element $list)
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
@@ -1162,14 +1202,14 @@ public TreeAdaptor getTreeAdaptor() {
                 adaptor.addChild(root_1, root_2);
                 }
 
-                // src/grammar/Chronos.g:66:42: ^( BLOCK ( line )* )
+                // src/grammar/Chronos.g:64:42: ^( BLOCK ( line )* )
                 {
                 CommonTree root_2 = (CommonTree)adaptor.nil();
                 root_2 = (CommonTree)adaptor.becomeRoot(
                 (CommonTree)adaptor.create(BLOCK, "BLOCK")
                 , root_2);
 
-                // src/grammar/Chronos.g:66:50: ( line )*
+                // src/grammar/Chronos.g:64:50: ( line )*
                 while ( stream_line.hasNext() ) {
                     adaptor.addChild(root_2, stream_line.nextTree());
 
@@ -1218,7 +1258,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "jump_stmt"
-    // src/grammar/Chronos.g:68:1: jump_stmt : BREAK_T ;
+    // src/grammar/Chronos.g:66:1: jump_stmt : BREAK_T ;
     public final ChronosParser.jump_stmt_return jump_stmt() throws RecognitionException {
         ChronosParser.jump_stmt_return retval = new ChronosParser.jump_stmt_return();
         retval.start = input.LT(1);
@@ -1226,22 +1266,22 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
-        Token BREAK_T33=null;
+        Token BREAK_T36=null;
 
-        CommonTree BREAK_T33_tree=null;
+        CommonTree BREAK_T36_tree=null;
 
         try {
-            // src/grammar/Chronos.g:70:2: ( BREAK_T )
-            // src/grammar/Chronos.g:70:4: BREAK_T
+            // src/grammar/Chronos.g:68:2: ( BREAK_T )
+            // src/grammar/Chronos.g:68:4: BREAK_T
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            BREAK_T33=(Token)match(input,BREAK_T,FOLLOW_BREAK_T_in_jump_stmt375); 
-            BREAK_T33_tree = 
-            (CommonTree)adaptor.create(BREAK_T33)
+            BREAK_T36=(Token)match(input,BREAK_T,FOLLOW_BREAK_T_in_jump_stmt380); 
+            BREAK_T36_tree = 
+            (CommonTree)adaptor.create(BREAK_T36)
             ;
-            adaptor.addChild(root_0, BREAK_T33_tree);
+            adaptor.addChild(root_0, BREAK_T36_tree);
 
 
             }
@@ -1275,7 +1315,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "expr"
-    // src/grammar/Chronos.g:72:1: expr : ( and_expr ( OR ^ and_expr )* | assignment_expr );
+    // src/grammar/Chronos.g:70:1: expr : and_expr ( OR ^ and_expr )* ;
     public final ChronosParser.expr_return expr() throws RecognitionException {
         ChronosParser.expr_return retval = new ChronosParser.expr_return();
         retval.start = input.LT(1);
@@ -1283,119 +1323,68 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
-        Token OR35=null;
-        ChronosParser.and_expr_return and_expr34 =null;
+        Token OR38=null;
+        ChronosParser.and_expr_return and_expr37 =null;
 
-        ChronosParser.and_expr_return and_expr36 =null;
-
-        ChronosParser.assignment_expr_return assignment_expr37 =null;
+        ChronosParser.and_expr_return and_expr39 =null;
 
 
-        CommonTree OR35_tree=null;
+        CommonTree OR38_tree=null;
 
         try {
-            // src/grammar/Chronos.g:74:2: ( and_expr ( OR ^ and_expr )* | assignment_expr )
-            int alt9=2;
-            int LA9_0 = input.LA(1);
+            // src/grammar/Chronos.g:72:2: ( and_expr ( OR ^ and_expr )* )
+            // src/grammar/Chronos.g:72:4: and_expr ( OR ^ and_expr )*
+            {
+            root_0 = (CommonTree)adaptor.nil();
 
-            if ( (LA9_0==ID) ) {
-                int LA9_1 = input.LA(2);
 
-                if ( (LA9_1==AND||LA9_1==EQ||LA9_1==GEQ||LA9_1==LEQ||LA9_1==NEQ||LA9_1==OR||(LA9_1 >= 51 && LA9_1 <= 60)||LA9_1==62||LA9_1==65) ) {
+            pushFollow(FOLLOW_and_expr_in_expr391);
+            and_expr37=and_expr();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, and_expr37.getTree());
+
+            // src/grammar/Chronos.g:72:13: ( OR ^ and_expr )*
+            loop9:
+            do {
+                int alt9=2;
+                int LA9_0 = input.LA(1);
+
+                if ( (LA9_0==OR) ) {
                     alt9=1;
                 }
-                else if ( (LA9_1==61) ) {
-                    alt9=2;
+
+
+                switch (alt9) {
+            	case 1 :
+            	    // src/grammar/Chronos.g:72:14: OR ^ and_expr
+            	    {
+            	    OR38=(Token)match(input,OR,FOLLOW_OR_in_expr394); 
+            	    OR38_tree = 
+            	    (CommonTree)adaptor.create(OR38)
+            	    ;
+            	    root_0 = (CommonTree)adaptor.becomeRoot(OR38_tree, root_0);
+
+
+            	    pushFollow(FOLLOW_and_expr_in_expr397);
+            	    and_expr39=and_expr();
+
+            	    state._fsp--;
+
+            	    adaptor.addChild(root_0, and_expr39.getTree());
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop9;
                 }
-                else {
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 9, 1, input);
+            } while (true);
 
-                    throw nvae;
-
-                }
-            }
-            else if ( (LA9_0==FLOAT||LA9_0==INT||LA9_0==MASTER_T||LA9_0==NOT||LA9_0==STRING||LA9_0==TIME||LA9_0==51||LA9_0==63) ) {
-                alt9=1;
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 9, 0, input);
-
-                throw nvae;
 
             }
-            switch (alt9) {
-                case 1 :
-                    // src/grammar/Chronos.g:74:4: and_expr ( OR ^ and_expr )*
-                    {
-                    root_0 = (CommonTree)adaptor.nil();
 
-
-                    pushFollow(FOLLOW_and_expr_in_expr386);
-                    and_expr34=and_expr();
-
-                    state._fsp--;
-
-                    adaptor.addChild(root_0, and_expr34.getTree());
-
-                    // src/grammar/Chronos.g:74:13: ( OR ^ and_expr )*
-                    loop8:
-                    do {
-                        int alt8=2;
-                        int LA8_0 = input.LA(1);
-
-                        if ( (LA8_0==OR) ) {
-                            alt8=1;
-                        }
-
-
-                        switch (alt8) {
-                    	case 1 :
-                    	    // src/grammar/Chronos.g:74:14: OR ^ and_expr
-                    	    {
-                    	    OR35=(Token)match(input,OR,FOLLOW_OR_in_expr389); 
-                    	    OR35_tree = 
-                    	    (CommonTree)adaptor.create(OR35)
-                    	    ;
-                    	    root_0 = (CommonTree)adaptor.becomeRoot(OR35_tree, root_0);
-
-
-                    	    pushFollow(FOLLOW_and_expr_in_expr392);
-                    	    and_expr36=and_expr();
-
-                    	    state._fsp--;
-
-                    	    adaptor.addChild(root_0, and_expr36.getTree());
-
-                    	    }
-                    	    break;
-
-                    	default :
-                    	    break loop8;
-                        }
-                    } while (true);
-
-
-                    }
-                    break;
-                case 2 :
-                    // src/grammar/Chronos.g:75:4: assignment_expr
-                    {
-                    root_0 = (CommonTree)adaptor.nil();
-
-
-                    pushFollow(FOLLOW_assignment_expr_in_expr399);
-                    assignment_expr37=assignment_expr();
-
-                    state._fsp--;
-
-                    adaptor.addChild(root_0, assignment_expr37.getTree());
-
-                    }
-                    break;
-
-            }
             retval.stop = input.LT(-1);
 
 
@@ -1418,81 +1407,6 @@ public TreeAdaptor getTreeAdaptor() {
     // $ANTLR end "expr"
 
 
-    public static class assignment_expr_return extends ParserRuleReturnScope {
-        CommonTree tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "assignment_expr"
-    // src/grammar/Chronos.g:77:1: assignment_expr : ID '=' ^ expr ;
-    public final ChronosParser.assignment_expr_return assignment_expr() throws RecognitionException {
-        ChronosParser.assignment_expr_return retval = new ChronosParser.assignment_expr_return();
-        retval.start = input.LT(1);
-
-
-        CommonTree root_0 = null;
-
-        Token ID38=null;
-        Token char_literal39=null;
-        ChronosParser.expr_return expr40 =null;
-
-
-        CommonTree ID38_tree=null;
-        CommonTree char_literal39_tree=null;
-
-        try {
-            // src/grammar/Chronos.g:79:2: ( ID '=' ^ expr )
-            // src/grammar/Chronos.g:79:4: ID '=' ^ expr
-            {
-            root_0 = (CommonTree)adaptor.nil();
-
-
-            ID38=(Token)match(input,ID,FOLLOW_ID_in_assignment_expr410); 
-            ID38_tree = 
-            (CommonTree)adaptor.create(ID38)
-            ;
-            adaptor.addChild(root_0, ID38_tree);
-
-
-            char_literal39=(Token)match(input,61,FOLLOW_61_in_assignment_expr412); 
-            char_literal39_tree = 
-            (CommonTree)adaptor.create(char_literal39)
-            ;
-            root_0 = (CommonTree)adaptor.becomeRoot(char_literal39_tree, root_0);
-
-
-            pushFollow(FOLLOW_expr_in_assignment_expr415);
-            expr40=expr();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, expr40.getTree());
-
-            }
-
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-    	retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-
-        }
-
-        finally {
-        	// do for sure before leaving
-        }
-        return retval;
-    }
-    // $ANTLR end "assignment_expr"
-
-
     public static class and_expr_return extends ParserRuleReturnScope {
         CommonTree tree;
         public Object getTree() { return tree; }
@@ -1500,7 +1414,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "and_expr"
-    // src/grammar/Chronos.g:81:1: and_expr : equiv_expr ( AND ^ equiv_expr )* ;
+    // src/grammar/Chronos.g:79:1: and_expr : equiv_expr ( AND ^ equiv_expr )* ;
     public final ChronosParser.and_expr_return and_expr() throws RecognitionException {
         ChronosParser.and_expr_return retval = new ChronosParser.and_expr_return();
         retval.start = input.LT(1);
@@ -1508,29 +1422,29 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
-        Token AND42=null;
-        ChronosParser.equiv_expr_return equiv_expr41 =null;
+        Token AND41=null;
+        ChronosParser.equiv_expr_return equiv_expr40 =null;
 
-        ChronosParser.equiv_expr_return equiv_expr43 =null;
+        ChronosParser.equiv_expr_return equiv_expr42 =null;
 
 
-        CommonTree AND42_tree=null;
+        CommonTree AND41_tree=null;
 
         try {
-            // src/grammar/Chronos.g:83:2: ( equiv_expr ( AND ^ equiv_expr )* )
-            // src/grammar/Chronos.g:83:4: equiv_expr ( AND ^ equiv_expr )*
+            // src/grammar/Chronos.g:81:2: ( equiv_expr ( AND ^ equiv_expr )* )
+            // src/grammar/Chronos.g:81:4: equiv_expr ( AND ^ equiv_expr )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_equiv_expr_in_and_expr426);
-            equiv_expr41=equiv_expr();
+            pushFollow(FOLLOW_equiv_expr_in_and_expr414);
+            equiv_expr40=equiv_expr();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, equiv_expr41.getTree());
+            adaptor.addChild(root_0, equiv_expr40.getTree());
 
-            // src/grammar/Chronos.g:83:15: ( AND ^ equiv_expr )*
+            // src/grammar/Chronos.g:81:15: ( AND ^ equiv_expr )*
             loop10:
             do {
                 int alt10=2;
@@ -1543,21 +1457,21 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt10) {
             	case 1 :
-            	    // src/grammar/Chronos.g:83:16: AND ^ equiv_expr
+            	    // src/grammar/Chronos.g:81:16: AND ^ equiv_expr
             	    {
-            	    AND42=(Token)match(input,AND,FOLLOW_AND_in_and_expr429); 
-            	    AND42_tree = 
-            	    (CommonTree)adaptor.create(AND42)
+            	    AND41=(Token)match(input,AND,FOLLOW_AND_in_and_expr417); 
+            	    AND41_tree = 
+            	    (CommonTree)adaptor.create(AND41)
             	    ;
-            	    root_0 = (CommonTree)adaptor.becomeRoot(AND42_tree, root_0);
+            	    root_0 = (CommonTree)adaptor.becomeRoot(AND41_tree, root_0);
 
 
-            	    pushFollow(FOLLOW_equiv_expr_in_and_expr432);
-            	    equiv_expr43=equiv_expr();
+            	    pushFollow(FOLLOW_equiv_expr_in_and_expr420);
+            	    equiv_expr42=equiv_expr();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, equiv_expr43.getTree());
+            	    adaptor.addChild(root_0, equiv_expr42.getTree());
 
             	    }
             	    break;
@@ -1599,7 +1513,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "equiv_expr"
-    // src/grammar/Chronos.g:85:1: equiv_expr : rel_expr ( ( EQ ^| NEQ ^) rel_expr )* ;
+    // src/grammar/Chronos.g:83:1: equiv_expr : rel_expr ( ( EQ ^| NEQ ^) rel_expr )* ;
     public final ChronosParser.equiv_expr_return equiv_expr() throws RecognitionException {
         ChronosParser.equiv_expr_return retval = new ChronosParser.equiv_expr_return();
         retval.start = input.LT(1);
@@ -1607,31 +1521,31 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
-        Token EQ45=null;
-        Token NEQ46=null;
-        ChronosParser.rel_expr_return rel_expr44 =null;
+        Token EQ44=null;
+        Token NEQ45=null;
+        ChronosParser.rel_expr_return rel_expr43 =null;
 
-        ChronosParser.rel_expr_return rel_expr47 =null;
+        ChronosParser.rel_expr_return rel_expr46 =null;
 
 
-        CommonTree EQ45_tree=null;
-        CommonTree NEQ46_tree=null;
+        CommonTree EQ44_tree=null;
+        CommonTree NEQ45_tree=null;
 
         try {
-            // src/grammar/Chronos.g:87:2: ( rel_expr ( ( EQ ^| NEQ ^) rel_expr )* )
-            // src/grammar/Chronos.g:87:4: rel_expr ( ( EQ ^| NEQ ^) rel_expr )*
+            // src/grammar/Chronos.g:85:2: ( rel_expr ( ( EQ ^| NEQ ^) rel_expr )* )
+            // src/grammar/Chronos.g:85:4: rel_expr ( ( EQ ^| NEQ ^) rel_expr )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_rel_expr_in_equiv_expr445);
-            rel_expr44=rel_expr();
+            pushFollow(FOLLOW_rel_expr_in_equiv_expr433);
+            rel_expr43=rel_expr();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, rel_expr44.getTree());
+            adaptor.addChild(root_0, rel_expr43.getTree());
 
-            // src/grammar/Chronos.g:87:13: ( ( EQ ^| NEQ ^) rel_expr )*
+            // src/grammar/Chronos.g:85:13: ( ( EQ ^| NEQ ^) rel_expr )*
             loop12:
             do {
                 int alt12=2;
@@ -1644,9 +1558,9 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt12) {
             	case 1 :
-            	    // src/grammar/Chronos.g:87:15: ( EQ ^| NEQ ^) rel_expr
+            	    // src/grammar/Chronos.g:85:15: ( EQ ^| NEQ ^) rel_expr
             	    {
-            	    // src/grammar/Chronos.g:87:15: ( EQ ^| NEQ ^)
+            	    // src/grammar/Chronos.g:85:15: ( EQ ^| NEQ ^)
             	    int alt11=2;
             	    int LA11_0 = input.LA(1);
 
@@ -1665,25 +1579,25 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
             	    switch (alt11) {
             	        case 1 :
-            	            // src/grammar/Chronos.g:87:16: EQ ^
+            	            // src/grammar/Chronos.g:85:16: EQ ^
             	            {
-            	            EQ45=(Token)match(input,EQ,FOLLOW_EQ_in_equiv_expr450); 
-            	            EQ45_tree = 
-            	            (CommonTree)adaptor.create(EQ45)
+            	            EQ44=(Token)match(input,EQ,FOLLOW_EQ_in_equiv_expr438); 
+            	            EQ44_tree = 
+            	            (CommonTree)adaptor.create(EQ44)
             	            ;
-            	            root_0 = (CommonTree)adaptor.becomeRoot(EQ45_tree, root_0);
+            	            root_0 = (CommonTree)adaptor.becomeRoot(EQ44_tree, root_0);
 
 
             	            }
             	            break;
             	        case 2 :
-            	            // src/grammar/Chronos.g:87:22: NEQ ^
+            	            // src/grammar/Chronos.g:85:22: NEQ ^
             	            {
-            	            NEQ46=(Token)match(input,NEQ,FOLLOW_NEQ_in_equiv_expr455); 
-            	            NEQ46_tree = 
-            	            (CommonTree)adaptor.create(NEQ46)
+            	            NEQ45=(Token)match(input,NEQ,FOLLOW_NEQ_in_equiv_expr443); 
+            	            NEQ45_tree = 
+            	            (CommonTree)adaptor.create(NEQ45)
             	            ;
-            	            root_0 = (CommonTree)adaptor.becomeRoot(NEQ46_tree, root_0);
+            	            root_0 = (CommonTree)adaptor.becomeRoot(NEQ45_tree, root_0);
 
 
             	            }
@@ -1692,12 +1606,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
 
 
-            	    pushFollow(FOLLOW_rel_expr_in_equiv_expr459);
-            	    rel_expr47=rel_expr();
+            	    pushFollow(FOLLOW_rel_expr_in_equiv_expr447);
+            	    rel_expr46=rel_expr();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, rel_expr47.getTree());
+            	    adaptor.addChild(root_0, rel_expr46.getTree());
 
             	    }
             	    break;
@@ -1739,7 +1653,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "rel_expr"
-    // src/grammar/Chronos.g:89:1: rel_expr : ( math_expr ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )* | datetime );
+    // src/grammar/Chronos.g:87:1: rel_expr : ( math_expr ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )* | datetime );
     public final ChronosParser.rel_expr_return rel_expr() throws RecognitionException {
         ChronosParser.rel_expr_return retval = new ChronosParser.rel_expr_return();
         retval.start = input.LT(1);
@@ -1747,31 +1661,31 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
+        Token char_literal48=null;
         Token char_literal49=null;
-        Token char_literal50=null;
-        Token GEQ51=null;
-        Token LEQ52=null;
-        ChronosParser.math_expr_return math_expr48 =null;
+        Token GEQ50=null;
+        Token LEQ51=null;
+        ChronosParser.math_expr_return math_expr47 =null;
 
-        ChronosParser.math_expr_return math_expr53 =null;
+        ChronosParser.math_expr_return math_expr52 =null;
 
-        ChronosParser.datetime_return datetime54 =null;
+        ChronosParser.datetime_return datetime53 =null;
 
 
+        CommonTree char_literal48_tree=null;
         CommonTree char_literal49_tree=null;
-        CommonTree char_literal50_tree=null;
-        CommonTree GEQ51_tree=null;
-        CommonTree LEQ52_tree=null;
+        CommonTree GEQ50_tree=null;
+        CommonTree LEQ51_tree=null;
 
         try {
-            // src/grammar/Chronos.g:91:2: ( math_expr ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )* | datetime )
+            // src/grammar/Chronos.g:89:2: ( math_expr ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )* | datetime )
             int alt15=2;
             int LA15_0 = input.LA(1);
 
-            if ( (LA15_0==FLOAT||LA15_0==ID||LA15_0==INT||LA15_0==MASTER_T||LA15_0==NOT||LA15_0==STRING||LA15_0==TIME||LA15_0==51) ) {
+            if ( (LA15_0==DOUBLE||LA15_0==ID||LA15_0==INT||LA15_0==NOT||LA15_0==PRINT_T||LA15_0==STRING||LA15_0==TIME||LA15_0==50) ) {
                 alt15=1;
             }
-            else if ( (LA15_0==63) ) {
+            else if ( (LA15_0==62) ) {
                 alt15=2;
             }
             else {
@@ -1783,42 +1697,42 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt15) {
                 case 1 :
-                    // src/grammar/Chronos.g:91:4: math_expr ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )*
+                    // src/grammar/Chronos.g:89:4: math_expr ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )*
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_math_expr_in_rel_expr473);
-                    math_expr48=math_expr();
+                    pushFollow(FOLLOW_math_expr_in_rel_expr461);
+                    math_expr47=math_expr();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, math_expr48.getTree());
+                    adaptor.addChild(root_0, math_expr47.getTree());
 
-                    // src/grammar/Chronos.g:91:14: ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )*
+                    // src/grammar/Chronos.g:89:14: ( ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr )*
                     loop14:
                     do {
                         int alt14=2;
                         int LA14_0 = input.LA(1);
 
-                        if ( (LA14_0==GEQ||LA14_0==LEQ||LA14_0==60||LA14_0==62) ) {
+                        if ( (LA14_0==GEQ||LA14_0==LEQ||LA14_0==59||LA14_0==61) ) {
                             alt14=1;
                         }
 
 
                         switch (alt14) {
                     	case 1 :
-                    	    // src/grammar/Chronos.g:91:16: ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr
+                    	    // src/grammar/Chronos.g:89:16: ( '<' ^| '>' ^| GEQ ^| LEQ ^) math_expr
                     	    {
-                    	    // src/grammar/Chronos.g:91:16: ( '<' ^| '>' ^| GEQ ^| LEQ ^)
+                    	    // src/grammar/Chronos.g:89:16: ( '<' ^| '>' ^| GEQ ^| LEQ ^)
                     	    int alt13=4;
                     	    switch ( input.LA(1) ) {
-                    	    case 60:
+                    	    case 59:
                     	        {
                     	        alt13=1;
                     	        }
                     	        break;
-                    	    case 62:
+                    	    case 61:
                     	        {
                     	        alt13=2;
                     	        }
@@ -1843,9 +1757,21 @@ public TreeAdaptor getTreeAdaptor() {
 
                     	    switch (alt13) {
                     	        case 1 :
-                    	            // src/grammar/Chronos.g:91:17: '<' ^
+                    	            // src/grammar/Chronos.g:89:17: '<' ^
                     	            {
-                    	            char_literal49=(Token)match(input,60,FOLLOW_60_in_rel_expr478); 
+                    	            char_literal48=(Token)match(input,59,FOLLOW_59_in_rel_expr466); 
+                    	            char_literal48_tree = 
+                    	            (CommonTree)adaptor.create(char_literal48)
+                    	            ;
+                    	            root_0 = (CommonTree)adaptor.becomeRoot(char_literal48_tree, root_0);
+
+
+                    	            }
+                    	            break;
+                    	        case 2 :
+                    	            // src/grammar/Chronos.g:89:24: '>' ^
+                    	            {
+                    	            char_literal49=(Token)match(input,61,FOLLOW_61_in_rel_expr471); 
                     	            char_literal49_tree = 
                     	            (CommonTree)adaptor.create(char_literal49)
                     	            ;
@@ -1854,38 +1780,26 @@ public TreeAdaptor getTreeAdaptor() {
 
                     	            }
                     	            break;
-                    	        case 2 :
-                    	            // src/grammar/Chronos.g:91:24: '>' ^
-                    	            {
-                    	            char_literal50=(Token)match(input,62,FOLLOW_62_in_rel_expr483); 
-                    	            char_literal50_tree = 
-                    	            (CommonTree)adaptor.create(char_literal50)
-                    	            ;
-                    	            root_0 = (CommonTree)adaptor.becomeRoot(char_literal50_tree, root_0);
-
-
-                    	            }
-                    	            break;
                     	        case 3 :
-                    	            // src/grammar/Chronos.g:91:31: GEQ ^
+                    	            // src/grammar/Chronos.g:89:31: GEQ ^
                     	            {
-                    	            GEQ51=(Token)match(input,GEQ,FOLLOW_GEQ_in_rel_expr488); 
-                    	            GEQ51_tree = 
-                    	            (CommonTree)adaptor.create(GEQ51)
+                    	            GEQ50=(Token)match(input,GEQ,FOLLOW_GEQ_in_rel_expr476); 
+                    	            GEQ50_tree = 
+                    	            (CommonTree)adaptor.create(GEQ50)
                     	            ;
-                    	            root_0 = (CommonTree)adaptor.becomeRoot(GEQ51_tree, root_0);
+                    	            root_0 = (CommonTree)adaptor.becomeRoot(GEQ50_tree, root_0);
 
 
                     	            }
                     	            break;
                     	        case 4 :
-                    	            // src/grammar/Chronos.g:91:38: LEQ ^
+                    	            // src/grammar/Chronos.g:89:38: LEQ ^
                     	            {
-                    	            LEQ52=(Token)match(input,LEQ,FOLLOW_LEQ_in_rel_expr493); 
-                    	            LEQ52_tree = 
-                    	            (CommonTree)adaptor.create(LEQ52)
+                    	            LEQ51=(Token)match(input,LEQ,FOLLOW_LEQ_in_rel_expr481); 
+                    	            LEQ51_tree = 
+                    	            (CommonTree)adaptor.create(LEQ51)
                     	            ;
-                    	            root_0 = (CommonTree)adaptor.becomeRoot(LEQ52_tree, root_0);
+                    	            root_0 = (CommonTree)adaptor.becomeRoot(LEQ51_tree, root_0);
 
 
                     	            }
@@ -1894,12 +1808,12 @@ public TreeAdaptor getTreeAdaptor() {
                     	    }
 
 
-                    	    pushFollow(FOLLOW_math_expr_in_rel_expr497);
-                    	    math_expr53=math_expr();
+                    	    pushFollow(FOLLOW_math_expr_in_rel_expr485);
+                    	    math_expr52=math_expr();
 
                     	    state._fsp--;
 
-                    	    adaptor.addChild(root_0, math_expr53.getTree());
+                    	    adaptor.addChild(root_0, math_expr52.getTree());
 
                     	    }
                     	    break;
@@ -1913,17 +1827,17 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // src/grammar/Chronos.g:92:4: datetime
+                    // src/grammar/Chronos.g:90:4: datetime
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_datetime_in_rel_expr505);
-                    datetime54=datetime();
+                    pushFollow(FOLLOW_datetime_in_rel_expr493);
+                    datetime53=datetime();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, datetime54.getTree());
+                    adaptor.addChild(root_0, datetime53.getTree());
 
                     }
                     break;
@@ -1958,7 +1872,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "math_expr"
-    // src/grammar/Chronos.g:94:1: math_expr : math_term ( ( '+' ^| '-' ^) math_term )* ;
+    // src/grammar/Chronos.g:92:1: math_expr : math_term ( ( '+' ^| '-' ^) math_term )* ;
     public final ChronosParser.math_expr_return math_expr() throws RecognitionException {
         ChronosParser.math_expr_return retval = new ChronosParser.math_expr_return();
         retval.start = input.LT(1);
@@ -1966,53 +1880,53 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
+        Token char_literal55=null;
         Token char_literal56=null;
-        Token char_literal57=null;
-        ChronosParser.math_term_return math_term55 =null;
+        ChronosParser.math_term_return math_term54 =null;
 
-        ChronosParser.math_term_return math_term58 =null;
+        ChronosParser.math_term_return math_term57 =null;
 
 
+        CommonTree char_literal55_tree=null;
         CommonTree char_literal56_tree=null;
-        CommonTree char_literal57_tree=null;
 
         try {
-            // src/grammar/Chronos.g:96:2: ( math_term ( ( '+' ^| '-' ^) math_term )* )
-            // src/grammar/Chronos.g:96:4: math_term ( ( '+' ^| '-' ^) math_term )*
+            // src/grammar/Chronos.g:94:2: ( math_term ( ( '+' ^| '-' ^) math_term )* )
+            // src/grammar/Chronos.g:94:4: math_term ( ( '+' ^| '-' ^) math_term )*
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_math_term_in_math_expr516);
-            math_term55=math_term();
+            pushFollow(FOLLOW_math_term_in_math_expr504);
+            math_term54=math_term();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, math_term55.getTree());
+            adaptor.addChild(root_0, math_term54.getTree());
 
-            // src/grammar/Chronos.g:96:14: ( ( '+' ^| '-' ^) math_term )*
+            // src/grammar/Chronos.g:94:14: ( ( '+' ^| '-' ^) math_term )*
             loop17:
             do {
                 int alt17=2;
                 int LA17_0 = input.LA(1);
 
-                if ( (LA17_0==54||LA17_0==56) ) {
+                if ( (LA17_0==53||LA17_0==55) ) {
                     alt17=1;
                 }
 
 
                 switch (alt17) {
             	case 1 :
-            	    // src/grammar/Chronos.g:96:16: ( '+' ^| '-' ^) math_term
+            	    // src/grammar/Chronos.g:94:16: ( '+' ^| '-' ^) math_term
             	    {
-            	    // src/grammar/Chronos.g:96:16: ( '+' ^| '-' ^)
+            	    // src/grammar/Chronos.g:94:16: ( '+' ^| '-' ^)
             	    int alt16=2;
             	    int LA16_0 = input.LA(1);
 
-            	    if ( (LA16_0==54) ) {
+            	    if ( (LA16_0==53) ) {
             	        alt16=1;
             	    }
-            	    else if ( (LA16_0==56) ) {
+            	    else if ( (LA16_0==55) ) {
             	        alt16=2;
             	    }
             	    else {
@@ -2024,9 +1938,21 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
             	    switch (alt16) {
             	        case 1 :
-            	            // src/grammar/Chronos.g:96:17: '+' ^
+            	            // src/grammar/Chronos.g:94:17: '+' ^
             	            {
-            	            char_literal56=(Token)match(input,54,FOLLOW_54_in_math_expr521); 
+            	            char_literal55=(Token)match(input,53,FOLLOW_53_in_math_expr509); 
+            	            char_literal55_tree = 
+            	            (CommonTree)adaptor.create(char_literal55)
+            	            ;
+            	            root_0 = (CommonTree)adaptor.becomeRoot(char_literal55_tree, root_0);
+
+
+            	            }
+            	            break;
+            	        case 2 :
+            	            // src/grammar/Chronos.g:94:24: '-' ^
+            	            {
+            	            char_literal56=(Token)match(input,55,FOLLOW_55_in_math_expr514); 
             	            char_literal56_tree = 
             	            (CommonTree)adaptor.create(char_literal56)
             	            ;
@@ -2035,28 +1961,16 @@ public TreeAdaptor getTreeAdaptor() {
 
             	            }
             	            break;
-            	        case 2 :
-            	            // src/grammar/Chronos.g:96:24: '-' ^
-            	            {
-            	            char_literal57=(Token)match(input,56,FOLLOW_56_in_math_expr526); 
-            	            char_literal57_tree = 
-            	            (CommonTree)adaptor.create(char_literal57)
-            	            ;
-            	            root_0 = (CommonTree)adaptor.becomeRoot(char_literal57_tree, root_0);
-
-
-            	            }
-            	            break;
 
             	    }
 
 
-            	    pushFollow(FOLLOW_math_term_in_math_expr530);
-            	    math_term58=math_term();
+            	    pushFollow(FOLLOW_math_term_in_math_expr518);
+            	    math_term57=math_term();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, math_term58.getTree());
+            	    adaptor.addChild(root_0, math_term57.getTree());
 
             	    }
             	    break;
@@ -2098,7 +2012,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "math_term"
-    // src/grammar/Chronos.g:98:1: math_term : ( unary_expr ( ( '*' ^| '/' ^) unary_expr )* | timeblock );
+    // src/grammar/Chronos.g:96:1: math_term : ( unary_expr ( ( '*' ^| '/' ^) unary_expr )* | timeblock );
     public final ChronosParser.math_term_return math_term() throws RecognitionException {
         ChronosParser.math_term_return retval = new ChronosParser.math_term_return();
         retval.start = input.LT(1);
@@ -2106,33 +2020,33 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
+        Token char_literal59=null;
         Token char_literal60=null;
-        Token char_literal61=null;
-        ChronosParser.unary_expr_return unary_expr59 =null;
+        ChronosParser.unary_expr_return unary_expr58 =null;
 
-        ChronosParser.unary_expr_return unary_expr62 =null;
+        ChronosParser.unary_expr_return unary_expr61 =null;
 
-        ChronosParser.timeblock_return timeblock63 =null;
+        ChronosParser.timeblock_return timeblock62 =null;
 
 
+        CommonTree char_literal59_tree=null;
         CommonTree char_literal60_tree=null;
-        CommonTree char_literal61_tree=null;
 
         try {
-            // src/grammar/Chronos.g:100:2: ( unary_expr ( ( '*' ^| '/' ^) unary_expr )* | timeblock )
+            // src/grammar/Chronos.g:98:2: ( unary_expr ( ( '*' ^| '/' ^) unary_expr )* | timeblock )
             int alt20=2;
             int LA20_0 = input.LA(1);
 
-            if ( (LA20_0==FLOAT||LA20_0==ID||LA20_0==INT||LA20_0==MASTER_T||LA20_0==NOT||LA20_0==STRING||LA20_0==51) ) {
+            if ( (LA20_0==DOUBLE||LA20_0==ID||LA20_0==INT||LA20_0==NOT||LA20_0==PRINT_T||LA20_0==STRING||LA20_0==50) ) {
                 alt20=1;
             }
             else if ( (LA20_0==TIME) ) {
                 int LA20_2 = input.LA(2);
 
-                if ( (LA20_2==67) ) {
+                if ( (LA20_2==66) ) {
                     alt20=2;
                 }
-                else if ( (LA20_2==AND||LA20_2==EQ||LA20_2==GEQ||LA20_2==LEQ||LA20_2==NEQ||LA20_2==OR||(LA20_2 >= 52 && LA20_2 <= 60)||LA20_2==62||LA20_2==65) ) {
+                else if ( (LA20_2==AND||LA20_2==EQ||LA20_2==GEQ||(LA20_2 >= LEQ && LA20_2 <= NEQ)||LA20_2==OR||(LA20_2 >= 51 && LA20_2 <= 61)||LA20_2==64) ) {
                     alt20=1;
                 }
                 else {
@@ -2152,41 +2066,41 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt20) {
                 case 1 :
-                    // src/grammar/Chronos.g:100:4: unary_expr ( ( '*' ^| '/' ^) unary_expr )*
+                    // src/grammar/Chronos.g:98:4: unary_expr ( ( '*' ^| '/' ^) unary_expr )*
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_unary_expr_in_math_term544);
-                    unary_expr59=unary_expr();
+                    pushFollow(FOLLOW_unary_expr_in_math_term532);
+                    unary_expr58=unary_expr();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, unary_expr59.getTree());
+                    adaptor.addChild(root_0, unary_expr58.getTree());
 
-                    // src/grammar/Chronos.g:100:15: ( ( '*' ^| '/' ^) unary_expr )*
+                    // src/grammar/Chronos.g:98:15: ( ( '*' ^| '/' ^) unary_expr )*
                     loop19:
                     do {
                         int alt19=2;
                         int LA19_0 = input.LA(1);
 
-                        if ( (LA19_0==53||LA19_0==58) ) {
+                        if ( (LA19_0==52||LA19_0==57) ) {
                             alt19=1;
                         }
 
 
                         switch (alt19) {
                     	case 1 :
-                    	    // src/grammar/Chronos.g:100:17: ( '*' ^| '/' ^) unary_expr
+                    	    // src/grammar/Chronos.g:98:17: ( '*' ^| '/' ^) unary_expr
                     	    {
-                    	    // src/grammar/Chronos.g:100:17: ( '*' ^| '/' ^)
+                    	    // src/grammar/Chronos.g:98:17: ( '*' ^| '/' ^)
                     	    int alt18=2;
                     	    int LA18_0 = input.LA(1);
 
-                    	    if ( (LA18_0==53) ) {
+                    	    if ( (LA18_0==52) ) {
                     	        alt18=1;
                     	    }
-                    	    else if ( (LA18_0==58) ) {
+                    	    else if ( (LA18_0==57) ) {
                     	        alt18=2;
                     	    }
                     	    else {
@@ -2198,9 +2112,21 @@ public TreeAdaptor getTreeAdaptor() {
                     	    }
                     	    switch (alt18) {
                     	        case 1 :
-                    	            // src/grammar/Chronos.g:100:18: '*' ^
+                    	            // src/grammar/Chronos.g:98:18: '*' ^
                     	            {
-                    	            char_literal60=(Token)match(input,53,FOLLOW_53_in_math_term549); 
+                    	            char_literal59=(Token)match(input,52,FOLLOW_52_in_math_term537); 
+                    	            char_literal59_tree = 
+                    	            (CommonTree)adaptor.create(char_literal59)
+                    	            ;
+                    	            root_0 = (CommonTree)adaptor.becomeRoot(char_literal59_tree, root_0);
+
+
+                    	            }
+                    	            break;
+                    	        case 2 :
+                    	            // src/grammar/Chronos.g:98:25: '/' ^
+                    	            {
+                    	            char_literal60=(Token)match(input,57,FOLLOW_57_in_math_term542); 
                     	            char_literal60_tree = 
                     	            (CommonTree)adaptor.create(char_literal60)
                     	            ;
@@ -2209,28 +2135,16 @@ public TreeAdaptor getTreeAdaptor() {
 
                     	            }
                     	            break;
-                    	        case 2 :
-                    	            // src/grammar/Chronos.g:100:25: '/' ^
-                    	            {
-                    	            char_literal61=(Token)match(input,58,FOLLOW_58_in_math_term554); 
-                    	            char_literal61_tree = 
-                    	            (CommonTree)adaptor.create(char_literal61)
-                    	            ;
-                    	            root_0 = (CommonTree)adaptor.becomeRoot(char_literal61_tree, root_0);
-
-
-                    	            }
-                    	            break;
 
                     	    }
 
 
-                    	    pushFollow(FOLLOW_unary_expr_in_math_term558);
-                    	    unary_expr62=unary_expr();
+                    	    pushFollow(FOLLOW_unary_expr_in_math_term546);
+                    	    unary_expr61=unary_expr();
 
                     	    state._fsp--;
 
-                    	    adaptor.addChild(root_0, unary_expr62.getTree());
+                    	    adaptor.addChild(root_0, unary_expr61.getTree());
 
                     	    }
                     	    break;
@@ -2244,17 +2158,17 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // src/grammar/Chronos.g:101:4: timeblock
+                    // src/grammar/Chronos.g:99:4: timeblock
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_timeblock_in_math_term566);
-                    timeblock63=timeblock();
+                    pushFollow(FOLLOW_timeblock_in_math_term554);
+                    timeblock62=timeblock();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, timeblock63.getTree());
+                    adaptor.addChild(root_0, timeblock62.getTree());
 
                     }
                     break;
@@ -2289,7 +2203,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "unary_expr"
-    // src/grammar/Chronos.g:103:1: unary_expr : ( postfix_expr ( '.' ^ postfix_expr )* | NOT ^ postfix_expr );
+    // src/grammar/Chronos.g:101:1: unary_expr : ( postfix_expr ( '.' ^ postfix_expr )* | NOT ^ postfix_expr );
     public final ChronosParser.unary_expr_return unary_expr() throws RecognitionException {
         ChronosParser.unary_expr_return retval = new ChronosParser.unary_expr_return();
         retval.start = input.LT(1);
@@ -2297,24 +2211,24 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
-        Token char_literal65=null;
-        Token NOT67=null;
-        ChronosParser.postfix_expr_return postfix_expr64 =null;
+        Token char_literal64=null;
+        Token NOT66=null;
+        ChronosParser.postfix_expr_return postfix_expr63 =null;
 
-        ChronosParser.postfix_expr_return postfix_expr66 =null;
+        ChronosParser.postfix_expr_return postfix_expr65 =null;
 
-        ChronosParser.postfix_expr_return postfix_expr68 =null;
+        ChronosParser.postfix_expr_return postfix_expr67 =null;
 
 
-        CommonTree char_literal65_tree=null;
-        CommonTree NOT67_tree=null;
+        CommonTree char_literal64_tree=null;
+        CommonTree NOT66_tree=null;
 
         try {
-            // src/grammar/Chronos.g:104:2: ( postfix_expr ( '.' ^ postfix_expr )* | NOT ^ postfix_expr )
+            // src/grammar/Chronos.g:102:2: ( postfix_expr ( '.' ^ postfix_expr )* | NOT ^ postfix_expr )
             int alt22=2;
             int LA22_0 = input.LA(1);
 
-            if ( (LA22_0==FLOAT||LA22_0==ID||LA22_0==INT||LA22_0==MASTER_T||LA22_0==STRING||LA22_0==TIME||LA22_0==51) ) {
+            if ( (LA22_0==DOUBLE||LA22_0==ID||LA22_0==INT||LA22_0==PRINT_T||LA22_0==STRING||LA22_0==TIME||LA22_0==50) ) {
                 alt22=1;
             }
             else if ( (LA22_0==NOT) ) {
@@ -2329,46 +2243,46 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt22) {
                 case 1 :
-                    // src/grammar/Chronos.g:104:4: postfix_expr ( '.' ^ postfix_expr )*
+                    // src/grammar/Chronos.g:102:4: postfix_expr ( '.' ^ postfix_expr )*
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_postfix_expr_in_unary_expr576);
-                    postfix_expr64=postfix_expr();
+                    pushFollow(FOLLOW_postfix_expr_in_unary_expr564);
+                    postfix_expr63=postfix_expr();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, postfix_expr64.getTree());
+                    adaptor.addChild(root_0, postfix_expr63.getTree());
 
-                    // src/grammar/Chronos.g:104:17: ( '.' ^ postfix_expr )*
+                    // src/grammar/Chronos.g:102:17: ( '.' ^ postfix_expr )*
                     loop21:
                     do {
                         int alt21=2;
                         int LA21_0 = input.LA(1);
 
-                        if ( (LA21_0==57) ) {
+                        if ( (LA21_0==56) ) {
                             alt21=1;
                         }
 
 
                         switch (alt21) {
                     	case 1 :
-                    	    // src/grammar/Chronos.g:104:18: '.' ^ postfix_expr
+                    	    // src/grammar/Chronos.g:102:18: '.' ^ postfix_expr
                     	    {
-                    	    char_literal65=(Token)match(input,57,FOLLOW_57_in_unary_expr579); 
-                    	    char_literal65_tree = 
-                    	    (CommonTree)adaptor.create(char_literal65)
+                    	    char_literal64=(Token)match(input,56,FOLLOW_56_in_unary_expr567); 
+                    	    char_literal64_tree = 
+                    	    (CommonTree)adaptor.create(char_literal64)
                     	    ;
-                    	    root_0 = (CommonTree)adaptor.becomeRoot(char_literal65_tree, root_0);
+                    	    root_0 = (CommonTree)adaptor.becomeRoot(char_literal64_tree, root_0);
 
 
-                    	    pushFollow(FOLLOW_postfix_expr_in_unary_expr582);
-                    	    postfix_expr66=postfix_expr();
+                    	    pushFollow(FOLLOW_postfix_expr_in_unary_expr570);
+                    	    postfix_expr65=postfix_expr();
 
                     	    state._fsp--;
 
-                    	    adaptor.addChild(root_0, postfix_expr66.getTree());
+                    	    adaptor.addChild(root_0, postfix_expr65.getTree());
 
                     	    }
                     	    break;
@@ -2382,24 +2296,24 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // src/grammar/Chronos.g:105:4: NOT ^ postfix_expr
+                    // src/grammar/Chronos.g:103:4: NOT ^ postfix_expr
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    NOT67=(Token)match(input,NOT,FOLLOW_NOT_in_unary_expr589); 
-                    NOT67_tree = 
-                    (CommonTree)adaptor.create(NOT67)
+                    NOT66=(Token)match(input,NOT,FOLLOW_NOT_in_unary_expr577); 
+                    NOT66_tree = 
+                    (CommonTree)adaptor.create(NOT66)
                     ;
-                    root_0 = (CommonTree)adaptor.becomeRoot(NOT67_tree, root_0);
+                    root_0 = (CommonTree)adaptor.becomeRoot(NOT66_tree, root_0);
 
 
-                    pushFollow(FOLLOW_postfix_expr_in_unary_expr592);
-                    postfix_expr68=postfix_expr();
+                    pushFollow(FOLLOW_postfix_expr_in_unary_expr580);
+                    postfix_expr67=postfix_expr();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, postfix_expr68.getTree());
+                    adaptor.addChild(root_0, postfix_expr67.getTree());
 
                     }
                     break;
@@ -2434,7 +2348,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "postfix_expr"
-    // src/grammar/Chronos.g:107:1: postfix_expr : ( function | primary_expr );
+    // src/grammar/Chronos.g:105:1: postfix_expr : ( function | primary_expr );
     public final ChronosParser.postfix_expr_return postfix_expr() throws RecognitionException {
         ChronosParser.postfix_expr_return retval = new ChronosParser.postfix_expr_return();
         retval.start = input.LT(1);
@@ -2442,72 +2356,85 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
-        ChronosParser.function_return function69 =null;
+        ChronosParser.function_return function68 =null;
 
-        ChronosParser.primary_expr_return primary_expr70 =null;
+        ChronosParser.primary_expr_return primary_expr69 =null;
 
 
 
         try {
-            // src/grammar/Chronos.g:109:2: ( function | primary_expr )
+            // src/grammar/Chronos.g:107:2: ( function | primary_expr )
             int alt23=2;
-            int LA23_0 = input.LA(1);
+            switch ( input.LA(1) ) {
+            case PRINT_T:
+                {
+                alt23=1;
+                }
+                break;
+            case ID:
+                {
+                int LA23_2 = input.LA(2);
 
-            if ( (LA23_0==ID) ) {
-                int LA23_1 = input.LA(2);
-
-                if ( (LA23_1==51) ) {
+                if ( (LA23_2==50) ) {
                     alt23=1;
                 }
-                else if ( (LA23_1==AND||LA23_1==EQ||LA23_1==GEQ||LA23_1==LEQ||LA23_1==NEQ||LA23_1==OR||(LA23_1 >= 52 && LA23_1 <= 60)||LA23_1==62||LA23_1==65) ) {
+                else if ( (LA23_2==AND||LA23_2==EQ||LA23_2==GEQ||(LA23_2 >= LEQ && LA23_2 <= NEQ)||LA23_2==OR||(LA23_2 >= 51 && LA23_2 <= 61)||LA23_2==64) ) {
                     alt23=2;
                 }
                 else {
                     NoViableAltException nvae =
-                        new NoViableAltException("", 23, 1, input);
+                        new NoViableAltException("", 23, 2, input);
 
                     throw nvae;
 
                 }
-            }
-            else if ( (LA23_0==FLOAT||LA23_0==INT||LA23_0==MASTER_T||LA23_0==STRING||LA23_0==TIME||LA23_0==51) ) {
+                }
+                break;
+            case DOUBLE:
+            case INT:
+            case STRING:
+            case TIME:
+            case 50:
+                {
                 alt23=2;
-            }
-            else {
+                }
+                break;
+            default:
                 NoViableAltException nvae =
                     new NoViableAltException("", 23, 0, input);
 
                 throw nvae;
 
             }
+
             switch (alt23) {
                 case 1 :
-                    // src/grammar/Chronos.g:109:4: function
+                    // src/grammar/Chronos.g:107:4: function
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_function_in_postfix_expr603);
-                    function69=function();
+                    pushFollow(FOLLOW_function_in_postfix_expr591);
+                    function68=function();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, function69.getTree());
+                    adaptor.addChild(root_0, function68.getTree());
 
                     }
                     break;
                 case 2 :
-                    // src/grammar/Chronos.g:110:4: primary_expr
+                    // src/grammar/Chronos.g:108:4: primary_expr
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_primary_expr_in_postfix_expr608);
-                    primary_expr70=primary_expr();
+                    pushFollow(FOLLOW_primary_expr_in_postfix_expr596);
+                    primary_expr69=primary_expr();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, primary_expr70.getTree());
+                    adaptor.addChild(root_0, primary_expr69.getTree());
 
                     }
                     break;
@@ -2542,7 +2469,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "function"
-    // src/grammar/Chronos.g:113:1: function : ID '(' ( argument_expr_list )? ')' -> ^( ID ^( PARAMS ( argument_expr_list )? ) ) ;
+    // src/grammar/Chronos.g:110:1: function : ( PRINT_T '(' ( print_target )* ')' | ID '(' ( argument_expr_list )? ')' -> ^( ID ^( PARAMS ( argument_expr_list )? ) ) );
     public final ChronosParser.function_return function() throws RecognitionException {
         ChronosParser.function_return retval = new ChronosParser.function_return();
         retval.start = input.LT(1);
@@ -2550,106 +2477,194 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
-        Token ID71=null;
-        Token char_literal72=null;
-        Token char_literal74=null;
-        ChronosParser.argument_expr_list_return argument_expr_list73 =null;
+        Token PRINT_T70=null;
+        Token char_literal71=null;
+        Token char_literal73=null;
+        Token ID74=null;
+        Token char_literal75=null;
+        Token char_literal77=null;
+        ChronosParser.print_target_return print_target72 =null;
+
+        ChronosParser.argument_expr_list_return argument_expr_list76 =null;
 
 
-        CommonTree ID71_tree=null;
-        CommonTree char_literal72_tree=null;
-        CommonTree char_literal74_tree=null;
-        RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
+        CommonTree PRINT_T70_tree=null;
+        CommonTree char_literal71_tree=null;
+        CommonTree char_literal73_tree=null;
+        CommonTree ID74_tree=null;
+        CommonTree char_literal75_tree=null;
+        CommonTree char_literal77_tree=null;
         RewriteRuleTokenStream stream_51=new RewriteRuleTokenStream(adaptor,"token 51");
-        RewriteRuleTokenStream stream_52=new RewriteRuleTokenStream(adaptor,"token 52");
+        RewriteRuleTokenStream stream_ID=new RewriteRuleTokenStream(adaptor,"token ID");
+        RewriteRuleTokenStream stream_50=new RewriteRuleTokenStream(adaptor,"token 50");
         RewriteRuleSubtreeStream stream_argument_expr_list=new RewriteRuleSubtreeStream(adaptor,"rule argument_expr_list");
         try {
-            // src/grammar/Chronos.g:114:2: ( ID '(' ( argument_expr_list )? ')' -> ^( ID ^( PARAMS ( argument_expr_list )? ) ) )
-            // src/grammar/Chronos.g:114:4: ID '(' ( argument_expr_list )? ')'
-            {
-            ID71=(Token)match(input,ID,FOLLOW_ID_in_function620);  
-            stream_ID.add(ID71);
+            // src/grammar/Chronos.g:111:2: ( PRINT_T '(' ( print_target )* ')' | ID '(' ( argument_expr_list )? ')' -> ^( ID ^( PARAMS ( argument_expr_list )? ) ) )
+            int alt26=2;
+            int LA26_0 = input.LA(1);
 
-
-            char_literal72=(Token)match(input,51,FOLLOW_51_in_function622);  
-            stream_51.add(char_literal72);
-
-
-            // src/grammar/Chronos.g:114:11: ( argument_expr_list )?
-            int alt24=2;
-            int LA24_0 = input.LA(1);
-
-            if ( (LA24_0==FLOAT||LA24_0==ID||LA24_0==INT||LA24_0==MASTER_T||LA24_0==NOT||LA24_0==STRING||LA24_0==TIME||LA24_0==51||LA24_0==63) ) {
-                alt24=1;
+            if ( (LA26_0==PRINT_T) ) {
+                alt26=1;
             }
-            switch (alt24) {
+            else if ( (LA26_0==ID) ) {
+                alt26=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 26, 0, input);
+
+                throw nvae;
+
+            }
+            switch (alt26) {
                 case 1 :
-                    // src/grammar/Chronos.g:114:11: argument_expr_list
+                    // src/grammar/Chronos.g:111:4: PRINT_T '(' ( print_target )* ')'
                     {
-                    pushFollow(FOLLOW_argument_expr_list_in_function624);
-                    argument_expr_list73=argument_expr_list();
+                    root_0 = (CommonTree)adaptor.nil();
 
-                    state._fsp--;
 
-                    stream_argument_expr_list.add(argument_expr_list73.getTree());
+                    PRINT_T70=(Token)match(input,PRINT_T,FOLLOW_PRINT_T_in_function606); 
+                    PRINT_T70_tree = 
+                    (CommonTree)adaptor.create(PRINT_T70)
+                    ;
+                    adaptor.addChild(root_0, PRINT_T70_tree);
+
+
+                    char_literal71=(Token)match(input,50,FOLLOW_50_in_function608); 
+                    char_literal71_tree = 
+                    (CommonTree)adaptor.create(char_literal71)
+                    ;
+                    adaptor.addChild(root_0, char_literal71_tree);
+
+
+                    // src/grammar/Chronos.g:111:16: ( print_target )*
+                    loop24:
+                    do {
+                        int alt24=2;
+                        int LA24_0 = input.LA(1);
+
+                        if ( (LA24_0==DOUBLE||LA24_0==ID||LA24_0==INT||LA24_0==PRINT_T||LA24_0==STRING) ) {
+                            alt24=1;
+                        }
+
+
+                        switch (alt24) {
+                    	case 1 :
+                    	    // src/grammar/Chronos.g:111:16: print_target
+                    	    {
+                    	    pushFollow(FOLLOW_print_target_in_function610);
+                    	    print_target72=print_target();
+
+                    	    state._fsp--;
+
+                    	    adaptor.addChild(root_0, print_target72.getTree());
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop24;
+                        }
+                    } while (true);
+
+
+                    char_literal73=(Token)match(input,51,FOLLOW_51_in_function613); 
+                    char_literal73_tree = 
+                    (CommonTree)adaptor.create(char_literal73)
+                    ;
+                    adaptor.addChild(root_0, char_literal73_tree);
+
+
+                    }
+                    break;
+                case 2 :
+                    // src/grammar/Chronos.g:112:4: ID '(' ( argument_expr_list )? ')'
+                    {
+                    ID74=(Token)match(input,ID,FOLLOW_ID_in_function618);  
+                    stream_ID.add(ID74);
+
+
+                    char_literal75=(Token)match(input,50,FOLLOW_50_in_function620);  
+                    stream_50.add(char_literal75);
+
+
+                    // src/grammar/Chronos.g:112:11: ( argument_expr_list )?
+                    int alt25=2;
+                    int LA25_0 = input.LA(1);
+
+                    if ( (LA25_0==DOUBLE||LA25_0==ID||LA25_0==INT||LA25_0==NOT||LA25_0==PRINT_T||LA25_0==STRING||LA25_0==TIME||LA25_0==50||LA25_0==62) ) {
+                        alt25=1;
+                    }
+                    switch (alt25) {
+                        case 1 :
+                            // src/grammar/Chronos.g:112:11: argument_expr_list
+                            {
+                            pushFollow(FOLLOW_argument_expr_list_in_function622);
+                            argument_expr_list76=argument_expr_list();
+
+                            state._fsp--;
+
+                            stream_argument_expr_list.add(argument_expr_list76.getTree());
+
+                            }
+                            break;
+
+                    }
+
+
+                    char_literal77=(Token)match(input,51,FOLLOW_51_in_function625);  
+                    stream_51.add(char_literal77);
+
+
+                    // AST REWRITE
+                    // elements: argument_expr_list, ID
+                    // token labels: 
+                    // rule labels: retval
+                    // token list labels: 
+                    // rule list labels: 
+                    // wildcard labels: 
+                    retval.tree = root_0;
+                    RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
+
+                    root_0 = (CommonTree)adaptor.nil();
+                    // 113:3: -> ^( ID ^( PARAMS ( argument_expr_list )? ) )
+                    {
+                        // src/grammar/Chronos.g:113:6: ^( ID ^( PARAMS ( argument_expr_list )? ) )
+                        {
+                        CommonTree root_1 = (CommonTree)adaptor.nil();
+                        root_1 = (CommonTree)adaptor.becomeRoot(
+                        stream_ID.nextNode()
+                        , root_1);
+
+                        // src/grammar/Chronos.g:113:11: ^( PARAMS ( argument_expr_list )? )
+                        {
+                        CommonTree root_2 = (CommonTree)adaptor.nil();
+                        root_2 = (CommonTree)adaptor.becomeRoot(
+                        (CommonTree)adaptor.create(PARAMS, "PARAMS")
+                        , root_2);
+
+                        // src/grammar/Chronos.g:113:20: ( argument_expr_list )?
+                        if ( stream_argument_expr_list.hasNext() ) {
+                            adaptor.addChild(root_2, stream_argument_expr_list.nextTree());
+
+                        }
+                        stream_argument_expr_list.reset();
+
+                        adaptor.addChild(root_1, root_2);
+                        }
+
+                        adaptor.addChild(root_0, root_1);
+                        }
+
+                    }
+
+
+                    retval.tree = root_0;
 
                     }
                     break;
 
             }
-
-
-            char_literal74=(Token)match(input,52,FOLLOW_52_in_function627);  
-            stream_52.add(char_literal74);
-
-
-            // AST REWRITE
-            // elements: argument_expr_list, ID
-            // token labels: 
-            // rule labels: retval
-            // token list labels: 
-            // rule list labels: 
-            // wildcard labels: 
-            retval.tree = root_0;
-            RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
-
-            root_0 = (CommonTree)adaptor.nil();
-            // 115:3: -> ^( ID ^( PARAMS ( argument_expr_list )? ) )
-            {
-                // src/grammar/Chronos.g:115:6: ^( ID ^( PARAMS ( argument_expr_list )? ) )
-                {
-                CommonTree root_1 = (CommonTree)adaptor.nil();
-                root_1 = (CommonTree)adaptor.becomeRoot(
-                stream_ID.nextNode()
-                , root_1);
-
-                // src/grammar/Chronos.g:115:11: ^( PARAMS ( argument_expr_list )? )
-                {
-                CommonTree root_2 = (CommonTree)adaptor.nil();
-                root_2 = (CommonTree)adaptor.becomeRoot(
-                (CommonTree)adaptor.create(PARAMS, "PARAMS")
-                , root_2);
-
-                // src/grammar/Chronos.g:115:20: ( argument_expr_list )?
-                if ( stream_argument_expr_list.hasNext() ) {
-                    adaptor.addChild(root_2, stream_argument_expr_list.nextTree());
-
-                }
-                stream_argument_expr_list.reset();
-
-                adaptor.addChild(root_1, root_2);
-                }
-
-                adaptor.addChild(root_0, root_1);
-                }
-
-            }
-
-
-            retval.tree = root_0;
-
-            }
-
             retval.stop = input.LT(-1);
 
 
@@ -2672,6 +2687,184 @@ public TreeAdaptor getTreeAdaptor() {
     // $ANTLR end "function"
 
 
+    public static class print_target_return extends ParserRuleReturnScope {
+        CommonTree tree;
+        public Object getTree() { return tree; }
+    };
+
+
+    // $ANTLR start "print_target"
+    // src/grammar/Chronos.g:115:1: print_target : ( INT | DOUBLE | STRING | ID | function );
+    public final ChronosParser.print_target_return print_target() throws RecognitionException {
+        ChronosParser.print_target_return retval = new ChronosParser.print_target_return();
+        retval.start = input.LT(1);
+
+
+        CommonTree root_0 = null;
+
+        Token INT78=null;
+        Token DOUBLE79=null;
+        Token STRING80=null;
+        Token ID81=null;
+        ChronosParser.function_return function82 =null;
+
+
+        CommonTree INT78_tree=null;
+        CommonTree DOUBLE79_tree=null;
+        CommonTree STRING80_tree=null;
+        CommonTree ID81_tree=null;
+
+        try {
+            // src/grammar/Chronos.g:116:2: ( INT | DOUBLE | STRING | ID | function )
+            int alt27=5;
+            switch ( input.LA(1) ) {
+            case INT:
+                {
+                alt27=1;
+                }
+                break;
+            case DOUBLE:
+                {
+                alt27=2;
+                }
+                break;
+            case STRING:
+                {
+                alt27=3;
+                }
+                break;
+            case ID:
+                {
+                int LA27_4 = input.LA(2);
+
+                if ( (LA27_4==50) ) {
+                    alt27=5;
+                }
+                else if ( (LA27_4==DOUBLE||LA27_4==ID||LA27_4==INT||LA27_4==PRINT_T||LA27_4==STRING||LA27_4==51) ) {
+                    alt27=4;
+                }
+                else {
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 27, 4, input);
+
+                    throw nvae;
+
+                }
+                }
+                break;
+            case PRINT_T:
+                {
+                alt27=5;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 27, 0, input);
+
+                throw nvae;
+
+            }
+
+            switch (alt27) {
+                case 1 :
+                    // src/grammar/Chronos.g:116:4: INT
+                    {
+                    root_0 = (CommonTree)adaptor.nil();
+
+
+                    INT78=(Token)match(input,INT,FOLLOW_INT_in_print_target650); 
+                    INT78_tree = 
+                    (CommonTree)adaptor.create(INT78)
+                    ;
+                    adaptor.addChild(root_0, INT78_tree);
+
+
+                    }
+                    break;
+                case 2 :
+                    // src/grammar/Chronos.g:117:4: DOUBLE
+                    {
+                    root_0 = (CommonTree)adaptor.nil();
+
+
+                    DOUBLE79=(Token)match(input,DOUBLE,FOLLOW_DOUBLE_in_print_target655); 
+                    DOUBLE79_tree = 
+                    (CommonTree)adaptor.create(DOUBLE79)
+                    ;
+                    adaptor.addChild(root_0, DOUBLE79_tree);
+
+
+                    }
+                    break;
+                case 3 :
+                    // src/grammar/Chronos.g:118:4: STRING
+                    {
+                    root_0 = (CommonTree)adaptor.nil();
+
+
+                    STRING80=(Token)match(input,STRING,FOLLOW_STRING_in_print_target660); 
+                    STRING80_tree = 
+                    (CommonTree)adaptor.create(STRING80)
+                    ;
+                    adaptor.addChild(root_0, STRING80_tree);
+
+
+                    }
+                    break;
+                case 4 :
+                    // src/grammar/Chronos.g:119:4: ID
+                    {
+                    root_0 = (CommonTree)adaptor.nil();
+
+
+                    ID81=(Token)match(input,ID,FOLLOW_ID_in_print_target665); 
+                    ID81_tree = 
+                    (CommonTree)adaptor.create(ID81)
+                    ;
+                    adaptor.addChild(root_0, ID81_tree);
+
+
+                    }
+                    break;
+                case 5 :
+                    // src/grammar/Chronos.g:120:4: function
+                    {
+                    root_0 = (CommonTree)adaptor.nil();
+
+
+                    pushFollow(FOLLOW_function_in_print_target670);
+                    function82=function();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, function82.getTree());
+
+                    }
+                    break;
+
+            }
+            retval.stop = input.LT(-1);
+
+
+            retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+    	retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+
+        }
+
+        finally {
+        	// do for sure before leaving
+        }
+        return retval;
+    }
+    // $ANTLR end "print_target"
+
+
     public static class datetime_return extends ParserRuleReturnScope {
         CommonTree tree;
         public Object getTree() { return tree; }
@@ -2687,9 +2880,9 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
-        ChronosParser.dayblock_return dayblock75 =null;
+        ChronosParser.dayblock_return dayblock83 =null;
 
-        ChronosParser.timeblock_return timeblock76 =null;
+        ChronosParser.timeblock_return timeblock84 =null;
 
 
         RewriteRuleSubtreeStream stream_timeblock=new RewriteRuleSubtreeStream(adaptor,"rule timeblock");
@@ -2698,19 +2891,19 @@ public TreeAdaptor getTreeAdaptor() {
             // src/grammar/Chronos.g:124:2: ( dayblock timeblock -> ^( DATETIME dayblock timeblock ) )
             // src/grammar/Chronos.g:124:4: dayblock timeblock
             {
-            pushFollow(FOLLOW_dayblock_in_datetime655);
-            dayblock75=dayblock();
+            pushFollow(FOLLOW_dayblock_in_datetime681);
+            dayblock83=dayblock();
 
             state._fsp--;
 
-            stream_dayblock.add(dayblock75.getTree());
+            stream_dayblock.add(dayblock83.getTree());
 
-            pushFollow(FOLLOW_timeblock_in_datetime657);
-            timeblock76=timeblock();
+            pushFollow(FOLLOW_timeblock_in_datetime683);
+            timeblock84=timeblock();
 
             state._fsp--;
 
-            stream_timeblock.add(timeblock76.getTree());
+            stream_timeblock.add(timeblock84.getTree());
 
             // AST REWRITE
             // elements: timeblock, dayblock
@@ -2785,27 +2978,27 @@ public TreeAdaptor getTreeAdaptor() {
 
         Token a=null;
         Token b=null;
-        Token char_literal77=null;
+        Token char_literal85=null;
 
         CommonTree a_tree=null;
         CommonTree b_tree=null;
-        CommonTree char_literal77_tree=null;
-        RewriteRuleTokenStream stream_67=new RewriteRuleTokenStream(adaptor,"token 67");
+        CommonTree char_literal85_tree=null;
+        RewriteRuleTokenStream stream_66=new RewriteRuleTokenStream(adaptor,"token 66");
         RewriteRuleTokenStream stream_TIME=new RewriteRuleTokenStream(adaptor,"token TIME");
 
         try {
             // src/grammar/Chronos.g:129:2: (a= TIME '~' b= TIME -> ^( TIMES $a $b) )
             // src/grammar/Chronos.g:129:4: a= TIME '~' b= TIME
             {
-            a=(Token)match(input,TIME,FOLLOW_TIME_in_timeblock684);  
+            a=(Token)match(input,TIME,FOLLOW_TIME_in_timeblock710);  
             stream_TIME.add(a);
 
 
-            char_literal77=(Token)match(input,67,FOLLOW_67_in_timeblock686);  
-            stream_67.add(char_literal77);
+            char_literal85=(Token)match(input,66,FOLLOW_66_in_timeblock712);  
+            stream_66.add(char_literal85);
 
 
-            b=(Token)match(input,TIME,FOLLOW_TIME_in_timeblock690);  
+            b=(Token)match(input,TIME,FOLLOW_TIME_in_timeblock716);  
             stream_TIME.add(b);
 
 
@@ -2882,68 +3075,68 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
-        Token char_literal78=null;
-        Token DAY79=null;
-        Token char_literal80=null;
-        Token DAY81=null;
-        Token char_literal82=null;
+        Token char_literal86=null;
+        Token DAY87=null;
+        Token char_literal88=null;
+        Token DAY89=null;
+        Token char_literal90=null;
 
-        CommonTree char_literal78_tree=null;
-        CommonTree DAY79_tree=null;
-        CommonTree char_literal80_tree=null;
-        CommonTree DAY81_tree=null;
-        CommonTree char_literal82_tree=null;
+        CommonTree char_literal86_tree=null;
+        CommonTree DAY87_tree=null;
+        CommonTree char_literal88_tree=null;
+        CommonTree DAY89_tree=null;
+        CommonTree char_literal90_tree=null;
         RewriteRuleTokenStream stream_DAY=new RewriteRuleTokenStream(adaptor,"token DAY");
-        RewriteRuleTokenStream stream_55=new RewriteRuleTokenStream(adaptor,"token 55");
-        RewriteRuleTokenStream stream_64=new RewriteRuleTokenStream(adaptor,"token 64");
+        RewriteRuleTokenStream stream_62=new RewriteRuleTokenStream(adaptor,"token 62");
         RewriteRuleTokenStream stream_63=new RewriteRuleTokenStream(adaptor,"token 63");
+        RewriteRuleTokenStream stream_54=new RewriteRuleTokenStream(adaptor,"token 54");
 
         try {
             // src/grammar/Chronos.g:133:2: ( '[' DAY ( ',' DAY )* ']' -> ^( DAYS ( DAY )+ ) )
             // src/grammar/Chronos.g:133:4: '[' DAY ( ',' DAY )* ']'
             {
-            char_literal78=(Token)match(input,63,FOLLOW_63_in_dayblock713);  
-            stream_63.add(char_literal78);
+            char_literal86=(Token)match(input,62,FOLLOW_62_in_dayblock739);  
+            stream_62.add(char_literal86);
 
 
-            DAY79=(Token)match(input,DAY,FOLLOW_DAY_in_dayblock715);  
-            stream_DAY.add(DAY79);
+            DAY87=(Token)match(input,DAY,FOLLOW_DAY_in_dayblock741);  
+            stream_DAY.add(DAY87);
 
 
             // src/grammar/Chronos.g:133:12: ( ',' DAY )*
-            loop25:
+            loop28:
             do {
-                int alt25=2;
-                int LA25_0 = input.LA(1);
+                int alt28=2;
+                int LA28_0 = input.LA(1);
 
-                if ( (LA25_0==55) ) {
-                    alt25=1;
+                if ( (LA28_0==54) ) {
+                    alt28=1;
                 }
 
 
-                switch (alt25) {
+                switch (alt28) {
             	case 1 :
             	    // src/grammar/Chronos.g:133:14: ',' DAY
             	    {
-            	    char_literal80=(Token)match(input,55,FOLLOW_55_in_dayblock719);  
-            	    stream_55.add(char_literal80);
+            	    char_literal88=(Token)match(input,54,FOLLOW_54_in_dayblock745);  
+            	    stream_54.add(char_literal88);
 
 
-            	    DAY81=(Token)match(input,DAY,FOLLOW_DAY_in_dayblock721);  
-            	    stream_DAY.add(DAY81);
+            	    DAY89=(Token)match(input,DAY,FOLLOW_DAY_in_dayblock747);  
+            	    stream_DAY.add(DAY89);
 
 
             	    }
             	    break;
 
             	default :
-            	    break loop25;
+            	    break loop28;
                 }
             } while (true);
 
 
-            char_literal82=(Token)match(input,64,FOLLOW_64_in_dayblock726);  
-            stream_64.add(char_literal82);
+            char_literal90=(Token)match(input,63,FOLLOW_63_in_dayblock752);  
+            stream_63.add(char_literal90);
 
 
             // AST REWRITE
@@ -3016,7 +3209,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "primary_expr"
-    // src/grammar/Chronos.g:135:1: primary_expr : ( INT | FLOAT | ID | STRING | TIME | MASTER_T | '(' expr ')' -> expr );
+    // src/grammar/Chronos.g:135:1: primary_expr : ( INT | DOUBLE | ID | STRING | TIME | '(' expr ')' -> expr );
     public final ChronosParser.primary_expr_return primary_expr() throws RecognitionException {
         ChronosParser.primary_expr_return retval = new ChronosParser.primary_expr_return();
         retval.start = input.LT(1);
@@ -3024,102 +3217,95 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
-        Token INT83=null;
-        Token FLOAT84=null;
-        Token ID85=null;
-        Token STRING86=null;
-        Token TIME87=null;
-        Token MASTER_T88=null;
-        Token char_literal89=null;
-        Token char_literal91=null;
-        ChronosParser.expr_return expr90 =null;
+        Token INT91=null;
+        Token DOUBLE92=null;
+        Token ID93=null;
+        Token STRING94=null;
+        Token TIME95=null;
+        Token char_literal96=null;
+        Token char_literal98=null;
+        ChronosParser.expr_return expr97 =null;
 
 
-        CommonTree INT83_tree=null;
-        CommonTree FLOAT84_tree=null;
-        CommonTree ID85_tree=null;
-        CommonTree STRING86_tree=null;
-        CommonTree TIME87_tree=null;
-        CommonTree MASTER_T88_tree=null;
-        CommonTree char_literal89_tree=null;
-        CommonTree char_literal91_tree=null;
+        CommonTree INT91_tree=null;
+        CommonTree DOUBLE92_tree=null;
+        CommonTree ID93_tree=null;
+        CommonTree STRING94_tree=null;
+        CommonTree TIME95_tree=null;
+        CommonTree char_literal96_tree=null;
+        CommonTree char_literal98_tree=null;
         RewriteRuleTokenStream stream_51=new RewriteRuleTokenStream(adaptor,"token 51");
-        RewriteRuleTokenStream stream_52=new RewriteRuleTokenStream(adaptor,"token 52");
+        RewriteRuleTokenStream stream_50=new RewriteRuleTokenStream(adaptor,"token 50");
         RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
         try {
-            // src/grammar/Chronos.g:136:2: ( INT | FLOAT | ID | STRING | TIME | MASTER_T | '(' expr ')' -> expr )
-            int alt26=7;
+            // src/grammar/Chronos.g:136:2: ( INT | DOUBLE | ID | STRING | TIME | '(' expr ')' -> expr )
+            int alt29=6;
             switch ( input.LA(1) ) {
             case INT:
                 {
-                alt26=1;
+                alt29=1;
                 }
                 break;
-            case FLOAT:
+            case DOUBLE:
                 {
-                alt26=2;
+                alt29=2;
                 }
                 break;
             case ID:
                 {
-                alt26=3;
+                alt29=3;
                 }
                 break;
             case STRING:
                 {
-                alt26=4;
+                alt29=4;
                 }
                 break;
             case TIME:
                 {
-                alt26=5;
+                alt29=5;
                 }
                 break;
-            case MASTER_T:
+            case 50:
                 {
-                alt26=6;
-                }
-                break;
-            case 51:
-                {
-                alt26=7;
+                alt29=6;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 26, 0, input);
+                    new NoViableAltException("", 29, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt26) {
+            switch (alt29) {
                 case 1 :
                     // src/grammar/Chronos.g:136:4: INT
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    INT83=(Token)match(input,INT,FOLLOW_INT_in_primary_expr745); 
-                    INT83_tree = 
-                    (CommonTree)adaptor.create(INT83)
+                    INT91=(Token)match(input,INT,FOLLOW_INT_in_primary_expr771); 
+                    INT91_tree = 
+                    (CommonTree)adaptor.create(INT91)
                     ;
-                    adaptor.addChild(root_0, INT83_tree);
+                    adaptor.addChild(root_0, INT91_tree);
 
 
                     }
                     break;
                 case 2 :
-                    // src/grammar/Chronos.g:137:4: FLOAT
+                    // src/grammar/Chronos.g:137:4: DOUBLE
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    FLOAT84=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_primary_expr750); 
-                    FLOAT84_tree = 
-                    (CommonTree)adaptor.create(FLOAT84)
+                    DOUBLE92=(Token)match(input,DOUBLE,FOLLOW_DOUBLE_in_primary_expr776); 
+                    DOUBLE92_tree = 
+                    (CommonTree)adaptor.create(DOUBLE92)
                     ;
-                    adaptor.addChild(root_0, FLOAT84_tree);
+                    adaptor.addChild(root_0, DOUBLE92_tree);
 
 
                     }
@@ -3130,11 +3316,11 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    ID85=(Token)match(input,ID,FOLLOW_ID_in_primary_expr755); 
-                    ID85_tree = 
-                    (CommonTree)adaptor.create(ID85)
+                    ID93=(Token)match(input,ID,FOLLOW_ID_in_primary_expr781); 
+                    ID93_tree = 
+                    (CommonTree)adaptor.create(ID93)
                     ;
-                    adaptor.addChild(root_0, ID85_tree);
+                    adaptor.addChild(root_0, ID93_tree);
 
 
                     }
@@ -3145,11 +3331,11 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    STRING86=(Token)match(input,STRING,FOLLOW_STRING_in_primary_expr761); 
-                    STRING86_tree = 
-                    (CommonTree)adaptor.create(STRING86)
+                    STRING94=(Token)match(input,STRING,FOLLOW_STRING_in_primary_expr787); 
+                    STRING94_tree = 
+                    (CommonTree)adaptor.create(STRING94)
                     ;
-                    adaptor.addChild(root_0, STRING86_tree);
+                    adaptor.addChild(root_0, STRING94_tree);
 
 
                     }
@@ -3160,46 +3346,31 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    TIME87=(Token)match(input,TIME,FOLLOW_TIME_in_primary_expr766); 
-                    TIME87_tree = 
-                    (CommonTree)adaptor.create(TIME87)
+                    TIME95=(Token)match(input,TIME,FOLLOW_TIME_in_primary_expr792); 
+                    TIME95_tree = 
+                    (CommonTree)adaptor.create(TIME95)
                     ;
-                    adaptor.addChild(root_0, TIME87_tree);
+                    adaptor.addChild(root_0, TIME95_tree);
 
 
                     }
                     break;
                 case 6 :
-                    // src/grammar/Chronos.g:141:4: MASTER_T
+                    // src/grammar/Chronos.g:141:4: '(' expr ')'
                     {
-                    root_0 = (CommonTree)adaptor.nil();
+                    char_literal96=(Token)match(input,50,FOLLOW_50_in_primary_expr797);  
+                    stream_50.add(char_literal96);
 
 
-                    MASTER_T88=(Token)match(input,MASTER_T,FOLLOW_MASTER_T_in_primary_expr771); 
-                    MASTER_T88_tree = 
-                    (CommonTree)adaptor.create(MASTER_T88)
-                    ;
-                    adaptor.addChild(root_0, MASTER_T88_tree);
-
-
-                    }
-                    break;
-                case 7 :
-                    // src/grammar/Chronos.g:142:4: '(' expr ')'
-                    {
-                    char_literal89=(Token)match(input,51,FOLLOW_51_in_primary_expr777);  
-                    stream_51.add(char_literal89);
-
-
-                    pushFollow(FOLLOW_expr_in_primary_expr778);
-                    expr90=expr();
+                    pushFollow(FOLLOW_expr_in_primary_expr798);
+                    expr97=expr();
 
                     state._fsp--;
 
-                    stream_expr.add(expr90.getTree());
+                    stream_expr.add(expr97.getTree());
 
-                    char_literal91=(Token)match(input,52,FOLLOW_52_in_primary_expr779);  
-                    stream_52.add(char_literal91);
+                    char_literal98=(Token)match(input,51,FOLLOW_51_in_primary_expr799);  
+                    stream_51.add(char_literal98);
 
 
                     // AST REWRITE
@@ -3213,7 +3384,7 @@ public TreeAdaptor getTreeAdaptor() {
                     RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
                     root_0 = (CommonTree)adaptor.nil();
-                    // 142:15: -> expr
+                    // 141:15: -> expr
                     {
                         adaptor.addChild(root_0, stream_expr.nextTree());
 
@@ -3255,7 +3426,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "argument_expr_list"
-    // src/grammar/Chronos.g:144:1: argument_expr_list : ( expr ) ( ',' expr )* -> ( expr )+ ;
+    // src/grammar/Chronos.g:143:1: argument_expr_list : ( expr ) ( ',' expr )* -> ( expr )+ ;
     public final ChronosParser.argument_expr_list_return argument_expr_list() throws RecognitionException {
         ChronosParser.argument_expr_list_return retval = new ChronosParser.argument_expr_list_return();
         retval.start = input.LT(1);
@@ -3263,63 +3434,63 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
-        Token char_literal93=null;
-        ChronosParser.expr_return expr92 =null;
+        Token char_literal100=null;
+        ChronosParser.expr_return expr99 =null;
 
-        ChronosParser.expr_return expr94 =null;
+        ChronosParser.expr_return expr101 =null;
 
 
-        CommonTree char_literal93_tree=null;
-        RewriteRuleTokenStream stream_55=new RewriteRuleTokenStream(adaptor,"token 55");
+        CommonTree char_literal100_tree=null;
+        RewriteRuleTokenStream stream_54=new RewriteRuleTokenStream(adaptor,"token 54");
         RewriteRuleSubtreeStream stream_expr=new RewriteRuleSubtreeStream(adaptor,"rule expr");
         try {
-            // src/grammar/Chronos.g:145:2: ( ( expr ) ( ',' expr )* -> ( expr )+ )
-            // src/grammar/Chronos.g:145:4: ( expr ) ( ',' expr )*
+            // src/grammar/Chronos.g:144:2: ( ( expr ) ( ',' expr )* -> ( expr )+ )
+            // src/grammar/Chronos.g:144:4: ( expr ) ( ',' expr )*
             {
-            // src/grammar/Chronos.g:145:4: ( expr )
-            // src/grammar/Chronos.g:145:5: expr
+            // src/grammar/Chronos.g:144:4: ( expr )
+            // src/grammar/Chronos.g:144:5: expr
             {
-            pushFollow(FOLLOW_expr_in_argument_expr_list794);
-            expr92=expr();
+            pushFollow(FOLLOW_expr_in_argument_expr_list814);
+            expr99=expr();
 
             state._fsp--;
 
-            stream_expr.add(expr92.getTree());
+            stream_expr.add(expr99.getTree());
 
             }
 
 
-            // src/grammar/Chronos.g:145:11: ( ',' expr )*
-            loop27:
+            // src/grammar/Chronos.g:144:11: ( ',' expr )*
+            loop30:
             do {
-                int alt27=2;
-                int LA27_0 = input.LA(1);
+                int alt30=2;
+                int LA30_0 = input.LA(1);
 
-                if ( (LA27_0==55) ) {
-                    alt27=1;
+                if ( (LA30_0==54) ) {
+                    alt30=1;
                 }
 
 
-                switch (alt27) {
+                switch (alt30) {
             	case 1 :
-            	    // src/grammar/Chronos.g:145:12: ',' expr
+            	    // src/grammar/Chronos.g:144:12: ',' expr
             	    {
-            	    char_literal93=(Token)match(input,55,FOLLOW_55_in_argument_expr_list798);  
-            	    stream_55.add(char_literal93);
+            	    char_literal100=(Token)match(input,54,FOLLOW_54_in_argument_expr_list818);  
+            	    stream_54.add(char_literal100);
 
 
-            	    pushFollow(FOLLOW_expr_in_argument_expr_list800);
-            	    expr94=expr();
+            	    pushFollow(FOLLOW_expr_in_argument_expr_list820);
+            	    expr101=expr();
 
             	    state._fsp--;
 
-            	    stream_expr.add(expr94.getTree());
+            	    stream_expr.add(expr101.getTree());
 
             	    }
             	    break;
 
             	default :
-            	    break loop27;
+            	    break loop30;
                 }
             } while (true);
 
@@ -3335,7 +3506,7 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (CommonTree)adaptor.nil();
-            // 145:23: -> ( expr )+
+            // 144:23: -> ( expr )+
             {
                 if ( !(stream_expr.hasNext()) ) {
                     throw new RewriteEarlyExitException();
@@ -3382,7 +3553,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "type_specifier"
-    // src/grammar/Chronos.g:147:1: type_specifier : ( INT_T | DOUBLE_T | DAYBLOCK_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T );
+    // src/grammar/Chronos.g:146:1: type_specifier : ( INT_T | DOUBLE_T | DAYBLOCK_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T );
     public final ChronosParser.type_specifier_return type_specifier() throws RecognitionException {
         ChronosParser.type_specifier_return retval = new ChronosParser.type_specifier_return();
         retval.start = input.LT(1);
@@ -3390,23 +3561,23 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree root_0 = null;
 
-        Token set95=null;
+        Token set102=null;
 
-        CommonTree set95_tree=null;
+        CommonTree set102_tree=null;
 
         try {
-            // src/grammar/Chronos.g:148:2: ( INT_T | DOUBLE_T | DAYBLOCK_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T )
+            // src/grammar/Chronos.g:147:2: ( INT_T | DOUBLE_T | DAYBLOCK_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T )
             // src/grammar/Chronos.g:
             {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            set95=(Token)input.LT(1);
+            set102=(Token)input.LT(1);
 
             if ( (input.LA(1) >= COURSELIST_T && input.LA(1) <= COURSE_T)||input.LA(1)==DATETIME_T||input.LA(1)==DAYBLOCK_T||input.LA(1)==DOUBLE_T||input.LA(1)==INT_T||input.LA(1)==SCHEDULE_T||input.LA(1)==STRING_T||input.LA(1)==TIMEBLOCK_T||input.LA(1)==TIME_T ) {
                 input.consume();
                 adaptor.addChild(root_0, 
-                (CommonTree)adaptor.create(set95)
+                (CommonTree)adaptor.create(set102)
                 );
                 state.errorRecovery=false;
             }
@@ -3444,105 +3615,112 @@ public TreeAdaptor getTreeAdaptor() {
 
  
 
-    public static final BitSet FOLLOW_line_in_program110 = new BitSet(new long[]{0x88097C49B184AC40L});
-    public static final BitSet FOLLOW_EOF_in_program113 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_declarator_in_line124 = new BitSet(new long[]{0x0800000000000000L});
-    public static final BitSet FOLLOW_59_in_line126 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_instantiator_in_line132 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_stmt_in_line137 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_type_specifier_in_declarator148 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_ID_in_declarator150 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_declarator_in_instantiator174 = new BitSet(new long[]{0x2000000000000000L});
-    public static final BitSet FOLLOW_61_in_instantiator176 = new BitSet(new long[]{0x8008284890800000L});
-    public static final BitSet FOLLOW_expr_in_instantiator178 = new BitSet(new long[]{0x0800000000000000L});
-    public static final BitSet FOLLOW_59_in_instantiator180 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expr_in_stmt207 = new BitSet(new long[]{0x0800000000000000L});
-    public static final BitSet FOLLOW_59_in_stmt208 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_selection_stmt_in_stmt217 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_iteration_stmt_in_stmt222 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_jump_stmt_in_stmt227 = new BitSet(new long[]{0x0800000000000000L});
-    public static final BitSet FOLLOW_59_in_stmt228 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_59_in_stmt237 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IF_T_in_selection_stmt249 = new BitSet(new long[]{0x8008284890800000L});
-    public static final BitSet FOLLOW_expr_in_selection_stmt251 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_65_in_selection_stmt253 = new BitSet(new long[]{0x88097C49B184AC40L,0x0000000000000004L});
-    public static final BitSet FOLLOW_line_in_selection_stmt257 = new BitSet(new long[]{0x88097C49B184AC40L,0x0000000000000004L});
-    public static final BitSet FOLLOW_66_in_selection_stmt261 = new BitSet(new long[]{0x0000000000080002L});
-    public static final BitSet FOLLOW_ELSE_T_in_selection_stmt264 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_65_in_selection_stmt266 = new BitSet(new long[]{0x88097C49B184AC40L,0x0000000000000004L});
-    public static final BitSet FOLLOW_line_in_selection_stmt271 = new BitSet(new long[]{0x88097C49B184AC40L,0x0000000000000004L});
-    public static final BitSet FOLLOW_66_in_selection_stmt275 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FOREACH_T_in_iteration_stmt317 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_COURSE_T_in_iteration_stmt319 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_ID_in_iteration_stmt323 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_IN_T_in_iteration_stmt325 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_ID_in_iteration_stmt329 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_65_in_iteration_stmt331 = new BitSet(new long[]{0x88097C49B184AC40L,0x0000000000000004L});
-    public static final BitSet FOLLOW_line_in_iteration_stmt333 = new BitSet(new long[]{0x88097C49B184AC40L,0x0000000000000004L});
-    public static final BitSet FOLLOW_66_in_iteration_stmt336 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_BREAK_T_in_jump_stmt375 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_and_expr_in_expr386 = new BitSet(new long[]{0x0000010000000002L});
-    public static final BitSet FOLLOW_OR_in_expr389 = new BitSet(new long[]{0x8008284890800000L});
-    public static final BitSet FOLLOW_and_expr_in_expr392 = new BitSet(new long[]{0x0000010000000002L});
-    public static final BitSet FOLLOW_assignment_expr_in_expr399 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_assignment_expr410 = new BitSet(new long[]{0x2000000000000000L});
-    public static final BitSet FOLLOW_61_in_assignment_expr412 = new BitSet(new long[]{0x8008284890800000L});
-    public static final BitSet FOLLOW_expr_in_assignment_expr415 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_equiv_expr_in_and_expr426 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_AND_in_and_expr429 = new BitSet(new long[]{0x8008284890800000L});
-    public static final BitSet FOLLOW_equiv_expr_in_and_expr432 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_rel_expr_in_equiv_expr445 = new BitSet(new long[]{0x0000001000100002L});
-    public static final BitSet FOLLOW_EQ_in_equiv_expr450 = new BitSet(new long[]{0x8008284890800000L});
-    public static final BitSet FOLLOW_NEQ_in_equiv_expr455 = new BitSet(new long[]{0x8008284890800000L});
-    public static final BitSet FOLLOW_rel_expr_in_equiv_expr459 = new BitSet(new long[]{0x0000001000100002L});
-    public static final BitSet FOLLOW_math_expr_in_rel_expr473 = new BitSet(new long[]{0x5000000404000002L});
-    public static final BitSet FOLLOW_60_in_rel_expr478 = new BitSet(new long[]{0x0008284890800000L});
-    public static final BitSet FOLLOW_62_in_rel_expr483 = new BitSet(new long[]{0x0008284890800000L});
-    public static final BitSet FOLLOW_GEQ_in_rel_expr488 = new BitSet(new long[]{0x0008284890800000L});
-    public static final BitSet FOLLOW_LEQ_in_rel_expr493 = new BitSet(new long[]{0x0008284890800000L});
-    public static final BitSet FOLLOW_math_expr_in_rel_expr497 = new BitSet(new long[]{0x5000000404000002L});
-    public static final BitSet FOLLOW_datetime_in_rel_expr505 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_math_term_in_math_expr516 = new BitSet(new long[]{0x0140000000000002L});
-    public static final BitSet FOLLOW_54_in_math_expr521 = new BitSet(new long[]{0x0008284890800000L});
-    public static final BitSet FOLLOW_56_in_math_expr526 = new BitSet(new long[]{0x0008284890800000L});
-    public static final BitSet FOLLOW_math_term_in_math_expr530 = new BitSet(new long[]{0x0140000000000002L});
-    public static final BitSet FOLLOW_unary_expr_in_math_term544 = new BitSet(new long[]{0x0420000000000002L});
-    public static final BitSet FOLLOW_53_in_math_term549 = new BitSet(new long[]{0x0008284890800000L});
-    public static final BitSet FOLLOW_58_in_math_term554 = new BitSet(new long[]{0x0008284890800000L});
-    public static final BitSet FOLLOW_unary_expr_in_math_term558 = new BitSet(new long[]{0x0420000000000002L});
-    public static final BitSet FOLLOW_timeblock_in_math_term566 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_postfix_expr_in_unary_expr576 = new BitSet(new long[]{0x0200000000000002L});
-    public static final BitSet FOLLOW_57_in_unary_expr579 = new BitSet(new long[]{0x0008280890800000L});
-    public static final BitSet FOLLOW_postfix_expr_in_unary_expr582 = new BitSet(new long[]{0x0200000000000002L});
-    public static final BitSet FOLLOW_NOT_in_unary_expr589 = new BitSet(new long[]{0x0008280890800000L});
-    public static final BitSet FOLLOW_postfix_expr_in_unary_expr592 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_function_in_postfix_expr603 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_primary_expr_in_postfix_expr608 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_function620 = new BitSet(new long[]{0x0008000000000000L});
-    public static final BitSet FOLLOW_51_in_function622 = new BitSet(new long[]{0x8018284890800000L});
-    public static final BitSet FOLLOW_argument_expr_list_in_function624 = new BitSet(new long[]{0x0010000000000000L});
-    public static final BitSet FOLLOW_52_in_function627 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_dayblock_in_datetime655 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_timeblock_in_datetime657 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TIME_in_timeblock684 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
-    public static final BitSet FOLLOW_67_in_timeblock686 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_TIME_in_timeblock690 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_63_in_dayblock713 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_DAY_in_dayblock715 = new BitSet(new long[]{0x0080000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_55_in_dayblock719 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_DAY_in_dayblock721 = new BitSet(new long[]{0x0080000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_64_in_dayblock726 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INT_in_primary_expr745 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FLOAT_in_primary_expr750 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_primary_expr755 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRING_in_primary_expr761 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TIME_in_primary_expr766 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_MASTER_T_in_primary_expr771 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_51_in_primary_expr777 = new BitSet(new long[]{0x8008284890800000L});
-    public static final BitSet FOLLOW_expr_in_primary_expr778 = new BitSet(new long[]{0x0010000000000000L});
-    public static final BitSet FOLLOW_52_in_primary_expr779 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expr_in_argument_expr_list794 = new BitSet(new long[]{0x0080000000000002L});
-    public static final BitSet FOLLOW_55_in_argument_expr_list798 = new BitSet(new long[]{0x8008284890800000L});
-    public static final BitSet FOLLOW_expr_in_argument_expr_list800 = new BitSet(new long[]{0x0080000000000002L});
+    public static final BitSet FOLLOW_line_in_program103 = new BitSet(new long[]{0x4404BF10D88CAC40L});
+    public static final BitSet FOLLOW_EOF_in_program106 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_declarator_in_line117 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_58_in_line119 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_instantiator_in_line125 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_stmt_in_line130 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_type_specifier_in_declarator141 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_ID_in_declarator143 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_type_specifier_in_instantiator167 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_ID_in_instantiator169 = new BitSet(new long[]{0x1000000000000000L});
+    public static final BitSet FOLLOW_60_in_instantiator171 = new BitSet(new long[]{0x4004151048040000L});
+    public static final BitSet FOLLOW_expr_in_instantiator173 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_58_in_instantiator175 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expr_in_stmt208 = new BitSet(new long[]{0x1400000000000000L});
+    public static final BitSet FOLLOW_60_in_stmt211 = new BitSet(new long[]{0x4004151048040000L});
+    public static final BitSet FOLLOW_expr_in_stmt214 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_58_in_stmt217 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_selection_stmt_in_stmt222 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_iteration_stmt_in_stmt227 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_jump_stmt_in_stmt232 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_58_in_stmt233 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_58_in_stmt242 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IF_T_in_selection_stmt254 = new BitSet(new long[]{0x4004151048040000L});
+    public static final BitSet FOLLOW_expr_in_selection_stmt256 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_64_in_selection_stmt258 = new BitSet(new long[]{0x4404BF10D88CAC40L,0x0000000000000002L});
+    public static final BitSet FOLLOW_line_in_selection_stmt262 = new BitSet(new long[]{0x4404BF10D88CAC40L,0x0000000000000002L});
+    public static final BitSet FOLLOW_65_in_selection_stmt266 = new BitSet(new long[]{0x0000000000100002L});
+    public static final BitSet FOLLOW_ELSE_T_in_selection_stmt269 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_64_in_selection_stmt271 = new BitSet(new long[]{0x4404BF10D88CAC40L,0x0000000000000002L});
+    public static final BitSet FOLLOW_line_in_selection_stmt276 = new BitSet(new long[]{0x4404BF10D88CAC40L,0x0000000000000002L});
+    public static final BitSet FOLLOW_65_in_selection_stmt280 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FOREACH_T_in_iteration_stmt322 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_COURSE_T_in_iteration_stmt324 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_ID_in_iteration_stmt328 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_IN_T_in_iteration_stmt330 = new BitSet(new long[]{0x0000000008000000L});
+    public static final BitSet FOLLOW_ID_in_iteration_stmt334 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_64_in_iteration_stmt336 = new BitSet(new long[]{0x4404BF10D88CAC40L,0x0000000000000002L});
+    public static final BitSet FOLLOW_line_in_iteration_stmt338 = new BitSet(new long[]{0x4404BF10D88CAC40L,0x0000000000000002L});
+    public static final BitSet FOLLOW_65_in_iteration_stmt341 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_BREAK_T_in_jump_stmt380 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_and_expr_in_expr391 = new BitSet(new long[]{0x0000004000000002L});
+    public static final BitSet FOLLOW_OR_in_expr394 = new BitSet(new long[]{0x4004151048040000L});
+    public static final BitSet FOLLOW_and_expr_in_expr397 = new BitSet(new long[]{0x0000004000000002L});
+    public static final BitSet FOLLOW_equiv_expr_in_and_expr414 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_AND_in_and_expr417 = new BitSet(new long[]{0x4004151048040000L});
+    public static final BitSet FOLLOW_equiv_expr_in_and_expr420 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_rel_expr_in_equiv_expr433 = new BitSet(new long[]{0x0000000400200002L});
+    public static final BitSet FOLLOW_EQ_in_equiv_expr438 = new BitSet(new long[]{0x4004151048040000L});
+    public static final BitSet FOLLOW_NEQ_in_equiv_expr443 = new BitSet(new long[]{0x4004151048040000L});
+    public static final BitSet FOLLOW_rel_expr_in_equiv_expr447 = new BitSet(new long[]{0x0000000400200002L});
+    public static final BitSet FOLLOW_math_expr_in_rel_expr461 = new BitSet(new long[]{0x2800000202000002L});
+    public static final BitSet FOLLOW_59_in_rel_expr466 = new BitSet(new long[]{0x0004151048040000L});
+    public static final BitSet FOLLOW_61_in_rel_expr471 = new BitSet(new long[]{0x0004151048040000L});
+    public static final BitSet FOLLOW_GEQ_in_rel_expr476 = new BitSet(new long[]{0x0004151048040000L});
+    public static final BitSet FOLLOW_LEQ_in_rel_expr481 = new BitSet(new long[]{0x0004151048040000L});
+    public static final BitSet FOLLOW_math_expr_in_rel_expr485 = new BitSet(new long[]{0x2800000202000002L});
+    public static final BitSet FOLLOW_datetime_in_rel_expr493 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_math_term_in_math_expr504 = new BitSet(new long[]{0x00A0000000000002L});
+    public static final BitSet FOLLOW_53_in_math_expr509 = new BitSet(new long[]{0x0004151048040000L});
+    public static final BitSet FOLLOW_55_in_math_expr514 = new BitSet(new long[]{0x0004151048040000L});
+    public static final BitSet FOLLOW_math_term_in_math_expr518 = new BitSet(new long[]{0x00A0000000000002L});
+    public static final BitSet FOLLOW_unary_expr_in_math_term532 = new BitSet(new long[]{0x0210000000000002L});
+    public static final BitSet FOLLOW_52_in_math_term537 = new BitSet(new long[]{0x0004151048040000L});
+    public static final BitSet FOLLOW_57_in_math_term542 = new BitSet(new long[]{0x0004151048040000L});
+    public static final BitSet FOLLOW_unary_expr_in_math_term546 = new BitSet(new long[]{0x0210000000000002L});
+    public static final BitSet FOLLOW_timeblock_in_math_term554 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_postfix_expr_in_unary_expr564 = new BitSet(new long[]{0x0100000000000002L});
+    public static final BitSet FOLLOW_56_in_unary_expr567 = new BitSet(new long[]{0x0004150048040000L});
+    public static final BitSet FOLLOW_postfix_expr_in_unary_expr570 = new BitSet(new long[]{0x0100000000000002L});
+    public static final BitSet FOLLOW_NOT_in_unary_expr577 = new BitSet(new long[]{0x0004150048040000L});
+    public static final BitSet FOLLOW_postfix_expr_in_unary_expr580 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_function_in_postfix_expr591 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_primary_expr_in_postfix_expr596 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PRINT_T_in_function606 = new BitSet(new long[]{0x0004000000000000L});
+    public static final BitSet FOLLOW_50_in_function608 = new BitSet(new long[]{0x0008050048040000L});
+    public static final BitSet FOLLOW_print_target_in_function610 = new BitSet(new long[]{0x0008050048040000L});
+    public static final BitSet FOLLOW_51_in_function613 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_function618 = new BitSet(new long[]{0x0004000000000000L});
+    public static final BitSet FOLLOW_50_in_function620 = new BitSet(new long[]{0x400C151048040000L});
+    public static final BitSet FOLLOW_argument_expr_list_in_function622 = new BitSet(new long[]{0x0008000000000000L});
+    public static final BitSet FOLLOW_51_in_function625 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INT_in_print_target650 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DOUBLE_in_print_target655 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRING_in_print_target660 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_print_target665 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_function_in_print_target670 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_dayblock_in_datetime681 = new BitSet(new long[]{0x0000100000000000L});
+    public static final BitSet FOLLOW_timeblock_in_datetime683 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TIME_in_timeblock710 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
+    public static final BitSet FOLLOW_66_in_timeblock712 = new BitSet(new long[]{0x0000100000000000L});
+    public static final BitSet FOLLOW_TIME_in_timeblock716 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_62_in_dayblock739 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_DAY_in_dayblock741 = new BitSet(new long[]{0x8040000000000000L});
+    public static final BitSet FOLLOW_54_in_dayblock745 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_DAY_in_dayblock747 = new BitSet(new long[]{0x8040000000000000L});
+    public static final BitSet FOLLOW_63_in_dayblock752 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INT_in_primary_expr771 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DOUBLE_in_primary_expr776 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_primary_expr781 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRING_in_primary_expr787 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TIME_in_primary_expr792 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_primary_expr797 = new BitSet(new long[]{0x4004151048040000L});
+    public static final BitSet FOLLOW_expr_in_primary_expr798 = new BitSet(new long[]{0x0008000000000000L});
+    public static final BitSet FOLLOW_51_in_primary_expr799 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expr_in_argument_expr_list814 = new BitSet(new long[]{0x0040000000000002L});
+    public static final BitSet FOLLOW_54_in_argument_expr_list818 = new BitSet(new long[]{0x4004151048040000L});
+    public static final BitSet FOLLOW_expr_in_argument_expr_list820 = new BitSet(new long[]{0x0040000000000002L});
 
 }
