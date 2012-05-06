@@ -46,7 +46,7 @@ public class Course implements Comparable<Course>{
     
     public String toString()
     {
-        String cString = name + "has sections: ";
+        String cString = "\n" + name + "has sections: ";
         for (Datetime dt1: sections)
             cString += dt1.toString() + ", ";
         

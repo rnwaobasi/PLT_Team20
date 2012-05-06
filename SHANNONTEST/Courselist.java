@@ -1,3 +1,5 @@
+package chronos.nodes;
+
 import java.util.ArrayList;
 public class Courselist implements Comparable<Courselist>{
     String name;
