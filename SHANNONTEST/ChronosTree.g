@@ -13,31 +13,25 @@ options {
 }
 
 @members {
-	// maps for storing our stuff
+	// TreeMap for storing our variables
  	private Map<String, CVal> varMap = new TreeMap<String, CVal>();
+ 	// TreeMap for storing our master courselist
+ 	private Map<String, Course> masterCourselist = new TreeMap<String, Course>();
 
-	// convert node to an int
-	private int toInt(CommonTree node) {
-		int value = 0;
-		String text = node.getText();
-		try {
-			value = Integer.parseInt(text);
-		} catch (NumberFormatException e) {
-			throw new RuntimeException("Cannot convert to int");
-		}
-		return value;
+	// function for evaluating functions!
+	private Object evalFunction(String funcName, ArrayList<String> params) {
+		
 	}
 	
-	// shortcut for general print method
-	private void out(String str) {
-		System.out.println(str);
+	// shortcut for System.out.println
+	private void out(Object obj) {
+		System.out.println(obj);
 	}
 
 	// prints Strings
 	// gets rid of the surrounding quotes
 	private void print(String str) {
-		int oneBeforeEnd = str.length()-1;
-		String noQuotes = str.substring(1,oneBeforeEnd);
+		String noQuotes = str.substring(1,str.length()-1);
 		out(noQuotes);
 	}
 }
@@ -51,15 +45,15 @@ line:	declarator
 	;
 declarator
 	:	^(DECL type_specifier ID) {
-		/* if $type_specifier.text == such and such, then
-		construct the type and put it in varMap? */
-		varMap.put($ID.text, null);
+			/* if $type_specifier.text == such and such, then
+			construct the type and put it in varMap? */
+			varMap.put($ID.text, null);
 		}
 	;
 instantiator
 	:	^(INST declarator assignment_expr) {
-		// nothing needed here.
-		// declarator and assignment_expr do all the work
+			// nothing needed here.
+			// declarator and assignment_expr do all the work
 		}
 	;
 stmt:	expr
@@ -78,24 +72,26 @@ jump_stmt // TO DO!
 	;
 assignment_expr
 	:	^('=' ID expr) {
-		/* if $ID.text is in varMap,
-		set its value to $expr.result
-		otherwise, ERROR */
-			if (found($ID.text)) {
-				//******** CREATE FOUND AND SET METHODS
-				set($ID.text, $expr.result);
+			/* if $ID.text is in varMap,
+			set its value to $expr.result
+			otherwise, ERROR */
+			if (varMap.containsKey($ID.text)) {
+				varMap.put($ID.text, $expr.result);
 			}
 			else {
 				throw new NullPointerException("This ID doesn't exist");
 			}
 		}
 	;
-expr returns [Value result]
-	:	assignment_expr // goes to assignment_expr rule
+expr returns [CVal result]
+	// goes to assignment_expr rule
+	:	assignment_expr
 	// logical
 	|	^(OR e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
+			/* if e1 and e2 are boolean expressions, 
+			then this operation is legal */
 			if (val1.isBool() && val2.isBool()) {
 				$result = val1.value() || val2.value();
 			}
@@ -129,65 +125,78 @@ expr returns [Value result]
 	|	^(EQ e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			$result = $val1.value() == $val2.value();
+			$result = ( val1.value().compareTo(val2.value()) == 0 );
 		}
-	|	^(NEQ expr expr) {
+	|	^(NEQ e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			$result = $val1.value() != $val2.value();
-
+			$result = ( val1.value().compareTo(val2.value()) != 0 );
 		}
-	|	^(GEQ expr expr) {
+	|	^(GEQ e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			$result = $val1.value() >= $val2.value();
+			$result = ( val1.value().compareTo(val2.value()) == 1
+			|| val1.value().compareTo(val2.value()) == 0 );
 		}
-	|	^(LEQ expr expr) {
+	|	^(LEQ e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			$result = $val1.value() <= $val2.value();
+			$result = ( val1.value().compareTo(val2.value()) == -1
+			|| val1.value().compareTo(val2.value()) == 0 );
 		}
-	|	^('<' expr expr) {
+	|	^('<' e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			$result = $val1.value() < $val2.value();
+			$result = ( val1.value().compareTo(val2.value()) == -1 );
 		}
-	|	^('>' expr expr) {
+	|	^('>' e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			$result = $val1.value() > $val2.value();
+			$result = ( val1.value().compareTo(val2.value()) == 1 );
 		}
 	// math
-	|	^('+' expr expr)
-	|	^('-' expr expr)
-	|	^('*' expr expr)
-	|	^('/' expr expr)
+	|	^('+' e1=expr e2=expr) {
+			$result = val1.value() + val2.value();
+		}
+	|	^('-' e1=expr e2=expr) {
+			$result = val1.value() - val2.value();
+		}
+	|	^('*' e1=expr e2=expr) {
+			$result = val1.value() * val2.value();
+		}
+	|	^('/' e1=expr e2=expr) {
+			$result = val1.value() / val2.value();
+		}
+	
 	// dot operator - car.color
-	|	^('.' expr expr)
+	|	^('.' e1=expr e2=expr) // SEHR, SEHR WICHTIG!!!!!!
+	
 	// derived types
-	|	datetime
-	|	timeblock
-	|	dayblock
+	|	datetime { $result = $datetime.result; }
+	|	timeblock { $result = $timeblock.result; }
+	|	dayblock { $result = $dayblock.result; }
+	
 	// master courselist - made from input file
 	|	MASTER_T //****** HOW TO RECONCILE THIS????
+	
 	// primary types
-	|	INT
-	|	DOUBLE
-	|	ID
-	|	STRING
-	|	TIME
+	|	INT { $result = new CVal( Integer.parseInt($INT.text) ); }
+	|	DOUBLE { $result = new CVal( Double.parseDouble($DOUBLE.text) ); }
+	|	ID { $result = varMap.get($ID.text); }
+	|	STRING { $result = new CVal( $STRING.text ); }
+	|	TIME { $result = new CVal( new Time($TIME.text) ); }
 	;
 function returns [Object result]
 // i.e. print()
 	:	^(PRINT_T print_target*)
 	|	^(ID ^(PARAMS argument_expr_list?)) {
-		$result = evalFunction($ID.text, $argument_expr_list.result);
+			$result = evalFunction($ID.text, $argument_expr_list.result);
 		}
 	;
 print_target
 	:	INT { out($INT); }
 	|	DOUBLE { out($DOUBLE); }
-	|	ID { if (found($ID.text)) { out(getVar($ID.text).value);} }
+	|	ID { if (varMap.contains($ID.text)) { out((varMap.get($ID.text)).value);} }
 	|	function { out($function.result); }
 		;
 datetime returns [Datetime result]
@@ -199,18 +208,18 @@ datetime returns [Datetime result]
 timeblock returns [Timeblock result]
 // i.e. 13:00~14:00
 	:	^(TIMES a=TIME b=TIME) {
-		$result = new Timeblock(new Time($a.text), new Time($b.text));
+			$result = new Timeblock(new Time($a.text), new Time($b.text));
 		}
 	;
 dayblock returns [Dayblock result]
 // i.e. [M,W,F]
 @init { $result = new Dayblock(); }
 	:	^( DAYBLOCK_T (DAY {
-		char daychar = ($DAY.text).charAt(0);
-		$result.add(daychar);
+			char daychar = ($DAY.text).charAt(0);
+			$result.add(daychar);
 		})+ )
 	;
-argument_expr_list returns [ExprList result]
+argument_expr_list returns [ArrayList<String> result]
 @init { $result = new ArrayList<String>(); }
 	:	(expr {$result.add($expr.text);})+
 	;

@@ -1,4 +1,4 @@
-// $ANTLR 3.4 Chronos.g 2012-05-05 20:17:46
+// $ANTLR 3.4 Chronos.g 2012-05-05 21:02:11
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -375,7 +375,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: ID, type_specifier
+            // elements: type_specifier, ID
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -487,7 +487,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: 61, expr, declarator
+            // elements: declarator, 61, expr
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -927,7 +927,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: ELSE_T, IF_T, expr, b, a
+            // elements: a, b, expr, IF_T, ELSE_T
             // token labels: 
             // rule labels: retval, b, a
             // token list labels: 
@@ -968,7 +968,7 @@ public TreeAdaptor getTreeAdaptor() {
                 }
 
                 // Chronos.g:51:31: ( ^( ELSE_T ( $b)* ) )?
-                if ( stream_ELSE_T.hasNext()||stream_b.hasNext() ) {
+                if ( stream_b.hasNext()||stream_ELSE_T.hasNext() ) {
                     // Chronos.g:51:31: ^( ELSE_T ( $b)* )
                     {
                     CommonTree root_2 = (CommonTree)adaptor.nil();
@@ -987,8 +987,8 @@ public TreeAdaptor getTreeAdaptor() {
                     }
 
                 }
-                stream_ELSE_T.reset();
                 stream_b.reset();
+                stream_ELSE_T.reset();
 
                 adaptor.addChild(root_0, root_1);
                 }
@@ -1125,7 +1125,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: element, line, IN_T, list, FOREACH_T
+            // elements: IN_T, line, list, FOREACH_T, element
             // token labels: element, list
             // rule labels: retval
             // token list labels: 
@@ -2702,7 +2702,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // AST REWRITE
-                    // elements: argument_expr_list, ID
+                    // elements: ID, argument_expr_list
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -2969,7 +2969,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_timeblock.add(timeblock84.getTree());
 
             // AST REWRITE
-            // elements: timeblock, dayblock
+            // elements: dayblock, timeblock
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -3066,7 +3066,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: b, a
+            // elements: a, b
             // token labels: b, a
             // rule labels: retval
             // token list labels: 
