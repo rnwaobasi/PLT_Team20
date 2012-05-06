@@ -15,6 +15,9 @@ public class Dayblock implements Comparable<Dayblock>{
             days = givenDays;
         }
        
+	public Dayblock() {
+
+	}
 
 	public boolean has(char d)
 	{

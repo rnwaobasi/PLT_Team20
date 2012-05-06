@@ -111,12 +111,8 @@ expr returns [CVal result]
 			/* if e1 and e2 are boolean expressions, 
 			then this operation is legal */
 			if (val1.isBool() && val2.isBool()) {
-				try {
-				$result = (val1.value() || val2.value())? 1:0;
-				}
-				catch (Exception e) {
-				out("Can't do OR on objects");
-				}
+				$result = (val1.getBool() || val2.getBool())? new CVal(new Integer(1))
+															: new CVal(new Integer(0));
 			}
 			else {
 				throw new IllegalArgumentException("Cannot perform OR operation on non-boolean expressions");
@@ -126,12 +122,8 @@ expr returns [CVal result]
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
 			if (val1.isBool() && val2.isBool()) {
-			try{
-				$result = (val1.value() && val2.value())? 1:0;
-				}
-				catch (Exception e) {
-				out("Can't do OR on objects");
-				}
+				$result = (val1.getBool() && val2.getBool())? new CVal(new Integer(1))
+															: new CVal(new Integer(0));
 			}
 			else {
 				throw new IllegalArgumentException("Cannot perform AND operation on non-boolean expressions");
@@ -140,12 +132,8 @@ expr returns [CVal result]
 	|	^(NOT e=expr) {
 			CVal val = new CVal($e.result);
 			if (val.isBool()) {
-			try {
-				$result = (!val.value())? 1:0;
-				}
-				catch (Exception excep) {
-				out("Can't do OR on objects");
-				}
+				$result = (!val.getBool())? new CVal(new Integer(1))
+										  : new CVal(new Integer(0));
 			}
 			else {
 				throw new IllegalArgumentException("Cannot perform NOT operation on non-boolean expressions");
@@ -155,34 +143,44 @@ expr returns [CVal result]
 	|	^(EQ e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			$result = ( val1.compareTo(val2) == 0 )? 1:0;
+			if ( val1.compareTo(val2) == 0 )
+				$result = new CVal(new Integer(1));
+			else $result = new CVal(new Integer(0));
 		}
 	|	^(NEQ e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			$result = ( val1.compareTo(val2) != 0 )? 1:0;
+		if ( val1.compareTo(val2) == 0 )
+				$result = new CVal(new Integer(1));
+			else $result = new CVal(new Integer(0));
 		}
 	|	^(GEQ e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			$result = ( val1.compareTo(val2) == 1
-			|| val1.compareTo(val2) == 0 )? 1:0;
+		if ( val1.compareTo(val2) == 0 || val1.compareTo(val2) == 1 )
+				$result = new CVal(new Integer(1));
+			else $result = new CVal(new Integer(0));
 		}
 	|	^(LEQ e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			$result = ( val1.compareTo(val2) == -1
-			|| val1.compareTo(val2) == 0 )? 1:0;
+			if ( val1.compareTo(val2) == 0 || val1.compareTo(val2) == -1 )
+				$result = new CVal(new Integer(1));
+			else $result = new CVal(new Integer(0));
 		}
 	|	^('<' e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			$result = ( val1.compareTo(val2) == -1 )? 1:0;
+			if ( val1.compareTo(val2) < 0 )
+				$result = new CVal(new Integer(1));
+			else $result = new CVal(new Integer(0));
 		}
 	|	^('>' e1=expr e2=expr) {
 			CVal val1 = new CVal($e1.result);
 			CVal val2 = new CVal($e2.result);
-			$result = ( val1.compareTo(val2) == 1 )? 1:0;
+			if ( val1.compareTo(val2) > 0 )
+				$result = new CVal(new Integer(1));
+			else $result = new CVal(new Integer(0));
 		}
 	// math; returns int or double
 	// for '+' concatenation, also returns String
@@ -231,17 +229,17 @@ expr returns [CVal result]
 			if (!varMap.containsKey($e1.text)) {
 				try {
 					$result = ($e1.result).e1;
-				} catch (Exception e) {
+				} catch (Exception excep) {
 					out("Dot expression error");
-					e.printStackTrace();
+					excep.printStackTrace();
 				}
 			}
 		}
 	
 	// derived types
-	|	datetime { $result = $datetime.result; }
-	|	timeblock { $result = $timeblock.result; }
-	|	dayblock { $result = $dayblock.result; }
+	|	datetime { $result = new CVal($datetime.result); }
+	|	timeblock { $result = new CVal($timeblock.result); }
+	|	dayblock { $result = new CVal($dayblock.result); }
 		
 	// primary types
 	|	INT { $result = new CVal( Integer.parseInt($INT.text) ); }
@@ -260,7 +258,7 @@ function returns [Object result]
 print_target
 	:	INT { out($INT); }
 	|	DOUBLE { out($DOUBLE); }
-	|	ID { if (varMap.containsKey($ID.text)) { out((varMap.get($ID.text)).value);} }
+	|	ID { if (varMap.containsKey($ID.text)) { out((varMap.get($ID.text)).value());} }
 	|	function { out($function.result); }
 		;
 datetime returns [Datetime result]

@@ -176,7 +176,7 @@ public class CVal implements Comparable<CVal> {
 			}
 		} else {
 			throw new RuntimeException("illegal expression: '" + this + "' is not an "
-					"accepted boolean");
+					+ "accepted boolean");
 		}
 	}
 	
