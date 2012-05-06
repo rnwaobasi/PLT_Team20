@@ -1,10 +1,11 @@
-public class DateTime {
+
+public class Datetime {
     
     //merges Dayblock and Timeblock into one data type of dates and times
     Dayblock db;
     Timeblock tb;
     
-    public DateTime(Dayblock givenDB, Timeblock givenTB)
+    public Datetime(Dayblock givenDB, Timeblock givenTB)
     {
        db = givenDB;
        tb = givenTB;

@@ -1,3 +1,5 @@
+
+import java.util.ArrayList;
 public class DataTypeTester {
 
     /**
@@ -34,9 +36,9 @@ public class DataTypeTester {
             
             System.out.println(tb.toString());
             
-            DateTime dt1 = new DateTime(db1, tb);
-            DateTime dt2 = new DateTime(db2, tb);
-            DateTime dt3 = new DateTime(db3, tb);
+            Datetime dt1 = new Datetime(db1, tb);
+            Datetime dt2 = new Datetime(db2, tb);
+            Datetime dt3 = new Datetime(db3, tb);
             
             
             
@@ -44,6 +46,23 @@ public class DataTypeTester {
                 System.out.println("Working well");
 
             System.out.println(dt3.toString());
+            
+            ArrayList<Datetime> dt = new ArrayList<Datetime>();
+            dt.add(dt1);
+            dt.add(dt2);
+            dt.add(dt3);
+            
+            Course PLT = new Course("PLT", 3, dt);
+            System.out.println(PLT.getDayblock().toString());
+            System.out.println("Num sections = " + PLT.numSections());
+            
+            Course AI = new Course("AI", 4, dt);
+            
+            Courselist cl = new Courselist("CS");
+            cl.add(AI);
+            cl.add(PLT);
+            
+            System.out.println(cl.toString());
         }
         catch(Exception e){System.out.println(e.getMessage());}
         

@@ -1,7 +1,7 @@
+
 public class Time {
     
     int time;
-    //perform comparisons by testing the int "time"
     
     public Time(String timeStr)throws Exception{
         boolean containsColon = false;
@@ -29,6 +29,22 @@ public class Time {
         time = Integer.parseInt(timeStr);
     }
     
+    public boolean lessThan(Time that)
+    {
+        if(this.time < that.time)
+            return true;
+        else
+            return false;
+    }
+    
+    public boolean greaterThan(Time that)
+    {
+        if(this.time > that.time)
+            return true;
+        else
+            return false;
+    }
+    
     public String toString()
     {
         String timeStr;
@@ -46,4 +62,3 @@ public class Time {
     }
         
 }
-
