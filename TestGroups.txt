@@ -1,0 +1,41 @@
+schedule sched;
+courselist CL = generateCourses(input_file);
+
+/* CREATE a LIST of required classes */
+
+courselist required;
+required.add( CL.getCourse("Math") ); //--- Add course to a list (regardless of conflicts)
+required.add( CL.getCourse("Stat") );
+required.add( CL.getCourse("PLT") );
+required.add( CL.getCourse("Artificial Intelligence") );
+
+/* Create a list of elective classes */
+
+courselist electives;
+electives.add( CL.getCourse("PE") );
+electives.add( CL.getCourse("Chinese") );
+electives.add( CL.getCourse("ArtHum") );
+electives.add( CL.getCourse("German") );
+
+
+/* ADD COURSES from the list of required courses
+*  only as long as the schedule has 3 or fewer courses
+*  and the courses do not conflict */
+
+
+foreach course c in required {
+    if (sched.numCourses() <= 3
+ 	{ 
+ 	   sched.add( c );
+    	}
+}
+
+foreach course c in electives {
+    if (sched.numCredits() <= 20) {
+ 		sched.add( c );
+		print(c.name + " successfully added");
+	   }
+    }
+}
+
+sched.print();

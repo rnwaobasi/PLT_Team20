@@ -1,0 +1,13 @@
+schedule sched;
+courselist CL = generateCourses(input_file);
+
+// make a list of courses called music
+courselist music;
+
+// if course name contains MUSI, then add it to the music list
+foreach course c in CL {
+	if(c.name.contains("MUSI"))
+	{
+		music.add(c);
+	}
+}

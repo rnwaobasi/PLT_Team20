@@ -1,0 +1,39 @@
+schedule sched;
+courselist CL = generateCourses(input_file);
+
+/* Creating some int variables */
+
+int courseMax = 6; // maximum number of courses
+int courseMin = 4; // minimum
+int creditMax = 20; // maximum number of credit points
+int courseMaxR = 2; // maximum number of courses on Thursday
+timeblock soccer = 10:00~11:00;
+datetlock rehearsal = [TR] 18:00~20:00;
+
+/* Add classes only if conditions are met */
+foreach course c in CL //--- This is equivalent to another foreach loop of datetimes INSIDE
+{
+    if (sched.numCourses() < courseMax
+        && sched.numCredits() + c.numCredits() <= creditMax)
+    {
+	if (c.getDatetime().conflicts(rehearsal) || c.getTimeblock().conflicts(soccer)
+	     || sched.numCourses([R]) >= courseMaxR)
+	{
+
+    		break;
+	}
+	else {
+    		sched.add( c );
+	}
+    }
+} 
+
+/* PRINT some STRING output */
+if (sched.numCourses() < courseMin) {
+    print("Four non-conflicting classes could not be found. Add more potential courses!");
+}
+
+else
+{
+	sched.print
+}

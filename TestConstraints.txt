@@ -1,0 +1,37 @@
+schedule sched;
+courselist CL = generateCourses(input_file);
+
+/* Creating some int variables */
+
+int courseMax = 6; // maximum number of courses
+int courseMin = 4; // minimum
+int creditMax = 20; // maximum number of credit points
+int courseMaxR = 2; // maximum number of courses on Thursday
+
+
+/* Add classes only if conditions are met */
+foreach course c in CL
+{
+    if (sched.numCourses() < courseMax
+        && sched.numCredits() + c.numCredits() <= creditMax)
+    {
+	if (sched.numCourses([R]) >= courseMaxR)
+	{
+
+    		break;
+	}
+	else {
+    		sched.add( c );
+	}
+    }
+} 
+
+/* PRINT some STRING output */
+if (sched.numCourses() < courseMin) {
+    print("Four non-conflicting classes could not be found. Add more potential courses!");
+}
+
+else
+{
+	sched.print
+}
