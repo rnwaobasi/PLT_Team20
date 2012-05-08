@@ -91,7 +91,7 @@ public class Schedule {
         {
             clString += c.name + " ";
         }
-        clString += ".\n";
+        clString += ".";
         return clString;
     }
     

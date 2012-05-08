@@ -16,6 +16,9 @@ options {
 	// TreeMap for storing our variables
  	private Map<String, CVal> varMap = new TreeMap<String, CVal>();
  	private Scheduler sch;
+ 	
+ 	// for tracking foreach statements
+ 	private int count = 0;
 	
 	// creates the master courselist from input file
 	private Courselist makeMasterList(String file) {
@@ -24,10 +27,20 @@ options {
 	}
 	
 	// puts an object into the varMap
-	// gives some notification output
 	private void put(String name, CVal obj) {
 		varMap.put(name, obj);
-		out("Put " + name + " in the map with value " + obj);
+		//debug("Put " + name + " in the map with value " + obj);
+	}
+	
+	// removes an object from the varMap
+	private void rem(String name) {
+		varMap.remove(name);
+		//debug("Removed " + name + " from the map");
+	}
+	
+	// debug output
+	private void debug(String str) {
+		out(str);
 	}
 	
 	// shortcut for System.out.println
@@ -45,13 +58,6 @@ options {
 		String s = str + " = " + obj;
 		return s;
 	}
-
-	// prints Strings
-	// gets rid of the surrounding quotes
-	private void printString(String str) {
-		String noQuotes = str.substring(1,str.length()-1);
-		System.out.print(noQuotes);
-	}
 	
 	// gets rid of surrounding quotes
 	private String dequote(String str) {
@@ -65,7 +71,6 @@ options {
 }
 
 program
-@init { int num = 0; }
 	:	line+
 	;
 line:	declarator
@@ -122,35 +127,68 @@ stmt:	expr
 			}
 		}
 	|	selection_stmt
-	|	iteration_stmt { out($iteration_stmt.text); }
+	|	iteration_stmt
 	|	jump_stmt
 	;
-selection_stmt // TO DO! LEARN ABOUT SCOPE?
-	:	^(COND ^(IF_T expr a=line*) ^(ELSE_T b=line*)) {
-			/*if ($expr.text) {$a.text*} else {$b.text*};*/
-		}
-	;
-iteration_stmt returns [String result] // only works on Courses
+selection_stmt
 @init {
+	boolean condIsTrue = false;
+	int ifBlockStart;
+	int elseBlockStart;
 }
-/*@after {
-	len++;
-	ArrayList<Course> ourList = varMap.get($list.text);
-	if (len < ourList.size()) {
-		input.Rewind(mark);
-	}
-}*/
-	:	^(FOREACH_T ^(IN_T element=ID list=ID) ^(BLOCK lines=line*)) {
-			$result = "for ( Course " + $element.text + " : " + $list +
-			" ) {\n" + lines + "}";
+	:	^(COND ^(IF_T conditional=expr {
+			debug("IS this statment true? " + $conditional.result.getBool());
+			if (!$conditional.result.getBool()) { // jump to else if false
+				input.seek(86);
+			}
+		} a=line*) {
+			debug("LA 2 ahead is: " + input.LA(2));
+			debug("Else starts at: " + input.index()); 
+			if ($conditional.result.getBool()) { // jump to end if true
+				input.seek(input.LA(2));
+			}
 		}
+		( {debug("AT ELSE"); } ^( ELSE_T { debug("AT B LINES"); }b=line*))? {
+			debug("End of this stmt is at: " + input.index());
+		}
+		)
+	;
+iteration_stmt // only works on Courses!
+@init {
+	int mark = input.mark();
+	int length;
+	String c;
+}
+@after {
+	// compare length with count
+	if (count < length) {
+		input.seek(mark);
+	}
+	else {
+		// remove the temp var c from the varMap
+		rem(c);
+		count = 0;
+	}
+}
+	:	^(FOREACH_T ^(IN_T element=ID list=ID) {
+			// get length of list
+			CVal listval = varMap.get($list.text);
+			Courselist mylist = listval.asCourselist();
+			length = mylist.numCourses();
+			// get the current course object as a CVal
+			CVal courseval = new CVal(mylist.courses.get(count));
+			// put this course CVal into the varMap under the temp name $element
+			c = $element.text;
+			put(c, courseval);
+			// increment count
+			count += 1;
+		}
+		^(BLOCK lines=line*))
 	;
 jump_stmt // TO DO!
 	:	BREAK_T //{ break; } // this is my break
 	;
 expr returns [CVal result]
-	// goes to assignment_expr rule
-	//	assignment_expr
 	// logical; returns 1 or 0
 	:	^(OR e1=expr e2=expr) {
 			CVal val1 = $e1.result;
@@ -234,7 +272,7 @@ expr returns [CVal result]
 	|	^('+' e1=expr e2=expr) {
 			CVal val1 = $e1.result;
 			CVal val2 = $e2.result;
-			out( "ADDING: " + info($e1.text, val1) + " ; " + info($e2.text, val2) );
+			debug( "ADDING: " + info($e1.text, val1) + " ; " + info($e2.text, val2) );
 			if (val1.isInt() && val2.isInt()) {
 				Integer temp = val1.asInt() + val2.asInt();
 				$result = new CVal(temp);

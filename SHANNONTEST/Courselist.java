@@ -77,7 +77,7 @@ public class Courselist implements Comparable<Courselist>{
         {
             clString += c.name + " ";
         }
-        clString += ".\n";
+        clString += ".";
         return clString;
     }
     

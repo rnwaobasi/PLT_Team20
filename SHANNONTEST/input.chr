@@ -12,7 +12,16 @@ courselist CL = generateCourses("input.txt");
 /*print("SChedule is" + sched);
 print("oahhhahahahb");
 print(sched);*/
-print("SChedule is", sched);
+/*print("SChedule is", sched);
 sched.print();
 courselist cs_courses;
-print("The name of this list is", cs_courses.name);
+print("The name of this list is", cs_courses.name);*/
+if (x == 5) {
+print("x does indeed equal 5");
+} else {
+print("actually, x doesn't equal 5");
+}
+//print(CL);
+/*(foreach course c in CL {
+print( c );
+}*/
