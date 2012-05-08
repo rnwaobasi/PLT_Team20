@@ -14,7 +14,7 @@ public class Scheduler{
 	Dayblock dayb;
 	Timeblock timeb;
 	Courselist courselist;
-	Course course = new Course(className, Credits, date) ;
+	Course course;
 
 	public Scheduler(String input){
 		this.input = input;
@@ -43,7 +43,7 @@ public class Scheduler{
 				   course = new Course(className, Credits, date);
 				   courselist.add(course);
 
-				   System.out.println(course.toString());
+				   //System.out.println(course.toString());
 				   objTracker++;
 				   counter = 0;
 			   	}
@@ -92,8 +92,8 @@ public class Scheduler{
 
 	   	}//generate courses method
 
-	   	public static void main(String args[]) {
+	   /*	public static void main(String args[]) {
 	   		Scheduler sched = new Scheduler("input.txt");
-	   	}
+	   	}*/
 }
 

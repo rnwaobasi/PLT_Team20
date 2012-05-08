@@ -16,17 +16,15 @@ options {
 	// TreeMap for storing our variables
  	private Map<String, CVal> varMap = new TreeMap<String, CVal>();
  	private Scheduler sch;
-
-	/* function for evaluating functions!
-	private Object evalFunction(String funcName, ArrayList<String> params) {
-		
-	}*/
 	
-	private void makeMasterList(String file) {
-		out("tryina make the master");
+	// creates the master courselist from input file
+	private Courselist makeMasterList(String file) {
 		sch = new Scheduler(file);
+		return sch.courselist;
 	}
 	
+	// puts an object into the varMap
+	// gives some notification output
 	private void put(String name, CVal obj) {
 		varMap.put(name, obj);
 		out("Put " + name + " in the map with value " + obj);
@@ -55,7 +53,12 @@ options {
 		System.out.print(noQuotes);
 	}
 	
-	// shortuct for System.out.print
+	// gets rid of surrounding quotes
+	private String dequote(String str) {
+		return str.substring(1,str.length()-1);
+	}
+	
+	// shortcut for System.out.print
 	private void print(Object obj) {
 		System.out.print(obj);
 	}
@@ -63,10 +66,10 @@ options {
 
 program
 @init { int num = 0; }
-	:	line+ //{ out("This line said " + $line.text);}
+	:	line+
 	;
-line:	declarator //{ out("This declarator said " + $declarator.text);}
-	|	instantiator //{ out("This instantiator said " + $instantiator.text);}
+line:	declarator
+	|	instantiator
 	|	stmt
 	;
 declarator
@@ -76,9 +79,16 @@ declarator
 				throw new RuntimeException("you've already declared " + $ID.text);
 			}
 			else {
+				// with schedule and courselist,
+				// every declaration is an instantiator of an empty object
 				if ($type_specifier.text.equals("schedule")) {
 					put($ID.text, new CVal(new Schedule($ID.text)));
 				}
+				else if ($type_specifier.text.equals("courselist")) {
+					put($ID.text, new CVal(new Courselist($ID.text)));
+				}
+				// but with primitives, such as int, declarators are
+				// simply declarators (null value)
 				else {
 					put($ID.text, null);
 				}
@@ -288,42 +298,47 @@ expr returns [CVal result]
 	|	^('.' e1=expr e2=expr) {
 			// CHECK e1 (LEFT of dot)
 			// Is e1 a CVal?
-			CVal left = null; // left is the CVal equivalent of e1,
+			CVal left = null; // left is the CVal equivalent of e1
 			if ($e1.result instanceof CVal) {
-				out("ITS AN INSTANCE OF CVAL");
 				left = $e1.result;
+				// Is it also an ID? (in the varMap?)
+				if ( varMap.containsKey($e1.text) ) {
+					left = varMap.get($e1.text);
+				}
 			}
-			// or a function call? NEVER HAPPENS!
-			// or an ID?
-			else if ( varMap.containsKey($e1.text) ) {
-				out("DEARIES< WE FOUND IT");
-				left = varMap.get($e1.text);
-			}
+			// or a func call? NEVER HAPPENS
 			
 			// CHECK e2 (RIGHT of dot)
 			// Is e2 a function?
-			if ($e2.result.isFunction()) {
-				out("I SEE A FUNCTION ON THE RIGHT SIDE FO THE DOT");
-				out("It looks like this: " + $e2.text);
-				// get methods of left
+			if ($e2.result != null && $e2.result.isFunction()) {
 				Function rightf = $e2.result.asFunction();
-				//out("FUNCITON IS: " + rightf);
 				try {
-					// Get typename of left
+					// get typename of left
 					Class cls = Class.forName(left.typename());
-					out("THE TYPE ISWSSSS " + cls);
+					// get methods of left
 					Method[] rightfMethods = cls.getMethods();
 					for (Method m : rightfMethods) {
 						if (m.getName().equals(rightf.name)) {
-							m.invoke(left, rightf.params);
+							// carry out function
+							if (rightf.params != null)
+								m.invoke(left.value(), rightf.params);
+							else m.invoke(left.value());
 						}
 					}
 				} catch (Exception excep) { excep.printStackTrace(); }
-				// evalFunction()
 			}
 			// If not, then e2 must be a field
 			else {
-				// get fields of left
+				try {
+					// get typename of left
+					Class cls = Class.forName(left.typename());
+					Field[] fs = cls.getDeclaredFields();
+					for (Field f : fs) {
+						if (f.getName().equals($e2.text)) {
+							$result = new CVal(f.get(left.value()));
+						}
+					}
+				} catch (Exception excep) { excep.printStackTrace(); }
 			}
 		}
 	
@@ -333,53 +348,45 @@ expr returns [CVal result]
 	|	dayblock { $result = new CVal($dayblock.result); }
 	|	function {
 			Function func = $function.result;
-			if (func.name.equals("print")) {
+			// PRINT FUNCTION
+			/* using commas in between print params is equivalent
+			to the + operator in java */ 
+			if (func.params != null && func.name.equals("print")) {
 				for (int i=0; i<func.params.size(); i++) {
 					CVal c = func.params.get(i);
-					if (c.isString()) {
-						printString(c.asString());
-					}
-					else print(c);
-					if (i==func.params.size()-1) {
-						out("");
-					} else {
-						print(" ");
-					}
+					print(c);
+					if (i==func.params.size()-1)
+						out(""); // end with newline
+					else
+						print(" "); // separator between print params
 				}
 			}
+			// GENERATECOURSES FUNCTION
 			if (func.name.contains("generateCourses")) {
-				// call read to input file
 				try {
 					CVal filename = func.params.get(0);
-					makeMasterList(filename.asString());
+					Courselist master = makeMasterList(filename.asString());
+					$result = new CVal(master);
 				} catch (NullPointerException exception) {
 					throw new RuntimeException("No filename specified!");
 				}
 			}
-			$result = new CVal(func);
+			else { $result = new CVal(func); }
 		}
 		
 	// primary types
 	|	INT { $result = new CVal( Integer.parseInt($INT.text) ); }
 	|	DOUBLE { $result = new CVal( Double.parseDouble($DOUBLE.text) ); }
 	|	ID { $result = varMap.get($ID.text); }
-	|	STRING { $result = new CVal( $STRING.text ); }
+	|	STRING { $result = new CVal( dequote($STRING.text) ); }
 	|	TIME { $result = new CVal( new Time($TIME.text) ); }
 	;
 function returns [Function result]
 // i.e. print()
-	:	/*^(PRINT_T print_target*) { out("printttt"); }
-	|*/	^(ID ^(PARAMS argument_expr_list?)) {
+	:	^(ID ^(PARAMS argument_expr_list?)) {
 			$result = new Function($ID.text, $argument_expr_list.result);
 		}
 	;
-/*print_target
-	:	INT { out($INT); }
-	|	DOUBLE { out($DOUBLE); }
-	|	STRING { out($STRING); }
-	|	ID { if (varMap.containsKey($ID.text)) { out("Found it!");out( (varMap.get($ID.text)).value() );} }
-	|	function { out($function.result); }
-	;*/
 datetime returns [Datetime result]
 // i.e. [M,W] 10:00~11:00
 	:	^(DATETIME dayblock timeblock) {

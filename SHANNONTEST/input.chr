@@ -8,8 +8,11 @@ y = x;
 z = x + y;
 //a = 100;
 print(3);
-//generateCourses();
+courselist CL = generateCourses("input.txt");
 /*print("SChedule is" + sched);
 print("oahhhahahahb");
 print(sched);*/
 print("SChedule is", sched);
+sched.print();
+courselist cs_courses;
+print("The name of this list is", cs_courses.name);

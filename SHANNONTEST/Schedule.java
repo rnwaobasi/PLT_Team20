@@ -79,6 +79,11 @@ public class Schedule {
         return true;
     }
     
+    public void print()
+    {
+        System.out.println(toString());
+    }
+
     public String toString()
     {
         String clString = name + " contains ";

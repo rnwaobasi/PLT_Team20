@@ -1,4 +1,4 @@
-// $ANTLR 3.4 Chronos.g 2012-05-07 23:21:38
+// $ANTLR 3.4 Chronos.g 2012-05-08 01:39:53
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -373,7 +373,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: ID, type_specifier
+            // elements: type_specifier, ID
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -492,7 +492,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: expr, ID, 59
+            // elements: 59, expr, ID
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -943,7 +943,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: expr, a, ELSE_T, b, IF_T
+            // elements: ELSE_T, IF_T, b, a, expr
             // token labels: 
             // rule labels: retval, b, a
             // token list labels: 
@@ -1141,7 +1141,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: element, IN_T, FOREACH_T, list, line
+            // elements: FOREACH_T, list, element, IN_T, line
             // token labels: element, list
             // rule labels: retval
             // token list labels: 
