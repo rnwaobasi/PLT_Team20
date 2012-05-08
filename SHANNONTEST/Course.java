@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 public class Course implements Comparable<Course>{
     String name;
@@ -46,7 +47,7 @@ public class Course implements Comparable<Course>{
     
     public String toString()
     {
-        String cString = "\n" + name + "has sections: ";
+        String cString = name + "has sections: ";
         for (Datetime dt1: sections)
             cString += dt1.toString() + ", ";
         

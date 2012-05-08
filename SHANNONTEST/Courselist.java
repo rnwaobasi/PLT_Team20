@@ -1,4 +1,3 @@
-package chronos.nodes;
 
 import java.util.ArrayList;
 public class Courselist implements Comparable<Courselist>{
@@ -90,9 +89,9 @@ public class Courselist implements Comparable<Courselist>{
 			return false;
 		}
 		Courselist that = (Courselist) o;
-		if (this.name.equals(that.name) && this.numCourses() == that.numCourses()) {
-			for (int i = 0; i < this.numCourses(); i++) {
-				if ( !(this.courses.get(i).equals(that.courses.get(i))) ) {
+		if (this.numCourses() == that.numCourses()) {
+			for (int i = 0; i < that.numCourses(); i++) {
+				if ( !(this.courses.contains(that.courses.get(i))) ) {
 					return false;
 				}
 			}

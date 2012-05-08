@@ -1,3 +1,4 @@
+
 import java.util.List;
 
 public class CVal implements Comparable<CVal> {
@@ -11,7 +12,8 @@ public class CVal implements Comparable<CVal> {
 		value = v;
 		// only accept one of our datetypes
 		if (!(isNumber() || isDayblock() || isTime() || isTimeblock()
-				|| isDatetime() || isString() || isCourse() || isCourselist() || isSchedule())) {
+				|| isDatetime() || isString() || isCourse() || isCourselist() 
+				|| isSchedule() || isFunction() )) {
 			throw new RuntimeException("invalid type: " + v + " ("
 					+ v.getClass() + ")");
 		}
@@ -56,6 +58,10 @@ public class CVal implements Comparable<CVal> {
 	public Schedule asSchedule() {
 		return (Schedule) value;
 	}
+	
+	public Function asFunction() {
+		return (Function) value;
+	}
 
 	@Override
 	public int compareTo(CVal that) {
@@ -79,9 +85,7 @@ public class CVal implements Comparable<CVal> {
 			return this.asCourse().compareTo(that.asCourse());
 		} else if (this.isCourselist() && that.isCourselist()) {
 			return this.asCourselist().compareTo(that.asCourselist());
-		} else if (this.isSchedule() && that.isSchedule()) {
-			return this.asSchedule().compareTo(that.asSchedule());
-		} else {
+		}else {
 			throw new RuntimeException("illegal expression: can't compare `"
 					+ this + "` to `" + that + "`");
 		}
@@ -125,10 +129,13 @@ public class CVal implements Comparable<CVal> {
 			return this.asCourselist();
 		}	else if (this.isSchedule()) {
 			return this.asSchedule();
-		}	else {
+		}	else if (this.isFunction()) {
+			return this.asFunction();
+		}else {
 			throw new RuntimeException("illegal expression: can't get value of `"
 					+ this + "`");
 		}
+	}
 		
 	public String typename(){
 		if (this.isInt()) {
@@ -151,18 +158,33 @@ public class CVal implements Comparable<CVal> {
 			return "Courselist";
 		}	else if (this.isSchedule()) {
 			return "Schedule";
-		}	else {
+		}	else if (this.isFunction()) {
+			return "Schedule";
+		}else {
 			throw new RuntimeException("illegal expression: can't get type of `"
 					+ this + "`");
 		}
 	}
 	
 	public boolean isBool(){
-		if (this.isInt && (this.value == 1 || this.value == 0) ) {
-			return true
+		if (this.isInt() && (this.value.equals(1) || this.value.equals(0)) ) {
+			return true;
 		}
 		else {
-			return false
+			return false;
+		}
+	}
+	
+	public boolean getBool(){
+		if (this.isBool()){
+			if (this.value.equals(1)) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			throw new RuntimeException("illegal expression: '" + this + "' is not an "
+					+ "accepted boolean");
 		}
 	}
 	
@@ -217,6 +239,10 @@ public class CVal implements Comparable<CVal> {
 
 	public boolean isSchedule() {
 		return value instanceof Schedule;
+	}
+	
+	public boolean isFunction() {
+		return value instanceof Function;
 	}
 
 	@Override

@@ -4,68 +4,112 @@ options {
 	language = Java;
 	tokenVocab = Chronos;
 	ASTLabelType = CommonTree;
-	filter=true;
 }
 
 @header {
   import java.util.Map;
   import java.util.TreeMap;
+  import java.lang.reflect.*;
 }
 
 @members {
 	// TreeMap for storing our variables
  	private Map<String, CVal> varMap = new TreeMap<String, CVal>();
+ 	private Scheduler sch;
 
-	// function for evaluating functions!
+	/* function for evaluating functions!
 	private Object evalFunction(String funcName, ArrayList<String> params) {
 		
+	}*/
+	
+	private void makeMasterList(String file) {
+		out("tryina make the master");
+		sch = new Scheduler(file);
+	}
+	
+	private void put(String name, CVal obj) {
+		varMap.put(name, obj);
+		out("Put " + name + " in the map with value " + obj);
 	}
 	
 	// shortcut for System.out.println
 	private void out(Object obj) {
 		System.out.println(obj);
 	}
+	
+	// shortcut for System.err.println
+	private void err(String str) {
+		System.err.println(str);
+	}
+	
+	// shortcut for getting the string of info about an object
+	private String info(String str, CVal obj) {
+		String s = str + " = " + obj;
+		return s;
+	}
 
 	// prints Strings
 	// gets rid of the surrounding quotes
-	private void print(String str) {
+	private void printString(String str) {
 		String noQuotes = str.substring(1,str.length()-1);
-		out(noQuotes);
+		System.out.print(noQuotes);
+	}
+	
+	// shortuct for System.out.print
+	private void print(Object obj) {
+		System.out.print(obj);
 	}
 }
 
 program
-	:	line+
+@init { int num = 0; }
+	:	line+ //{ out("This line said " + $line.text);}
 	;
-line:	declarator
-	|	instantiator
+line:	declarator //{ out("This declarator said " + $declarator.text);}
+	|	instantiator //{ out("This instantiator said " + $instantiator.text);}
 	|	stmt
 	;
 declarator
 	:	^(DECL type_specifier ID) {
-			/* if $type_specifier.text == such and such, then
-			construct the type and put it in varMap? */
-			varMap.put($ID.text, null);
+			if (varMap.containsKey($ID.text)) {
+				// if it exists, can't declare again!
+				throw new RuntimeException("you've already declared " + $ID.text);
+			}
+			else {
+				if ($type_specifier.text.equals("schedule")) {
+					put($ID.text, new CVal(new Schedule($ID.text)));
+				}
+				else {
+					put($ID.text, null);
+				}
+			}
 		}
 	;
 instantiator
-	:	^(INST declarator ^('=' ID expr)) {
+	:	^(INST ^('=' ID expr)) {
 			if (varMap.containsKey($ID.text)) {
-				varMap.put($ID.text, $expr.result);
+				// if it exists, can't instantiate (or declare) again!
+				throw new RuntimeException("you've already declared " + $ID.text);
 			}
 			else {
-				throw new NullPointerException("This ID doesn't exist");
+				put($ID.text, $expr.result);
 			}
 		}
 	;
 stmt:	expr
 	|	^('=' e1=expr e2=expr) {
-			/* if $e1.text is in varMap,
-			set its value to $e2.result
-			otherwise, ERROR */
-			Cval val1 = new CVal($e1.result);
-			val1.value()
-			
+			// if e1 has a dot function:		
+			if ($e1.result instanceof CVal) {
+				CVal val1 = $e1.result; // e1.result is a CVal already
+				CVal val2 = $e2.result;
+				// *****check if typenames of e1 and e2 are the same?
+				if (varMap.containsKey($e1.text)) { // look for it in varMap
+					put($e1.text, $e2.result); // put in its value
+				}
+			}
+			else {
+				throw new RuntimeException("illegal expression: not declared");
+			}
 		}
 	|	selection_stmt
 	|	iteration_stmt { out($iteration_stmt.text); }
@@ -73,7 +117,7 @@ stmt:	expr
 	;
 selection_stmt // TO DO! LEARN ABOUT SCOPE?
 	:	^(COND ^(IF_T expr a=line*) ^(ELSE_T b=line*)) {
-			if ($expr) {$a*} else {$b*};
+			/*if ($expr.text) {$a.text*} else {$b.text*};*/
 		}
 	;
 iteration_stmt returns [String result] // only works on Courses
@@ -88,141 +132,232 @@ iteration_stmt returns [String result] // only works on Courses
 }*/
 	:	^(FOREACH_T ^(IN_T element=ID list=ID) ^(BLOCK lines=line*)) {
 			$result = "for ( Course " + $element.text + " : " + $list +
-			" ) {\n" + lines.text + "}";
+			" ) {\n" + lines + "}";
 		}
 	;
 jump_stmt // TO DO!
-	:	BREAK_T { break; }
+	:	BREAK_T //{ break; } // this is my break
 	;
 expr returns [CVal result]
 	// goes to assignment_expr rule
 	//	assignment_expr
 	// logical; returns 1 or 0
 	:	^(OR e1=expr e2=expr) {
-			CVal val1 = new CVal($e1.result);
-			CVal val2 = new CVal($e2.result);
+			CVal val1 = $e1.result;
+			CVal val2 = $e2.result;
 			/* if e1 and e2 are boolean expressions, 
 			then this operation is legal */
 			if (val1.isBool() && val2.isBool()) {
-				$result = (val1.value() || val2.value())? 1:0;
+				$result = (val1.getBool() || val2.getBool())? new CVal(new Integer(1))
+															: new CVal(new Integer(0));
 			}
 			else {
-				throw new MismatchedTypeException("Cannot perform \
-				OR operation on non-boolean expressions");
+				throw new RuntimeException("Cannot perform OR operation on non-boolean expressions");
 			}
 		}
 	|	^(AND e1=expr e2=expr) {
-			CVal val1 = new CVal($e1.result);
-			CVal val2 = new CVal($e2.result);
+			CVal val1 = $e1.result;
+			CVal val2 = $e2.result;
 			if (val1.isBool() && val2.isBool()) {
-				$result = (val1.value() && val2.value())? 1:0;
+				$result = (val1.getBool() && val2.getBool())? new CVal(new Integer(1))
+															: new CVal(new Integer(0));
 			}
 			else {
-				throw new MismatchedTypeException("Cannot perform \
-				AND operation on non-boolean expressions");
+				throw new RuntimeException("Cannot perform AND operation on non-boolean expressions");
 			}
 		}
 	|	^(NOT e=expr) {
-			Cval val = new CVal($e.result);
+			CVal val = $e.result;
 			if (val.isBool()) {
-				$result = (!val.value())? 1:0;
+				$result = (!val.getBool())? new CVal(new Integer(1))
+										  : new CVal(new Integer(0));
 			}
 			else {
-				throw new MismatchedTypeException("Cannot perform \
-				NOT operation on non-boolean expressions");
+				throw new RuntimeException("Cannot perform NOT operation on non-boolean expressions");
 			}
 		}
 	// relative; returns 1 or 0
 	|	^(EQ e1=expr e2=expr) {
-			CVal val1 = new CVal($e1.result);
-			CVal val2 = new CVal($e2.result);
-			$result = ( val1.value().compareTo(val2.value()) == 0 )? 1:0;
+			CVal val1 = $e1.result;
+			CVal val2 = $e2.result;
+			if ( val1.compareTo(val2) == 0 )
+				$result = new CVal(new Integer(1));
+			else $result = new CVal(new Integer(0));
 		}
 	|	^(NEQ e1=expr e2=expr) {
-			CVal val1 = new CVal($e1.result);
-			CVal val2 = new CVal($e2.result);
-			$result = ( val1.value().compareTo(val2.value()) != 0 )? 1:0;
+			CVal val1 = $e1.result;
+			CVal val2 = $e2.result;
+		if ( val1.compareTo(val2) == 0 )
+				$result = new CVal(new Integer(1));
+			else $result = new CVal(new Integer(0));
 		}
 	|	^(GEQ e1=expr e2=expr) {
-			CVal val1 = new CVal($e1.result);
-			CVal val2 = new CVal($e2.result);
-			$result = ( val1.value().compareTo(val2.value()) == 1
-			|| val1.value().compareTo(val2.value()) == 0 )? 1:0;
+			CVal val1 = $e1.result;
+			CVal val2 = $e2.result;
+		if ( val1.compareTo(val2) == 0 || val1.compareTo(val2) == 1 )
+				$result = new CVal(new Integer(1));
+			else $result = new CVal(new Integer(0));
 		}
 	|	^(LEQ e1=expr e2=expr) {
-			CVal val1 = new CVal($e1.result);
-			CVal val2 = new CVal($e2.result);
-			$result = ( val1.value().compareTo(val2.value()) == -1
-			|| val1.value().compareTo(val2.value()) == 0 )? 1:0;
+			CVal val1 = $e1.result;
+			CVal val2 = $e2.result;
+			if ( val1.compareTo(val2) == 0 || val1.compareTo(val2) == -1 )
+				$result = new CVal(new Integer(1));
+			else $result = new CVal(new Integer(0));
 		}
 	|	^('<' e1=expr e2=expr) {
-			CVal val1 = new CVal($e1.result);
-			CVal val2 = new CVal($e2.result);
-			$result = ( val1.value().compareTo(val2.value()) == -1 )? 1:0;
+			CVal val1 = $e1.result;
+			CVal val2 = $e2.result;
+			if ( val1.compareTo(val2) < 0 )
+				$result = new CVal(new Integer(1));
+			else $result = new CVal(new Integer(0));
 		}
 	|	^('>' e1=expr e2=expr) {
-			CVal val1 = new CVal($e1.result);
-			CVal val2 = new CVal($e2.result);
-			$result = ( val1.value().compareTo(val2.value()) == 1 )? 1:0;
+			CVal val1 = $e1.result;
+			CVal val2 = $e2.result;
+			if ( val1.compareTo(val2) > 0 )
+				$result = new CVal(new Integer(1));
+			else $result = new CVal(new Integer(0));
 		}
 	// math; returns int or double
 	// for '+' concatenation, also returns String
 	|	^('+' e1=expr e2=expr) {
-			CVal val1 = new CVal($e1.result);
-			CVal val2 = new CVal($e2.result);
-			if ($e1.isNumber() && $e2.isNumber() 
-			 || $e1.isString() && $e2.isString()) {
-				$result = val1.value() + val2.value();
+			CVal val1 = $e1.result;
+			CVal val2 = $e2.result;
+			out( "ADDING: " + info($e1.text, val1) + " ; " + info($e2.text, val2) );
+			if (val1.isInt() && val2.isInt()) {
+				Integer temp = val1.asInt() + val2.asInt();
+				$result = new CVal(temp);
+			}
+			if (val1.isDouble() && val2.isDouble()) {
+				Double temp = val1.asDouble() + val2.asDouble();
+				$result = new CVal(temp);
+			}
+			if (val1.isString() && val2.isString()) {
+				String temp = val1.asString() + val2.asString();
+				$result = new CVal(temp);
+			}
+			// convert other object to string if one term is already a string
+			if (val1.isString()) {
+				String temp = val1.asString() + val2.toString();
+				$result = new CVal(temp);
+			}
+			if (val2.isString()) {
+				String temp = val1.toString() + val2.asString();
+				$result = new CVal(temp);
 			}
 		}
 	|	^('-' e1=expr e2=expr) {
-			CVal val1 = new CVal($e1.result);
-			CVal val2 = new CVal($e2.result);
-			if ($e1.isNumber() && $e2.isNumber()) {
-				$result = val1.value() - val2.value();
-			}		}
+			CVal val1 = $e1.result;
+			CVal val2 = $e2.result;
+			if (val1.isInt() && val2.isInt()) {
+				Integer temp = val1.asInt() - val2.asInt();
+				$result = new CVal(temp);
+			}
+			if (val1.isDouble() && val2.isDouble()) {
+				Double temp = val1.asDouble() - val2.asDouble();
+				$result = new CVal(temp);
+			}
+		}
 	|	^('*' e1=expr e2=expr) {
-			CVal val1 = new CVal($e1.result);
-			CVal val2 = new CVal($e2.result);
-			if ($e1.isNumber() && $e2.isNumber() {
-				$result = val1.value() * val2.value();
+			CVal val1 = $e1.result;
+			CVal val2 = $e2.result;
+			if (val1.isInt() && val2.isInt()) {
+				Integer temp = val1.asInt() * val2.asInt();
+				$result = new CVal(temp);
+			}
+			if (val1.isDouble() && val2.isDouble()) {
+				Double temp = val1.asDouble() * val2.asDouble();
+				$result = new CVal(temp);
 			}
 		}
 	|	^('/' e1=expr e2=expr) {
-			CVal val1 = new CVal($e1.result);
-			CVal val2 = new CVal($e2.result);
-			if ($e1.isNumber() && $e2.isNumber() {
-				$result = val1.value() / val2.value();
+			CVal val1 = $e1.result;
+			CVal val2 = $e2.result;
+			if (val1.isInt() && val2.isInt()) {
+				Integer temp = val1.asInt() / val2.asInt();
+				$result = new CVal(temp);
+			}
+			if (val1.isDouble() && val2.isDouble()) {
+				Double temp = val1.asDouble() / val2.asDouble();
+				$result = new CVal(temp);
 			}
 		}
 	
 	// dot operator - car.color
 	|	^('.' e1=expr e2=expr) {
-			/* 	If varMap has e1.text, then it is an ID,
-			and we can call the function on the value of
-			the matching CVal.
-				If the varMap does not have e1.text, then it may be
-			a return value of a function. in this case we simply
-			call the function on the return object.
-				If neither of these work, then there is an error.*/
-			if (varMap.contains($e1.text)) {
-				CVal val = varMap.get($e1.text);
-				$result = (val.value()).($e2); //??
+			// CHECK e1 (LEFT of dot)
+			// Is e1 a CVal?
+			CVal left = null; // left is the CVal equivalent of e1,
+			if ($e1.result instanceof CVal) {
+				out("ITS AN INSTANCE OF CVAL");
+				left = $e1.result;
 			}
-			if (!varMap.contains($e1.text)) {
+			// or a function call? NEVER HAPPENS!
+			// or an ID?
+			else if ( varMap.containsKey($e1.text) ) {
+				out("DEARIES< WE FOUND IT");
+				left = varMap.get($e1.text);
+			}
+			
+			// CHECK e2 (RIGHT of dot)
+			// Is e2 a function?
+			if ($e2.result.isFunction()) {
+				out("I SEE A FUNCTION ON THE RIGHT SIDE FO THE DOT");
+				out("It looks like this: " + $e2.text);
+				// get methods of left
+				Function rightf = $e2.result.asFunction();
+				//out("FUNCITON IS: " + rightf);
 				try {
-					$result = ($e1.result).($e1.text);
-				} catch (Exception e) {
-					out("Dot expression error");
-					e.printStackTrace();
-				}
+					// Get typename of left
+					Class cls = Class.forName(left.typename());
+					out("THE TYPE ISWSSSS " + cls);
+					Method[] rightfMethods = cls.getMethods();
+					for (Method m : rightfMethods) {
+						if (m.getName().equals(rightf.name)) {
+							m.invoke(left, rightf.params);
+						}
+					}
+				} catch (Exception excep) { excep.printStackTrace(); }
+				// evalFunction()
+			}
+			// If not, then e2 must be a field
+			else {
+				// get fields of left
 			}
 		}
 	
 	// derived types
-	|	datetime { $result = $datetime.result; }
-	|	timeblock { $result = $timeblock.result; }
-	|	dayblock { $result = $dayblock.result; }
+	|	datetime { $result = new CVal($datetime.result); }
+	|	timeblock { $result = new CVal($timeblock.result); }
+	|	dayblock { $result = new CVal($dayblock.result); }
+	|	function {
+			Function func = $function.result;
+			if (func.name.equals("print")) {
+				for (int i=0; i<func.params.size(); i++) {
+					CVal c = func.params.get(i);
+					if (c.isString()) {
+						printString(c.asString());
+					}
+					else print(c);
+					if (i==func.params.size()-1) {
+						out("");
+					} else {
+						print(" ");
+					}
+				}
+			}
+			if (func.name.contains("generateCourses")) {
+				// call read to input file
+				try {
+					CVal filename = func.params.get(0);
+					makeMasterList(filename.asString());
+				} catch (NullPointerException exception) {
+					throw new RuntimeException("No filename specified!");
+				}
+			}
+			$result = new CVal(func);
+		}
 		
 	// primary types
 	|	INT { $result = new CVal( Integer.parseInt($INT.text) ); }
@@ -231,19 +366,20 @@ expr returns [CVal result]
 	|	STRING { $result = new CVal( $STRING.text ); }
 	|	TIME { $result = new CVal( new Time($TIME.text) ); }
 	;
-function returns [Object result]
+function returns [Function result]
 // i.e. print()
-	:	^(PRINT_T print_target*)
-	|	^(ID ^(PARAMS argument_expr_list?)) {
-			$result = evalFunction($ID.text, $argument_expr_list.result);
+	:	/*^(PRINT_T print_target*) { out("printttt"); }
+	|*/	^(ID ^(PARAMS argument_expr_list?)) {
+			$result = new Function($ID.text, $argument_expr_list.result);
 		}
 	;
-print_target
+/*print_target
 	:	INT { out($INT); }
 	|	DOUBLE { out($DOUBLE); }
-	|	ID { if (varMap.contains($ID.text)) { out((varMap.get($ID.text)).value);} }
+	|	STRING { out($STRING); }
+	|	ID { if (varMap.containsKey($ID.text)) { out("Found it!");out( (varMap.get($ID.text)).value() );} }
 	|	function { out($function.result); }
-		;
+	;*/
 datetime returns [Datetime result]
 // i.e. [M,W] 10:00~11:00
 	:	^(DATETIME dayblock timeblock) {
@@ -261,12 +397,13 @@ dayblock returns [Dayblock result]
 @init { $result = new Dayblock(); }
 	:	^( DAYBLOCK_T (DAY {
 			char daychar = ($DAY.text).charAt(0);
-			$result.add(daychar);
+			try{$result.add(daychar);}
+			catch (Exception e1) {out("Can't add this day");}
 		})+ )
 	;
-argument_expr_list returns [ArrayList<String> result]
-@init { $result = new ArrayList<String>(); }
-	:	(expr {$result.add($expr.text);})+
+argument_expr_list returns [ArrayList<CVal> result]
+@init { $result = new ArrayList<CVal>(); }
+	:	(expr {$result.add($expr.result);})+
 	;
 type_specifier
 	:	INT_T

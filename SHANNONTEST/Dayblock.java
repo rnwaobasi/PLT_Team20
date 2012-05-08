@@ -1,18 +1,22 @@
+
 public class Dayblock implements Comparable<Dayblock>{
     
     char[] days;
     
-        public Dayblock(char[] givenDays) throws Exception {
+        public Dayblock(char[] givenDays) {
                      
             for (char c: givenDays){
-               if (c != 'M' && c != 'T' && c != 'W' && c != 'R' && c != 'F')
-                    throw new Exception("This is not a day!"); 
-                    //we should decide how we will do error handling, and make this a more specific exception
+              /* if (c != 'M' && c != 'T' && c != 'W' && c != 'R' && c != 'F')
+                    throw new Exception("This is not a day!"); */
+		// already handled in lexer
             }
            
             days = givenDays;
         }
        
+	public Dayblock() {
+
+	}
 
 	public boolean has(char d)
 	{

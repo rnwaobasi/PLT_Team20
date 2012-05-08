@@ -19,6 +19,7 @@ tokens {
 	FUNC;
 }
 
+
 /* *** GRAMMAR *** */
 // starting rule
 program
@@ -37,9 +38,9 @@ declarator
 instantiator
 // matches int x = 5;
 	:	type_specifier ID '=' expr ';'
-			-> ^(INST ^(DECL type_specifier ID) ^('=' ID expr))
+			-> ^(INST ^('=' ID expr))
 	;
-stmt:	expr ('='^ expr)?';'
+stmt:	expr ('='^ expr)? ';'!
 	|	selection_stmt
 	|	iteration_stmt
 	|	jump_stmt';' -> jump_stmt
@@ -64,10 +65,6 @@ expr
 	:	and_expr (OR^ and_expr)*
 	//|	assignment_expr
 	;
-/*assignment_expr
-// matches x = y, y = 5, z = 5 * 3, etc
-	:	'='^ expr
-	;*/
 and_expr
 // matches AND statements
 	:	equiv_expr (AND^ equiv_expr)*
@@ -100,16 +97,8 @@ postfix_expr
 	|	primary_expr
 	;
 function
-	:	PRINT_T '(' print_target* ')'
-	|	ID '(' argument_expr_list? ')'
+	:	ID '(' argument_expr_list? ')'
 		-> ^(ID ^(PARAMS argument_expr_list?))
-	;
-print_target
-	:	INT
-	|	DOUBLE
-	|	STRING
-	|	ID
-	|	function
 	;
 datetime
 // matches [M,W] 10:00~11:00
@@ -182,8 +171,8 @@ TIME_T	:	'time'
 		;
 STRING_T:	'string'
 		;
-PRINT_T:	'print'
-	;
+//PRINT_T:	'print'
+	//;
 TIME
 	:	('0'..'2')? ('0'..'9') ':' ('0'..'5')('0'..'9')
 	;

@@ -1,11 +1,13 @@
+
 public class Time implements Comparable<Time>{
     
     int time;
     
-    public Time(String timeStr)throws Exception{
+    public Time(String timeStr){
         boolean containsColon = false;
         int colonPosition = 1000;
         
+
         //remove colon
         for (int i = 0; i< timeStr.length(); i++)
         {
@@ -22,9 +24,9 @@ public class Time implements Comparable<Time>{
 
        //add zeros
 
-        if(timeStr.length() != 4 && timeStr.length() !=3)
+      /*  if(timeStr.length() != 4 && timeStr.length() !=3)
             throw new Exception ("This is not a valid time.");
-         
+        */ 
         time = Integer.parseInt(timeStr);
     }
     
