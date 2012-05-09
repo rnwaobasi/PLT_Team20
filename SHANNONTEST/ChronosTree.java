@@ -1,4 +1,4 @@
-// $ANTLR 3.4 ChronosTree.g 2012-05-08 21:41:03
+// $ANTLR 3.4 ChronosTree.g 2012-05-08 23:36:44
 
   import java.util.Map;
   import java.util.TreeMap;
@@ -1419,7 +1419,7 @@ public class ChronosTree extends TreeParser {
 
                     			CVal val1 = (e1!=null?e1.result:null);
                     			CVal val2 = (e2!=null?e2.result:null);
-                    			debug( "ADDING: " + info((e1!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(e1.start),input.getTreeAdaptor().getTokenStopIndex(e1.start))):null), val1) + " ; " + info((e2!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(e2.start),input.getTreeAdaptor().getTokenStopIndex(e2.start))):null), val2) );
+                    			//debug( "ADDING: " + info((e1!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(e1.start),input.getTreeAdaptor().getTokenStopIndex(e1.start))):null), val1) + " ; " + info((e2!=null?(input.getTokenStream().toString(input.getTreeAdaptor().getTokenStartIndex(e2.start),input.getTreeAdaptor().getTokenStopIndex(e2.start))):null), val2) );
                     			if (val1.isInt() && val2.isInt()) {
                     				Integer temp = val1.asInt() + val2.asInt();
                     				retval.result = new CVal(temp);
@@ -1599,14 +1599,10 @@ public class ChronosTree extends TreeParser {
                     					for (Method m : rightfMethods) {
                     						if (m.getName().equals(rightf.name)) {
                     							// carry out function
-                    							if (rightf.params != null) {
-                    								debug(varMap.toString());
-                    								debug("calling " + m.getName() + " on "
-                    								+ left.value() + " with params "
-                    								+ rightf.params);
-                    								m.invoke(left.value(), rightf.params);
+                    							if (rightf.params != null) { // has params
+                    								retval.result = new CVal(m.invoke(left.value(), rightf.params));
                     							}
-                    							else m.invoke(left.value());
+                    							else retval.result = new CVal(m.invoke(left.value())); // no params
                     						}
                     					}
                     				} catch (Exception excep) { excep.printStackTrace(); }
@@ -1629,7 +1625,7 @@ public class ChronosTree extends TreeParser {
                     }
                     break;
                 case 15 :
-                    // ChronosTree.g:396:4: datetime
+                    // ChronosTree.g:392:4: datetime
                     {
                     pushFollow(FOLLOW_datetime_in_expr543);
                     datetime6=datetime();
@@ -1642,7 +1638,7 @@ public class ChronosTree extends TreeParser {
                     }
                     break;
                 case 16 :
-                    // ChronosTree.g:397:4: timeblock
+                    // ChronosTree.g:393:4: timeblock
                     {
                     pushFollow(FOLLOW_timeblock_in_expr550);
                     timeblock7=timeblock();
@@ -1655,7 +1651,7 @@ public class ChronosTree extends TreeParser {
                     }
                     break;
                 case 17 :
-                    // ChronosTree.g:398:4: dayblock
+                    // ChronosTree.g:394:4: dayblock
                     {
                     pushFollow(FOLLOW_dayblock_in_expr557);
                     dayblock8=dayblock();
@@ -1668,7 +1664,7 @@ public class ChronosTree extends TreeParser {
                     }
                     break;
                 case 18 :
-                    // ChronosTree.g:399:4: function
+                    // ChronosTree.g:395:4: function
                     {
                     pushFollow(FOLLOW_function_in_expr564);
                     function9=function();
@@ -1707,7 +1703,7 @@ public class ChronosTree extends TreeParser {
                     }
                     break;
                 case 19 :
-                    // ChronosTree.g:428:4: INT
+                    // ChronosTree.g:424:4: INT
                     {
                     INT10=(CommonTree)match(input,INT,FOLLOW_INT_in_expr576); 
 
@@ -1716,7 +1712,7 @@ public class ChronosTree extends TreeParser {
                     }
                     break;
                 case 20 :
-                    // ChronosTree.g:429:4: DOUBLE
+                    // ChronosTree.g:425:4: DOUBLE
                     {
                     DOUBLE11=(CommonTree)match(input,DOUBLE,FOLLOW_DOUBLE_in_expr583); 
 
@@ -1725,7 +1721,7 @@ public class ChronosTree extends TreeParser {
                     }
                     break;
                 case 21 :
-                    // ChronosTree.g:430:4: ID
+                    // ChronosTree.g:426:4: ID
                     {
                     ID12=(CommonTree)match(input,ID,FOLLOW_ID_in_expr590); 
 
@@ -1734,7 +1730,7 @@ public class ChronosTree extends TreeParser {
                     }
                     break;
                 case 22 :
-                    // ChronosTree.g:431:4: STRING
+                    // ChronosTree.g:427:4: STRING
                     {
                     STRING13=(CommonTree)match(input,STRING,FOLLOW_STRING_in_expr597); 
 
@@ -1743,7 +1739,7 @@ public class ChronosTree extends TreeParser {
                     }
                     break;
                 case 23 :
-                    // ChronosTree.g:432:4: TIME
+                    // ChronosTree.g:428:4: TIME
                     {
                     TIME14=(CommonTree)match(input,TIME,FOLLOW_TIME_in_expr604); 
 
@@ -1769,7 +1765,7 @@ public class ChronosTree extends TreeParser {
 
 
     // $ANTLR start "function"
-    // ChronosTree.g:434:1: function returns [Function result] : ^( ID ^( PARAMS ( argument_expr_list )? ) ) ;
+    // ChronosTree.g:430:1: function returns [Function result] : ^( ID ^( PARAMS ( argument_expr_list )? ) ) ;
     public final Function function() throws RecognitionException {
         Function result = null;
 
@@ -1779,8 +1775,8 @@ public class ChronosTree extends TreeParser {
 
 
         try {
-            // ChronosTree.g:436:2: ( ^( ID ^( PARAMS ( argument_expr_list )? ) ) )
-            // ChronosTree.g:436:4: ^( ID ^( PARAMS ( argument_expr_list )? ) )
+            // ChronosTree.g:432:2: ( ^( ID ^( PARAMS ( argument_expr_list )? ) ) )
+            // ChronosTree.g:432:4: ^( ID ^( PARAMS ( argument_expr_list )? ) )
             {
             ID15=(CommonTree)match(input,ID,FOLLOW_ID_in_function622); 
 
@@ -1789,7 +1785,7 @@ public class ChronosTree extends TreeParser {
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); 
-                // ChronosTree.g:436:18: ( argument_expr_list )?
+                // ChronosTree.g:432:18: ( argument_expr_list )?
                 int alt8=2;
                 int LA8_0 = input.LA(1);
 
@@ -1798,7 +1794,7 @@ public class ChronosTree extends TreeParser {
                 }
                 switch (alt8) {
                     case 1 :
-                        // ChronosTree.g:436:18: argument_expr_list
+                        // ChronosTree.g:432:18: argument_expr_list
                         {
                         pushFollow(FOLLOW_argument_expr_list_in_function627);
                         argument_expr_list16=argument_expr_list();
@@ -1841,7 +1837,7 @@ public class ChronosTree extends TreeParser {
 
 
     // $ANTLR start "datetime"
-    // ChronosTree.g:440:1: datetime returns [Datetime result] : ^( DATETIME dayblock timeblock ) ;
+    // ChronosTree.g:436:1: datetime returns [Datetime result] : ^( DATETIME dayblock timeblock ) ;
     public final Datetime datetime() throws RecognitionException {
         Datetime result = null;
 
@@ -1852,8 +1848,8 @@ public class ChronosTree extends TreeParser {
 
 
         try {
-            // ChronosTree.g:442:2: ( ^( DATETIME dayblock timeblock ) )
-            // ChronosTree.g:442:4: ^( DATETIME dayblock timeblock )
+            // ChronosTree.g:438:2: ( ^( DATETIME dayblock timeblock ) )
+            // ChronosTree.g:438:4: ^( DATETIME dayblock timeblock )
             {
             match(input,DATETIME,FOLLOW_DATETIME_in_datetime648); 
 
@@ -1895,7 +1891,7 @@ public class ChronosTree extends TreeParser {
 
 
     // $ANTLR start "timeblock"
-    // ChronosTree.g:446:1: timeblock returns [Timeblock result] : ^( TIMES a= TIME b= TIME ) ;
+    // ChronosTree.g:442:1: timeblock returns [Timeblock result] : ^( TIMES a= TIME b= TIME ) ;
     public final Timeblock timeblock() throws RecognitionException {
         Timeblock result = null;
 
@@ -1904,8 +1900,8 @@ public class ChronosTree extends TreeParser {
         CommonTree b=null;
 
         try {
-            // ChronosTree.g:448:2: ( ^( TIMES a= TIME b= TIME ) )
-            // ChronosTree.g:448:4: ^( TIMES a= TIME b= TIME )
+            // ChronosTree.g:444:2: ( ^( TIMES a= TIME b= TIME ) )
+            // ChronosTree.g:444:4: ^( TIMES a= TIME b= TIME )
             {
             match(input,TIMES,FOLLOW_TIMES_in_timeblock671); 
 
@@ -1939,7 +1935,7 @@ public class ChronosTree extends TreeParser {
 
 
     // $ANTLR start "dayblock"
-    // ChronosTree.g:452:1: dayblock returns [Dayblock result] : ^( DAYBLOCK_T ( DAY )+ ) ;
+    // ChronosTree.g:448:1: dayblock returns [Dayblock result] : ^( DAYBLOCK_T ( DAY )+ ) ;
     public final Dayblock dayblock() throws RecognitionException {
         Dayblock result = null;
 
@@ -1948,13 +1944,13 @@ public class ChronosTree extends TreeParser {
 
          result = new Dayblock(); 
         try {
-            // ChronosTree.g:455:2: ( ^( DAYBLOCK_T ( DAY )+ ) )
-            // ChronosTree.g:455:4: ^( DAYBLOCK_T ( DAY )+ )
+            // ChronosTree.g:451:2: ( ^( DAYBLOCK_T ( DAY )+ ) )
+            // ChronosTree.g:451:4: ^( DAYBLOCK_T ( DAY )+ )
             {
             match(input,DAYBLOCK_T,FOLLOW_DAYBLOCK_T_in_dayblock704); 
 
             match(input, Token.DOWN, null); 
-            // ChronosTree.g:455:18: ( DAY )+
+            // ChronosTree.g:451:18: ( DAY )+
             int cnt9=0;
             loop9:
             do {
@@ -1968,7 +1964,7 @@ public class ChronosTree extends TreeParser {
 
                 switch (alt9) {
             	case 1 :
-            	    // ChronosTree.g:455:19: DAY
+            	    // ChronosTree.g:451:19: DAY
             	    {
             	    DAY19=(CommonTree)match(input,DAY,FOLLOW_DAY_in_dayblock707); 
 
@@ -2012,7 +2008,7 @@ public class ChronosTree extends TreeParser {
 
 
     // $ANTLR start "argument_expr_list"
-    // ChronosTree.g:461:1: argument_expr_list returns [ArrayList<CVal> result] : ( expr )+ ;
+    // ChronosTree.g:457:1: argument_expr_list returns [ArrayList<CVal> result] : ( expr )+ ;
     public final ArrayList<CVal> argument_expr_list() throws RecognitionException {
         ArrayList<CVal> result = null;
 
@@ -2022,10 +2018,10 @@ public class ChronosTree extends TreeParser {
 
          result = new ArrayList<CVal>(); 
         try {
-            // ChronosTree.g:463:2: ( ( expr )+ )
-            // ChronosTree.g:463:4: ( expr )+
+            // ChronosTree.g:459:2: ( ( expr )+ )
+            // ChronosTree.g:459:4: ( expr )+
             {
-            // ChronosTree.g:463:4: ( expr )+
+            // ChronosTree.g:459:4: ( expr )+
             int cnt10=0;
             loop10:
             do {
@@ -2039,7 +2035,7 @@ public class ChronosTree extends TreeParser {
 
                 switch (alt10) {
             	case 1 :
-            	    // ChronosTree.g:463:5: expr
+            	    // ChronosTree.g:459:5: expr
             	    {
             	    pushFollow(FOLLOW_expr_in_argument_expr_list733);
             	    expr20=expr();
@@ -2083,14 +2079,14 @@ public class ChronosTree extends TreeParser {
 
 
     // $ANTLR start "type_specifier"
-    // ChronosTree.g:465:1: type_specifier : ( INT_T | DOUBLE_T | DAYBLOCK_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T );
+    // ChronosTree.g:461:1: type_specifier : ( INT_T | DOUBLE_T | DAYBLOCK_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T );
     public final ChronosTree.type_specifier_return type_specifier() throws RecognitionException {
         ChronosTree.type_specifier_return retval = new ChronosTree.type_specifier_return();
         retval.start = input.LT(1);
 
 
         try {
-            // ChronosTree.g:466:2: ( INT_T | DOUBLE_T | DAYBLOCK_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T )
+            // ChronosTree.g:462:2: ( INT_T | DOUBLE_T | DAYBLOCK_T | TIME_T | STRING_T | SCHEDULE_T | COURSE_T | COURSELIST_T | TIMEBLOCK_T | DATETIME_T )
             // ChronosTree.g:
             {
             if ( (input.LA(1) >= COURSELIST_T && input.LA(1) <= COURSE_T)||input.LA(1)==DATETIME_T||input.LA(1)==DAYBLOCK_T||input.LA(1)==DOUBLE_T||input.LA(1)==INT_T||input.LA(1)==SCHEDULE_T||input.LA(1)==STRING_T||input.LA(1)==TIMEBLOCK_T||input.LA(1)==TIME_T ) {

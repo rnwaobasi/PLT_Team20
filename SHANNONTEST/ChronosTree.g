@@ -279,7 +279,7 @@ expr returns [CVal result]
 	|	^('+' e1=expr e2=expr) {
 			CVal val1 = $e1.result;
 			CVal val2 = $e2.result;
-			debug( "ADDING: " + info($e1.text, val1) + " ; " + info($e2.text, val2) );
+			//debug( "ADDING: " + info($e1.text, val1) + " ; " + info($e2.text, val2) );
 			if (val1.isInt() && val2.isInt()) {
 				Integer temp = val1.asInt() + val2.asInt();
 				$result = new CVal(temp);
@@ -365,14 +365,10 @@ expr returns [CVal result]
 					for (Method m : rightfMethods) {
 						if (m.getName().equals(rightf.name)) {
 							// carry out function
-							if (rightf.params != null) {
-								debug(varMap.toString());
-								debug("calling " + m.getName() + " on "
-								+ left.value() + " with params "
-								+ rightf.params);
-								m.invoke(left.value(), rightf.params);
+							if (rightf.params != null) { // has params
+								$result = new CVal(m.invoke(left.value(), rightf.params));
 							}
-							else m.invoke(left.value());
+							else $result = new CVal(m.invoke(left.value())); // no params
 						}
 					}
 				} catch (Exception excep) { excep.printStackTrace(); }

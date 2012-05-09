@@ -49,8 +49,7 @@ stmt:	expr ('='^ expr)? ';'!
 	;
 selection_stmt
 // matches if and if/else statements
-	:	IF_T expr '{'(a=line)* '}' (ELSE_T '{' (b=line)* '}')? 
-			-> ^(COND expr ^(THEN $a*) ^(ELSE_T $b*)? )
+	:	IF_T expr '{' (a=line)* '}' else_stmt? -> ^(COND expr ^(THEN $a*) else_stmt)
 	;
 then_stmt
 	:	IF_T expr '{'(a=line)* '}' -> ^(THEN $a*)

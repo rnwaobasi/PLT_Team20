@@ -35,14 +35,15 @@ else {
 print("Are you a dumbass? 3 is not 5");
 }
 
-print(CL);
-//int mynumber = CL.numCourses();
-//print("CL has", mynumber);
+print("number of credits", CL.numCredits());
+int mynumber = CL.numCourses();
+print("CL has", mynumber);
 //course chinese = CL.getCourse("Chinese");
 //print(chinese.name);
+
 foreach course c in CL {
-print( c.name, c.credits );
-/*if (c.credits == 3.0) {
-	print("YO A THREE CREDIT CLASS HERE!");
-}*/
+	print( c.name, c.credits );
+	if (c.credits == 3.0) {
+		print("YO A THREE CREDIT CLASS HERE!");
+	}	print("Steve's statment");
 }
