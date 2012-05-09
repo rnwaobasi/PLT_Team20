@@ -10,6 +10,7 @@ options {
   import java.util.Map;
   import java.util.TreeMap;
   import java.lang.reflect.*;
+  import java.lang.*;
 }
 
 @members {
@@ -30,6 +31,7 @@ options {
 	private void put(String name, CVal obj) {
 		varMap.put(name, obj);
 		//debug("Put " + name + " in the map with value " + obj);
+		debug(varMap.toString());
 	}
 	
 	// removes an object from the varMap
@@ -114,16 +116,20 @@ instantiator
 stmt:	expr
 	|	^('=' e1=expr e2=expr) {
 			// if e1 has a dot function:		
-			if ($e1.result instanceof CVal) {
+			if ($e1.result instanceof CVal ||
+				$e1.result == null) {
 				CVal val1 = $e1.result; // e1.result is a CVal already
 				CVal val2 = $e2.result;
 				// *****check if typenames of e1 and e2 are the same?
 				if (varMap.containsKey($e1.text)) { // look for it in varMap
 					put($e1.text, $e2.result); // put in its value
 				}
+				else {
+					throw new RuntimeException($e1.text + " is not declared");
+				}
 			}
 			else {
-				throw new RuntimeException("illegal expression: not declared");
+				throw new RuntimeException("invalid left hand side expression");
 			}
 		}
 	|	selection_stmt
@@ -134,13 +140,17 @@ selection_stmt
 @init{
 	int t = 0;
 	int e = 0;
+	int end = 0;
 	CommonTreeNodeStream stream = (CommonTreeNodeStream)input;
 	boolean condIsTrue;
 }
 @after {
 	if (condIsTrue) {
 		stream.push(t);
+		//debug(stream.toString(t, end));
 		then_stmt();
+		//stream.pop();
+		//stream.push(end);
 	}
 	else {
 		stream.push(e);
@@ -155,7 +165,7 @@ selection_stmt
 		{ e = input.mark(); }. )
 	;
 then_stmt
-	:	^(THEN line*)
+	:	^(THEN (line)*)
 	;
 else_stmt
 	:	^(ELSE_T line*)
@@ -361,15 +371,26 @@ expr returns [CVal result]
 					// get typename of left
 					Class cls = Class.forName(left.typename());
 					// get methods of left
-					Method[] rightfMethods = cls.getMethods();
-					for (Method m : rightfMethods) {
-						if (m.getName().equals(rightf.name)) {
-							// carry out function
-							if (rightf.params != null) { // has params
-								$result = new CVal(m.invoke(left.value(), rightf.params));
+					if (rightf.params != null) { 
+						Class[] classparams = new Class[rightf.params.size()];
+						for (int i = 0; i < classparams.length; i++) {
+							String type = rightf.params.get(i).typename();
+							if (!type.equals("String")) {
+								classparams[i] = Class.forName(type);
+								//debug("The param currently is " + classparams[i]);
 							}
-							else $result = new CVal(m.invoke(left.value())); // no params
+							else {
+								classparams[i] = Class.forName("java.lang.String");
+							}
 						}
+						Method m = cls.getMethod(rightf.name, classparams);
+						//debug(m.toGenericString());
+						
+						$result = new CVal(m.invoke(left.value(), rightf.params.get(0).value()));
+					}
+					else {
+						Method m = cls.getMethod(rightf.name, new Class[0]);
+						$result = new CVal(m.invoke(left.value())); // no params
 					}
 				} catch (Exception excep) { excep.printStackTrace(); }
 			}

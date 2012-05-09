@@ -5,21 +5,23 @@ public class Schedule {
     
     String name;
     ArrayList<Course> courses;
-    
+	double credits;    
+
     public Schedule(String sName)
     {
         name = sName;
         courses = new ArrayList<Course>();
+	credits = 0;
     }
     
-    public int numCredits()
+    public double numCredits()
     {
-        int credits = 0;
+        /*int credits = 0;
         
         for (Course c: courses)
         {
             credits += c.credits;
-        }
+        }*/
         return credits;
     }
         
@@ -76,9 +78,10 @@ public class Schedule {
         }
         
         courses.add(c);
+	credits += c.credits;
         return true;
     }
-    
+
     public void print()
     {
         System.out.println(toString());
@@ -86,12 +89,12 @@ public class Schedule {
 
     public String toString()
     {
-        String clString = name + " contains ";
+        String clString = name + "[ ";
         for (Course c: courses)
         {
             clString += c.name + " ";
         }
-        clString += ".";
+        clString += "]";
         return clString;
     }
     

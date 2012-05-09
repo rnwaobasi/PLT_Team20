@@ -1,3 +1,9 @@
 timeblock stunden = 3:00~4:00;
 print(stunden);
 print(stunden.start);
+int boolean = stunden.start == 3:00;
+print(boolean);
+if (boolean == 1) {
+	print("How many things can I print?");
+	print("Yay booleans are doable!");
+} else {}

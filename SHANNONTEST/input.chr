@@ -7,7 +7,6 @@ y = 3;
 y = x;
 z = x + y;
 //a = 100;
-print(3);
 courselist CL = generateCourses("input.txt");
 /*print("SChedule is" + sched);
 print("oahhhahahahb");
@@ -38,12 +37,13 @@ print("Are you a dumbass? 3 is not 5");
 print("number of credits", CL.numCredits());
 int mynumber = CL.numCourses();
 print("CL has", mynumber);
-//course chinese = CL.getCourse("Chinese");
-//print(chinese.name);
+course mychinese = CL.getCourse("Chinese");
+print("Well I think I GOT Chinese");
+print(mychinese.name);
 
 foreach course c in CL {
 	print( c.name, c.credits );
 	if (c.credits == 3.0) {
 		print("YO A THREE CREDIT CLASS HERE!");
-	}	print("Steve's statment");
+	}else{	print("Steve's statment");}
 }

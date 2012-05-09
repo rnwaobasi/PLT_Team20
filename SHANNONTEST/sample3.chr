@@ -1,0 +1,31 @@
+schedule sched;
+courselist CL = generateCourses("input.txt");
+
+courselist required;
+required.add( CL.getCourse("Math") ); 
+required.add( CL.getCourse("ArtHum") );
+required.add( CL.getCourse("Stat") );
+
+/* Create a list of elective classes */
+
+courselist electives;
+electives.add( CL.getCourse("PE") );
+electives.add( CL.getCourse("Chinese") );
+
+foreach course c in required {
+    if (sched.numCourses() < 2)
+ 	{ 
+ 	   sched.add( c );
+    	} else {}
+}
+
+/*foreach course c in electives {
+    if (sched.numCredits() <= 20) {
+ 		sched.add( c );
+		print(c.name + " successfully added");
+	   }
+    } else {}
+
+}*/
+
+print(sched);

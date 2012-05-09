@@ -14,6 +14,9 @@ public class Course implements Comparable<Course>{
         selectedSection = 0;
     }
     
+	public double numCredits() {
+	return credits;
+	}
     public Datetime getDatetime()
     {
         return sections.get(selectedSection);
@@ -47,10 +50,10 @@ public class Course implements Comparable<Course>{
     
     public String toString()
     {
-        String cString = name + "has sections: ";
-        for (Datetime dt1: sections)
-            cString += dt1.toString() + ", ";
-        
+        String cString = name + "--" + numSections() + " section(s)";
+        /*for (Datetime dt1: sections)
+            cString += dt1 + ", ";
+        */
         return cString;
     }
     

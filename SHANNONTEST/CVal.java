@@ -6,14 +6,14 @@ public class CVal implements Comparable<CVal> {
 	private Object value;
 
 	public CVal(Object v) {
-		if (v == null) {
+		/*if (v == null) {
 			throw new RuntimeException("v == null");
-		}
+		}*/
 		value = v;
 		// only accept one of our datetypes
 		if (!(isNumber() || isDayblock() || isTime() || isTimeblock()
 				|| isDatetime() || isString() || isCourse() || isCourselist() 
-				|| isSchedule() || isFunction() )) {
+				|| isSchedule() || isFunction() || isBoolean() )) {
 			throw new RuntimeException("invalid type: " + v + " ("
 					+ v.getClass() + ")");
 		}
@@ -173,6 +173,10 @@ public class CVal implements Comparable<CVal> {
 		else {
 			return false;
 		}
+	}
+
+	public boolean isBoolean() {
+		return value instanceof Boolean;
 	}
 	
 	public boolean getBool(){

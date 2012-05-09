@@ -7,18 +7,22 @@ courselist CL = generateCourses("input.txt");
 
 /* ADD COURSES to the schedule according to some algorithm */
 
+int num;
+string name;
 foreach course c in CL {
 	/*if (c.getStartTime() > 10:00) {
  	  	sched.add( c );
    	}
 	else{}*/
 
-	print(c.getTimeblock().start);
+	//print(c.getTimeblock().start);
 	if (c.credits == 3.0) {
 		sched.add(c);
-		print("WTF");
-		print("Courses are," sched.courses);
-		print("goodbye");
+	//	print("WTF");
+		name = c.name;
+		num = sched.numCredits();
+		print(name, num);
+	//	print("goodbye");
 	}
 	else{}
 }

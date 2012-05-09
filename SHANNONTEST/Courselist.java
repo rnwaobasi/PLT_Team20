@@ -81,12 +81,12 @@ public class Courselist implements Comparable<Courselist>{
     
     public String toString()
     {
-        String clString = name + " contains ";
+        String clString = name + "[ ";
         for (Course c: courses)
         {
             clString += c.name + " ";
         }
-        clString += ".";
+        clString += "]";
         return clString;
     }
     
