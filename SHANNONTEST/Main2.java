@@ -4,6 +4,7 @@ import org.antlr.stringtemplate.*;
 
 public class Main2 {
 	public static void main(String[] args) throws Exception {
+		IterationStmtNode isn = new IterationStmtNode();
 		// create an instance of the lexer
 		CharStream input = new ANTLRFileStream(args[0]);
 		ChronosLexer lex = new ChronosLexer(input);

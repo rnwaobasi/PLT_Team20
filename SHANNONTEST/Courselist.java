@@ -53,7 +53,7 @@ public class Courselist implements Comparable<Courselist>{
     
     public Course getCourse(String cName) throws Exception
     {
-        boolean found = false;
+        /*boolean found = false;
         
         for (Course c: courses)
         {
@@ -64,10 +64,19 @@ public class Courselist implements Comparable<Courselist>{
             }
         }
         
-        if (!found)
-            throw new Exception("Class not found!");
-        else
-            return null;
+        //if (!found)
+        //    throw new Exception("Class not found!");
+        //else
+            return null;*/
+
+	Course result = null;
+	for (int i = 0; i < courses.size(); i++) {
+		Course current = courses.get(i);
+		if (current.name.equals(cName)) {
+			result = current;
+		}
+	}
+	return result;
     }
     
     public String toString()

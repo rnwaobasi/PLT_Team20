@@ -17,6 +17,7 @@ tokens {
 	TIMES;
 	PARAMS;
 	FUNC;
+	THEN;
 }
 
 
@@ -49,7 +50,13 @@ stmt:	expr ('='^ expr)? ';'!
 selection_stmt
 // matches if and if/else statements
 	:	IF_T expr '{'(a=line)* '}' (ELSE_T '{' (b=line)* '}')? 
-			-> ^(COND ^(IF_T expr $a*) ^(ELSE_T $b*)?)
+			-> ^(COND expr ^(THEN $a*) ^(ELSE_T $b*)? )
+	;
+then_stmt
+	:	IF_T expr '{'(a=line)* '}' -> ^(THEN $a*)
+	;
+else_stmt
+	:	ELSE_T '{' (b=line)* '}' -> ^(ELSE_T $b*)
 	;
 iteration_stmt
 // matches foreach statements

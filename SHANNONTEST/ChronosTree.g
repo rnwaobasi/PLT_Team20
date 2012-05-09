@@ -131,27 +131,34 @@ stmt:	expr
 	|	jump_stmt
 	;
 selection_stmt
-@init {
-	boolean condIsTrue = false;
-	int ifBlockStart;
-	int elseBlockStart;
+@init{
+	int t = 0;
+	int e = 0;
+	CommonTreeNodeStream stream = (CommonTreeNodeStream)input;
+	boolean condIsTrue;
 }
-	:	^(COND ^(IF_T conditional=expr {
-			debug("IS this statment true? " + $conditional.result.getBool());
-			if (!$conditional.result.getBool()) { // jump to else if false
-				input.seek(86);
-			}
-		} a=line*) {
-			debug("LA 2 ahead is: " + input.LA(2));
-			debug("Else starts at: " + input.index()); 
-			if ($conditional.result.getBool()) { // jump to end if true
-				input.seek(input.LA(2));
-			}
+@after {
+	if (condIsTrue) {
+		stream.push(t);
+		then_stmt();
+	}
+	else {
+		stream.push(e);
+		else_stmt();
+	}
+	stream.pop();
+}
+	:	^(COND expr {
+			condIsTrue = $expr.result.getBool();
 		}
-		( {debug("AT ELSE"); } ^( ELSE_T { debug("AT B LINES"); }b=line*))? {
-			debug("End of this stmt is at: " + input.index());
-		}
-		)
+		{ t = input.mark(); }.
+		{ e = input.mark(); }. )
+	;
+then_stmt
+	:	^(THEN line*)
+	;
+else_stmt
+	:	^(ELSE_T line*)
 	;
 iteration_stmt // only works on Courses!
 @init {
@@ -358,8 +365,13 @@ expr returns [CVal result]
 					for (Method m : rightfMethods) {
 						if (m.getName().equals(rightf.name)) {
 							// carry out function
-							if (rightf.params != null)
+							if (rightf.params != null) {
+								debug(varMap.toString());
+								debug("calling " + m.getName() + " on "
+								+ left.value() + " with params "
+								+ rightf.params);
 								m.invoke(left.value(), rightf.params);
+							}
 							else m.invoke(left.value());
 						}
 					}
