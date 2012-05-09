@@ -1,11 +1,9 @@
 schedule sched;
-courselist CL = generateCourses("input.txt");
+courselist CL = generateCourses("courses_input.txt");
 foreach course c in CL {
-	//time t = c.getStartTime();
-	//print("Time is ", t);`
-	if (c.getStartTime() > 10:00) {
+	print(c.name, "starts at", c.getStartTime());
+	if (sched.numCredits() < 4) {
 		sched.add(c);
-		print("should have added ", c);
 	} else {}
 }
 print(sched);

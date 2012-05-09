@@ -4,12 +4,14 @@ import java.util.ArrayList;
 public class Schedule {
     
     String name;
+	String conflicts;
     ArrayList<Course> courses;
 	double credits;    
 
     public Schedule(String sName)
     {
         name = sName;
+	conflicts = "";
         courses = new ArrayList<Course>();
 	credits = 0;
     }
@@ -73,8 +75,11 @@ public class Schedule {
     {
         for (Course x: courses)
         {
-            if(c.getDatetime().conflicts(x.getDatetime()))
-                return false;
+            if(c.getDatetime().conflicts(x.getDatetime())) {
+                conflicts += c.name + " conflicts with " +
+		x.name + "\n";
+		return false;
+		}
         }
         
         courses.add(c);
@@ -82,19 +87,22 @@ public class Schedule {
         return true;
     }
 
-    public void print()
+    public void printConflicts()
     {
-        System.out.println(toString());
+        System.out.println(conflicts);
     }
 
     public String toString()
     {
-        String clString = name + "[ ";
+        String clString = "\nYour generated schedule contains: ";
         for (Course c: courses)
         {
-            clString += c.name + " ";
+            clString += "\n" + c.name + ": " + c.getDatetime() + " " + c.numCredits() + " points";
         }
-        clString += "]";
+        clString += "\n";
+        clString += "\nTotal semester credits: " + numCredits();
+        clString += "\nTotal semester courses: " + numCourses();
+        clString += "\nAren't you glad you found Chronos?\n";
         return clString;
     }
     

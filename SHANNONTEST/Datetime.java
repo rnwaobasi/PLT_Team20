@@ -13,8 +13,8 @@ public class Datetime implements Comparable<Datetime>{
       
     public String toString()
     {
-        String dtString = "Block is on ";
-        dtString += db.toString();
+        String dtString = "";
+        dtString += db.toString() + " ";
         dtString += tb.toString();
               
         return dtString;

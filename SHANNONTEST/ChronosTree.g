@@ -31,7 +31,7 @@ options {
 	private void put(String name, CVal obj) {
 		varMap.put(name, obj);
 		//debug("Put " + name + " in the map with value " + obj);
-		debug(varMap.toString());
+		//debug(varMap.toString());
 	}
 	
 	// removes an object from the varMap

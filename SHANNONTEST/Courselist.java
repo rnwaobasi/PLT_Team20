@@ -10,9 +10,10 @@ public class Courselist implements Comparable<Courselist>{
         courses = new ArrayList<Course>();
     }
     
-    public void add(Course c)
+    public boolean add(Course c)
     {
         courses.add(c);
+	return true;
     }
 
     public int numCredits()

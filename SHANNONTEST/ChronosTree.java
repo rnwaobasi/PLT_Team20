@@ -1,4 +1,4 @@
-// $ANTLR 3.4 ChronosTree.g 2012-05-09 09:16:58
+// $ANTLR 3.4 ChronosTree.g 2012-05-09 16:25:48
 
   import java.util.Map;
   import java.util.TreeMap;
@@ -119,7 +119,7 @@ public class ChronosTree extends TreeParser {
     	private void put(String name, CVal obj) {
     		varMap.put(name, obj);
     		//debug("Put " + name + " in the map with value " + obj);
-    		debug(varMap.toString());
+    		//debug(varMap.toString());
     	}
     	
     	// removes an object from the varMap

@@ -50,11 +50,7 @@ stmt:	expr ('='^ expr)? ';'!
 selection_stmt
 // matches if and if/else statements
 	:	IF_T expr '{' line* '}' else_stmt? -> ^( COND expr ^(THEN line*) else_stmt? )
-		//-> line*
 	;
-/*then_stmt
-	:	IF_T expr '{'(a=line)* '}' -> ^(THEN $a*)
-	;*/
 else_stmt
 	:	ELSE_T '{' (b=line)* '}' -> ^(ELSE_T $b*)
 	;
@@ -70,7 +66,6 @@ jump_stmt
 expr
 // matches OR statements or assignment expressions
 	:	and_expr (OR^ and_expr)*
-	//|	assignment_expr
 	;
 and_expr
 // matches AND statements

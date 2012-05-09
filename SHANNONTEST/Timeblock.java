@@ -24,7 +24,7 @@ public class Timeblock implements Comparable<Timeblock>{
     }
     
     public String toString(){
-        return "From " + start.toString() + " to " + end.toString() + ".\n";
+        return "from " + start.toString() + " to " + end.toString() + ".\n";
     }
     
     public boolean equals(Object o){

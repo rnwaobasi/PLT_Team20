@@ -82,7 +82,7 @@ public class Dayblock implements Comparable<Dayblock>{
 			dayString += x;
 		}
                 
-                dayString += ".\n";
+                dayString += "";
                 return dayString;
 	}
         

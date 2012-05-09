@@ -5,6 +5,7 @@ courselist required;
 required.add( CL.getCourse("Math") ); 
 required.add( CL.getCourse("ArtHum") );
 required.add( CL.getCourse("Stat") );
+print(required);
 
 /* Create a list of elective classes */
 
@@ -12,19 +13,26 @@ courselist electives;
 electives.add( CL.getCourse("PE") );
 electives.add( CL.getCourse("Chinese") );
 
+print(electives);
+int courseMax = 2; // maximum number of courses
+int creditMax = 20; // maximum number of credit points
 
-int courseMax = 6; // maximum number of courses
-int courseMin = 4; // minimum
-int creditMax = 10; // maximum number of credit points
-int courseMaxR = 2; // maximum number of courses on Thursday
 
-foreach course c in CL
-{
-	if (sched.numCourses() < courseMax
-        	&& sched.numCredits() + c.numCredits() <= creditMax)
-	{		
-		sched.add( c );
-	} else {}
-} 
+foreach course c in required {
+    if (sched.numCourses() < courseMax)
+ 	{ 
+ 	   sched.add( c );
+		print("Added " + c.name);
+    	} else {}
+}
+
+foreach course c in electives {
+    if (sched.numCredits() <= creditMax) {
+ 		sched.add( c );
+		print(c.name + " successfully added");
+	   
+    } else {}
+
+}
 
 print(sched);
